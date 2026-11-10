@@ -41,11 +41,10 @@ def render_clip(image_path: Path, duration: float, output_path: Path, motion: st
         pan_y = "ih/2-(ih/zoom/2)"
 
     vf_filter = (
-        f"scale=3840:-2,"
+        f"scale=2304:-2,"
         f"zoompan=z='{zoom_expr}':x='{pan_x}':y='{pan_y}':d={frames}:s={VIDEO_WIDTH}x{VIDEO_HEIGHT}:fps={VIDEO_FPS},"
-        f"eq=contrast=1.14:brightness=-0.01:saturation=0.85,"
-        f"vignette=PI/4.2,"
-        f"noise=alls=5:allf=t+u,"
+        f"eq=contrast=1.12:brightness=-0.01:saturation=0.88,"
+        f"noise=alls=4:allf=t+u,"
         f"format=yuv420p"
     )
 
@@ -55,7 +54,7 @@ def render_clip(image_path: Path, duration: float, output_path: Path, motion: st
         "-i", str(image_path),
         "-vf", vf_filter,
         "-c:v", "libx264",
-        "-preset", "faster",
+        "-preset", "veryfast",
         "-crf", "18",
         "-t", f"{duration:.3f}",
         "-pix_fmt", "yuv420p",
@@ -202,7 +201,7 @@ def concatenate_scenes(
             "-i", str(raw_combined),
             "-stream_loop", "-1", "-i", str(bg_music),
             "-filter_complex",
-            "[0:a]volume=1.0[voice];[1:a]volume=0.13[bgm];[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]",
+            "[0:a]volume=1.0[voice];[1:a]volume=0.13[bgm];[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2:normalize=0[aout]",
             "-map", "0:v",
             "-map", "[aout]",
             "-c:v", "copy",
