@@ -17,16 +17,21 @@ logging.basicConfig(
 )
 logger = logging.getLogger("DocumentaryEngine")
 
-def build_documentary(topic: str, num_scenes: int = 5, voice: str = DEFAULT_VOICE, custom_title: str = None) -> Path:
+def build_documentary(topic: str, num_scenes: int = 5, voice: str = DEFAULT_VOICE, custom_title: str = None, preloaded_script: dict = None) -> Path:
     start_time = time.time()
     logger.info("=" * 60)
     logger.info(f"STARTING DOCUMENTARY PRODUCTION: '{topic}'")
     logger.info(f"Scenes requested: {num_scenes} | Voice: {voice}")
     logger.info("=" * 60)
 
-    # 1. Script Generation
+    # 1. Script Generation or Loading
     logger.info("\n--- STEP 1: Researching & Scriptwriting ---")
-    script = generate_documentary_script(topic=topic, num_scenes=num_scenes)
+    if preloaded_script:
+        logger.info("Using preloaded documentary script...")
+        script = preloaded_script
+    else:
+        script = generate_documentary_script(topic=topic, num_scenes=num_scenes)
+
     title = custom_title or script.get("title", "Documentary")
     safe_slug = "".join(c for c in title if c.isalnum() or c in (" ", "-", "_")).rstrip().replace(" ", "_")
     
@@ -111,14 +116,24 @@ def main():
     parser.add_argument("--scenes", type=int, default=3, help="Number of scenes to generate")
     parser.add_argument("--voice", type=str, default=DEFAULT_VOICE, help="Edge-TTS voice identifier")
     parser.add_argument("--title", type=str, default=None, help="Custom title override")
+    parser.add_argument("--script-json", type=str, default=None, help="Preloaded JSON script string")
     
     args = parser.parse_args()
+    
+    preloaded = None
+    if args.script_json:
+        try:
+            preloaded = json.loads(args.script_json)
+        except Exception as e:
+            logger.warning(f"Failed to parse --script-json: {e}")
+
     try:
         build_documentary(
             topic=args.topic,
             num_scenes=args.scenes,
             voice=args.voice,
-            custom_title=args.title
+            custom_title=args.title,
+            preloaded_script=preloaded
         )
     except Exception as e:
         logger.exception(f"Fatal error during production: {e}")

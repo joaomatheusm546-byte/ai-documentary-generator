@@ -23,6 +23,11 @@ on:
           - 'en-GB-SoniaNeural'       # Refined British female narrator
           - 'en-US-EricNeural'        # Engaging, modern cinematic
         default: 'en-US-ChristopherNeural'
+      script_json:
+        description: 'Optional pre-generated script JSON'
+        required: false
+        type: string
+        default: ''
 
 jobs:
   produce-documentary:
@@ -54,11 +59,20 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          SCRIPT_JSON_INPUT: ${{ inputs.script_json }}
         run: |
-          python main.py \
-            --topic "${{ inputs.topic }}" \
-            --scenes ${{ inputs.scenes }} \
-            --voice "${{ inputs.voice }}"
+          if [ -n "$SCRIPT_JSON_INPUT" ]; then
+            python main.py \
+              --topic "${{ inputs.topic }}" \
+              --scenes ${{ inputs.scenes }} \
+              --voice "${{ inputs.voice }}" \
+              --script-json "$SCRIPT_JSON_INPUT"
+          else
+            python main.py \
+              --topic "${{ inputs.topic }}" \
+              --scenes ${{ inputs.scenes }} \
+              --voice "${{ inputs.voice }}"
+          fi
 
       - name: Upload Documentary Video & Script
         uses: actions/upload-artifact@v4
