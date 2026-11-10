@@ -9,6 +9,7 @@ from src.scriptwriter import generate_documentary_script
 from src.voice import synthesize_scene_audio
 from src.media_fetcher import fetch_media_for_scene
 from src.video_engine import create_scene_video, concatenate_scenes
+from src.document_generator import create_declassified_document
 
 logging.basicConfig(
     level=logging.INFO,
@@ -71,14 +72,26 @@ def build_documentary(topic: str, num_scenes: int = 5, voice: str = DEFAULT_VOIC
         image_path = fetch_media_for_scene(scene_id, queries, topic_fallback=topic)
         logger.info(f"Media secured: {image_path.name}")
         
-        # C. Scene Video Rendering
+        # C. Declassified Document Generation (for dynamic After The Crown 2-shot cut)
+        doc_path = None
+        if duration >= 10.0:
+            doc_path = TEMP_DIR / f"scene_{scene_id:03d}_doc.jpg"
+            create_declassified_document(
+                quote_text=narration,
+                header_agency=f"HISTORICAL DOSSIER // DEPT. ARCHIVES // SCENE {scene_id:02d}",
+                output_path=doc_path
+            )
+            logger.info(f"Declassified dossier generated with highlighter: {doc_path.name}")
+        
+        # D. Scene Video Rendering (Multi-shot)
         scene_video_path = TEMP_DIR / f"scene_{scene_id:03d}_video.mp4"
         success = create_scene_video(
             image_path=image_path,
             audio_path=voice_audio_path,
             duration=duration,
             output_path=scene_video_path,
-            motion=motion
+            motion=motion,
+            doc_path=doc_path
         )
         if success:
             scene_videos.append(scene_video_path)

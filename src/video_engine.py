@@ -8,24 +8,13 @@ from src.config import FFMPEG_BIN, VIDEO_WIDTH, VIDEO_HEIGHT, VIDEO_FPS, TEMP_DI
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("VideoEngine")
 
-def create_scene_video(
-    image_path: Path,
-    audio_path: Path,
-    duration: float,
-    output_path: Path,
-    motion: str = "zoom_in"
-) -> bool:
+def render_clip(image_path: Path, duration: float, output_path: Path, motion: str = "slow_zoom_in") -> bool:
     """
-    Renders an 'After the Crown' style scene with authentic historical visual grading:
-    - Subtle desaturated contrast (period-accurate mood)
-    - Atmospheric vignette (edges darkened)
-    - Subtle 35mm film grain texture
-    - Stately, slow Ken Burns camera drift
+    Renders a video clip from an image with After The Crown grading and Ken Burns motion.
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     frames = max(30, int(duration * VIDEO_FPS))
     
-    # After the Crown camera drift (very slow, stately, hypnotic)
     if motion in ("slow_zoom_out", "zoom_out"):
         zoom_expr = "if(lte(zoom,1.0),1.18,max(1.001,zoom-0.0007))"
         pan_x = "iw/2-(iw/zoom/2)"
@@ -38,15 +27,11 @@ def create_scene_video(
         zoom_expr = "1.12"
         pan_x = f"min(iw-iw/zoom, (iw-iw/zoom) * (on/{frames}))"
         pan_y = "ih/2-(ih/zoom/2)"
-    else:  # slow_zoom_in (default)
+    else:  # slow_zoom_in
         zoom_expr = "min(zoom+0.0007, 1.20)"
         pan_x = "iw/2-(iw/zoom/2)"
         pan_y = "ih/2-(ih/zoom/2)"
 
-    # Filter Pipeline:
-    # 1. Scale to 4K intermediate (3840:-2) for jitter-free subpixel zoom
-    # 2. zoompan for slow movement
-    # 3. Cinematic grading: eq (contrast + desaturation), vignette (dark focus), noise (film grain)
     vf_filter = (
         f"scale=3840:-2,"
         f"zoompan=z='{zoom_expr}':x='{pan_x}':y='{pan_y}':d={frames}:s={VIDEO_WIDTH}x{VIDEO_HEIGHT}:fps={VIDEO_FPS},"
@@ -57,30 +42,89 @@ def create_scene_video(
     )
 
     cmd = [
-        FFMPEG_BIN,
-        "-y",
+        FFMPEG_BIN, "-y",
         "-loop", "1",
         "-i", str(image_path),
-        "-i", str(audio_path),
         "-vf", vf_filter,
         "-c:v", "libx264",
         "-preset", "faster",
         "-crf", "18",
-        "-c:a", "aac",
-        "-b:a", "192k",
         "-t", f"{duration:.3f}",
         "-pix_fmt", "yuv420p",
-        "-shortest",
         str(output_path)
     ]
-
     try:
-        logger.info(f"Rendering 'After the Crown' style scene {output_path.name} ({duration:.2f}s, {motion})...")
         subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
         return True
     except subprocess.CalledProcessError as e:
-        logger.error(f"FFmpeg scene render failed: {e.stderr}")
+        logger.error(f"Render clip failed: {e.stderr}")
         return False
+
+def create_scene_video(
+    image_path: Path,
+    audio_path: Path,
+    duration: float,
+    output_path: Path,
+    motion: str = "zoom_in",
+    doc_path: Optional[Path] = None
+) -> bool:
+    """
+    Renders an 'After the Crown' scene. If duration >= 10s and a document is provided,
+    splits into a 2-shot sequence (Archival Photo -> Declassified Document) for dynamic pacing.
+    """
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    if doc_path and doc_path.exists() and duration >= 10.0:
+        d1 = duration * 0.55
+        d2 = duration - d1
+        
+        shot1 = TEMP_DIR / f"{output_path.stem}_s1.mp4"
+        shot2 = TEMP_DIR / f"{output_path.stem}_s2.mp4"
+        concat_txt = TEMP_DIR / f"{output_path.stem}_concat.txt"
+        
+        logger.info(f"Rendering 2-shot sequence: Archival Photo ({d1:.1f}s) + Declassified Doc ({d2:.1f}s)...")
+        if render_clip(image_path, d1, shot1, motion="slow_zoom_in") and render_clip(doc_path, d2, shot2, motion="slow_zoom_out"):
+            with open(concat_txt, "w", encoding="utf-8") as f:
+                f.write(f"file '{shot1.resolve().as_posix()}'\n")
+                f.write(f"file '{shot2.resolve().as_posix()}'\n")
+                
+            cmd = [
+                FFMPEG_BIN, "-y",
+                "-f", "concat", "-safe", "0", "-i", str(concat_txt),
+                "-i", str(audio_path),
+                "-c:v", "copy",
+                "-c:a", "aac", "-b:a", "192k",
+                "-t", f"{duration:.3f}",
+                "-shortest",
+                str(output_path)
+            ]
+            try:
+                subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+                return True
+            except subprocess.CalledProcessError as e:
+                logger.warning(f"2-shot concat failed: {e.stderr}. Falling back to single shot.")
+
+    # Single-shot fallback
+    shot_tmp = TEMP_DIR / f"{output_path.stem}_raw.mp4"
+    if render_clip(image_path, duration, shot_tmp, motion=motion):
+        cmd_mux = [
+            FFMPEG_BIN, "-y",
+            "-i", str(shot_tmp),
+            "-i", str(audio_path),
+            "-c:v", "copy",
+            "-c:a", "aac", "-b:a", "192k",
+            "-t", f"{duration:.3f}",
+            "-shortest",
+            str(output_path)
+        ]
+        try:
+            subprocess.run(cmd_mux, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+            return True
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Audio mux failed: {e.stderr}")
+            return False
+            
+    return False
 
 def concatenate_scenes(scene_videos: List[Path], final_output: Path, background_music: Optional[Path] = None) -> bool:
     """
