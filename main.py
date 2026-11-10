@@ -80,15 +80,22 @@ def build_documentary(
         sc["duration"] = duration
         logger.info(f"Voice synthesized: {duration:.2f}s")
         
-        # B. Media Retrieval
+        # B. Media Retrieval (Multi-Beats: 15-20 cuts per minute)
         custom_asset = sc.get("image_path") or sc.get("asset_path")
-        image_path = fetch_media_for_scene(scene_id, queries, topic_fallback=topic, custom_asset=custom_asset)
-        logger.info(f"Archival media secured: {image_path.name}")
+        target_beats = sc.get("target_beats", 4)
+        image_paths = fetch_media_for_scene(
+            scene_id=scene_id,
+            search_queries=queries,
+            topic_fallback=topic,
+            custom_asset=custom_asset,
+            target_beats=target_beats
+        )
+        logger.info(f"Archival media secured: {len(image_paths)} visual beats")
         
         # C. Render Scene with After the Crown Typography & Enquadramento
         scene_video_path = TEMP_DIR / f"scene_{scene_id:03d}_video.mp4"
         success = create_scene_video(
-            image_path=image_path,
+            images=image_paths,
             audio_path=voice_audio_path,
             duration=duration,
             output_path=scene_video_path,
