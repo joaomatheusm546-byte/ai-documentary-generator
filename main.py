@@ -76,7 +76,8 @@ def build_documentary(
         logger.info(f"Voice synthesized: {duration:.2f}s")
         
         # B. Media Retrieval
-        image_path = fetch_media_for_scene(scene_id, queries, topic_fallback=topic)
+        custom_asset = sc.get("image_path") or sc.get("asset_path")
+        image_path = fetch_media_for_scene(scene_id, queries, topic_fallback=topic, custom_asset=custom_asset)
         logger.info(f"Archival media secured: {image_path.name}")
         
         # C. Render Scene with After the Crown Typography & Enquadramento
@@ -126,15 +127,27 @@ def main():
     parser.add_argument("--voice", type=str, default=DEFAULT_VOICE, help="Edge-TTS voice identifier")
     parser.add_argument("--title", type=str, default=None, help="Custom title override")
     parser.add_argument("--script-json", type=str, default=None, help="Preloaded JSON script string")
+    parser.add_argument("--script-file", type=str, default=None, help="Path to preloaded script JSON file")
     
     args = parser.parse_args()
     
     preloaded = None
-    if args.script_json:
+    script_str = args.script_json or os.environ.get("SCRIPT_JSON_INPUT")
+    script_file = args.script_file or os.environ.get("SCRIPT_FILE")
+
+    if script_file and Path(script_file).exists():
         try:
-            preloaded = json.loads(args.script_json)
+            with open(script_file, "r", encoding="utf-8") as f:
+                preloaded = json.load(f)
+            logger.info(f"Loaded script from file: {script_file}")
         except Exception as e:
-            logger.warning(f"Failed to parse --script-json: {e}")
+            logger.warning(f"Failed to read script file {script_file}: {e}")
+    elif script_str:
+        try:
+            preloaded = json.loads(script_str)
+            logger.info("Loaded script from script string input.")
+        except Exception as e:
+            logger.warning(f"Failed to parse script string: {e}")
 
     try:
         build_documentary(
