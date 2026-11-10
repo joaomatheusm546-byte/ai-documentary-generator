@@ -1,0 +1,85 @@
+name: Generate AI Documentary
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Documentary Topic (e.g., "The Secret History of the Knights Templar")'
+        required: true
+        type: string
+        default: 'The Rise and Fall of the Roman Empire'
+      scenes:
+        description: 'Number of Scenes (e.g. 5 for short, 15 for medium, 30 for long documentary)'
+        required: true
+        type: number
+        default: 8
+      voice:
+        description: 'Narrator Voice'
+        required: true
+        type: choice
+        options:
+          - 'en-US-ChristopherNeural' # Authoritative, deep, classic documentary
+          - 'en-US-BrianNeural'       # Sophisticated British history documentary
+          - 'en-GB-SoniaNeural'       # Refined British female narrator
+          - 'en-US-EricNeural'        # Engaging, modern cinematic
+        default: 'en-US-ChristopherNeural'
+
+jobs:
+  produce-documentary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # Up to 6 hours for very long documentaries!
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install FFmpeg & System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-liberation
+
+      - name: Install Python Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Documentary Engine
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: |
+          python main.py \
+            --topic "${{ inputs.topic }}" \
+            --scenes ${{ inputs.scenes }} \
+            --voice "${{ inputs.voice }}"
+
+      - name: Upload Documentary Video & Script
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentary-output
+          path: |
+            output/
+            temp/*.json
+          retention-days: 14
+
+      - name: Create GitHub Release with Video (Downloadable)
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+        with:
+          tag_name: "doc-${{ github.run_id }}"
+          name: "Documentary: ${{ inputs.topic }}"
+          body: |
+            🎬 **Documentary Generation Finished!**
+            - **Topic:** ${{ inputs.topic }}
+            - **Scenes:** ${{ inputs.scenes }}
+            - **Voice:** ${{ inputs.voice }}
+          files: output/*/*.mp4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
