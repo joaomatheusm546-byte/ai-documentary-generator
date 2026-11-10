@@ -2,7 +2,7 @@ import os
 import subprocess
 import logging
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Union
 from PIL import Image
 from src.config import FFMPEG_BIN, VIDEO_WIDTH, VIDEO_HEIGHT, VIDEO_FPS, TEMP_DIR, ASSETS_DIR
 from src.styler import render_after_the_crown_frame
@@ -69,7 +69,7 @@ def render_clip(image_path: Path, duration: float, output_path: Path, motion: st
         return False
 
 def create_scene_video(
-    image_path: Path,
+    images: Union[Path, List[Path]],
     audio_path: Path,
     duration: float,
     output_path: Path,
@@ -80,32 +80,84 @@ def create_scene_video(
     callout_red: Optional[str] = None,
     callout_box: Optional[str] = None
 ) -> bool:
-    """Styles the archival image with After the Crown graphics and renders the scene."""
+    """
+    Renders a scene video with After the Crown multi-beat cuts.
+    If multiple images are provided, cuts between them every ~3.5 seconds
+    with alternating Ken Burns motions under the continuous scene audio.
+    """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    # 1. Apply typography & enquadramento
-    raw_img = Image.open(image_path)
-    styled_frame = render_after_the_crown_frame(
-        base_img=raw_img,
-        label_title=label_title,
-        label_sub=label_sub,
-        citation=citation,
-        callout_red=callout_red,
-        callout_box=callout_box
-    )
-    
-    styled_img_path = TEMP_DIR / f"{output_path.stem}_styled.jpg"
-    styled_frame.save(styled_img_path, "JPEG", quality=95)
-    
-    # 2. Render motion clip
-    temp_clip_video = TEMP_DIR / f"{output_path.stem}_vonly.mp4"
-    if not render_clip(styled_img_path, duration, temp_clip_video, motion=motion):
+    if isinstance(images, (str, Path)):
+        img_list = [Path(images)]
+    else:
+        img_list = [Path(p) for p in images if Path(p).exists()]
+
+    if not img_list:
+        logger.error("No valid images provided for scene rendering.")
         return False
+
+    num_beats = len(img_list)
+    sub_duration = duration / num_beats
+    motion_cycle = ["slow_zoom_in", "pan_left", "slow_zoom_out", "pan_right"]
+
+    sub_clips = []
+    for idx, img_p in enumerate(img_list):
+        beat_idx = idx + 1
+        beat_motion = motion_cycle[idx % len(motion_cycle)] if num_beats > 1 else motion
+
+        # Documentary lower-third typography appears on the first beat for ~3.5s
+        cur_title = label_title if beat_idx == 1 else None
+        cur_sub = label_sub if beat_idx == 1 else None
         
-    # 3. Mux with scene voice
-    cmd = [
+        # Callouts can appear on subsequent beats
+        cur_red = callout_red if (beat_idx == 2 or (num_beats == 1 and callout_red)) else None
+        cur_box = callout_box if (beat_idx == 2 or (num_beats == 1 and callout_box)) else None
+
+        raw_img = Image.open(img_p)
+        styled_frame = render_after_the_crown_frame(
+            base_img=raw_img,
+            label_title=cur_title,
+            label_sub=cur_sub,
+            citation=citation,
+            callout_red=cur_red,
+            callout_box=cur_box
+        )
+        
+        sub_img_path = TEMP_DIR / f"{output_path.stem}_beat_{beat_idx}_styled.jpg"
+        styled_frame.save(sub_img_path, "JPEG", quality=95)
+
+        sub_clip_path = TEMP_DIR / f"{output_path.stem}_beat_{beat_idx}.mp4"
+        if not render_clip(sub_img_path, sub_duration, sub_clip_path, motion=beat_motion):
+            logger.error(f"Failed to render sub-clip {beat_idx} of scene {output_path.stem}")
+            return False
+        sub_clips.append(sub_clip_path)
+
+    # Concatenate sub-clips
+    if len(sub_clips) == 1:
+        temp_vonly = sub_clips[0]
+    else:
+        concat_list_file = TEMP_DIR / f"{output_path.stem}_beats_concat.txt"
+        with open(concat_list_file, "w", encoding="utf-8") as f:
+            for c in sub_clips:
+                f.write(f"file '{c.resolve().as_posix()}'\n")
+
+        temp_vonly = TEMP_DIR / f"{output_path.stem}_vonly.mp4"
+        cmd_concat = [
+            FFMPEG_BIN, "-y",
+            "-f", "concat", "-safe", "0", "-i", str(concat_list_file),
+            "-c", "copy",
+            str(temp_vonly)
+        ]
+        try:
+            subprocess.run(cmd_concat, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Failed to concat sub-clips: {e.stderr}")
+            return False
+
+    # Mux with scene voice
+    cmd_mux = [
         FFMPEG_BIN, "-y",
-        "-i", str(temp_clip_video),
+        "-i", str(temp_vonly),
         "-i", str(audio_path),
         "-c:v", "copy",
         "-c:a", "aac", "-b:a", "192k",
@@ -113,7 +165,7 @@ def create_scene_video(
         str(output_path)
     ]
     try:
-        subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+        subprocess.run(cmd_mux, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
         return True
     except subprocess.CalledProcessError as e:
         logger.error(f"Failed to mux scene video: {e.stderr}")
