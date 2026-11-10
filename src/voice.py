@@ -11,18 +11,18 @@ logger = logging.getLogger(__name__)
 
 # Recommended documentary voices (Microsoft Neural)
 DOCUMENTARY_VOICES = {
-    "christopher": "en-US-ChristopherNeural",  # Authoritative, serious, deep
-    "brian": "en-US-BrianNeural",              # British, sophisticated, nature/history documentary
-    "eric": "en-US-EricNeural",                # Cinematic, engaging
-    "sonia": "en-GB-SoniaNeural",              # British female, refined, historical
-    "guy": "en-US-GuyNeural"                   # Clear, modern narration
+    "christopher": "en-US-ChristopherNeural",  # Authoritative, serious, deep forensic tone
+    "ryan": "en-GB-RyanNeural",                # British, somber, documentary narrator
+    "brian": "en-US-BrianNeural",              # British, sophisticated, historical
+    "eric": "en-US-EricNeural",                # Engaging, cinematic
+    "sonia": "en-GB-SoniaNeural"               # Refined historical female narrator
 }
 
 async def generate_scene_voice(
     text: str,
     output_path: Path,
     voice: str = DEFAULT_VOICE,
-    rate: str = "-4%" # slightly slower for documentary gravitas
+    rate: str = "-7%" # Calibrated slower cadence for 'After the Crown' solemn gravitas
 ) -> Dict[str, Any]:
     """
     Synthesizes speech using Edge-TTS and returns metadata including exact duration.
