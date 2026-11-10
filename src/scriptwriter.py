@@ -2,6 +2,7 @@ import json
 import logging
 import os
 import re
+import time
 from typing import Dict, Any, List
 import requests
 from src.config import GEMINI_API_KEY
@@ -51,7 +52,7 @@ JSON Schema:
 Return ONLY the raw JSON object. Do not include markdown codeblocks or explanation.
 """
 
-    models = ["gemini-3.8-flash", "gemini-flash-latest", "gemini-3.5-flash"]
+    models = ["gemini-flash-latest", "gemini-flash-lite-latest", "gemini-pro-latest", "gemini-3-flash-preview"]
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"temperature": 0.3, "maxOutputTokens": 4096}
@@ -60,17 +61,23 @@ Return ONLY the raw JSON object. Do not include markdown codeblocks or explanati
 
     for model in models:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
-        try:
-            logger.info(f"Generating script using model {model}...")
-            r = requests.post(url, json=payload, headers=headers, timeout=30)
-            if r.status_code == 200:
-                raw_text = r.json().get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
-                clean_json = re.sub(r'^```json\s*', '', raw_text.strip())
-                clean_json = re.sub(r'```$', '', clean_json).strip()
-                return json.loads(clean_json)
-            else:
-                logger.warning(f"Model {model} returned status {r.status_code}")
-        except Exception as e:
-            logger.warning(f"Failed with model {model}: {e}")
+        for attempt in range(2):
+            try:
+                logger.info(f"Generating script using model {model} (attempt {attempt+1})...")
+                r = requests.post(url, json=payload, headers=headers, timeout=35)
+                if r.status_code == 200:
+                    raw_text = r.json().get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+                    clean_json = re.sub(r'^```json\s*', '', raw_text.strip())
+                    clean_json = re.sub(r'```$', '', clean_json).strip()
+                    return json.loads(clean_json)
+                elif r.status_code in [429, 503]:
+                    logger.warning(f"Model {model} returned status {r.status_code}, retrying in 3s...")
+                    time.sleep(3)
+                else:
+                    logger.warning(f"Model {model} returned status {r.status_code}")
+                    break
+            except Exception as e:
+                logger.warning(f"Attempt failed with model {model}: {e}")
+                time.sleep(2)
 
     raise RuntimeError("Failed to generate documentary script from Gemini API.")
