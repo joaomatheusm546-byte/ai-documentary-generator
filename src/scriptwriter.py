@@ -1,103 +1,76 @@
 import json
-import time
 import logging
-import requests
+import os
+import re
 from typing import Dict, Any, List
+import requests
 from src.config import GEMINI_API_KEY
 
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Scriptwriter")
 
-AFTER_THE_CROWN_SYSTEM_PROMPT = """You are the master director and lead investigative writer for high-end historical deep-dive documentaries, in the exact storytelling standard of the renowned YouTube channel 'After the Crown' (@afterthecrown-j6q).
-
-YOUR SIGNATURE FORMULA:
-1. HUMAN COLLATERAL DAMAGE: Focus intensely on the forgotten survivors, exiled monarchs, daughters of fallen tyrants, secret mistresses, imperial eunuchs, or siblings caught in the aftermath of historical catastrophes.
-2. FORENSIC EVIDENCE & PRIMARY SOURCES: Build each scene around real historical documents, declassified intelligence files, interrogation transcripts, secret diaries, autopsy reports, and obscure trial testimonies.
-3. ATMOSPHERIC & HAUNTING PROSE: The narration must be somber, eloquent, investigative, and deeply human. Avoid hype; use dignified, evocative English with dramatic gravitas.
-4. NARRATIVE ARCS:
-   - Scene 1 (The Ruin / The Arrest): Establish the immediate aftermath of the regime's collapse and the protagonist's quiet capture or displacement.
-   - Middle Scenes (The Interrogation & Exile): Forensic investigation into aliases, secret pensions, asylum life, poverty, or political surveillance.
-   - Climax Scene (The Final Isolation): Their final years, forgotten burial, or desperate petition to claim their identity/estate.
-   - Final Scene (The Historical Verdict): The lingering moral question—were they an innocent hostage of their bloodline, or a complicit bystander?
-
-FOR EVERY SCENE, PROVIDE:
-1. "narration": Spoken script (50-70 words per scene), written in the gripping 'After the Crown' style.
-2. "visual_type": "archival_photo" or "declassified_document" or "historical_portrait".
-3. "search_queries": 4 precise, highly specific search terms targeting public domain historical archives, museum collections, and Wikimedia Commons. Focus on mugshots, original interrogation memos, black and white portraits, signed treaties, or burial places.
-4. "mood": "somber_investigation", "tragic_ruin", "haunting_suspense", "melancholy_exile".
-5. "ken_burns_motion": "slow_zoom_in", "slow_zoom_out", "pan_left", "pan_right".
-
-FORMAT REQUIREMENT:
-Output strictly valid JSON matching this schema:
-{
-  "title": "Documentary Title",
-  "summary": "Forensic logline of the investigation",
-  "recommended_music_mood": "somber historical cello dark piano atmospheric drone",
-  "scenes": [
-    {
-      "scene_id": 1,
-      "narration": "...",
-      "visual_type": "...",
-      "search_queries": ["...", "...", "..."],
-      "mood": "...",
-      "ken_burns_motion": "slow_zoom_in"
-    }
-  ]
-}
-"""
-
-CANDIDATE_MODELS = [
-    "gemini-3.6-flash",
-    "gemini-3.8-flash",
-    "gemini-3.5-flash",
-    "gemini-3.7-flash",
-    "gemini-flash-latest"
-]
-
-def generate_documentary_script(topic: str, num_scenes: int = 5) -> Dict[str, Any]:
+def generate_documentary_script(topic: str, num_scenes: int = 8) -> Dict[str, Any]:
     """
-    Generates an 'After the Crown' style documentary script using the Gemini API with automatic model failover.
+    Generates a broadcast-quality historical documentary script replicating 'After the Crown'.
+    Features archival citations, authentic names, locations, and clean lower-third titles.
     """
     if not GEMINI_API_KEY:
-        raise ValueError("GEMINI_API_KEY is not set in environment or .env file.")
+        raise ValueError("GEMINI_API_KEY environment variable is not set.")
 
-    prompt = f"""Write an investigative documentary script in the exact standard of 'After the Crown' on the topic: "{topic}".
-It must have exactly {num_scenes} sequential scenes telling the complete, tragic, and forensic post-collapse story.
-Ensure the search queries target authentic declassified records, archival photographs, and historical portraits."""
+    prompt = f"""You are the senior researcher and director for 'After the Crown', a premier historical documentary channel on YouTube.
+Create a deeply researched, serious, cinematic documentary script about: "{topic}".
 
+The tone must be:
+- Sober, measured, analytical, and respectful (like BBC / PBS / After the Crown).
+- Grounded in real historical facts, dates, declassified intelligence reports, and primary archive evidence.
+- Written for a calm, authoritative male narrator speaking in measured documentary cadence.
+
+Produce exactly {num_scenes} scenes in valid JSON format.
+
+JSON Schema:
+{{
+  "title": "Documentary Title",
+  "topic": "{topic}",
+  "scenes": [
+    {{
+      "scene_id": 1,
+      "narration": "Measured documentary narration sentence(s) for this scene.",
+      "label_title": "Primary Name or Location (e.g. 'Berchtesgaden' or 'Paula Hitler')",
+      "label_sub": "Context or Date (e.g. 'Bavarian Alps' or 'May 1945 // Allied Advance')",
+      "citation": "[1]",
+      "callout_red": "OPTIONAL short 2-4 word dramatic callout in caps (or null)",
+      "callout_box": "OPTIONAL typewriter archive note in caps (or null)",
+      "search_queries": [
+        "Historical photo query 1 for Wikimedia Commons",
+        "Historical archival location query 2"
+      ],
+      "ken_burns_motion": "slow_zoom_in"
+    }}
+  ]
+}}
+
+Return ONLY the raw JSON object. Do not include markdown codeblocks or explanation.
+"""
+
+    models = ["gemini-3.8-flash", "gemini-flash-latest", "gemini-3.5-flash"]
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
-        "systemInstruction": {"parts": [{"text": AFTER_THE_CROWN_SYSTEM_PROMPT}]},
-        "generationConfig": {
-            "responseMimeType": "application/json",
-            "temperature": 0.65
-        }
+        "generationConfig": {"temperature": 0.3, "maxOutputTokens": 4096}
     }
+    headers = {"Content-Type": "application/json"}
 
-    last_error = None
-    for model in CANDIDATE_MODELS:
+    for model in models:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
-        for attempt in range(2):
-            try:
-                logger.info(f"Attempting script generation with model '{model}' (attempt {attempt + 1})...")
-                response = requests.post(url, json=payload, headers={"Content-Type": "application/json"}, timeout=45)
-                
-                if response.status_code == 200:
-                    result_json = response.json()
-                    raw_text = result_json["candidates"][0]["content"]["parts"][0]["text"]
-                    script_data = json.loads(raw_text)
-                    logger.info(f"Successfully generated 'After the Crown' script with '{model}': {script_data.get('title')}")
-                    return script_data
-                
-                if response.status_code in (503, 429):
-                    logger.warning(f"Model '{model}' busy (status {response.status_code}). Retrying...")
-                    time.sleep(2)
-                    continue
-                else:
-                    break
+        try:
+            logger.info(f"Generating script using model {model}...")
+            r = requests.post(url, json=payload, headers=headers, timeout=30)
+            if r.status_code == 200:
+                raw_text = r.json().get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+                clean_json = re.sub(r'^```json\s*', '', raw_text.strip())
+                clean_json = re.sub(r'```$', '', clean_json).strip()
+                return json.loads(clean_json)
+            else:
+                logger.warning(f"Model {model} returned status {r.status_code}")
+        except Exception as e:
+            logger.warning(f"Failed with model {model}: {e}")
 
-            except Exception as e:
-                last_error = e
-                time.sleep(1)
-
-    raise RuntimeError(f"All candidate models failed to generate script. Last error: {last_error}")
+    raise RuntimeError("Failed to generate documentary script from Gemini API.")
