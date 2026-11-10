@@ -77,19 +77,43 @@ def render_after_the_crown_frame(
     overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     odraw = ImageDraw.Draw(overlay)
 
-    # Load system or fallback fonts
-    try:
-        font_title = ImageFont.truetype("georgiab.ttf", 52)
-        font_sub = ImageFont.truetype("georgiai.ttf", 32)
-        font_cite = ImageFont.truetype("georgia.ttf", 28)
-        font_banner = ImageFont.truetype("georgiab.ttf", 36)
-        font_box = ImageFont.truetype("courbd.ttf", 32)
-    except IOError:
-        font_title = ImageFont.load_default()
-        font_sub = ImageFont.load_default()
-        font_cite = ImageFont.load_default()
-        font_banner = ImageFont.load_default()
-        font_box = ImageFont.load_default()
+    # Robust multi-platform font loader (Windows Georgia/Times and Linux Liberation/DejaVu)
+    def load_best_font(candidates: list, size: int) -> ImageFont.ImageFont:
+        for c in candidates:
+            try:
+                return ImageFont.truetype(c, size)
+            except (IOError, OSError):
+                continue
+        return ImageFont.load_default()
+
+    font_title = load_best_font([
+        "georgiab.ttf", "timesbd.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSerif-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
+    ], 52)
+    font_sub = load_best_font([
+        "georgiai.ttf", "timesi.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSerif-Italic.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf"
+    ], 32)
+    font_cite = load_best_font([
+        "georgia.ttf", "times.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"
+    ], 28)
+    font_banner = load_best_font([
+        "georgiab.ttf", "timesbd.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
+    ], 36)
+    font_box = load_best_font([
+        "courbd.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"
+    ], 32)
 
     # 1. Top-Right Citation
     if citation:
