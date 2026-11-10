@@ -68,3 +68,72 @@ def synthesize_scene_audio(text: str, output_path: Path, voice: str = DEFAULT_VO
     Synchronous wrapper for generate_scene_voice.
     """
     return asyncio.run(generate_scene_voice(text, output_path, voice))
+
+def synthesize_beat_audio(
+    text: str,
+    output_path: Path,
+    voice: str = DEFAULT_VOICE,
+    pause_after: float = 0.25
+) -> Dict[str, Any]:
+    """
+    Synthesizes speech for an individual sentence beat and appends a subtle breathing pause.
+    Returns exact duration including the pause so video cuts precisely on phrase boundaries.
+    """
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    raw_path = output_path.with_name(f"{output_path.stem}_raw.mp3")
+    meta = asyncio.run(generate_scene_voice(text, raw_path, voice=voice))
+    
+    if pause_after > 0:
+        cmd = [
+            FFMPEG_BIN, "-y",
+            "-i", str(raw_path),
+            "-af", f"apad=pad_dur={pause_after}",
+            "-c:a", "libmp3lame",
+            "-q:a", "2",
+            str(output_path)
+        ]
+        try:
+            subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+            if raw_path.exists():
+                raw_path.unlink()
+            final_dur = get_audio_duration(output_path)
+            meta["duration"] = final_dur
+            meta["audio_path"] = str(output_path)
+            return meta
+        except Exception as e:
+            logger.warning(f"apad silence padding failed: {e}")
+            if raw_path.exists():
+                import shutil
+                shutil.move(str(raw_path), str(output_path))
+            return meta
+    else:
+        if raw_path.exists():
+            import shutil
+            shutil.move(str(raw_path), str(output_path))
+        return meta
+
+def concatenate_beat_audios(beat_audio_paths: List[Path], output_path: Path) -> float:
+    """
+    Concatenates individual beat audio files into a single seamless scene audio track.
+    """
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    list_file = output_path.with_name(f"{output_path.stem}_concat_list.txt")
+    with open(list_file, "w", encoding="utf-8") as f:
+        for p in beat_audio_paths:
+            posix_p = p.resolve().as_posix()
+            f.write(f"file '{posix_p}'\n")
+            
+    cmd = [
+        FFMPEG_BIN, "-y",
+        "-f", "concat",
+        "-safe", "0",
+        "-i", str(list_file),
+        "-c:a", "libmp3lame",
+        "-q:a", "2",
+        str(output_path)
+    ]
+    subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+    if list_file.exists():
+        list_file.unlink()
+    return get_audio_duration(output_path)
+

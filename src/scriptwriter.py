@@ -41,11 +41,27 @@ JSON Schema:
       "callout_red": "OPTIONAL short 2-4 word dramatic callout in caps (or null)",
       "callout_box": "OPTIONAL typewriter archive note in caps (or null)",
       "target_beats": 4,
-      "search_queries": [
-        "Historical photo query 1 (establishing shot / primary entity, seconds 0-3.5)",
-        "Historical photo query 2 (action / secondary entity / declassified document, seconds 3.5-7.0)",
-        "Historical photo query 3 (archival context / location, seconds 7.0-10.5)",
-        "Historical photo query 4 (evidence / atmospheric detail, seconds 10.5-14.0)"
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "First concise sentence or clause (~8-10 words, ~3.5 seconds).",
+          "search_query": "Historical photo query 1 (establishing shot / primary entity)"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Second sentence introducing person or document (~8-10 words, ~3.5 seconds).",
+          "search_query": "Historical photo query 2 (action / document / person)"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Third sentence providing historical context (~8-10 words, ~3.5 seconds).",
+          "search_query": "Historical photo query 3 (archival context / location)"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Fourth sentence concluding the scene beat (~8-10 words, ~3.5 seconds).",
+          "search_query": "Historical photo query 4 (evidence / aftermath)"
+        }
       ],
       "ken_burns_motion": "slow_zoom_in"
     }}

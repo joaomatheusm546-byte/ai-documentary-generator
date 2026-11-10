@@ -4,126 +4,246 @@
   "scenes": [
     {
       "scene_id": 1,
-      "narration": "It is the fifth of June, 1946. Berchtesgaden, high in the Bavarian Alps. An investigator working for the American Army is taking a statement from a fifty-year-old woman living in a quiet mountain inn.",
       "label_title": "Berchtesgaden",
       "label_sub": "Bavarian Alps // June 1946",
       "citation": "[1] Source in Description",
       "target_beats": 4,
-      "search_queries": [
-        "American soldiers at Berchtesgaden 1945",
-        "Bavarian Alps Berchtesgaden landscape 1945",
-        "Alpenwirtschaft Vorderbrand Berchtesgaden mountain inn",
-        "US Army Counter Intelligence Corps Austria 1945"
-      ],
-      "ken_burns_motion": "slow_zoom_in"
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "June 1946. High in the Bavarian Alps.",
+          "search_query": "American soldiers at Berchtesgaden toast victory 1945"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Near the ruined alpine estate of Adolf Hitler,",
+          "search_query": "Adolf Hitler Molotov-Ribbentrop pact at Berghof 1939"
+        },
+        {
+          "beat_id": 3,
+          "narration": "American intelligence tracked down the remnants of the regime.",
+          "search_query": "Fragment of German war flag taken at Berchtesgaden"
+        },
+        {
+          "beat_id": 4,
+          "narration": "In a secluded mountain inn, they detained an unassuming woman.",
+          "search_query": "3rd Infantry Division parade in Austria 1945"
+        }
+      ]
     },
     {
       "scene_id": 2,
-      "narration": "Identified in military records only as Agent C10, he records that she lives in a single room, paying six marks a day. Everything she owns fits into one small suitcase. Her name is registered as Paula Wolff.",
       "label_title": "Agent C10",
       "label_sub": "U.S. Counter Intelligence Corps",
       "citation": "[1]",
       "callout_red": "SIX MARKS A DAY",
       "callout_box": "ONE SMALL SUITCASE",
       "target_beats": 4,
-      "search_queries": [
-        "Displaced Persons and Refugees in Germany 1945 suitcase",
-        "German Allied military occupation currency marks 1945",
-        "Counter Intelligence Corps interrogation record typewriter 1945",
-        "Post-war Austria ruined room 1946"
-      ],
-      "ken_burns_motion": "pan_left"
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "She arrived with only a single worn suitcase.",
+          "search_query": "Displaced Persons and Refugees in Germany 1945 suitcase"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Her refugee documents bore the name Paula Wolff.",
+          "search_query": "Refugee registration card identity papers 1945"
+        },
+        {
+          "beat_id": 3,
+          "narration": "She survived on a meager allowance of six marks a day.",
+          "search_query": "DP camp barracks room 1945"
+        },
+        {
+          "beat_id": 4,
+          "narration": "To the authorities, she appeared as merely another displaced civilian.",
+          "search_query": "Vienna operations postwar ruins 1945"
+        }
+      ]
     },
     {
       "scene_id": 3,
-      "narration": "When the American investigator opened his classified file, the heading did not say Wolff. It said Paula Hitler. She was the only surviving full sibling of Adolf Hitler.",
       "label_title": "Paula Hitler",
       "label_sub": "Only Surviving Sibling",
       "citation": "[1, 2]",
       "target_beats": 4,
-      "search_queries": [
-        "paula_young_portrait.jpg",
-        "Adolf Hitler and sister Paula Hitler family Linz",
-        "US Army declassified investigation dossier folder 1945",
-        "Klara Hitler mother of Adolf Hitler"
-      ],
-      "ken_burns_motion": "slow_zoom_in"
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "When military investigators opened the classified file,",
+          "search_query": "Paula Hitler young portrait archive"
+        },
+        {
+          "beat_id": 2,
+          "narration": "the heading confirmed her true family lineage.",
+          "search_query": "Klara Hitler mother of Adolf Hitler portrait"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Under interrogation by American intelligence,",
+          "search_query": "Major William H. Coogan during IMT Nuremberg service"
+        },
+        {
+          "beat_id": 4,
+          "narration": "she was confirmed as the only surviving full sister of Adolf Hitler.",
+          "search_query": "Leonding grave of Hitler parents Austria"
+        }
+      ]
     },
     {
       "scene_id": 4,
-      "narration": "During the interrogation, she stated firmly for the record: 'I do not believe that my brother ordered the crimes committed to innumerable human beings in the concentration camps.'",
       "label_title": "CIC Interrogation Record",
       "label_sub": "Berchtesgaden // 5 June 1946",
       "citation": "[1]",
       "target_beats": 4,
-      "search_queries": [
-        "Adolf Hitler - Molotov-Ribbentrop pact at Berghof - 1939 (242-EB-6-40A).jpg",
-        "CIC Interrogation Report May 1945 typed document",
-        "Obersalzberg Berghof terrace view 1945 ruins",
-        "Concentration camp liberation 1945 evidence photographs"
-      ],
-      "ken_burns_motion": "slow_zoom_out"
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "She described a distant brother who had severed personal contact.",
+          "search_query": "Hitler Berghof conference 1940"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Living in isolation, she received only irregular financial support.",
+          "search_query": "Hitler Berghof terrace view 1942"
+        },
+        {
+          "beat_id": 3,
+          "narration": "When questioned about the concentration camps, she remained in denial.",
+          "search_query": "Hitler speech in the Reichstag historical"
+        },
+        {
+          "beat_id": 4,
+          "narration": "I cannot believe, she stated, that my brother ordered such crimes.",
+          "search_query": "Nuremberg Trials courtroom evidence documents"
+        }
+      ]
     },
     {
       "scene_id": 5,
-      "narration": "What American counter-intelligence never discovered in 1946 was that during the war, Paula had been secretly engaged to Dr. Erwin Jekelius, one of the central organizers of Aktion T4.",
       "label_title": "Erwin Jekelius",
       "label_sub": "Aktion T4 Euthanasia Programme",
       "citation": "[2, 3]",
       "target_beats": 4,
-      "search_queries": [
-        "Schloss Hartheim Postkarte historical",
-        "Aktion T4 Nazi euthanasia programme medical records",
-        "Steinhof hospital Vienna psychiatric institution",
-        "Soviet secret police NKVD interrogation dossier files Moscow"
-      ],
-      "ken_burns_motion": "pan_right"
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Yet classified wartime archives revealed a darker connection.",
+          "search_query": "Schloss Hartheim postcard historical archive"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Paula had been secretly engaged to Doctor Erwin Jekelius.",
+          "search_query": "Vienna Steinhof entrance pathology pavilion"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Jekelius was a chief organizer of the Aktion T4 extermination program.",
+          "search_query": "Steinhof memorial stone NS victims Vienna"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Under his direction, thousands of psychiatric patients were systematically murdered.",
+          "search_query": "Kirche am Steinhof psychiatric complex"
+        }
+      ]
     },
     {
       "scene_id": 6,
-      "narration": "From the Am Steinhof psychiatric complex in Vienna, over three thousand two hundred patients were dispatched to be murdered at Hartheim Castle. Among the victims was a distant cousin of the Hitler family.",
       "label_title": "Hartheim Castle",
       "label_sub": "Upper Austria // Aktion T4",
       "citation": "[3]",
       "callout_red": "3,200 PATIENTS",
       "target_beats": 4,
-      "search_queries": [
-        "Alkoven Hartheim Schloss Hartheim Ansicht Südwest-1984.jpg",
-        "Am Steinhof Vienna hospital pavilion building",
-        "Hartheim Castle courtyard memorial Austria",
-        "Memorial document victim list Austria 1940"
-      ],
-      "ken_burns_motion": "slow_zoom_in"
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Over thirty-two hundred patients were transferred to Hartheim Castle.",
+          "search_query": "Alkoven Schloss Hartheim historical photograph"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Behind closed gates, industrial gas chambers operated in absolute secrecy.",
+          "search_query": "Schloss Hartheim historical view courtyard"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Among those murdered was Aloisia Veit, a cousin of the Hitler family.",
+          "search_query": "Outbuilding Hartheim castle Austria"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The machinery of death consumed even relatives of the dictator himself.",
+          "search_query": "Wartime aircraft region military archive"
+        }
+      ]
     },
     {
       "scene_id": 7,
-      "narration": "Cleared of active war crimes by the denazification tribunals, Paula was left completely destitute. The Bavarian state seized all of her brother's personal estate, leaving her to rely on welfare and charity.",
       "label_title": "Denazification Tribunal",
       "label_sub": "Munich // Bavarian State Confiscation",
       "citation": "[4]",
       "target_beats": 4,
-      "search_queries": [
-        "Adolf Hitler and Martin Bormann (cropped).jpg",
-        "Denazification tribunal Munich Spruchkammer 1946",
-        "Vienna street ruins 1946 winter reconstruction",
-        "Bavarian state finance ministry Munich archival document"
-      ],
-      "ken_burns_motion": "slow_zoom_out"
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Following months in custody, Paula was cleared of criminal guilt.",
+          "search_query": "Adolf Hitler and Martin Bormann Berghof"
+        },
+        {
+          "beat_id": 2,
+          "narration": "She petitioned for her legal share of her brother's residual estate.",
+          "search_query": "Hitler and Eva Braun wedding documents 1945"
+        },
+        {
+          "beat_id": 3,
+          "narration": "The Bavarian state confiscated all properties and publishing rights.",
+          "search_query": "Berghof ruins after bombing Obersalzberg 1945"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Penniless, she survived on welfare and the charity of local acquaintances.",
+          "search_query": "Berchtesgaden 1950 town postwar Germany"
+        }
+      ]
     },
     {
       "scene_id": 8,
-      "narration": "In 1959, she gave her only filmed interview to a British television crew, breaking years of silence. One year later, on June 1st, 1960, she died in Berchtesgaden at sixty-four, bringing the Hitler line to an end.",
       "label_title": "Bergfriedhof",
       "label_sub": "Berchtesgaden // 1 June 1960",
       "citation": "[4, 5]",
       "target_beats": 4,
-      "search_queries": [
-        "Bergfriedhof-Berchtesgaden001.jpg",
-        "Vintage British television broadcasting camera 1959 Associated-Rediffusion",
-        "Bergfriedhof Berchtesgaden alpine mountain mist cemetery",
-        "Paula Hitler grave Bergfriedhof Berchtesgaden tombstone"
-      ],
-      "ken_burns_motion": "slow_zoom_in"
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "In 1959, she gave her only recorded television interview.",
+          "search_query": "Bergfriedhof Berchtesgaden cemetery path"
+        },
+        {
+          "beat_id": 2,
+          "narration": "One year later, on June 1st, 1960, she died in Berchtesgaden.",
+          "search_query": "Bergfriedhof cemetery headstones Austria border"
+        },
+        {
+          "beat_id": 3,
+          "narration": "She was buried under the name Paula Wolff in the mountain cemetery.",
+          "search_query": "Soldatenfriedhof mountain cemetery Berchtesgaden"
+        },
+        {
+          "beat_id": 4,
+          "narration": "With her death, the immediate bloodline of Adolf Hitler came to an end.",
+          "search_query": "Aussegnungshalle chapel Berchtesgaden cemetery"
+        }
+      ]
     }
   ]
 }

@@ -77,12 +77,13 @@ def create_scene_video(
     label_sub: Optional[str] = None,
     citation: Optional[str] = None,
     callout_red: Optional[str] = None,
-    callout_box: Optional[str] = None
+    callout_box: Optional[str] = None,
+    beat_durations: Optional[List[float]] = None
 ) -> bool:
     """
     Renders a scene video with After the Crown multi-beat cuts.
-    If multiple images are provided, cuts between them every ~3.5 seconds
-    with alternating Ken Burns motions under the continuous scene audio.
+    If beat_durations are provided, cuts exactly on each phrase's natural cadence.
+    Otherwise cuts evenly across the scene.
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
@@ -96,13 +97,18 @@ def create_scene_video(
         return False
 
     num_beats = len(img_list)
-    sub_duration = duration / num_beats
     motion_cycle = ["slow_zoom_in", "pan_left", "slow_zoom_out", "pan_right"]
 
     sub_clips = []
     for idx, img_p in enumerate(img_list):
         beat_idx = idx + 1
         beat_motion = motion_cycle[idx % len(motion_cycle)] if num_beats > 1 else motion
+
+        # Exact phrase duration for surgical audio-visual synchronization
+        if beat_durations and idx < len(beat_durations):
+            sub_duration = max(1.5, float(beat_durations[idx]))
+        else:
+            sub_duration = duration / max(1, num_beats)
 
         # Documentary lower-third typography appears on the first beat for ~3.5s
         cur_title = label_title if beat_idx == 1 else None

@@ -7,7 +7,7 @@ import time
 from pathlib import Path
 from src.config import OUTPUT_DIR, TEMP_DIR, ASSETS_DIR, DEFAULT_VOICE
 from src.scriptwriter import generate_documentary_script
-from src.voice import synthesize_scene_audio
+from src.voice import synthesize_scene_audio, synthesize_beat_audio, concatenate_beat_audios
 from src.media_fetcher import fetch_media_for_scene
 from src.video_engine import create_scene_video, concatenate_scenes
 
@@ -73,16 +73,37 @@ def build_documentary(
         logger.info(f"\n[Scene {scene_id}/{len(scenes)}]")
         logger.info(f"Narration: \"{narration}\"")
         
-        # A. Voice Synthesis
-        voice_audio_path = TEMP_DIR / f"scene_{scene_id:03d}_voice.mp3"
-        audio_meta = synthesize_scene_audio(narration, voice_audio_path, voice=voice)
-        duration = audio_meta["duration"]
-        sc["duration"] = duration
-        logger.info(f"Voice synthesized: {duration:.2f}s")
+        # A. Voice Synthesis (Phrase-by-Phrase Beats for After the Crown Timing)
+        beats = sc.get("beats", [])
+        if beats:
+            logger.info(f"Synthesizing {len(beats)} phrase beats for Scene {scene_id}...")
+            beat_audio_paths = []
+            beat_durations = []
+            queries = []
+            for b_idx, beat in enumerate(beats, start=1):
+                b_text = beat.get("narration", "")
+                b_query = beat.get("search_query") or beat.get("historical_query", "")
+                queries.append(b_query)
+                b_audio_path = TEMP_DIR / f"scene_{scene_id:03d}_beat_{b_idx:02d}_voice.mp3"
+                b_meta = synthesize_beat_audio(b_text, b_audio_path, voice=voice, pause_after=0.25)
+                beat_durations.append(b_meta["duration"])
+                beat_audio_paths.append(b_audio_path)
+            
+            voice_audio_path = TEMP_DIR / f"scene_{scene_id:03d}_voice.mp3"
+            duration = concatenate_beat_audios(beat_audio_paths, voice_audio_path)
+            sc["duration"] = duration
+            logger.info(f"Scene {scene_id} concatenated voice: {duration:.2f}s (Beats: {beat_durations})")
+        else:
+            voice_audio_path = TEMP_DIR / f"scene_{scene_id:03d}_voice.mp3"
+            audio_meta = synthesize_scene_audio(narration, voice_audio_path, voice=voice)
+            duration = audio_meta["duration"]
+            sc["duration"] = duration
+            beat_durations = None
+            logger.info(f"Voice synthesized: {duration:.2f}s")
         
         # B. Media Retrieval (Multi-Beats: 15-20 cuts per minute)
         custom_asset = sc.get("image_path") or sc.get("asset_path")
-        target_beats = sc.get("target_beats", 4)
+        target_beats = sc.get("target_beats", len(beats) if beats else 4)
         image_paths = fetch_media_for_scene(
             scene_id=scene_id,
             search_queries=queries,
@@ -104,7 +125,8 @@ def build_documentary(
             label_sub=sc.get("label_sub"),
             citation=sc.get("citation", f"[{scene_id}]"),
             callout_red=sc.get("callout_red"),
-            callout_box=sc.get("callout_box")
+            callout_box=sc.get("callout_box"),
+            beat_durations=beat_durations
         )
         if success:
             scene_videos.append(scene_video_path)
