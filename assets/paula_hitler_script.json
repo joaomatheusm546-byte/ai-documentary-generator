@@ -8,9 +8,12 @@
       "label_title": "Berchtesgaden",
       "label_sub": "Bavarian Alps // June 1946",
       "citation": "[1] Source in Description",
+      "target_beats": 4,
       "search_queries": [
-        "American_soldiers_at_Berchtesgaden_toast_victory,_1945.jpg",
-        "Berchtesgaden 1945"
+        "American soldiers at Berchtesgaden 1945",
+        "Bavarian Alps Berchtesgaden landscape 1945",
+        "Alpenwirtschaft Vorderbrand Berchtesgaden mountain inn",
+        "US Army Counter Intelligence Corps Austria 1945"
       ],
       "ken_burns_motion": "slow_zoom_in"
     },
@@ -22,9 +25,12 @@
       "citation": "[1]",
       "callout_red": "SIX MARKS A DAY",
       "callout_box": "ONE SMALL SUITCASE",
+      "target_beats": 4,
       "search_queries": [
-        "Displaced_Persons_and_Refugees_in_Germany_BU6641.jpg",
-        "Refugees displaced persons 1945"
+        "Displaced Persons and Refugees in Germany 1945 suitcase",
+        "German Allied military occupation currency marks 1945",
+        "Counter Intelligence Corps interrogation record typewriter 1945",
+        "Post-war Austria ruined room 1946"
       ],
       "ken_burns_motion": "pan_left"
     },
@@ -34,9 +40,12 @@
       "label_title": "Paula Hitler",
       "label_sub": "Only Surviving Sibling",
       "citation": "[1, 2]",
+      "target_beats": 4,
       "search_queries": [
         "paula_young_portrait.jpg",
-        "Paula Hitler"
+        "Adolf Hitler and sister Paula Hitler family Linz",
+        "US Army declassified investigation dossier folder 1945",
+        "Klara Hitler mother of Adolf Hitler"
       ],
       "ken_burns_motion": "slow_zoom_in"
     },
@@ -46,9 +55,12 @@
       "label_title": "CIC Interrogation Record",
       "label_sub": "Berchtesgaden // 5 June 1946",
       "citation": "[1]",
+      "target_beats": 4,
       "search_queries": [
-        "Adolf_Hitler_-_Molotov-Ribbentrop_pact_at_Berghof_-_1939_(242-EB-6-40A).jpg",
-        "Hitler Berghof 1939"
+        "Adolf Hitler - Molotov-Ribbentrop pact at Berghof - 1939 (242-EB-6-40A).jpg",
+        "CIC Interrogation Report May 1945 typed document",
+        "Obersalzberg Berghof terrace view 1945 ruins",
+        "Concentration camp liberation 1945 evidence photographs"
       ],
       "ken_burns_motion": "slow_zoom_out"
     },
@@ -58,9 +70,12 @@
       "label_title": "Erwin Jekelius",
       "label_sub": "Aktion T4 Euthanasia Programme",
       "citation": "[2, 3]",
+      "target_beats": 4,
       "search_queries": [
-        "Schloss_Hartheim_-_Postkarte.png",
-        "Schloss Hartheim"
+        "Schloss Hartheim Postkarte historical",
+        "Aktion T4 Nazi euthanasia programme medical records",
+        "Steinhof hospital Vienna psychiatric institution",
+        "Soviet secret police NKVD interrogation dossier files Moscow"
       ],
       "ken_burns_motion": "pan_right"
     },
@@ -71,9 +86,12 @@
       "label_sub": "Upper Austria // Aktion T4",
       "citation": "[3]",
       "callout_red": "3,200 PATIENTS",
+      "target_beats": 4,
       "search_queries": [
-        "Alkoven_Hartheim_Schloss_Hartheim_Ansicht_Südwest-1984.jpg",
-        "Alkoven Hartheim Schloss Hartheim"
+        "Alkoven Hartheim Schloss Hartheim Ansicht Südwest-1984.jpg",
+        "Am Steinhof Vienna hospital pavilion building",
+        "Hartheim Castle courtyard memorial Austria",
+        "Memorial document victim list Austria 1940"
       ],
       "ken_burns_motion": "slow_zoom_in"
     },
@@ -83,9 +101,12 @@
       "label_title": "Denazification Tribunal",
       "label_sub": "Munich // Bavarian State Confiscation",
       "citation": "[4]",
+      "target_beats": 4,
       "search_queries": [
-        "Adolf_Hitler_and_Martin_Bormann_(cropped).jpg",
-        "Adolf Hitler Martin Bormann"
+        "Adolf Hitler and Martin Bormann (cropped).jpg",
+        "Denazification tribunal Munich Spruchkammer 1946",
+        "Vienna street ruins 1946 winter reconstruction",
+        "Bavarian state finance ministry Munich archival document"
       ],
       "ken_burns_motion": "slow_zoom_out"
     },
@@ -95,9 +116,12 @@
       "label_title": "Bergfriedhof",
       "label_sub": "Berchtesgaden // 1 June 1960",
       "citation": "[4, 5]",
+      "target_beats": 4,
       "search_queries": [
         "Bergfriedhof-Berchtesgaden001.jpg",
-        "Bergfriedhof Berchtesgaden"
+        "Vintage British television broadcasting camera 1959 Associated-Rediffusion",
+        "Bergfriedhof Berchtesgaden alpine mountain mist cemetery",
+        "Paula Hitler grave Bergfriedhof Berchtesgaden tombstone"
       ],
       "ken_burns_motion": "slow_zoom_in"
     }
