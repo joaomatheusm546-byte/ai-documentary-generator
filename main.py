@@ -4,12 +4,11 @@ import logging
 import sys
 import time
 from pathlib import Path
-from src.config import OUTPUT_DIR, TEMP_DIR, MUSIC_DIR, DEFAULT_VOICE
+from src.config import OUTPUT_DIR, TEMP_DIR, ASSETS_DIR, DEFAULT_VOICE
 from src.scriptwriter import generate_documentary_script
 from src.voice import synthesize_scene_audio
 from src.media_fetcher import fetch_media_for_scene
 from src.video_engine import create_scene_video, concatenate_scenes
-from src.document_generator import create_declassified_document
 
 logging.basicConfig(
     level=logging.INFO,
@@ -18,15 +17,23 @@ logging.basicConfig(
 )
 logger = logging.getLogger("DocumentaryEngine")
 
-def build_documentary(topic: str, num_scenes: int = 5, voice: str = DEFAULT_VOICE, custom_title: str = None, preloaded_script: dict = None) -> Path:
+MUSIC_PATH = ASSETS_DIR / "music" / "dark_ambient_cello.mp3"
+
+def build_documentary(
+    topic: str,
+    num_scenes: int = 8,
+    voice: str = DEFAULT_VOICE,
+    custom_title: str = None,
+    preloaded_script: dict = None
+) -> Path:
     start_time = time.time()
     logger.info("=" * 60)
-    logger.info(f"STARTING DOCUMENTARY PRODUCTION: '{topic}'")
-    logger.info(f"Scenes requested: {num_scenes} | Voice: {voice}")
+    logger.info(f"STARTING 'AFTER THE CROWN' CLOUD PRODUCTION: '{topic}'")
+    logger.info(f"Scenes: {num_scenes} | Voice: {voice}")
     logger.info("=" * 60)
 
-    # 1. Script Generation or Loading
-    logger.info("\n--- STEP 1: Researching & Scriptwriting ---")
+    # 1. Scriptwriting
+    logger.info("\n--- STEP 1: Research & Scriptwriting ---")
     if preloaded_script:
         logger.info("Using preloaded documentary script...")
         script = preloaded_script
@@ -39,7 +46,6 @@ def build_documentary(topic: str, num_scenes: int = 5, voice: str = DEFAULT_VOIC
     doc_output_dir = OUTPUT_DIR / safe_slug
     doc_output_dir.mkdir(parents=True, exist_ok=True)
     
-    # Save script JSON
     script_path = doc_output_dir / "script.json"
     with open(script_path, "w", encoding="utf-8") as f:
         json.dump(script, f, indent=2, ensure_ascii=False)
@@ -51,13 +57,13 @@ def build_documentary(topic: str, num_scenes: int = 5, voice: str = DEFAULT_VOIC
 
     scene_videos = []
     
-    # 2. Process each scene
-    logger.info("\n--- STEP 2: Synthesizing Voice & Acquiring Archival Media ---")
+    # 2. Process Scenes
+    logger.info("\n--- STEP 2: Archival Media Retrieval & Scene Rendering ---")
     for idx, sc in enumerate(scenes, start=1):
         scene_id = sc.get("scene_id", idx)
         narration = sc.get("narration", "")
         queries = sc.get("search_queries", [])
-        motion = sc.get("ken_burns_motion", "zoom_in")
+        motion = sc.get("ken_burns_motion", "slow_zoom_in")
         
         logger.info(f"\n[Scene {scene_id}/{len(scenes)}]")
         logger.info(f"Narration: \"{narration}\"")
@@ -66,24 +72,14 @@ def build_documentary(topic: str, num_scenes: int = 5, voice: str = DEFAULT_VOIC
         voice_audio_path = TEMP_DIR / f"scene_{scene_id:03d}_voice.mp3"
         audio_meta = synthesize_scene_audio(narration, voice_audio_path, voice=voice)
         duration = audio_meta["duration"]
-        logger.info(f"Voice synthesized: {duration:.2f}s ({audio_meta['word_count']} words)")
+        sc["duration"] = duration
+        logger.info(f"Voice synthesized: {duration:.2f}s")
         
         # B. Media Retrieval
         image_path = fetch_media_for_scene(scene_id, queries, topic_fallback=topic)
-        logger.info(f"Media secured: {image_path.name}")
+        logger.info(f"Archival media secured: {image_path.name}")
         
-        # C. Declassified Document Generation (for dynamic After The Crown 2-shot cut)
-        doc_path = None
-        if duration >= 10.0:
-            doc_path = TEMP_DIR / f"scene_{scene_id:03d}_doc.jpg"
-            create_declassified_document(
-                quote_text=narration,
-                header_agency=f"HISTORICAL DOSSIER // DEPT. ARCHIVES // SCENE {scene_id:02d}",
-                output_path=doc_path
-            )
-            logger.info(f"Declassified dossier generated with highlighter: {doc_path.name}")
-        
-        # D. Scene Video Rendering (Multi-shot)
+        # C. Render Scene with After the Crown Typography & Enquadramento
         scene_video_path = TEMP_DIR / f"scene_{scene_id:03d}_video.mp4"
         success = create_scene_video(
             image_path=image_path,
@@ -91,7 +87,11 @@ def build_documentary(topic: str, num_scenes: int = 5, voice: str = DEFAULT_VOIC
             duration=duration,
             output_path=scene_video_path,
             motion=motion,
-            doc_path=doc_path
+            label_title=sc.get("label_title"),
+            label_sub=sc.get("label_sub"),
+            citation=sc.get("citation", f"[{scene_id}]"),
+            callout_red=sc.get("callout_red"),
+            callout_box=sc.get("callout_box")
         )
         if success:
             scene_videos.append(scene_video_path)
@@ -101,32 +101,28 @@ def build_documentary(topic: str, num_scenes: int = 5, voice: str = DEFAULT_VOIC
     if not scene_videos:
         raise RuntimeError("No scenes were rendered successfully.")
 
-    # 3. Concatenation & Audio Mastering
-    logger.info("\n--- STEP 3: Timeline Assembly & Mastering ---")
+    # 3. Concatenate and Mix Soundtrack
+    logger.info("\n--- STEP 3: Timeline Assembly & Soundtrack Mixing ---")
     final_video_path = doc_output_dir / f"{safe_slug}.mp4"
-    
-    # Look for ambient music if available
-    bg_music = None
-    music_files = list(MUSIC_DIR.glob("*.mp3")) + list(MUSIC_DIR.glob("*.wav"))
-    if music_files:
-        bg_music = music_files[0]
-        logger.info(f"Found background music track: {bg_music.name}")
-
-    concatenate_scenes(scene_videos, final_video_path, background_music=bg_music)
+    concatenate_scenes(
+        scene_videos=scene_videos,
+        output_path=final_video_path,
+        background_music=MUSIC_PATH,
+        script_scenes=scenes
+    )
     
     elapsed = time.time() - start_time
-    logger.info("\n" + "=" * 60)
-    logger.info(f"DOCUMENTARY PRODUCTION COMPLETE!")
-    logger.info(f"Output Video: {final_video_path}")
-    logger.info(f"Total production time: {elapsed:.1f}s")
+    logger.info("=" * 60)
+    logger.info(f"DOCUMENTARY PRODUCTION COMPLETED SUCCESSFULLY IN {elapsed:.1f}s!")
+    logger.info(f"Master Video: {final_video_path} ({final_video_path.stat().st_size / (1024*1024):.2f} MB)")
     logger.info("=" * 60)
     
     return final_video_path
 
 def main():
-    parser = argparse.ArgumentParser(description="Automated AI Documentary Production Engine")
+    parser = argparse.ArgumentParser(description="After the Crown AI Documentary Production Engine")
     parser.add_argument("--topic", type=str, required=True, help="Topic of the documentary")
-    parser.add_argument("--scenes", type=int, default=3, help="Number of scenes to generate")
+    parser.add_argument("--scenes", type=int, default=8, help="Number of scenes to generate")
     parser.add_argument("--voice", type=str, default=DEFAULT_VOICE, help="Edge-TTS voice identifier")
     parser.add_argument("--title", type=str, default=None, help="Custom title override")
     parser.add_argument("--script-json", type=str, default=None, help="Preloaded JSON script string")
