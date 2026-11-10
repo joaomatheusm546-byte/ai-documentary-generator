@@ -34,15 +34,18 @@ JSON Schema:
   "scenes": [
     {{
       "scene_id": 1,
-      "narration": "Measured documentary narration sentence(s) for this scene.",
+      "narration": "Measured documentary narration sentence(s) for this scene (~14 seconds of speech).",
       "label_title": "Primary Name or Location (e.g. 'Berchtesgaden' or 'Paula Hitler')",
       "label_sub": "Context or Date (e.g. 'Bavarian Alps' or 'May 1945 // Allied Advance')",
       "citation": "[1]",
       "callout_red": "OPTIONAL short 2-4 word dramatic callout in caps (or null)",
       "callout_box": "OPTIONAL typewriter archive note in caps (or null)",
+      "target_beats": 4,
       "search_queries": [
-        "Historical photo query 1 for Wikimedia Commons",
-        "Historical archival location query 2"
+        "Historical photo query 1 (establishing shot / primary entity, seconds 0-3.5)",
+        "Historical photo query 2 (action / secondary entity / declassified document, seconds 3.5-7.0)",
+        "Historical photo query 3 (archival context / location, seconds 7.0-10.5)",
+        "Historical photo query 4 (evidence / atmospheric detail, seconds 10.5-14.0)"
       ],
       "ken_burns_motion": "slow_zoom_in"
     }}
