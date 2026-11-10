@@ -241,13 +241,23 @@ def fetch_single_visual_beat(
         USED_MEDIA_IDENTIFIERS.add(f"flux_{scene_id}_{beat_idx}")
         return target_file
 
-    # 7. Safety fallback to any valid pre-existing image in temp
-    existing = list(TEMP_DIR.glob("*.jpg"))
-    for ext_img in existing:
-        if ext_img.stat().st_size > 15000 and ext_img != target_file:
-            import shutil
-            shutil.copy(ext_img, target_file)
-            return target_file
+    # 7. As absolute last resort, create an authentic historical dossier card placeholder - NEVER duplicate another scene's image
+    logger.warning(f"[Scene {scene_id} Beat {beat_idx}] Fallback: generating archival record card to avoid repetition.")
+    try:
+        from PIL import ImageDraw
+        card = Image.new("RGB", (1920, 1080), color=(18, 18, 18))
+        draw = ImageDraw.Draw(card)
+        draw.rectangle([(80, 80), (1840, 1000)], outline=(60, 60, 60), width=2)
+        draw.text((120, 140), "NATIONAL ARCHIVES AND RECORDS ADMINISTRATION", fill=(140, 140, 140))
+        draw.text((120, 180), f"HISTORICAL RECORD // DOSSIER {scene_id:03d}-{beat_idx:02d}", fill=(200, 50, 50))
+        draw.text((120, 240), f"SUBJECT: {query.upper()[:80]}", fill=(210, 210, 210))
+        card.save(target_file, "JPEG", quality=90)
+        USED_MEDIA_IDENTIFIERS.add(f"record_card_{scene_id}_{beat_idx}")
+        return target_file
+    except Exception as e:
+        logger.error(f"Failed to generate archival card: {e}")
+
+    return target_file
 
     return target_file
 
@@ -280,23 +290,22 @@ def fetch_media_for_scene(
             if ex not in queries:
                 queries.append(ex)
 
-    # Check for pre-bundled assets in repo
-    custom_path = None
-    if custom_asset:
-        p = Path(custom_asset)
-        if p.exists():
-            custom_path = p
-    else:
-        # Check assets/paula_archive/scene_001.jpg etc
-        repo_candidate = ASSETS_DIR / "paula_archive" / f"scene_{scene_id:03d}.jpg"
-        if repo_candidate.exists():
-            custom_path = repo_candidate
-
     scene_images: List[Path] = []
     for beat_idx in range(1, target_beats + 1):
         q = queries[(beat_idx - 1) % len(queries)]
-        # Beat 1 can use custom_path if provided, remaining beats fetch complementary archives
-        c_file = custom_path if beat_idx == 1 else None
+        
+        # Priority 1: Dedicated beat asset in paula_archive (e.g. scene_001_beat_02.jpg)
+        beat_asset = ASSETS_DIR / "paula_archive" / f"scene_{scene_id:03d}_beat_{beat_idx:02d}.jpg"
+        c_file = None
+        if beat_asset.exists() and beat_asset.stat().st_size > 5000:
+            c_file = beat_asset
+        elif beat_idx == 1 and custom_asset and Path(custom_asset).exists():
+            c_file = Path(custom_asset)
+        elif beat_idx == 1:
+            scene_asset = ASSETS_DIR / "paula_archive" / f"scene_{scene_id:03d}.jpg"
+            if scene_asset.exists() and scene_asset.stat().st_size > 5000:
+                c_file = scene_asset
+
         img_p = fetch_single_visual_beat(
             scene_id=scene_id,
             beat_idx=beat_idx,
