@@ -1,0 +1,105 @@
+{
+  "title": "What Happened to Hitler's Sister After the War",
+  "topic": "What Happened to Hitler's Sister After the War",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "narration": "It is the fifth of June, 1946. Berchtesgaden, high in the Bavarian Alps. An investigator working for the American Army is taking a statement from a fifty-year-old woman living in a quiet mountain inn.",
+      "label_title": "Berchtesgaden",
+      "label_sub": "Bavarian Alps // June 1946",
+      "citation": "[1] Source in Description",
+      "search_queries": [
+        "American_soldiers_at_Berchtesgaden_toast_victory,_1945.jpg",
+        "Berchtesgaden 1945"
+      ],
+      "ken_burns_motion": "slow_zoom_in"
+    },
+    {
+      "scene_id": 2,
+      "narration": "Identified in military records only as Agent C10, he records that she lives in a single room, paying six marks a day. Everything she owns fits into one small suitcase. Her name is registered as Paula Wolff.",
+      "label_title": "Agent C10",
+      "label_sub": "U.S. Counter Intelligence Corps",
+      "citation": "[1]",
+      "callout_red": "SIX MARKS A DAY",
+      "callout_box": "ONE SMALL SUITCASE",
+      "search_queries": [
+        "Displaced_Persons_and_Refugees_in_Germany_BU6641.jpg",
+        "Refugees displaced persons 1945"
+      ],
+      "ken_burns_motion": "pan_left"
+    },
+    {
+      "scene_id": 3,
+      "narration": "When the American investigator opened his classified file, the heading did not say Wolff. It said Paula Hitler. She was the only surviving full sibling of Adolf Hitler.",
+      "label_title": "Paula Hitler",
+      "label_sub": "Only Surviving Sibling",
+      "citation": "[1, 2]",
+      "search_queries": [
+        "paula_young_portrait.jpg",
+        "Paula Hitler"
+      ],
+      "ken_burns_motion": "slow_zoom_in"
+    },
+    {
+      "scene_id": 4,
+      "narration": "During the interrogation, she stated firmly for the record: 'I do not believe that my brother ordered the crimes committed to innumerable human beings in the concentration camps.'",
+      "label_title": "CIC Interrogation Record",
+      "label_sub": "Berchtesgaden // 5 June 1946",
+      "citation": "[1]",
+      "search_queries": [
+        "Adolf_Hitler_-_Molotov-Ribbentrop_pact_at_Berghof_-_1939_(242-EB-6-40A).jpg",
+        "Hitler Berghof 1939"
+      ],
+      "ken_burns_motion": "slow_zoom_out"
+    },
+    {
+      "scene_id": 5,
+      "narration": "What American counter-intelligence never discovered in 1946 was that during the war, Paula had been secretly engaged to Dr. Erwin Jekelius, one of the central organizers of Aktion T4.",
+      "label_title": "Erwin Jekelius",
+      "label_sub": "Aktion T4 Euthanasia Programme",
+      "citation": "[2, 3]",
+      "search_queries": [
+        "Schloss_Hartheim_-_Postkarte.png",
+        "Schloss Hartheim"
+      ],
+      "ken_burns_motion": "pan_right"
+    },
+    {
+      "scene_id": 6,
+      "narration": "From the Am Steinhof psychiatric complex in Vienna, over three thousand two hundred patients were dispatched to be murdered at Hartheim Castle. Among the victims was a distant cousin of the Hitler family.",
+      "label_title": "Hartheim Castle",
+      "label_sub": "Upper Austria // Aktion T4",
+      "citation": "[3]",
+      "callout_red": "3,200 PATIENTS",
+      "search_queries": [
+        "Alkoven_Hartheim_Schloss_Hartheim_Ansicht_Südwest-1984.jpg",
+        "Alkoven Hartheim Schloss Hartheim"
+      ],
+      "ken_burns_motion": "slow_zoom_in"
+    },
+    {
+      "scene_id": 7,
+      "narration": "Cleared of active war crimes by the denazification tribunals, Paula was left completely destitute. The Bavarian state seized all of her brother's personal estate, leaving her to rely on welfare and charity.",
+      "label_title": "Denazification Tribunal",
+      "label_sub": "Munich // Bavarian State Confiscation",
+      "citation": "[4]",
+      "search_queries": [
+        "Adolf_Hitler_and_Martin_Bormann_(cropped).jpg",
+        "Adolf Hitler Martin Bormann"
+      ],
+      "ken_burns_motion": "slow_zoom_out"
+    },
+    {
+      "scene_id": 8,
+      "narration": "In 1959, she gave her only filmed interview to a British television crew, breaking years of silence. One year later, on June 1st, 1960, she died in Berchtesgaden at sixty-four, bringing the Hitler line to an end.",
+      "label_title": "Bergfriedhof",
+      "label_sub": "Berchtesgaden // 1 June 1960",
+      "citation": "[4, 5]",
+      "search_queries": [
+        "Bergfriedhof-Berchtesgaden001.jpg",
+        "Bergfriedhof Berchtesgaden"
+      ],
+      "ken_burns_motion": "slow_zoom_in"
+    }
+  ]
+}
