@@ -291,12 +291,16 @@ def concatenate_scenes(
         # Equalizer at 180Hz +3.2dB (warm documentary chest presence)
         # Equalizer at 3400Hz +2.2dB (clean broadcast articulation)
         # Acompressor (smooth optical broadcast leveling, threshold=0.125 == -18dB)
+        # asplit=2 splits voice into:
+        #   [v_side]: sidechain trigger for ducking background music
+        #   [v_main]: main master dialogue track
         voice_chain = (
             "aformat=sample_rates=48000:channel_layouts=stereo,"
             "highpass=f=75,"
             "equalizer=f=180:t=q:w=1.2:g=3.2,"
             "equalizer=f=3400:t=q:w=1.5:g=2.2,"
-            "acompressor=threshold=0.125:ratio=3:attack=15:release=120"
+            "acompressor=threshold=0.125:ratio=3:attack=15:release=120,"
+            "asplit=2[v_side][v_main]"
         )
         
         # 2. Dynamic Sidechain Ducking:
@@ -304,10 +308,10 @@ def concatenate_scenes(
         # When voice is active, cello ducks smoothly by ~12dB
         # In dramatic narrative pauses, cello swells naturally to sustain solemn tension
         ducking_complex = (
-            f"[0:a]{voice_chain}[vproc]; "
+            f"[0:a]{voice_chain}; "
             f"[1:a]aformat=sample_rates=48000:channel_layouts=stereo,volume=0.28[bg_raw]; "
-            f"[bg_raw][vproc]sidechaincompress=threshold=0.08:ratio=4:attack=50:release=600[bg_ducked]; "
-            f"[vproc][bg_ducked]amix=inputs=2:duration=first:dropout_transition=2:normalize=0,alimiter=limit=0.9[aout]"
+            f"[bg_raw][v_side]sidechaincompress=threshold=0.08:ratio=4:attack=50:release=600[bg_ducked]; "
+            f"[v_main][bg_ducked]amix=inputs=2:duration=first:dropout_transition=2:normalize=0,alimiter=limit=0.9[aout]"
         )
 
         cmd_master = [
