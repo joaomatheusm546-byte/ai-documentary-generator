@@ -73,7 +73,7 @@ def synthesize_beat_audio(
     text: str,
     output_path: Path,
     voice: str = DEFAULT_VOICE,
-    pause_after: float = 0.25
+    pause_after: float = 0.35
 ) -> Dict[str, Any]:
     """
     Synthesizes speech for an individual sentence beat and appends a subtle breathing pause.
@@ -85,7 +85,7 @@ def synthesize_beat_audio(
     
     if pause_after > 0:
         # Strip trailing dead silence produced by TTS, then append exact breathing pause
-        af_filter = f"areverse,silenceremove=start_periods=1:start_duration=0.05:start_threshold=-35dB,areverse,apad=pad_dur={pause_after}"
+        af_filter = f"areverse,silenceremove=start_periods=1:start_duration=0.10:start_threshold=-50dB,areverse,apad=pad_dur={pause_after}"
         cmd = [
             FFMPEG_BIN, "-y",
             "-i", str(raw_path),

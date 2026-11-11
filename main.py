@@ -86,7 +86,7 @@ def build_documentary(
                 queries.append(b_query)
                 b_audio_path = TEMP_DIR / f"scene_{scene_id:03d}_beat_{b_idx:02d}_voice.mp3"
                 # On the final beat of each scene, add a 1.0s dramatic breathing pause for the cello drone
-                pause_dur = 1.0 if b_idx == len(beats) else 0.25
+                pause_dur = 1.0 if b_idx == len(beats) else 0.35
                 b_meta = synthesize_beat_audio(b_text, b_audio_path, voice=voice, pause_after=pause_dur)
                 beat_durations.append(b_meta["duration"])
                 beat_audio_paths.append(b_audio_path)

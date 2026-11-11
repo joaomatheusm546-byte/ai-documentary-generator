@@ -1,4 +1,5 @@
 import os
+import math
 import subprocess
 import logging
 from pathlib import Path
@@ -29,7 +30,7 @@ def render_clip(
 ) -> bool:
     """Renders a single scene clip with Ken Burns motion, cinema grading, static typography overlay, and chapter fades."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    frames = max(30, int(duration * VIDEO_FPS))
+    frames = max(30, int(math.ceil(duration * VIDEO_FPS)))
     
     if motion == "slow_zoom_out":
         zoom_expr = "if(lte(zoom,1.0),1.15,max(1.001,zoom-0.0006))"
