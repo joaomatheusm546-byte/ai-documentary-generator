@@ -6,7 +6,7 @@ import requests
 from pathlib import Path
 from typing import List, Optional, Dict, Any, Set
 from PIL import Image, ImageOps, ImageFilter
-from src.config import PEXELS_API_KEY, TEMP_DIR, ASSETS_DIR
+from src.config import PEXELS_API_KEY, PIXABAY_API_KEY, EUROPEANA_API_KEY, TEMP_DIR, ASSETS_DIR
 
 logger = logging.getLogger("MediaFetcher")
 
@@ -117,6 +117,112 @@ def search_wikipedia_images(topic: str, exclude_ids: Optional[Set[str]] = None) 
         logger.warning(f"Wikipedia search failed for '{topic}': {e}")
     return None
 
+def search_europeana(query: str, exclude_ids: Optional[Set[str]] = None) -> Optional[Dict[str, Any]]:
+    """
+    Searches Europeana (European cultural heritage, museums, declassified national archives).
+    """
+    if not EUROPEANA_API_KEY:
+        return None
+    clean_q = clean_query(query)
+    url = "https://api.europeana.eu/record/v2/search.json"
+    params = {
+        "wskey": EUROPEANA_API_KEY,
+        "query": clean_q,
+        "rows": 8,
+        "qf": "TYPE:IMAGE"
+    }
+    try:
+        r = requests.get(url, params=params, headers=HEADERS, timeout=12)
+        if r.status_code == 200:
+            items = r.json().get("items", [])
+            for it in items:
+                guid = it.get("guid") or (it.get("id") and it.get("id")[0])
+                if exclude_ids and guid in exclude_ids:
+                    continue
+                img_url = None
+                if it.get("edmPreview"):
+                    img_url = it["edmPreview"][0]
+                elif it.get("edmIsShownBy"):
+                    img_url = it["edmIsShownBy"][0]
+                if img_url:
+                    return {
+                        "id": guid or img_url,
+                        "url": img_url,
+                        "title": it.get("title", [clean_q])[0]
+                    }
+    except Exception as e:
+        logger.warning(f"Europeana search error for '{query}': {e}")
+    return None
+
+def search_pixabay(query: str, exclude_ids: Optional[Set[str]] = None) -> Optional[Dict[str, Any]]:
+    """
+    Searches Pixabay for high-res authentic atmospheric photographs.
+    """
+    if not PIXABAY_API_KEY:
+        return None
+    clean_q = clean_query(query)
+    url = "https://pixabay.com/api/"
+    params = {
+        "key": PIXABAY_API_KEY,
+        "q": clean_q,
+        "image_type": "photo",
+        "orientation": "horizontal",
+        "per_page": 6,
+        "safesearch": "true"
+    }
+    try:
+        r = requests.get(url, params=params, timeout=10)
+        if r.status_code == 200:
+            hits = r.json().get("hits", [])
+            for h in hits:
+                h_id = f"pixabay_{h.get('id')}"
+                if exclude_ids and h_id in exclude_ids:
+                    continue
+                img_url = h.get("largeImageURL") or h.get("webformatURL")
+                if img_url:
+                    return {
+                        "id": h_id,
+                        "url": img_url,
+                        "title": h.get("tags", clean_q)
+                    }
+    except Exception as e:
+        logger.warning(f"Pixabay search error for '{query}': {e}")
+    return None
+
+def search_pexels(query: str, exclude_ids: Optional[Set[str]] = None) -> Optional[Dict[str, Any]]:
+    """
+    Searches Pexels for high-res atmospheric cinematic landscape / location photographs.
+    """
+    if not PEXELS_API_KEY:
+        return None
+    clean_q = clean_query(query)
+    url = "https://api.pexels.com/v1/search"
+    headers = {"Authorization": PEXELS_API_KEY}
+    params = {
+        "query": clean_q,
+        "per_page": 6,
+        "orientation": "landscape"
+    }
+    try:
+        r = requests.get(url, params=params, headers=headers, timeout=10)
+        if r.status_code == 200:
+            photos = r.json().get("photos", [])
+            for p in photos:
+                p_id = f"pexels_{p.get('id')}"
+                if exclude_ids and p_id in exclude_ids:
+                    continue
+                src = p.get("src", {})
+                img_url = src.get("large2x") or src.get("large") or src.get("original")
+                if img_url:
+                    return {
+                        "id": p_id,
+                        "url": img_url,
+                        "title": p.get("alt", clean_q)
+                    }
+    except Exception as e:
+        logger.warning(f"Pexels search error for '{query}': {e}")
+    return None
+
 def generate_flux_historical_fallback(prompt: str, dest_path: Path) -> bool:
     """
     Generates an authentic historical archive photograph using Flux
@@ -205,23 +311,49 @@ def fetch_single_visual_beat(
                 logger.info(f"[Scene {scene_id} Beat {beat_idx}] Downloaded direct Wikimedia file: {clean_fn}")
                 return target_file
 
-    # 2. Wikimedia Commons Primary Search
+    # 2. Europeana Cultural Heritage & National Archives Search
+    media_euro = search_europeana(query, exclude_ids=USED_MEDIA_IDENTIFIERS)
+    if media_euro and download_file(media_euro["url"], target_file):
+        USED_MEDIA_IDENTIFIERS.add(media_euro["id"])
+        logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found Europeana museum archive: {media_euro.get('title')}")
+        return target_file
+
+    # 3. Wikimedia Commons Primary Search
     media = search_wikimedia_commons(query, exclude_ids=USED_MEDIA_IDENTIFIERS)
     if media and download_file(media["url"], target_file):
         USED_MEDIA_IDENTIFIERS.add(media["id"])
         logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found Wikimedia archive: {media.get('title')}")
         return target_file
 
-    # 3. Wikipedia Encyclopedic Media
+    # 4. Wikipedia Encyclopedic Media
     media_wiki = search_wikipedia_images(query, exclude_ids=USED_MEDIA_IDENTIFIERS)
     if media_wiki and download_file(media_wiki["url"], target_file):
         USED_MEDIA_IDENTIFIERS.add(media_wiki["id"])
         logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found Wikipedia historical asset: {media_wiki.get('title')}")
         return target_file
 
-    # 4. Relaxed query search
+    # 5. Pexels & Pixabay (Atmospheric Scenery & Location Shots)
+    media_pex = search_pexels(query, exclude_ids=USED_MEDIA_IDENTIFIERS)
+    if media_pex and download_file(media_pex["url"], target_file):
+        USED_MEDIA_IDENTIFIERS.add(media_pex["id"])
+        logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found Pexels cinematic location photo: {media_pex.get('title')}")
+        return target_file
+
+    media_pix = search_pixabay(query, exclude_ids=USED_MEDIA_IDENTIFIERS)
+    if media_pix and download_file(media_pix["url"], target_file):
+        USED_MEDIA_IDENTIFIERS.add(media_pix["id"])
+        logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found Pixabay atmospheric photo: {media_pix.get('title')}")
+        return target_file
+
+    # 6. Relaxed query search (Europeana & Wikimedia)
     simplified = re.sub(r'\b(vintage|antique|engraving|illustration|painting|photo|drawing|archives|diagram)\b', '', query, flags=re.IGNORECASE).strip()
     if simplified and simplified != query:
+        media_rel_euro = search_europeana(simplified, exclude_ids=USED_MEDIA_IDENTIFIERS)
+        if media_rel_euro and download_file(media_rel_euro["url"], target_file):
+            USED_MEDIA_IDENTIFIERS.add(media_rel_euro["id"])
+            logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found via relaxed Europeana query: {simplified}")
+            return target_file
+
         media_rel = search_wikimedia_commons(simplified, min_width=800, exclude_ids=USED_MEDIA_IDENTIFIERS)
         if media_rel and download_file(media_rel["url"], target_file):
             USED_MEDIA_IDENTIFIERS.add(media_rel["id"])
