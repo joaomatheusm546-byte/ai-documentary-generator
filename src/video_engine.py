@@ -99,6 +99,61 @@ def render_clip(
         logger.error(f"Render clip failed: {e.stderr}")
         return False
 
+def mix_scene_foley_sfx(
+    voice_audio_path: Path,
+    output_audio_path: Path,
+    label_title: Optional[str] = None,
+    callout_red: Optional[str] = None,
+    callout_box: Optional[str] = None,
+    beat_durations: Optional[List[float]] = None
+) -> Path:
+    """
+    Etapa 2: Mixes subtle archival foley sound effects into the scene voice audio:
+    - sub_boom.wav on title card entrance (0.15s)
+    - paper_slide.wav on callout / archival document entrance
+    """
+    sfx_dir = ASSETS_DIR / "sfx"
+    sub_boom = sfx_dir / "sub_boom.wav"
+    paper_slide = sfx_dir / "paper_slide.wav"
+    
+    inputs = ["-i", str(voice_audio_path)]
+    filter_parts = []
+    mix_inputs = ["[0:a]"]
+    
+    # 1. Title sub-boom on beat 1
+    if label_title and sub_boom.exists():
+        inputs.extend(["-i", str(sub_boom)])
+        idx = len(inputs) // 2 - 1
+        filter_parts.append(f"[{idx}:a]adelay=150|150,volume=0.22[sfx_boom]")
+        mix_inputs.append("[sfx_boom]")
+        
+    # 2. Paper slide on beat 2 callout / document
+    if (callout_red or callout_box) and paper_slide.exists() and beat_durations and len(beat_durations) > 1:
+        beat2_start_ms = int(beat_durations[0] * 1000) + 120
+        inputs.extend(["-i", str(paper_slide)])
+        idx = len(inputs) // 2 - 1
+        filter_parts.append(f"[{idx}:a]adelay={beat2_start_ms}|{beat2_start_ms},volume=0.20[sfx_paper]")
+        mix_inputs.append("[sfx_paper]")
+        
+    if len(mix_inputs) == 1:
+        return voice_audio_path
+        
+    filter_complex = ";".join(filter_parts) + f";{''.join(mix_inputs)}amix=inputs={len(mix_inputs)}:duration=first:dropout_transition=0:normalize=0[aout]"
+    cmd = [
+        FFMPEG_BIN, "-y",
+        *inputs,
+        "-filter_complex", filter_complex,
+        "-map", "[aout]",
+        "-c:a", "libmp3lame", "-q:a", "2",
+        str(output_audio_path)
+    ]
+    try:
+        subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+        return output_audio_path
+    except Exception as e:
+        logger.warning(f"Foley SFX mixing failed: {e}. Falling back to clean voice.")
+        return voice_audio_path
+
 def create_scene_video(
     images: Union[Path, List[Path]],
     audio_path: Path,
@@ -118,6 +173,7 @@ def create_scene_video(
     1. Static, crisp lower-third title card overlay (never scales or zooms with footage).
     2. Exact phrase-by-phrase audio synchronization.
     3. Cinematic chapter fades (dip to black between scenes, crisp hard cuts internally).
+    4. Etapa 2: Foley sound design (sub-boom on title, paper slide on document callout).
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
@@ -138,7 +194,6 @@ def create_scene_video(
         beat_idx = idx + 1
         beat_motion = motion_cycle[idx % len(motion_cycle)] if num_beats > 1 else motion
 
-        # Exact phrase duration for surgical audio-visual synchronization
         if beat_durations and idx < len(beat_durations):
             sub_duration = max(1.5, float(beat_durations[idx]))
         else:
@@ -213,11 +268,22 @@ def create_scene_video(
             logger.error(f"Failed to concat sub-clips: {e.stderr}")
             return False
 
-    # Mux with scene voice
+    # Mix Foley SFX (Etapa 2)
+    sfx_audio_path = TEMP_DIR / f"{output_path.stem}_voice_sfx.mp3"
+    effective_audio = mix_scene_foley_sfx(
+        voice_audio_path=audio_path,
+        output_audio_path=sfx_audio_path,
+        label_title=label_title,
+        callout_red=callout_red,
+        callout_box=callout_box,
+        beat_durations=beat_durations
+    )
+
+    # Mux with scene voice + Foley
     cmd_mux = [
         FFMPEG_BIN, "-y",
         "-i", str(temp_vonly),
-        "-i", str(audio_path),
+        "-i", str(effective_audio),
         "-c:v", "copy",
         "-c:a", "aac", "-b:a", "192k",
         "-shortest",

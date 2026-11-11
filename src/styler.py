@@ -139,31 +139,33 @@ def create_title_overlay_layer(
             odraw.text((lx + 2, sub_y + 2), label_sub, fill=(0, 0, 0, 200), font=font_sub)
             odraw.text((lx, sub_y), label_sub, fill=(225, 220, 210, 235), font=font_sub)
 
-    # 3. Red Banner Callout
+    # 3. Red Highlight Forensic Callout (Etapa 2)
     if callout_red:
         banner_text = callout_red.upper()
         bbox = odraw.textbbox((0, 0), banner_text, font=font_banner)
-        bw = bbox[2] - bbox[0] + 60
-        bh = 70
+        bw = bbox[2] - bbox[0] + 55
+        bh = 64
         bx = (w - bw) // 2
         by = h - 160
-        odraw.rectangle([bx, by, bx + bw, by + bh], fill=(160, 25, 25, 235))
+        # Dark translucent plate with red border and red left accent bar
+        odraw.rectangle([bx, by, bx + bw, by + bh], fill=(12, 12, 12, 225), outline=(190, 30, 30, 240), width=2)
+        odraw.rectangle([bx, by, bx + 6, by + bh], fill=(220, 35, 35, 255))
         tx = bx + 30
-        ty = by + 14
-        odraw.text((tx, ty), banner_text, fill=(255, 255, 255, 255), font=font_banner)
+        ty = by + (bh - (bbox[3] - bbox[1])) // 2 - 2
+        odraw.text((tx, ty), banner_text, fill=(245, 240, 235, 255), font=font_banner)
 
-    # 4. Black Typewriter Box Callout
+    # 4. Black Typewriter Box Callout (Etapa 2)
     if callout_box:
         box_text = callout_box.upper()
         bbox = odraw.textbbox((0, 0), box_text, font=font_box)
         bw = bbox[2] - bbox[0] + 50
-        bh = 65
+        bh = 60
         bx = w - bw - 70
         by = 105
-        odraw.rectangle([bx, by, bx + bw, by + bh], fill=(15, 15, 15, 235), outline=(50, 50, 50, 200), width=2)
+        odraw.rectangle([bx, by, bx + bw, by + bh], fill=(12, 12, 12, 225), outline=(75, 75, 75, 200), width=2)
         tx = bx + 25
-        ty = by + 14
-        odraw.text((tx, ty), box_text, fill=(245, 240, 230, 250), font=font_box)
+        ty = by + (bh - (bbox[3] - bbox[1])) // 2 - 2
+        odraw.text((tx, ty), box_text, fill=(240, 235, 225, 250), font=font_box)
 
     return overlay
 

@@ -73,42 +73,76 @@ def synthesize_beat_audio(
     text: str,
     output_path: Path,
     voice: str = DEFAULT_VOICE,
-    pause_after: float = 0.35
+    pause_after: float = 0.45
 ) -> Dict[str, Any]:
     """
-    Synthesizes speech for an individual sentence beat and appends a subtle breathing pause.
-    Returns exact duration including the pause so video cuts precisely on phrase boundaries.
+    Synthesizes speech for an individual sentence beat and shapes the pause naturally.
+    Detects where the speech actually ends and ensures zero truncation of trailing syllables.
+    Appends a subtle fade-out in pure silence to eliminate any abrupt cuts or pops.
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     raw_path = output_path.with_name(f"{output_path.stem}_raw.mp3")
     meta = asyncio.run(generate_scene_voice(text, raw_path, voice=voice))
-    
-    if pause_after > 0:
-        # Strip trailing dead silence produced by TTS, then append exact breathing pause
-        af_filter = f"areverse,silenceremove=start_periods=1:start_duration=0.10:start_threshold=-50dB,areverse,apad=pad_dur={pause_after}"
-        cmd = [
-            FFMPEG_BIN, "-y",
-            "-i", str(raw_path),
-            "-af", af_filter,
-            "-c:a", "libmp3lame",
-            "-q:a", "2",
-            str(output_path)
+    raw_dur = meta["duration"]
+
+    try:
+        # Run silencedetect to find where speech actually finishes (-60dB noise threshold)
+        cmd_sil = [
+            FFMPEG_BIN, "-i", str(raw_path),
+            "-af", "silencedetect=noise=-60dB:d=0.2",
+            "-f", "null", "-"
         ]
-        try:
-            subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
-            if raw_path.exists():
-                raw_path.unlink()
-            final_dur = get_audio_duration(output_path)
-            meta["duration"] = final_dur
-            meta["audio_path"] = str(output_path)
-            return meta
-        except Exception as e:
-            logger.warning(f"apad silence padding failed: {e}")
-            if raw_path.exists():
-                import shutil
-                shutil.move(str(raw_path), str(output_path))
-            return meta
-    else:
+        res = subprocess.run(cmd_sil, stderr=subprocess.PIPE, text=True, check=True)
+        sil_starts = []
+        for line in res.stderr.splitlines():
+            if "silence_start:" in line:
+                try:
+                    val = float(line.split("silence_start:")[1].strip())
+                    sil_starts.append(val)
+                except ValueError:
+                    pass
+
+        # If trailing silence detected towards the end
+        if sil_starts and sil_starts[-1] > 0.8:
+            speech_end = sil_starts[-1]
+        else:
+            speech_end = raw_dur
+
+        target_dur = speech_end + pause_after
+
+        if target_dur < raw_dur:
+            fade_st = max(0.0, target_dur - 0.05)
+            af = f"atrim=0:{target_dur:.3f},afade=t=out:st={fade_st:.3f}:d=0.05"
+            cmd_process = [
+                FFMPEG_BIN, "-y",
+                "-i", str(raw_path),
+                "-af", af,
+                "-c:a", "libmp3lame", "-q:a", "2",
+                str(output_path)
+            ]
+            subprocess.run(cmd_process, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+        else:
+            pad_needed = max(0.0, target_dur - raw_dur)
+            af = f"apad=pad_dur={pad_needed:.3f}" if pad_needed > 0 else "anull"
+            cmd_process = [
+                FFMPEG_BIN, "-y",
+                "-i", str(raw_path),
+                "-af", af,
+                "-c:a", "libmp3lame", "-q:a", "2",
+                str(output_path)
+            ]
+            subprocess.run(cmd_process, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+
+        if raw_path.exists():
+            raw_path.unlink()
+
+        final_dur = get_audio_duration(output_path)
+        meta["duration"] = final_dur
+        meta["audio_path"] = str(output_path)
+        return meta
+
+    except Exception as e:
+        logger.warning(f"Safe audio shaping failed: {e}. Falling back to raw audio.")
         if raw_path.exists():
             import shutil
             shutil.move(str(raw_path), str(output_path))
