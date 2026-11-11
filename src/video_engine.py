@@ -32,28 +32,38 @@ def render_clip(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     frames = max(30, int(math.ceil(duration * VIDEO_FPS)))
     
-    if motion == "slow_zoom_out":
-        zoom_expr = "if(lte(zoom,1.0),1.15,max(1.001,zoom-0.0006))"
+    if motion == "portrait_zoom":
+        # Anchored on upper third eye-line (After the Crown standard for archival portraits)
+        zoom_expr = "min(zoom+0.0005, 1.15)"
         pan_x = "iw/2-(iw/zoom/2)"
-        pan_y = "ih/2-(ih/zoom/2)"
+        pan_y = "(ih*0.28)-(ih/zoom*0.28)"
+    elif motion == "document_tilt":
+        # Slow downward reading drift across historical handwriting / registers
+        zoom_expr = "1.12"
+        pan_x = "iw/2-(iw/zoom/2)"
+        pan_y = f"((ih-ih/zoom)*0.15) + ((ih-ih/zoom)*0.70)*(on/{frames})"
+    elif motion == "slow_zoom_out":
+        zoom_expr = "if(lte(zoom,1.0),1.14,max(1.001,zoom-0.0005))"
+        pan_x = "iw/2-(iw/zoom/2)"
+        pan_y = "(ih*0.35)-(ih/zoom*0.35)"
     elif motion == "pan_left":
         zoom_expr = "1.10"
         pan_x = f"max(0, (iw-iw/zoom) * (1 - on/{frames}))"
-        pan_y = "ih/2-(ih/zoom/2)"
+        pan_y = "(ih*0.38)-(ih/zoom*0.38)"
     elif motion == "pan_right":
         zoom_expr = "1.10"
         pan_x = f"min(iw-iw/zoom, (iw-iw/zoom) * (on/{frames}))"
-        pan_y = "ih/2-(ih/zoom/2)"
-    else:  # slow_zoom_in
-        zoom_expr = "min(zoom+0.0006, 1.16)"
+        pan_y = "(ih*0.38)-(ih/zoom*0.38)"
+    else:  # slow_zoom_in (cinematic rule-of-thirds anchor)
+        zoom_expr = "min(zoom+0.0005, 1.15)"
         pan_x = "iw/2-(iw/zoom/2)"
-        pan_y = "ih/2-(ih/zoom/2)"
+        pan_y = "(ih*0.35)-(ih/zoom*0.35)"
 
     bg_filter = (
         f"scale=2304:-2,"
         f"zoompan=z='{zoom_expr}':x='{pan_x}':y='{pan_y}':d={frames}:s={VIDEO_WIDTH}x{VIDEO_HEIGHT}:fps={VIDEO_FPS},"
-        f"eq=contrast=1.16:brightness=-0.02:saturation=0.0,"
-        f"noise=alls=5:allf=t+u"
+        f"eq=contrast=1.14:brightness=-0.01:saturation=0.0,"
+        f"noise=alls=2:allf=t"
     )
 
     if fade_in:
@@ -147,7 +157,7 @@ def create_scene_video(
         return False
 
     num_beats = len(img_list)
-    motion_cycle = ["slow_zoom_in", "pan_left", "slow_zoom_out", "pan_right"]
+    motion_cycle = ["slow_zoom_in", "document_tilt", "portrait_zoom", "pan_left", "slow_zoom_out", "pan_right"]
 
     sub_clips = []
     for idx, img_p in enumerate(img_list):
@@ -162,10 +172,6 @@ def create_scene_video(
         # Documentary lower-third typography appears on the first beat
         cur_title = label_title if beat_idx == 1 else None
         cur_sub = label_sub if beat_idx == 1 else None
-        
-        # Callouts can appear on subsequent beats
-        cur_red = callout_red if (beat_idx == 2 or (num_beats == 1 and callout_red)) else None
-        cur_box = callout_box if (beat_idx == 2 or (num_beats == 1 and callout_box)) else None
 
         # 1. Clean background image (Ken Burns moves only this)
         raw_img = Image.open(img_p)
@@ -173,13 +179,10 @@ def create_scene_video(
         sub_img_path = TEMP_DIR / f"{output_path.stem}_beat_{beat_idx}_clean.jpg"
         clean_bg.save(sub_img_path, "JPEG", quality=95)
 
-        # 2. Transparent overlay layer (static typography, drop shadow, callouts)
+        # 2. Transparent overlay layer (static typography, drop shadow, no alert boxes)
         overlay_layer = create_title_overlay_layer(
             label_title=cur_title,
-            label_sub=cur_sub,
-            citation=None,
-            callout_red=cur_red,
-            callout_box=None
+            label_sub=cur_sub
         )
         overlay_path = None
         if overlay_layer:
@@ -281,17 +284,41 @@ def concatenate_scenes(
 
     bg_music = background_music or DEFAULT_MUSIC
     if bg_music and bg_music.exists():
-        logger.info(f"Mixing continuous cello soundtrack: {bg_music.name} with ducking...")
+        logger.info(f"Mixing 48kHz broadcast audio: vocal presence EQ, compression, and dynamic sidechain ducking ({bg_music.name})...")
+        
+        # 1. Broadcast Voice Mastering:
+        # Highpass at 75Hz (removes infrasonic rumble)
+        # Equalizer at 180Hz +3.2dB (warm documentary chest presence)
+        # Equalizer at 3400Hz +2.2dB (clean broadcast articulation)
+        # Acompressor (smooth optical broadcast leveling)
+        voice_chain = (
+            "aformat=sample_rates=48000:channel_layouts=stereo,"
+            "highpass=f=75,"
+            "equalizer=f=180:t=q:w=1.2:g=3.2,"
+            "equalizer=f=3400:t=q:w=1.5:g=2.2,"
+            "acompressor=threshold=-18dB:ratio=3:attack=15:release=120"
+        )
+        
+        # 2. Dynamic Sidechain Ducking:
+        # Background cello soundtrack plays in full stereo 48kHz
+        # When voice is active, cello ducks smoothly by ~12dB
+        # In dramatic narrative pauses, cello swells naturally to sustain solemn tension
+        ducking_complex = (
+            f"[0:a]{voice_chain}[vproc]; "
+            f"[1:a]aformat=sample_rates=48000:channel_layouts=stereo,volume=0.28[bg_raw]; "
+            f"[bg_raw][vproc]sidechaincompress=threshold=0.07:ratio=4:attack=50:release=600[bg_ducked]; "
+            f"[vproc][bg_ducked]amix=inputs=2:duration=first:dropout_transition=2:normalize=0,alimiter=limit=-1dB[aout]"
+        )
+
         cmd_master = [
             FFMPEG_BIN, "-y",
             "-i", str(raw_combined),
             "-stream_loop", "-1", "-i", str(bg_music),
-            "-filter_complex",
-            "[0:a]volume=1.0[voice];[1:a]volume=0.13[bgm];[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2:normalize=0[aout]",
+            "-filter_complex", ducking_complex,
             "-map", "0:v",
             "-map", "[aout]",
             "-c:v", "copy",
-            "-c:a", "aac", "-b:a", "192k",
+            "-c:a", "aac", "-b:a", "320k", "-ar", "48000",
             "-shortest",
             "-movflags", "+faststart",
             str(output_path)

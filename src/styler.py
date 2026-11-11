@@ -73,11 +73,11 @@ def create_title_overlay_layer(
     canvas_size: Tuple[int, int] = (VIDEO_WIDTH, VIDEO_HEIGHT)
 ) -> Optional[Image.Image]:
     """
-    Renders the exact typography and visual signature of 'After the Crown'
-    as an independent, transparent 1920x1080 overlay layer.
-    Stays 100% stationary and anchored over moving footage without scaling.
+    Renders the exact typography of 'After the Crown' as a transparent 1920x1080 overlay layer.
+    Pure, elegant lower-third in ivory serif with soft blur drop-shadow.
+    Zero red alert boxes or amateur PowerPoint banners.
     """
-    if not (label_title or label_sub or citation or callout_red or callout_box):
+    if not (label_title or label_sub):
         return None
 
     w, h = canvas_size
@@ -97,58 +97,29 @@ def create_title_overlay_layer(
         "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
         "/usr/share/fonts/truetype/liberation2/LiberationSerif-Bold.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
-    ], 52)
+    ], 42)
     font_sub = load_best_font([
         "georgiai.ttf", "timesi.ttf",
         "/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf",
         "/usr/share/fonts/truetype/liberation2/LiberationSerif-Italic.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf"
-    ], 32)
-    font_cite = load_best_font([
-        "georgia.ttf", "times.ttf",
-        "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
-        "/usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf",
-        "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"
-    ], 28)
-    font_banner = load_best_font([
-        "georgiab.ttf", "timesbd.ttf",
-        "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
-        "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
-    ], 36)
-    font_box = load_best_font([
-        "courbd.ttf",
-        "/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf",
-        "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"
-    ], 32)
+    ], 26)
 
-    # 1. Lower-Third White Serif Label (After the Crown Standard)
+    # 1. Lower-Third Serif Label (After the Crown Standard)
     if label_title:
-        lx = 140
-        ly = h - 210 if label_sub else h - 160
+        lx = 120
+        ly = h - 180 if label_sub else h - 140
         
-        # Soft dark gradient glow behind text for contrast
-        odraw.text((lx + 3, ly + 3), label_title, fill=(0, 0, 0, 240), font=font_title)
-        odraw.text((lx, ly), label_title, fill=(255, 255, 255, 255), font=font_title)
+        # Soft multi-pass drop shadow for maximum readability over any footage
+        for dx, dy in [(1, 1), (2, 2), (2, 3), (3, 3)]:
+            odraw.text((lx + dx, ly + dy), label_title, fill=(0, 0, 0, 180), font=font_title)
+        odraw.text((lx, ly), label_title, fill=(245, 242, 235, 255), font=font_title)
         
         if label_sub:
-            sub_y = ly + 62
-            odraw.text((lx + 2, sub_y + 2), label_sub, fill=(0, 0, 0, 220), font=font_sub)
-            odraw.text((lx, sub_y), label_sub, fill=(225, 220, 210, 240), font=font_sub)
-
-    # 2. Forensic Red Callout Banner
-    if callout_red:
-        banner_text = callout_red.upper()
-        bbox = odraw.textbbox((0, 0), banner_text, font=font_banner)
-        bw = bbox[2] - bbox[0] + 55
-        bh = 64
-        bx = (w - bw) // 2
-        by = h - 160
-        # Dark translucent plate with red border and red left accent bar
-        odraw.rectangle([bx, by, bx + bw, by + bh], fill=(12, 12, 12, 235), outline=(190, 30, 30, 255), width=2)
-        odraw.rectangle([bx, by, bx + 6, by + bh], fill=(220, 35, 35, 255))
-        tx = bx + 30
-        ty = by + (bh - (bbox[3] - bbox[1])) // 2 - 2
-        odraw.text((tx, ty), banner_text, fill=(245, 240, 235, 255), font=font_banner)
+            sub_y = ly + 52
+            for dx, dy in [(1, 1), (2, 2)]:
+                odraw.text((lx + dx, sub_y + dy), label_sub, fill=(0, 0, 0, 160), font=font_sub)
+            odraw.text((lx, sub_y), label_sub, fill=(205, 200, 190, 235), font=font_sub)
 
     return overlay
 
