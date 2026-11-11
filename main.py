@@ -49,7 +49,15 @@ def build_documentary(
     else:
         script = generate_documentary_script(topic=topic, num_scenes=num_scenes)
 
-    title = custom_title or script.get("title", "Documentary")
+    scenes = script.get("scenes", [])
+    if not scenes:
+        raise ValueError("Script contains no scenes!")
+
+    if num_scenes and len(scenes) > num_scenes:
+        logger.info(f"Slicing script to first {num_scenes} scenes for targeted run / pilot sample...")
+        scenes = scenes[:num_scenes]
+
+    title = custom_title or (script.get("title", "Documentary") + " - Pilot Sample" if num_scenes <= 3 else script.get("title", "Documentary"))
     safe_slug = "".join(c for c in title if c.isalnum() or c in (" ", "-", "_")).rstrip().replace(" ", "_")
     
     doc_output_dir = OUTPUT_DIR / safe_slug
@@ -59,10 +67,6 @@ def build_documentary(
     with open(script_path, "w", encoding="utf-8") as f:
         json.dump(script, f, indent=2, ensure_ascii=False)
     logger.info(f"Script saved to {script_path}")
-
-    scenes = script.get("scenes", [])
-    if not scenes:
-        raise ValueError("Script contains no scenes!")
 
     scene_videos = []
     
