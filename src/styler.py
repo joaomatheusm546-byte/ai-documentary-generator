@@ -2,7 +2,7 @@ import math
 import logging
 from pathlib import Path
 from typing import Tuple, Optional, Dict
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps
 from src.config import VIDEO_WIDTH, VIDEO_HEIGHT
 
 logger = logging.getLogger("Styler")
