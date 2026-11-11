@@ -290,13 +290,13 @@ def concatenate_scenes(
         # Highpass at 75Hz (removes infrasonic rumble)
         # Equalizer at 180Hz +3.2dB (warm documentary chest presence)
         # Equalizer at 3400Hz +2.2dB (clean broadcast articulation)
-        # Acompressor (smooth optical broadcast leveling)
+        # Acompressor (smooth optical broadcast leveling, threshold=0.125 == -18dB)
         voice_chain = (
             "aformat=sample_rates=48000:channel_layouts=stereo,"
             "highpass=f=75,"
             "equalizer=f=180:t=q:w=1.2:g=3.2,"
             "equalizer=f=3400:t=q:w=1.5:g=2.2,"
-            "acompressor=threshold=-18dB:ratio=3:attack=15:release=120"
+            "acompressor=threshold=0.125:ratio=3:attack=15:release=120"
         )
         
         # 2. Dynamic Sidechain Ducking:
@@ -306,8 +306,8 @@ def concatenate_scenes(
         ducking_complex = (
             f"[0:a]{voice_chain}[vproc]; "
             f"[1:a]aformat=sample_rates=48000:channel_layouts=stereo,volume=0.28[bg_raw]; "
-            f"[bg_raw][vproc]sidechaincompress=threshold=0.07:ratio=4:attack=50:release=600[bg_ducked]; "
-            f"[vproc][bg_ducked]amix=inputs=2:duration=first:dropout_transition=2:normalize=0,alimiter=limit=-1dB[aout]"
+            f"[bg_raw][vproc]sidechaincompress=threshold=0.08:ratio=4:attack=50:release=600[bg_ducked]; "
+            f"[vproc][bg_ducked]amix=inputs=2:duration=first:dropout_transition=2:normalize=0,alimiter=limit=0.9[aout]"
         )
 
         cmd_master = [
@@ -323,7 +323,11 @@ def concatenate_scenes(
             "-movflags", "+faststart",
             str(output_path)
         ]
-        subprocess.run(cmd_master, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            subprocess.run(cmd_master, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Master soundtrack mix failed: {e.stderr}")
+            raise
     else:
         import shutil
         shutil.copy(raw_combined, output_path)
