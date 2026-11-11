@@ -47,11 +47,6 @@ jobs:
       - name: Set up FFmpeg
         uses: FedericoCarboni/setup-ffmpeg@v3
 
-      - name: Install System Fonts
-        run: |
-          sudo apt-get update -qq || true
-          sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core || true
-
       - name: Install Python Dependencies
         run: |
           pip install --upgrade pip
