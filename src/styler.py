@@ -55,29 +55,31 @@ def apply_cinematic_vignette(img: Image.Image) -> Image.Image:
     vignette = vignette.filter(ImageFilter.GaussianBlur(18))
     return Image.alpha_composite(img.convert("RGBA"), vignette).convert("RGB")
 
-def render_after_the_crown_frame(
-    base_img: Image.Image,
+def prepare_cinematic_background(base_img: Image.Image) -> Image.Image:
+    """Prepares the clean 16:9 pillarboxed/cropped image with cinematic vignette for Ken Burns."""
+    frame = fit_to_16_9(base_img)
+    return apply_cinematic_vignette(frame)
+
+def create_title_overlay_layer(
     label_title: Optional[str] = None,
     label_sub: Optional[str] = None,
     citation: Optional[str] = None,
     callout_red: Optional[str] = None,
-    callout_box: Optional[str] = None
-) -> Image.Image:
+    callout_box: Optional[str] = None,
+    canvas_size: Tuple[int, int] = (VIDEO_WIDTH, VIDEO_HEIGHT)
+) -> Optional[Image.Image]:
     """
-    Renders the exact typography and visual signature of 'After the Crown':
-    1. 16:9 framing with subtle dark vignette.
-    2. Lower-third text: white serif font with soft dark drop shadow.
-    3. Top-right citation: '[1] Source in Description'.
-    4. Optional red highlight banner ('SIX MARKS A DAY') or black callout box ('ONE SMALL SUITCASE').
+    Renders the exact typography and visual signature of 'After the Crown'
+    as an independent, transparent 1920x1080 overlay layer.
+    Stays 100% stationary and anchored over moving footage without scaling.
     """
-    frame = fit_to_16_9(base_img)
-    frame = apply_cinematic_vignette(frame)
-    w, h = frame.size
-    
+    if not (label_title or label_sub or citation or callout_red or callout_box):
+        return None
+
+    w, h = canvas_size
     overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     odraw = ImageDraw.Draw(overlay)
 
-    # Robust multi-platform font loader (Windows Georgia/Times and Linux Liberation/DejaVu)
     def load_best_font(candidates: list, size: int) -> ImageFont.ImageFont:
         for c in candidates:
             try:
@@ -122,24 +124,22 @@ def render_after_the_crown_frame(
         cite_w = bbox[2] - bbox[0]
         cx = w - cite_w - 70
         cy = 50
-        # Shadow
         odraw.text((cx + 2, cy + 2), cite_text, fill=(0, 0, 0, 180), font=font_cite)
         odraw.text((cx, cy), cite_text, fill=(235, 230, 220, 240), font=font_cite)
 
-    # 2. Lower-Third White Serif Label (After the Crown Frame 5)
+    # 2. Lower-Third White Serif Label
     if label_title:
         lx = 140
         ly = h - 210 if label_sub else h - 160
-        # Title Shadow & Text
-        odraw.text((lx + 3, ly + 3), label_title, fill=(0, 0, 0, 210), font=font_title)
+        odraw.text((lx + 3, ly + 3), label_title, fill=(0, 0, 0, 220), font=font_title)
         odraw.text((lx, ly), label_title, fill=(255, 255, 255, 255), font=font_title)
         
         if label_sub:
             sub_y = ly + 62
-            odraw.text((lx + 2, sub_y + 2), label_sub, fill=(0, 0, 0, 190), font=font_sub)
+            odraw.text((lx + 2, sub_y + 2), label_sub, fill=(0, 0, 0, 200), font=font_sub)
             odraw.text((lx, sub_y), label_sub, fill=(225, 220, 210, 235), font=font_sub)
 
-    # 3. Red Banner Callout (After the Crown Frame 20: "SIX MARKS A DAY")
+    # 3. Red Banner Callout
     if callout_red:
         banner_text = callout_red.upper()
         bbox = odraw.textbbox((0, 0), banner_text, font=font_banner)
@@ -147,14 +147,12 @@ def render_after_the_crown_frame(
         bh = 70
         bx = (w - bw) // 2
         by = h - 160
-        # Red rectangle
         odraw.rectangle([bx, by, bx + bw, by + bh], fill=(160, 25, 25, 235))
-        # Text centered
         tx = bx + 30
         ty = by + 14
         odraw.text((tx, ty), banner_text, fill=(255, 255, 255, 255), font=font_banner)
 
-    # 4. Black Typewriter Box Callout (After the Crown Frame 25: "ONE SMALL SUITCASE")
+    # 4. Black Typewriter Box Callout
     if callout_box:
         box_text = callout_box.upper()
         bbox = odraw.textbbox((0, 0), box_text, font=font_box)
@@ -162,11 +160,32 @@ def render_after_the_crown_frame(
         bh = 65
         bx = w - bw - 70
         by = 105
-        # Black rectangle
         odraw.rectangle([bx, by, bx + bw, by + bh], fill=(15, 15, 15, 235), outline=(50, 50, 50, 200), width=2)
-        # Typewriter text centered
         tx = bx + 25
         ty = by + 14
         odraw.text((tx, ty), box_text, fill=(245, 240, 230, 250), font=font_box)
 
-    return Image.alpha_composite(frame.convert("RGBA"), overlay).convert("RGB")
+    return overlay
+
+def render_after_the_crown_frame(
+    base_img: Image.Image,
+    label_title: Optional[str] = None,
+    label_sub: Optional[str] = None,
+    citation: Optional[str] = None,
+    callout_red: Optional[str] = None,
+    callout_box: Optional[str] = None
+) -> Image.Image:
+    """
+    Renders the combined composite frame (for static exports / previews).
+    """
+    frame = prepare_cinematic_background(base_img)
+    overlay = create_title_overlay_layer(
+        label_title=label_title,
+        label_sub=label_sub,
+        citation=citation,
+        callout_red=callout_red,
+        callout_box=callout_box
+    )
+    if overlay:
+        return Image.alpha_composite(frame.convert("RGBA"), overlay).convert("RGB")
+    return frame

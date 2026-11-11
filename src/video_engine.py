@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Dict, Any, Optional, Union
 from PIL import Image
 from src.config import FFMPEG_BIN, VIDEO_WIDTH, VIDEO_HEIGHT, VIDEO_FPS, TEMP_DIR, ASSETS_DIR
-from src.styler import render_after_the_crown_frame
+from src.styler import prepare_cinematic_background, create_title_overlay_layer, render_after_the_crown_frame
 
 logger = logging.getLogger("VideoEngine")
 
@@ -18,8 +18,16 @@ def format_srt_time(seconds: float) -> str:
     ms = int((seconds - int(seconds)) * 1000)
     return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
 
-def render_clip(image_path: Path, duration: float, output_path: Path, motion: str = "slow_zoom_in") -> bool:
-    """Renders a single scene clip with Ken Burns motion and cinema grading."""
+def render_clip(
+    image_path: Path,
+    duration: float,
+    output_path: Path,
+    motion: str = "slow_zoom_in",
+    overlay_path: Optional[Path] = None,
+    fade_in: bool = False,
+    fade_out: bool = False
+) -> bool:
+    """Renders a single scene clip with Ken Burns motion, cinema grading, static typography overlay, and chapter fades."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
     frames = max(30, int(duration * VIDEO_FPS))
     
@@ -40,26 +48,49 @@ def render_clip(image_path: Path, duration: float, output_path: Path, motion: st
         pan_x = "iw/2-(iw/zoom/2)"
         pan_y = "ih/2-(ih/zoom/2)"
 
-    vf_filter = (
+    bg_filter = (
         f"scale=2304:-2,"
         f"zoompan=z='{zoom_expr}':x='{pan_x}':y='{pan_y}':d={frames}:s={VIDEO_WIDTH}x{VIDEO_HEIGHT}:fps={VIDEO_FPS},"
         f"eq=contrast=1.12:brightness=-0.01:saturation=0.88,"
-        f"noise=alls=4:allf=t+u,"
-        f"format=yuv420p"
+        f"noise=alls=4:allf=t+u"
     )
 
-    cmd = [
-        FFMPEG_BIN, "-y",
-        "-loop", "1",
-        "-i", str(image_path),
-        "-vf", vf_filter,
-        "-c:v", "libx264",
-        "-preset", "veryfast",
-        "-crf", "18",
-        "-t", f"{duration:.3f}",
-        "-pix_fmt", "yuv420p",
-        str(output_path)
-    ]
+    if fade_in:
+        bg_filter += ",fade=t=in:st=0:d=0.35"
+    if fade_out:
+        out_start = max(0.0, duration - 0.35)
+        bg_filter += f",fade=t=out:st={out_start:.3f}:d=0.35"
+
+    if overlay_path and overlay_path.exists():
+        cmd = [
+            FFMPEG_BIN, "-y",
+            "-loop", "1", "-i", str(image_path),
+            "-loop", "1", "-i", str(overlay_path),
+            "-filter_complex",
+            f"[0:v]{bg_filter}[bg]; "
+            f"[1:v]format=rgba,fade=t=in:st=0.15:d=0.30:alpha=1[text_layer]; "
+            f"[bg][text_layer]overlay=0:0:shortest=1,format=yuv420p[outv]",
+            "-map", "[outv]",
+            "-c:v", "libx264",
+            "-preset", "veryfast",
+            "-crf", "18",
+            "-t", f"{duration:.3f}",
+            "-pix_fmt", "yuv420p",
+            str(output_path)
+        ]
+    else:
+        cmd = [
+            FFMPEG_BIN, "-y",
+            "-loop", "1", "-i", str(image_path),
+            "-vf", f"{bg_filter},format=yuv420p",
+            "-c:v", "libx264",
+            "-preset", "veryfast",
+            "-crf", "18",
+            "-t", f"{duration:.3f}",
+            "-pix_fmt", "yuv420p",
+            str(output_path)
+        ]
+
     try:
         subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
         return True
@@ -82,8 +113,10 @@ def create_scene_video(
 ) -> bool:
     """
     Renders a scene video with After the Crown multi-beat cuts.
-    If beat_durations are provided, cuts exactly on each phrase's natural cadence.
-    Otherwise cuts evenly across the scene.
+    Features:
+    1. Static, crisp lower-third title card overlay (never scales or zooms with footage).
+    2. Exact phrase-by-phrase audio synchronization.
+    3. Cinematic chapter fades (dip to black between scenes, crisp hard cuts internally).
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
@@ -110,7 +143,7 @@ def create_scene_video(
         else:
             sub_duration = duration / max(1, num_beats)
 
-        # Documentary lower-third typography appears on the first beat for ~3.5s
+        # Documentary lower-third typography appears on the first beat
         cur_title = label_title if beat_idx == 1 else None
         cur_sub = label_sub if beat_idx == 1 else None
         
@@ -118,21 +151,41 @@ def create_scene_video(
         cur_red = callout_red if (beat_idx == 2 or (num_beats == 1 and callout_red)) else None
         cur_box = callout_box if (beat_idx == 2 or (num_beats == 1 and callout_box)) else None
 
+        # 1. Clean background image (Ken Burns moves only this)
         raw_img = Image.open(img_p)
-        styled_frame = render_after_the_crown_frame(
-            base_img=raw_img,
+        clean_bg = prepare_cinematic_background(raw_img)
+        sub_img_path = TEMP_DIR / f"{output_path.stem}_beat_{beat_idx}_clean.jpg"
+        clean_bg.save(sub_img_path, "JPEG", quality=95)
+
+        # 2. Transparent overlay layer (static typography, drop shadow, callouts)
+        overlay_layer = create_title_overlay_layer(
             label_title=cur_title,
             label_sub=cur_sub,
-            citation=citation,
+            citation=citation if beat_idx == 1 else None,
             callout_red=cur_red,
             callout_box=cur_box
         )
-        
-        sub_img_path = TEMP_DIR / f"{output_path.stem}_beat_{beat_idx}_styled.jpg"
-        styled_frame.save(sub_img_path, "JPEG", quality=95)
+        overlay_path = None
+        if overlay_layer:
+            overlay_path = TEMP_DIR / f"{output_path.stem}_beat_{beat_idx}_overlay.png"
+            overlay_layer.save(overlay_path, "PNG")
+
+        # 3. Chapter Transition logic:
+        # Beat 1 dips in from black (0.35s). Beat 4 dips out to black (0.35s).
+        # Intermediate beats (2, 3) cut dry and crisp.
+        is_first_beat = (beat_idx == 1)
+        is_last_beat = (beat_idx == num_beats)
 
         sub_clip_path = TEMP_DIR / f"{output_path.stem}_beat_{beat_idx}.mp4"
-        if not render_clip(sub_img_path, sub_duration, sub_clip_path, motion=beat_motion):
+        if not render_clip(
+            image_path=sub_img_path,
+            duration=sub_duration,
+            output_path=sub_clip_path,
+            motion=beat_motion,
+            overlay_path=overlay_path,
+            fade_in=is_first_beat,
+            fade_out=is_last_beat
+        ):
             logger.error(f"Failed to render sub-clip {beat_idx} of scene {output_path.stem}")
             return False
         sub_clips.append(sub_clip_path)
