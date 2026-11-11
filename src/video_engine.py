@@ -52,8 +52,8 @@ def render_clip(
     bg_filter = (
         f"scale=2304:-2,"
         f"zoompan=z='{zoom_expr}':x='{pan_x}':y='{pan_y}':d={frames}:s={VIDEO_WIDTH}x{VIDEO_HEIGHT}:fps={VIDEO_FPS},"
-        f"eq=contrast=1.12:brightness=-0.01:saturation=0.88,"
-        f"noise=alls=4:allf=t+u"
+        f"eq=contrast=1.16:brightness=-0.02:saturation=0.0,"
+        f"noise=alls=5:allf=t+u"
     )
 
     if fade_in:
@@ -177,9 +177,9 @@ def create_scene_video(
         overlay_layer = create_title_overlay_layer(
             label_title=cur_title,
             label_sub=cur_sub,
-            citation=citation if beat_idx == 1 else None,
+            citation=None,
             callout_red=cur_red,
-            callout_box=cur_box
+            callout_box=None
         )
         overlay_path = None
         if overlay_layer:
