@@ -22,7 +22,7 @@ def clean_query(query: str) -> str:
     cleaned = re.sub(r'["\':;,]', '', query).strip()
     return cleaned
 
-def search_wikimedia_commons(query: str, min_width: int = 900, exclude_ids: Optional[Set[str]] = None) -> Optional[Dict[str, Any]]:
+def search_wikimedia_commons(query: str, min_width: int = 300, exclude_ids: Optional[Set[str]] = None) -> Optional[Dict[str, Any]]:
     """Searches Wikimedia Commons for high-resolution historical images."""
     clean_q = clean_query(query)
     url = "https://commons.wikimedia.org/w/api.php"
@@ -332,20 +332,7 @@ def fetch_single_visual_beat(
         logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found Wikipedia historical asset: {media_wiki.get('title')}")
         return target_file
 
-    # 5. Pexels & Pixabay (Atmospheric Scenery & Location Shots)
-    media_pex = search_pexels(query, exclude_ids=USED_MEDIA_IDENTIFIERS)
-    if media_pex and download_file(media_pex["url"], target_file):
-        USED_MEDIA_IDENTIFIERS.add(media_pex["id"])
-        logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found Pexels cinematic location photo: {media_pex.get('title')}")
-        return target_file
-
-    media_pix = search_pixabay(query, exclude_ids=USED_MEDIA_IDENTIFIERS)
-    if media_pix and download_file(media_pix["url"], target_file):
-        USED_MEDIA_IDENTIFIERS.add(media_pix["id"])
-        logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found Pixabay atmospheric photo: {media_pix.get('title')}")
-        return target_file
-
-    # 6. Relaxed query search (Europeana & Wikimedia)
+    # 5. Relaxed query search (Europeana & Wikimedia)
     simplified = re.sub(r'\b(vintage|antique|engraving|illustration|painting|photo|drawing|archives|diagram)\b', '', query, flags=re.IGNORECASE).strip()
     if simplified and simplified != query:
         media_rel_euro = search_europeana(simplified, exclude_ids=USED_MEDIA_IDENTIFIERS)
@@ -354,15 +341,15 @@ def fetch_single_visual_beat(
             logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found via relaxed Europeana query: {simplified}")
             return target_file
 
-        media_rel = search_wikimedia_commons(simplified, min_width=800, exclude_ids=USED_MEDIA_IDENTIFIERS)
+        media_rel = search_wikimedia_commons(simplified, min_width=300, exclude_ids=USED_MEDIA_IDENTIFIERS)
         if media_rel and download_file(media_rel["url"], target_file):
             USED_MEDIA_IDENTIFIERS.add(media_rel["id"])
             logger.info(f"[Scene {scene_id} Beat {beat_idx}] Found via relaxed query: {simplified}")
             return target_file
 
-    # 5. Topic fallback search
+    # 6. Topic fallback search
     if topic_fallback:
-        media_top = search_wikimedia_commons(f"{topic_fallback} historical archive", min_width=800, exclude_ids=USED_MEDIA_IDENTIFIERS)
+        media_top = search_wikimedia_commons(f"{topic_fallback} historical archive", min_width=300, exclude_ids=USED_MEDIA_IDENTIFIERS)
         if media_top and download_file(media_top["url"], target_file):
             USED_MEDIA_IDENTIFIERS.add(media_top["id"])
             return target_file
@@ -426,16 +413,16 @@ def fetch_media_for_scene(
     for beat_idx in range(1, target_beats + 1):
         q = queries[(beat_idx - 1) % len(queries)]
         
-        # Priority 1: Dedicated beat asset in paula_archive (e.g. scene_001_beat_02.jpg)
-        beat_asset = ASSETS_DIR / "paula_archive" / f"scene_{scene_id:03d}_beat_{beat_idx:02d}.jpg"
+        # Priority 1: Dedicated beat asset in hitler_family_archive (e.g. scene_001_beat_02.jpg)
+        beat_asset = ASSETS_DIR / "hitler_family_archive" / f"scene_{scene_id:03d}_beat_{beat_idx:02d}.jpg"
         c_file = None
-        if beat_asset.exists() and beat_asset.stat().st_size > 5000:
+        if beat_asset.exists() and beat_asset.stat().st_size > 3000:
             c_file = beat_asset
         elif beat_idx == 1 and custom_asset and Path(custom_asset).exists():
             c_file = Path(custom_asset)
         elif beat_idx == 1:
-            scene_asset = ASSETS_DIR / "paula_archive" / f"scene_{scene_id:03d}.jpg"
-            if scene_asset.exists() and scene_asset.stat().st_size > 5000:
+            scene_asset = ASSETS_DIR / "hitler_family_archive" / f"scene_{scene_id:03d}.jpg"
+            if scene_asset.exists() and scene_asset.stat().st_size > 3000:
                 c_file = scene_asset
 
         img_p = fetch_single_visual_beat(
