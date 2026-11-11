@@ -1,0 +1,1373 @@
+{
+  "title": "The Hitler Bloodline: From the Secret Origins to the Extinction of the Lineage",
+  "topic": "The Hitler Bloodline: From the Secret Origins to the Extinction of the Lineage",
+  "premise": "This forensic investigation traces the genealogical labyrinth of the Hitler family from 19th-century peasant roots in the Waldviertel to the deliberate pact made by surviving relatives to extinguish their own bloodline. Utilizing declassified intelligence dossiers, wartime medical records, and primary genealogical archives, we uncover the biological reality behind the dictator and the modern remnants of a cursed legacy.",
+  "total_acts": 5,
+  "total_scenes": 40,
+  "acts_outline": [
+    {
+      "act_number": 1,
+      "act_title": "Act I: The Waldviertel Web",
+      "time_and_place": "1837–1889: Döllersheim and Spital, Austro-Hungarian Empire",
+      "synopsis": "Examines the disputed paternity of Alois Hitler and the deep-seated genealogical anxieties that plagued Adolf Hitler throughout his life, exploring archival parish records and the shadow of incestuous lineage.",
+      "key_historical_figures_and_records": [
+        "Alois Hitler",
+        "Maria Anna Schicklgruber",
+        "Johann Georg Hiedler",
+        "Johann Nepomuk Hüttler",
+        "Döllersheim Parish Baptismal Register (1837)"
+      ],
+      "target_scenes": 8
+    },
+    {
+      "act_number": 2,
+      "act_title": "Act II: Shadows of the Inner Circle",
+      "time_and_place": "1903–1939: Linz, Vienna, and Munich",
+      "synopsis": "Traces the lives of Hitler's direct siblings, half-siblings, and extended family as they navigated his rise to power, highlighting friction, extortion, and the desperate efforts of relatives to hide or exploit their familial connection.",
+      "key_historical_figures_and_records": [
+        "Paula Hitler",
+        "Angela Hitler",
+        "Alois Hitler Jr.",
+        "Bridget Dowling",
+        "Nazi Party Racial Policy Office (Rasse- und Siedlungshauptamt) Files"
+      ],
+      "target_scenes": 8
+    },
+    {
+      "act_number": 3,
+      "act_title": "Act III: The American Heresy",
+      "time_and_place": "1939–1945: New York, Washington D.C., and Liverpool",
+      "synopsis": "Investigates the turbulent saga of the Hitler branch in the English-speaking world, focusing on William Patrick Hitler's dramatic break from the family, his direct appeal to FDR, and his wartime service in the US Navy.",
+      "key_historical_figures_and_records": [
+        "William Patrick Hitler",
+        "President Franklin D. Roosevelt",
+        "FBI Director J. Edgar Hoover",
+        "US Navy Intelligence Dossier on William P. Hitler (1942)"
+      ],
+      "target_scenes": 8
+    },
+    {
+      "act_number": 4,
+      "act_title": "Act IV: The Allied Dossiers",
+      "time_and_place": "1945–1955: Post-War Berlin, Bavaria, and Vienna",
+      "synopsis": "Analyzes Allied intelligence operations tasked with interrogating surviving family members, tracking down psychological profiles, and documenting the medical history of the bloodline to understand hereditary factors.",
+      "key_historical_figures_and_records": [
+        "Heinz Hitler",
+        "Geli Raubal",
+        "OSS Interrogation Reports (1945)",
+        "Bavarian Denazification Court Records"
+      ],
+      "target_scenes": 8
+    },
+    {
+      "act_number": 5,
+      "act_title": "Act V: The Final Pact",
+      "time_and_place": "1955–Present Day: New York, Long Island, and Lower Austria",
+      "synopsis": "Unveils the covert agreement made by the last surviving descendants to never marry or have children, culminating in the modern genealogical dead-end that definitively sealed the extinction of the Hitler lineage.",
+      "key_historical_figures_and_records": [
+        "The Stuart-Houston Brothers",
+        "Genealogical Archives of Lower Austria",
+        "Contemporary Investigative Journalism Records"
+      ],
+      "target_scenes": 8
+    }
+  ],
+  "scenes": [
+    {
+      "label_title": "Döllersheim Parish",
+      "label_sub": "Austro-Hungarian Empire // June 1837",
+      "citation": "[1]",
+      "callout_red": "GENEALOGICAL LABYRINTH",
+      "callout_box": "PARISH BAPTISMAL REGISTER ENTRY 1837",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "In the remote Waldviertel region, peasant roots run deep.",
+          "search_query": "Döllersheim parish church old Austria historical photograph 19th century"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Parish records document a birth shrouded in immediate secrecy.",
+          "search_query": "Austrian parish baptismal register manuscript 1837 handwriting"
+        },
+        {
+          "beat_id": 3,
+          "narration": "An unmarried peasant woman stands at the center of inquiry.",
+          "search_query": "19th century Austrian peasant woman portrait archival photography"
+        },
+        {
+          "beat_id": 4,
+          "narration": "This solitary entry initiates a decades-long biological mystery.",
+          "search_query": "Old church document parchment ink quill pen historical archive"
+        }
+      ],
+      "scene_id": 1,
+      "narration": "In the remote Waldviertel region, peasant roots run deep. Parish records document a birth shrouded in immediate secrecy. An unmarried peasant woman stands at the center of inquiry. This solitary entry initiates a decades-long biological mystery."
+    },
+    {
+      "label_title": "Maria Anna Schicklgruber",
+      "label_sub": "Strones, Lower Austria // 1837",
+      "citation": "[2]",
+      "callout_red": "ILLEGITIMATE BIRTH",
+      "callout_box": "STATE ARCHIVES VIENNA - FILE MS-44",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Maria Anna Schicklgruber gave birth without a declared father.",
+          "search_query": "Lower Austria rural landscape Strones village 19th century"
+        },
+        {
+          "beat_id": 2,
+          "narration": "The baptismal certificate leaves the paternity section entirely blank.",
+          "search_query": "1930s Nazi genealogical research document blank father field"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Social stigma in the Waldviertel fell heavily upon single mothers.",
+          "search_query": "Austrian peasant family life nineteenth century historical archive"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Her child, Alois, inherited a surname that carried heavy burdens.",
+          "search_query": "Old Austrian birth certificate registry folio nineteenth century"
+        }
+      ],
+      "scene_id": 2,
+      "narration": "Maria Anna Schicklgruber gave birth without a declared father. The baptismal certificate leaves the paternity section entirely blank. Social stigma in the Waldviertel fell heavily upon single mothers. Her child, Alois, inherited a surname that carried heavy burdens."
+    },
+    {
+      "label_title": "Johann Georg Hiedler",
+      "label_sub": "Spital // June 1842",
+      "citation": "[3]",
+      "callout_red": "DISPUTED PATERNITY",
+      "callout_box": "MARRIAGE RECORD SCHICKLGRUBER HIEDLER",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Years later, itinerant miller Johann Georg Hiedler married Maria.",
+          "search_query": "Austrian itinerant worker portrait 19th century historical photograph"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He never legally legitimized young Alois during his lifetime.",
+          "search_query": "Old Austrian marriage registry church book 1842"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Decades passed before formal claims of paternity emerged publicly.",
+          "search_query": "Rural Austrian mill waterwheel nineteenth century archive"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Historians remain divided on Hiedler's actual biological contribution.",
+          "search_query": "Historical genealogical notes handwriting German script archive"
+        }
+      ],
+      "scene_id": 3,
+      "narration": "Years later, itinerant miller Johann Georg Hiedler married Maria. He never legally legitimized young Alois during his lifetime. Decades passed before formal claims of paternity emerged publicly. Historians remain divided on Hiedler's actual biological contribution."
+    },
+    {
+      "label_title": "Johann Nepomuk Hüttler",
+      "label_sub": "Spital // 1850s",
+      "citation": "[4]",
+      "callout_red": "THE SHADOW PATRIARCH",
+      "callout_box": "WEITERSFELD LAND REGISTRY RECORDS",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Johann Nepomuk Hüttler took the young Alois into his home.",
+          "search_query": "Wealthy Austrian peasant farmer house 19th century Spital"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He quietly financed the boy's upbringing and early career advancement.",
+          "search_query": "Austrian farmstead interior nineteenth century historical museum"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Family whispers long connected Nepomuk to the disputed bloodline.",
+          "search_query": "Old German family portrait 19th century Waldviertel region"
+        },
+        {
+          "beat_id": 4,
+          "narration": "His hidden hand guided the lineage far more than legally recorded.",
+          "search_query": "Notary document nineteenth century Austro-Hungarian Empire signature"
+        }
+      ],
+      "scene_id": 4,
+      "narration": "Johann Nepomuk Hüttler took the young Alois into his home. He quietly financed the boy's upbringing and early career advancement. Family whispers long connected Nepomuk to the disputed bloodline. His hidden hand guided the lineage far more than legally recorded."
+    },
+    {
+      "label_title": "Alois Hitler",
+      "label_sub": "Vienna Customs Office // 1876",
+      "citation": "[5]",
+      "callout_red": "SURNAME MUTATION",
+      "callout_box": "OFFICIAL NAME CHANGE PETITION 1876",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Alois officially petitioned to alter his surname from Schicklgruber.",
+          "search_query": "Austrian civil servant uniform 1870s historical photograph"
+        },
+        {
+          "beat_id": 2,
+          "narration": "The spelling mutated through bureaucratic translation into Hitler.",
+          "search_query": "Vienna bureaucratic state archive document 1876 signature"
+        },
+        {
+          "beat_id": 3,
+          "narration": "This stroke of a pen erased centuries of peasant obscurity.",
+          "search_query": "Imperial Austrian customs office ledger book nineteenth century"
+        },
+        {
+          "beat_id": 4,
+          "narration": "A new dynastic identity was forged out of administrative whim.",
+          "search_query": "Official government seal stamp Austro-Hungarian Empire archive"
+        }
+      ],
+      "scene_id": 5,
+      "narration": "Alois officially petitioned to alter his surname from Schicklgruber. The spelling mutated through bureaucratic translation into Hitler. This stroke of a pen erased centuries of peasant obscurity. A new dynastic identity was forged out of administrative whim."
+    },
+    {
+      "label_title": "The Incestuous Web",
+      "label_sub": "Braunau am Inn // 1885",
+      "citation": "[6]",
+      "callout_red": "CANONICAL DISPENSATION",
+      "callout_box": "DIOCESAN DISPENSATION ARCHIVE LINZ",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Alois sought to marry Klara Pölzl, his own second cousin.",
+          "search_query": "Braunau am Inn town view upper Austria 19th century"
+        },
+        {
+          "beat_id": 2,
+          "narration": "The church demanded special dispensation due to close blood ties.",
+          "search_query": "Catholic diocesan church archive document Latin script 1885"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Nepomuk orchestrated the paperwork to unite the branching families.",
+          "search_query": "Vatican church dispensation seal parchment historical document"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Genetic concentration within the Waldviertel intensified dramatically.",
+          "search_query": "Genealogical tree chart nineteenth century Austro-Hungarian peasants"
+        }
+      ],
+      "scene_id": 6,
+      "narration": "Alois sought to marry Klara Pölzl, his own second cousin. The church demanded special dispensation due to close blood ties. Nepomuk orchestrated the paperwork to unite the branching families. Genetic concentration within the Waldviertel intensified dramatically."
+    },
+    {
+      "label_title": "Döllersheim Parish Register",
+      "label_sub": "Archival Investigation // 1938-1945",
+      "citation": "[7]",
+      "callout_red": "GENEALOGICAL ANXIETY",
+      "callout_box": "GESTAPO GENEALOGY DIVISION DOSSIER",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Adolf Hitler harbored lifelong terror regarding his ancestry.",
+          "search_query": "Nazi party chancellery secret document archive Berlin"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Secret state orders investigated rumors of Jewish and Slavic blood.",
+          "search_query": "Gestapo headquarters Berlin archival photograph 1940s"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Agents scoured Döllersheim parish books to purge compromising pages.",
+          "search_query": "Nazi official examining old church records white gloves archive"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The entire ancestral village was later obliterated for a military range.",
+          "search_query": "Döllersheim abandoned village ruins military training ground 1940s"
+        }
+      ],
+      "scene_id": 7,
+      "narration": "Adolf Hitler harbored lifelong terror regarding his ancestry. Secret state orders investigated rumors of Jewish and Slavic blood. Agents scoured Döllersheim parish books to purge compromising pages. The entire ancestral village was later obliterated for a military range."
+    },
+    {
+      "label_title": "The Dictator's Legacy",
+      "label_sub": "Berlin // April 1945",
+      "citation": "[8]",
+      "callout_red": "LINEAGE TERMINUS",
+      "callout_box": "REICH CHANCELLERY BUNKER ARCHIVE",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "The dictator's obsession with blood purity masked his own origins.",
+          "search_query": "Berlin ruins Reich Chancellery 1945 allied occupation"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Waldviertel peasant inbreeding created the biological foundation.",
+          "search_query": "Old Austrian peasant wooden farmhouse ruined historical photo"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Every attempt to sanitize the family tree ultimately failed.",
+          "search_query": "Damaged archival papers wartime destruction Berlin 1945"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Thus began the tragic shadow of a cursed family lineage.",
+          "search_query": "Historical research files scattered on desk dark moody lighting"
+        }
+      ],
+      "scene_id": 8,
+      "narration": "The dictator's obsession with blood purity masked his own origins. Waldviertel peasant inbreeding created the biological foundation. Every attempt to sanitize the family tree ultimately failed. Thus began the tragic shadow of a cursed family lineage."
+    },
+    {
+      "label_title": "Alois Hitler Jr.",
+      "label_sub": "Liverpool and Hamburg // 1903–1914",
+      "citation": "[1]",
+      "callout_red": "FAMILY EXILE",
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Alois Hitler Jr. abandoned his brutal familial home early.",
+          "search_query": "Alois Hitler Jr portrait circa 1910 Dublin Liverpool"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He drifted across Europe, working quietly as a waiter.",
+          "search_query": "Early 20th century Liverpool waterfront shipping docks archive"
+        },
+        {
+          "beat_id": 3,
+          "narration": "In England, he married Bridget Dowling, concealing his origins.",
+          "search_query": "Bridget Dowling marriage certificate record 1910"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The half-brother vanished into obscurity, anticipating future reckoning.",
+          "search_query": "Hamburg harbor passenger lists 1914 archive records"
+        }
+      ],
+      "scene_id": 9,
+      "narration": "Alois Hitler Jr. abandoned his brutal familial home early. He drifted across Europe, working quietly as a waiter. In England, he married Bridget Dowling, concealing his origins. The half-brother vanished into obscurity, anticipating future reckoning."
+    },
+    {
+      "label_title": "Angela Hitler",
+      "label_sub": "Vienna and Berchtesgaden // 1928–1935",
+      "citation": "[2]",
+      "callout_red": "DOMESTIC ALLIANCE",
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Angela Hitler managed the household after Geli Raubal died.",
+          "search_query": "Angela Hitler archival portrait 1930s Munich"
+        },
+        {
+          "beat_id": 2,
+          "narration": "She served as the dictator's trusted domestic administrator.",
+          "search_query": "Berghof interior dining room 1936 national archives"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Yet ideological friction strained their fragile familial bond continuously.",
+          "search_query": "Adolf Hitler with family members Berchtesgaden archive"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Angela eventually married Martin Hammitzer, distancing from the circle.",
+          "search_query": "Angela Hitler marriage announcement 1936 newspaper archive"
+        }
+      ],
+      "scene_id": 10,
+      "narration": "Angela Hitler managed the household after Geli Raubal died. She served as the dictator's trusted domestic administrator. Yet ideological friction strained their fragile familial bond continuously. Angela eventually married Martin Hammitzer, distancing from the circle."
+    },
+    {
+      "label_title": "Paula Hitler",
+      "label_sub": "Vienna // 1930–1938",
+      "citation": "[3]",
+      "callout_red": "SILENT WITNESS",
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Paula Hitler lived quietly in Vienna under an assumed surname.",
+          "search_query": "Paula Hitler identity card Vienna 1935 archives"
+        },
+        {
+          "beat_id": 2,
+          "narration": "She relied on covert financial stipends sent from Munich.",
+          "search_query": "Reich Chancellery financial ledger documents 1937"
+        },
+        {
+          "beat_id": 3,
+          "narration": "SS surveillance officers carefully monitored her daily movements.",
+          "search_query": "Gestapo Vienna headquarters surveillance files 1938"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The youngest sister remained a ghost within the regime.",
+          "search_query": "Vienna street scene 1938 national socialist rallies archive"
+        }
+      ],
+      "scene_id": 11,
+      "narration": "Paula Hitler lived quietly in Vienna under an assumed surname. She relied on covert financial stipends sent from Munich. SS surveillance officers carefully monitored her daily movements. The youngest sister remained a ghost within the regime."
+    },
+    {
+      "label_title": "Rasseamt Dossier C10",
+      "label_sub": "Berlin // 1934–1939",
+      "citation": "[4, 5]",
+      "callout_red": "GENEALOGICAL PURGE",
+      "callout_box": "CLASSIFIED SS ANCESTRY DOSSIER",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "The SS Racial Policy Office investigated the Führer's pedigree.",
+          "search_query": "Rasse und Siedlungshauptamt Berlin archive files 1935"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Archivists searched parish books for hidden Jewish or Slavic blood.",
+          "search_query": "Austrian parish church registry book open pages archive"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Inconvenient ancestral branches were systematically redacted or destroyed.",
+          "search_query": "Redacted Nazi genealogical chart document 1939"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The resulting master file vanished into Himmler's private vault.",
+          "search_query": "Heinrich Himmler personal safe documents SS archives"
+        }
+      ],
+      "scene_id": 12,
+      "narration": "The SS Racial Policy Office investigated the Führer's pedigree. Archivists searched parish books for hidden Jewish or Slavic blood. Inconvenient ancestral branches were systematically redacted or destroyed. The resulting master file vanished into Himmler's private vault."
+    },
+    {
+      "label_title": "William Patrick Hitler",
+      "label_sub": "London and Berlin // 1935–1938",
+      "citation": "[6]",
+      "callout_red": "THE BLACKMAILER",
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "William Patrick exploited his infamous uncle for personal advancement.",
+          "search_query": "William Patrick Hitler portrait London 1937"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He demanded a high-ranking post in the Berlin regime.",
+          "search_query": "Reich Chancellery exterior Berlin 1936 archive photo"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Threats of sensational tabloid exposés infuriated the dictator deeply.",
+          "search_query": "British newspaper headlines 1938 Hitler nephew scandal"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The rebellious nephew fled Britain for the United States.",
+          "search_query": "Transatlantic passenger liner Queen Mary 1939 archive"
+        }
+      ],
+      "scene_id": 13,
+      "narration": "William Patrick exploited his infamous uncle for personal advancement. He demanded a high-ranking post in the Berlin regime. Threats of sensational tabloid exposés infuriated the dictator deeply. The rebellious nephew fled Britain for the United States."
+    },
+    {
+      "label_title": "Döllersheim Records",
+      "label_sub": "Lower Austria // 1938",
+      "citation": "[7]",
+      "callout_red": "ERADICATION",
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Following the Anschluss, the ancestral village faced total destruction.",
+          "search_query": "Doellersheim church ruins military training ground 1939"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Engineers converted the birthplace of Maria Schicklgruber into a firing range.",
+          "search_query": "Wehrmacht artillery exercise Lower Austria 1940"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Parish baptismal registries were seized and relocated to Berlin.",
+          "search_query": "Reichsarchiv Berlin document boxes World War II"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Physical evidence of the tainted bloodline was deliberately erased.",
+          "search_query": "Destroyed village rubble Lower Austria 1942 archive"
+        }
+      ],
+      "scene_id": 14,
+      "narration": "Following the Anschluss, the ancestral village faced total destruction. Engineers converted the birthplace of Maria Schicklgruber into a firing range. Parish baptismal registries were seized and relocated to Berlin. Physical evidence of the tainted bloodline was deliberately erased."
+    },
+    {
+      "label_title": "The Munich Blackmails",
+      "label_sub": "Bavaria // 1933–1939",
+      "citation": "[8]",
+      "callout_red": "EXTORTION",
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Impoverished relatives wrote desperate letters requesting massive cash sums.",
+          "search_query": "Handwritten German correspondence archive 1935"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Secret police intercepted petitions threatening public genealogical leaks.",
+          "search_query": "Gestapo interrogation room Munich police headquarters 1937"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Bormann managed payoffs to secure absolute family silence.",
+          "search_query": "Martin Bormann desk office NSDAP Munich 1938"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Dissenters faced sudden arrest and confinement in concentration camps.",
+          "search_query": "Dachau concentration camp prisoners marching 1938 archive"
+        }
+      ],
+      "scene_id": 15,
+      "narration": "Impoverished relatives wrote desperate letters requesting massive cash sums. Secret police intercepted petitions threatening public genealogical leaks. Bormann managed payoffs to secure absolute family silence. Dissenters faced sudden arrest and confinement in concentration camps."
+    },
+    {
+      "label_title": "The Eve of War",
+      "label_sub": "Berlin and Linz // August 1939",
+      "citation": "[9]",
+      "callout_red": "FINAL SEAL",
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "On the eve of global conflict, the inner circle fractured.",
+          "search_query": "Berlin street scene mobilization August 1939 archive"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Surviving relatives accepted state pensions under strict gag orders.",
+          "search_query": "Nazi civil service documents stamped confidential 1939"
+        },
+        {
+          "beat_id": 3,
+          "narration": "The dictator consolidated absolute control over his origins.",
+          "search_query": "Adolf Hitler balcony Reich Chancellery September 1939"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The Waldviertel secret was buried beneath the machinery of war.",
+          "search_query": "Wehrmacht troops marching across border Poland 1939"
+        }
+      ],
+      "scene_id": 16,
+      "narration": "On the eve of global conflict, the inner circle fractured. Surviving relatives accepted state pensions under strict gag orders. The dictator consolidated absolute control over his origins. The Waldviertel secret was buried beneath the machinery of war."
+    },
+    {
+      "label_title": "Liverpool Docks",
+      "label_sub": "England // January 1939",
+      "citation": "[1]",
+      "callout_red": "THE RECKONING",
+      "callout_box": "MANIFEST OF SS GEORGIIC DEPARTING LIVERPOOL FOR NEW YORK",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "William Patrick Hitler flees Britain for a new life.",
+          "search_query": "Liverpool passenger port 1939 archival photograph"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He boards the transatlantic liner carrying a dangerous surname.",
+          "search_query": "Transatlantic passenger ship SS Georgic 1930s"
+        },
+        {
+          "beat_id": 3,
+          "narration": "His departure severs the final tenuous British familial tie.",
+          "search_query": "Liverpool maritime docks vintage black and white photo"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The black sheep of the dictator's family crosses the Atlantic.",
+          "search_query": "Passenger manifest document 1939 National Archives"
+        }
+      ],
+      "scene_id": 17,
+      "narration": "William Patrick Hitler flees Britain for a new life. He boards the transatlantic liner carrying a dangerous surname. His departure severs the final tenuous British familial tie. The black sheep of the dictator's family crosses the Atlantic."
+    },
+    {
+      "label_title": "New York City",
+      "label_sub": "Manhattan // May 1939",
+      "citation": "[2]",
+      "callout_red": null,
+      "callout_box": "LOOK MAGAZINE ARCHIVE INTERVIEW SPREAD",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Arriving in America, William capitalizes on his notorious bloodline.",
+          "search_query": "New York City skyline 1939 vintage photograph"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He tours the United States giving lectures on his infamous uncle.",
+          "search_query": "William Patrick Hitler speaking tour poster 1939"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Magazines pay top dollar for stories of the Führer at home.",
+          "search_query": "Look Magazine article featuring William Patrick Hitler"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Public curiosity turns into deep suspicion as war draws near.",
+          "search_query": "Times Square New York crowds 1939 historical photo"
+        }
+      ],
+      "scene_id": 18,
+      "narration": "Arriving in America, William capitalizes on his notorious bloodline. He tours the United States giving lectures on his infamous uncle. Magazines pay top dollar for stories of the Führer at home. Public curiosity turns into deep suspicion as war draws near."
+    },
+    {
+      "label_title": "Washington D.C.",
+      "label_sub": "The White House // March 1940",
+      "citation": "[3]",
+      "callout_red": "DIRECT APPEAL",
+      "callout_box": "LETTER FROM WILLIAM PATRICK HITLER TO PRESIDENT FRANKLIN D. ROOSEVELT",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Desperate for purpose, William writes directly to the President.",
+          "search_query": "The White House exterior Washington DC 1940"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He begs Franklin Roosevelt for a chance to fight Nazi tyranny.",
+          "search_query": "President Franklin D. Roosevelt at desk Oval Office"
+        },
+        {
+          "beat_id": 3,
+          "narration": "His letter outlines the heavy burden of carrying the Hitler name.",
+          "search_query": "Typed letter signed William P Hitler historical document"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The White House forwards the bizarre petition to intelligence agencies.",
+          "search_query": "Franklin D Roosevelt presidential library archive document"
+        }
+      ],
+      "scene_id": 19,
+      "narration": "Desperate for purpose, William writes directly to the President. He begs Franklin Roosevelt for a chance to fight Nazi tyranny. His letter outlines the heavy burden of carrying the Hitler name. The White House forwards the bizarre petition to intelligence agencies."
+    },
+    {
+      "label_title": "FBI Headquarters",
+      "label_sub": "Washington D.C. // July 1942",
+      "citation": "[4, 5]",
+      "callout_red": "SECURITY RISK",
+      "callout_box": "FBI SURVEILLANCE DOSSIER ON WILLIAM P. HITLER",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Director J Edgar Hoover opens an extensive file on the nephew.",
+          "search_query": "J Edgar Hoover FBI director portrait 1940s"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Agents track his every move across New York and Washington.",
+          "search_query": "FBI investigative case file document World War II"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Investigators debate whether he is a loyal asset or a spy.",
+          "search_query": "Federal Bureau of Investigation Washington DC 1942"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The dossier concludes he poses no immediate threat to security.",
+          "search_query": "Declassified FBI file page stamp top secret"
+        }
+      ],
+      "scene_id": 20,
+      "narration": "Director J Edgar Hoover opens an extensive file on the nephew. Agents track his every move across New York and Washington. Investigators debate whether he is a loyal asset or a spy. The dossier concludes he poses no immediate threat to security."
+    },
+    {
+      "label_title": "US Navy Recruiting Office",
+      "label_sub": "Manhattan // March 1944",
+      "citation": "[6]",
+      "callout_red": "ENLISTMENT",
+      "callout_box": "US NAVY SERVICE RECORD: WILLIAM PATRICK STUART-HOUSTON",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Refusing to be sidelined, William enlists in the United States Navy.",
+          "search_query": "US Navy recruitment station New York 1944"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He passes physical examinations and takes the solemn oath of service.",
+          "search_query": "US Navy enlistment oath World War II photo"
+        },
+        {
+          "beat_id": 3,
+          "narration": "He serves aboard a naval hospital ship as a pharmacist mate.",
+          "search_query": "US Navy hospital ship at sea World War II"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The nephew of Adolf Hitler now wears the uniform of his enemy.",
+          "search_query": "US Navy sailor portrait World War II archive"
+        }
+      ],
+      "scene_id": 21,
+      "narration": "Refusing to be sidelined, William enlists in the United States Navy. He passes physical examinations and takes the solemn oath of service. He serves aboard a naval hospital ship as a pharmacist mate. The nephew of Adolf Hitler now wears the uniform of his enemy."
+    },
+    {
+      "label_title": "Naval Intelligence Office",
+      "label_sub": "Washington D.C. // August 1944",
+      "citation": "[7]",
+      "callout_red": "BACKGROUND CHECK",
+      "callout_box": "NAVAL INTELLIGENCE EVALUATION ON THE HITLER BLOODLINE",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Naval Intelligence scrutinizes his background for potential sabotage.",
+          "search_query": "Office of Naval Intelligence building Washington 1944"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Officers interview commanders to assess his loyalty in combat.",
+          "search_query": "World War II US Navy officers reviewing documents"
+        },
+        {
+          "beat_id": 3,
+          "narration": "His service record remains exemplary despite the scandalous lineage.",
+          "search_query": "US Navy personnel service jacket World War II"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Intelligence confirms his complete alienation from his German family.",
+          "search_query": "Declassified military intelligence memorandum 1944"
+        }
+      ],
+      "scene_id": 22,
+      "narration": "Naval Intelligence scrutinizes his background for potential sabotage. Officers interview commanders to assess his loyalty in combat. His service record remains exemplary despite the scandalous lineage. Intelligence confirms his complete alienation from his German family."
+    },
+    {
+      "label_title": "Pacific Theater",
+      "label_sub": "Aboard USS Ray // February 1945",
+      "citation": "[8]",
+      "callout_red": "ACTIVE DUTY",
+      "callout_box": "SHIP LOG ENTRY: PHARMACIST'S MATE THIRD CLASS WILLIAM P. STUART-HOUSTON",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "William deploys to the Pacific theater aboard combat support vessels.",
+          "search_query": "US Navy fleet underway in the Pacific Ocean 1945"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He tends to wounded American sailors under constant threat of attack.",
+          "search_query": "US Navy medic tending to wounded sailor WWII"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Far from Berlin, he fights directly against his uncle's Axis allies.",
+          "search_query": "World War II Pacific theater naval action photo"
+        },
+        {
+          "beat_id": 4,
+          "narration": "His wartime service earns him a Purple Heart after a minor injury.",
+          "search_query": "Purple Heart medal World War II citation document"
+        }
+      ],
+      "scene_id": 23,
+      "narration": "William deploys to the Pacific theater aboard combat support vessels. He tends to wounded American sailors under constant threat of attack. Far from Berlin, he fights directly against his uncle's Axis allies. His wartime service earns him a Purple Heart after a minor injury."
+    },
+    {
+      "label_title": "New York Separation Center",
+      "label_sub": "New York // November 1945",
+      "citation": "[9]",
+      "callout_red": "HONORABLE DISCHARGE",
+      "callout_box": "CERTIFICATE OF HONORABLE SERVICE: NAVY DISCHARGE PAPERS",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Following the war, William receives an honorable military discharge.",
+          "search_query": "US Navy discharge papers World War II document"
+        },
+        {
+          "beat_id": 2,
+          "narration": "He discards the radioactive surname that defined his early life.",
+          "search_query": "New York City bustling street scene late 1945"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Adopting the name Stuart-Houston, he melts into American suburbia.",
+          "search_query": "Suburban American neighborhood 1940s vintage photo"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The American heresy of the Hitler lineage is successfully buried.",
+          "search_query": "Quiet suburban home New York late 1940s"
+        }
+      ],
+      "scene_id": 24,
+      "narration": "Following the war, William receives an honorable military discharge. He discards the radioactive surname that defined his early life. Adopting the name Stuart-Houston, he melts into American suburbia. The American heresy of the Hitler lineage is successfully buried."
+    },
+    {
+      "label_title": "Berlin Ruins",
+      "label_sub": "Post-War Allied Sector // May 1945",
+      "citation": "[1]",
+      "callout_red": "OPERATION ECLIPSE",
+      "callout_box": "ALLIED COUNTER-INTELLIGENCE DIRECTIVE ON THE HITLER FAMILY TREE",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Allied intelligence launched aggressive investigations into surviving relatives immediately after Berlin fell."
+        },
+        {
+          "beat_id": 2,
+          "narration": "Military dossiers classified surviving family members as potential ideological threats."
+        },
+        {
+          "beat_id": 3,
+          "narration": "Investigators sought to map the complete genetic and social footprint."
+        },
+        {
+          "beat_id": 4,
+          "narration": "Every known living blood relative became the target of intense scrutiny.",
+          "search_query": "Allied military intelligence officers reviewing captured German documents Berlin 1945"
+        }
+      ],
+      "scene_id": 25,
+      "narration": "Allied intelligence launched aggressive investigations into surviving relatives immediately after Berlin fell. Military dossiers classified surviving family members as potential ideological threats. Investigators sought to map the complete genetic and social footprint. Every known living blood relative became the target of intense scrutiny."
+    },
+    {
+      "label_title": "OSS Interrogation Room",
+      "label_sub": "Munich // June 1945",
+      "citation": "[2]",
+      "callout_red": "PSYCHOLOGICAL DOSSIER",
+      "callout_box": "OFFICE OF STRATEGIC SERVICES FILE ON HEREDITY AND PATHOLOGY",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "American interrogators compiled psychological profiles of the dictator's extended family."
+        },
+        {
+          "beat_id": 2,
+          "narration": "Reports focused heavily on inherited mental instability and family dysfunction."
+        },
+        {
+          "beat_id": 3,
+          "narration": "Medical experts analyzed decades of inbreeding within rural Austrian communities."
+        },
+        {
+          "beat_id": 4,
+          "narration": "The OSS files attempted to connect genealogy directly to political fanaticism.",
+          "search_query": "OSS intelligence report typing room Munich 1945 historical document"
+        }
+      ],
+      "scene_id": 26,
+      "narration": "American interrogators compiled psychological profiles of the dictator's extended family. Reports focused heavily on inherited mental instability and family dysfunction. Medical experts analyzed decades of inbreeding within rural Austrian communities. The OSS files attempted to connect genealogy directly to political fanaticism."
+    },
+    {
+      "label_title": "Heinz Hitler's File",
+      "label_sub": "Moscow Archives / Berlin // July 1945",
+      "citation": "[3]",
+      "callout_red": "MISSING FATE",
+      "callout_box": "SOVIET SMERSH INTERROGATION RECORDS REGARDING HEINZ HITLER",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Soviet and Western intelligence chased conflicting reports regarding Heinz Hitler."
+        },
+        {
+          "beat_id": 2,
+          "narration": "The young nephew had perished in Soviet captivity at Butyrka prison."
+        },
+        {
+          "beat_id": 3,
+          "narration": "Allied dossiers cross-referenced his military service with the Wehrmacht signals corps."
+        },
+        {
+          "beat_id": 4,
+          "narration": "His sudden death closed one of the primary direct male branches.",
+          "search_query": "Soviet military archive document detailing prisoner death Moscow 1945"
+        }
+      ],
+      "scene_id": 27,
+      "narration": "Soviet and Western intelligence chased conflicting reports regarding Heinz Hitler. The young nephew had perished in Soviet captivity at Butyrka prison. Allied dossiers cross-referenced his military service with the Wehrmacht signals corps. His sudden death closed one of the primary direct male branches."
+    },
+    {
+      "label_title": "Geli Raubal's Room",
+      "label_sub": "Prinzregentenplatz, Munich // August 1945",
+      "citation": "[4]",
+      "callout_red": "THE MUNICH TRAGEDY",
+      "callout_box": "REOPENED POLICE INQUIRY INTO GELI RAUBAL'S 1931 DEATH",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Allied investigators re-examined the mysterious 1931 death of Geli Raubal."
+        },
+        {
+          "beat_id": 2,
+          "narration": "Confiscated diaries and witness statements revealed deep domestic tyranny."
+        },
+        {
+          "beat_id": 3,
+          "narration": "Investigators documented the dictator's psychological control over his half-niece."
+        },
+        {
+          "beat_id": 4,
+          "narration": "The renewed inquiry exposed foundational trauma within the family lineage.",
+          "search_query": "Munich apartment interior police investigation archive photo 1945"
+        }
+      ],
+      "scene_id": 28,
+      "narration": "Allied investigators re-examined the mysterious 1931 death of Geli Raubal. Confiscated diaries and witness statements revealed deep domestic tyranny. Investigators documented the dictator's psychological control over his half-niece. The renewed inquiry exposed foundational trauma within the family lineage."
+    },
+    {
+      "label_title": "Bavarian Denazification Court",
+      "label_sub": "Traunstein // October 1945",
+      "citation": "[5]",
+      "callout_red": "CLASSIFICATION V",
+      "callout_box": "BAVARIAN DENAZIFICATION PROCEEDINGS FOR SURVIVING RELATIVES",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Surviving relatives faced rigorous denazification tribunals in post-war Bavaria."
+        },
+        {
+          "beat_id": 2,
+          "narration": "Witnesses testified about proximity to power and material benefits received."
+        },
+        {
+          "beat_id": 3,
+          "narration": "Court records captured attempts by family members to distance themselves."
+        },
+        {
+          "beat_id": 4,
+          "narration": "Judicial verdicts struggled to balance guilt by blood with individual action.",
+          "search_query": "Bavarian denazification court hearing room witnesses 1945"
+        }
+      ],
+      "scene_id": 29,
+      "narration": "Surviving relatives faced rigorous denazification tribunals in post-war Bavaria. Witnesses testified about proximity to power and material benefits received. Court records captured attempts by family members to distance themselves. Judicial verdicts struggled to balance guilt by blood with individual action."
+    },
+    {
+      "label_title": "Medical Dossier C10",
+      "label_sub": "Vienna General Hospital // November 1945",
+      "citation": "[6]",
+      "callout_red": "GENETIC TRACE",
+      "callout_box": "AUSTRIAN MEDICAL BOARD REPORT ON HITLER FAMILY HEALTH RECORDS",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Allied medical teams collected historical clinical records from Austrian clinics."
+        },
+        {
+          "beat_id": 2,
+          "narration": "Pathologists documented hereditary patterns of illness across generations."
+        },
+        {
+          "beat_id": 3,
+          "narration": "Intermarriage in the Waldviertel region became a focal point of study."
+        },
+        {
+          "beat_id": 4,
+          "narration": "The biological files sought medical explanations for extreme behavioral traits.",
+          "search_query": "Medical records archive hospital files Vienna post war 1945"
+        }
+      ],
+      "scene_id": 30,
+      "narration": "Allied medical teams collected historical clinical records from Austrian clinics. Pathologists documented hereditary patterns of illness across generations. Intermarriage in the Waldviertel region became a focal point of study. The biological files sought medical explanations for extreme behavioral traits."
+    },
+    {
+      "label_title": "Paula Hitler's Interrogation",
+      "label_sub": "Berchtesgaden // January 1946",
+      "citation": "[7]",
+      "callout_red": "THE LAST SISTER",
+      "callout_box": "US COUNTER INTELLIGENCE CORPS INTERVIEW TRANSCRIPT WITH PAULA HITLER",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "American intelligence officers located Paula Hitler living quietly in Bavaria."
+        },
+        {
+          "beat_id": 2,
+          "narration": "Interrogation transcripts show a sister distanced from political decision-making."
+        },
+        {
+          "beat_id": 3,
+          "narration": "She detailed their impoverished childhood in rural Austria and early family dynamics."
+        },
+        {
+          "beat_id": 4,
+          "narration": "CIC agents ultimately concluded she posed no active security threat.",
+          "search_query": "US Army intelligence officer interviewing German civilian woman 1946"
+        }
+      ],
+      "scene_id": 31,
+      "narration": "American intelligence officers located Paula Hitler living quietly in Bavaria. Interrogation transcripts show a sister distanced from political decision-making. She detailed their impoverished childhood in rural Austria and early family dynamics. CIC agents ultimately concluded she posed no active security threat."
+    },
+    {
+      "label_title": "The Consolidated Archive",
+      "label_sub": "Washington D.C. // December 1955",
+      "citation": "[8]",
+      "callout_red": "CLASSIFIED ARCHIVE",
+      "callout_box": "CENTRAL INTELLIGENCE AGENCY FINAL DOSSIER ON THE HITLER LINEAGE",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "By the mid-1950s, Allied intelligence agencies sealed their consolidated files."
+        },
+        {
+          "beat_id": 2,
+          "narration": "The comprehensive dossiers were archived across Washington and London."
+        },
+        {
+          "beat_id": 3,
+          "narration": "Surveillance of surviving family members quietly drew to a close."
+        },
+        {
+          "beat_id": 4,
+          "narration": "The bloodline was formally documented, monitored, and left to history.",
+          "search_query": "National Archives document boxes and classification stamps Washington 1955"
+        }
+      ],
+      "scene_id": 32,
+      "narration": "By the mid-1950s, Allied intelligence agencies sealed their consolidated files. The comprehensive dossiers were archived across Washington and London. Surveillance of surviving family members quietly drew to a close. The bloodline was formally documented, monitored, and left to history."
+    },
+    {
+      "label_title": "Long Island",
+      "label_sub": "Patchogue, New York // October 1955",
+      "citation": "[1]",
+      "callout_red": "THE COVERT COMPACT",
+      "callout_box": "SURVEILLANCE FILES CONFIRM PERMANENT VOLUNTARY STERILITY AMONG SURVIVING DESCENDANTS.",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "In quiet American suburbs, the remaining relatives sought anonymity.",
+          "search_query": "Patchogue New York street 1955 historical photograph"
+        },
+        {
+          "beat_id": 2,
+          "narration": "William Patrick Hitler changed his surname to Stuart-Houston.",
+          "search_query": "William Stuart Houston portrait Long Island 1950s"
+        },
+        {
+          "beat_id": 3,
+          "narration": "He established a private life far from European infamy.",
+          "search_query": "Patchogue suburban home 1955 historical archive"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Yet the shadow of his bloodline remained inescapable.",
+          "search_query": "American surveillance photograph FBI file 1955"
+        }
+      ],
+      "scene_id": 33,
+      "narration": "In quiet American suburbs, the remaining relatives sought anonymity. William Patrick Hitler changed his surname to Stuart-Houston. He established a private life far from European infamy. Yet the shadow of his bloodline remained inescapable."
+    },
+    {
+      "label_title": "The Stuart-Houston Brothers",
+      "label_sub": "New York // 1970",
+      "citation": "[2]",
+      "callout_red": null,
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Four sons grew up under strict self-imposed isolation.",
+          "search_query": "Stuart Houston brothers family photograph archive"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Alexander, Louis, Brian, and Howard avoided public notice.",
+          "search_query": "Long Island suburban residence 1970s photograph"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Neighbors knew little of their controversial familial roots.",
+          "search_query": "New York suburban neighborhood aerial view 1970"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Private agreements quietly shaped their domestic choices.",
+          "search_query": "Unpublished family album photographs 1970s"
+        }
+      ],
+      "scene_id": 34,
+      "narration": "Four sons grew up under strict self-imposed isolation. Alexander, Louis, Brian, and Howard avoided public notice. Neighbors knew little of their controversial familial roots. Private agreements quietly shaped their domestic choices."
+    },
+    {
+      "label_title": "Genealogical Archives of Lower Austria",
+      "label_sub": "Vienna // March 1985",
+      "citation": "[3]",
+      "callout_red": "GENEALOGICAL DEAD-END",
+      "callout_box": "AUSTRIAN REGISTERS VERIFY COMPLETE CESSATION OF LINEAL DESCENDANTS.",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Austrian registrars tracked the dwindling family tree.",
+          "search_query": "Lower Austria genealogical records room 1980s"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Birth and marriage ledgers revealed deliberate dead-ends.",
+          "search_query": "Historical birth registry book Austria 20th century"
+        },
+        {
+          "beat_id": 3,
+          "narration": "No children were born to the primary American branch.",
+          "search_query": "Archival document family tree chart Austria"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The pact of extinction was systematically documented.",
+          "search_query": "State archives documents Vienna 1985"
+        }
+      ],
+      "scene_id": 35,
+      "narration": "Austrian registrars tracked the dwindling family tree. Birth and marriage ledgers revealed deliberate dead-ends. No children were born to the primary American branch. The pact of extinction was systematically documented."
+    },
+    {
+      "label_title": "Investigative Records",
+      "label_sub": "New York // July 2001",
+      "citation": "[4]",
+      "callout_red": null,
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Journalists uncovered the truth behind the silent brothers.",
+          "search_query": "New York newspaper archive room 2001"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Interviews confirmed a mutual pact never to procreate.",
+          "search_query": "Investigative journalism notes and clippings"
+        },
+        {
+          "beat_id": 3,
+          "narration": "They consciously chose to end the biological dynasty.",
+          "search_query": "Modern research documents on historical lineage"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Their deliberate choice prevented any generational legacy.",
+          "search_query": "Documentary production archives New York"
+        }
+      ],
+      "scene_id": 36,
+      "narration": "Journalists uncovered the truth behind the silent brothers. Interviews confirmed a mutual pact never to procreate. They consciously chose to end the biological dynasty. Their deliberate choice prevented any generational legacy."
+    },
+    {
+      "label_title": "Lower Austria",
+      "label_sub": "Spital // May 2010",
+      "citation": "[5]",
+      "callout_red": "THE FINAL PACT",
+      "callout_box": "LOCAL PROPERTY RECORDS SHOW TOTAL ABANDONMENT OF ANCESTRAL ESTATES.",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_in",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Ancestral villages in Austria retained dark memories.",
+          "search_query": "Spital Austria village historical landscape photograph"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Local historians locked away old municipal files.",
+          "search_query": "Austrian municipal archive building exterior"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Property ties were permanently severed by surviving kin.",
+          "search_query": "Old land registry maps Lower Austria"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The European branch dissolved into historical obscurity.",
+          "search_query": "Rural Austrian cemetery gates 2010"
+        }
+      ],
+      "scene_id": 37,
+      "narration": "Ancestral villages in Austria retained dark memories. Local historians locked away old municipal files. Property ties were permanently severed by surviving kin. The European branch dissolved into historical obscurity."
+    },
+    {
+      "label_title": "Contemporary Investigation",
+      "label_sub": "Long Island // September 2018",
+      "citation": "[6]",
+      "callout_red": null,
+      "callout_box": null,
+      "target_beats": 4,
+      "ken_burns_motion": "pan_right",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Researchers revisited the quiet Long Island neighborhoods.",
+          "search_query": "Long Island suburban neighborhood modern view"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Remaining aging relatives maintained absolute silence.",
+          "search_query": "Suburban house exterior Patchogue New York"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Public inquiries were met with steadfast refusal to speak.",
+          "search_query": "Investigative journalist reporting equipment 2018"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The pact remained strictly enforced across decades.",
+          "search_query": "Modern documentary research files desk"
+        }
+      ],
+      "scene_id": 38,
+      "narration": "Researchers revisited the quiet Long Island neighborhoods. Remaining aging relatives maintained absolute silence. Public inquiries were met with steadfast refusal to speak. The pact remained strictly enforced across decades."
+    },
+    {
+      "label_title": "The Final Archive",
+      "label_sub": "Berlin // November 2023",
+      "citation": "[7]",
+      "callout_red": "BIOLOGICAL TERMINATION",
+      "callout_box": "CENTRAL INTELLIGENCE AND GERMAN FEDERAL ARCHIVES CLOSE THE CASE FILE.",
+      "target_beats": 4,
+      "ken_burns_motion": "slow_zoom_out",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "Federal archives compiled the exhaustive genealogical verdict.",
+          "search_query": "German Federal Archives reading room Berlin"
+        },
+        {
+          "beat_id": 2,
+          "narration": "Every medical and personal dossier was cross-referenced.",
+          "search_query": "Historical document folders stacked on desk"
+        },
+        {
+          "beat_id": 3,
+          "narration": "The data proved the absolute extinction of the lineage.",
+          "search_query": "Closed archive box with historical label"
+        },
+        {
+          "beat_id": 4,
+          "narration": "The bloodline ended not by accident, but by design.",
+          "search_query": "Archival stamp closing historical case file"
+        }
+      ],
+      "scene_id": 39,
+      "narration": "Federal archives compiled the exhaustive genealogical verdict. Every medical and personal dossier was cross-referenced. The data proved the absolute extinction of the lineage. The bloodline ended not by accident, but by design."
+    },
+    {
+      "label_title": "Epilogue",
+      "label_sub": "Present Day",
+      "citation": "[8]",
+      "callout_red": "HISTORY CONCLUDES",
+      "callout_box": "THE GENETIC LINE IS CLOSED FOREVER.",
+      "target_beats": 4,
+      "ken_burns_motion": "pan_left",
+      "beats": [
+        {
+          "beat_id": 1,
+          "narration": "History records the definitive closure of the bloodline.",
+          "search_query": "Modern documentary cinematic landscape shot"
+        },
+        {
+          "beat_id": 2,
+          "narration": "The secret pact successfully neutralized a dark legacy.",
+          "search_query": "Empty historical archive corridor cinematic light"
+        },
+        {
+          "beat_id": 3,
+          "narration": "Generations unborn were spared the burden of the name.",
+          "search_query": "Abstract shadows on historical document wall"
+        },
+        {
+          "beat_id": 4,
+          "narration": "Thus the dynasty concluded in absolute quietude.",
+          "search_query": "Closing credits historical documentary aesthetic"
+        }
+      ],
+      "scene_id": 40,
+      "narration": "History records the definitive closure of the bloodline. The secret pact successfully neutralized a dark legacy. Generations unborn were spared the burden of the name. Thus the dynasty concluded in absolute quietude."
+    }
+  ]
+}

@@ -38,6 +38,10 @@ def build_documentary(
     if preloaded_script:
         logger.info("Using preloaded documentary script...")
         script = preloaded_script
+    elif (ASSETS_DIR / "hitler_family_master_script.json").exists() and any(w in topic.lower() for w in ["family", "bloodline", "familia", "família", "linhagem"]):
+        logger.info("Using master historical script: assets/hitler_family_master_script.json")
+        with open(ASSETS_DIR / "hitler_family_master_script.json", "r", encoding="utf-8") as pf:
+            script = json.load(pf)
     elif (ASSETS_DIR / "paula_hitler_script.json").exists() and ("hitler" in topic.lower() or "sister" in topic.lower()) and num_scenes <= 8:
         logger.info("Using bundled historical documentary script: assets/paula_hitler_script.json")
         with open(ASSETS_DIR / "paula_hitler_script.json", "r", encoding="utf-8") as pf:
