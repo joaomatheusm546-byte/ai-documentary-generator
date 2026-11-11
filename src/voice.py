@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Dict, Any, List
 import edge_tts
 from src.config import FFMPEG_BIN, FFPROBE_BIN, DEFAULT_VOICE, TEMP_DIR
+from src.lexicon import prepare_text_for_tts
 
 logger = logging.getLogger(__name__)
 
@@ -29,8 +30,11 @@ async def generate_scene_voice(
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
+    # Apply phonetic calibration for canonical documentary entities
+    calibrated_text = prepare_text_for_tts(text)
+    
     # Generate MP3
-    communicate = edge_tts.Communicate(text, voice, rate=rate)
+    communicate = edge_tts.Communicate(calibrated_text, voice, rate=rate)
     await communicate.save(str(output_path))
     
     # Get exact duration via ffprobe
