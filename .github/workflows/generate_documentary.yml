@@ -44,9 +44,13 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Verify FFmpeg & System Dependencies
+      - name: Set up FFmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v3
+
+      - name: Install System Fonts
         run: |
-          ffmpeg -version
+          sudo apt-get update -qq || true
+          sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core || true
 
       - name: Install Python Dependencies
         run: |
