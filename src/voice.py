@@ -84,10 +84,12 @@ def synthesize_beat_audio(
     meta = asyncio.run(generate_scene_voice(text, raw_path, voice=voice))
     
     if pause_after > 0:
+        # Strip trailing dead silence produced by TTS, then append exact breathing pause
+        af_filter = f"areverse,silenceremove=start_periods=1:start_duration=0.05:start_threshold=-35dB,areverse,apad=pad_dur={pause_after}"
         cmd = [
             FFMPEG_BIN, "-y",
             "-i", str(raw_path),
-            "-af", f"apad=pad_dur={pause_after}",
+            "-af", af_filter,
             "-c:a", "libmp3lame",
             "-q:a", "2",
             str(output_path)
