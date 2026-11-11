@@ -9,38 +9,25 @@ logger = logging.getLogger("Styler")
 
 def fit_to_16_9(img: Image.Image, target_size: Tuple[int, int] = (VIDEO_WIDTH, VIDEO_HEIGHT)) -> Image.Image:
     """
-    Fits any aspect ratio into a cinematic 16:9 frame:
-    - If near 16:9 (aspect >= 1.5), crops to fill.
-    - If vertical or 4:3, creates a blurred, darkened background pillarbox (After the Crown standard).
+    Guarantees 100% full-bleed 16:9 widescreen frame (ZERO black bars, ZERO blurred pillarbox).
+    Intelligently crops to keep faces/subjects centered in the upper/middle rule of thirds.
     """
     tw, th = target_size
     iw, ih = img.size
     aspect = iw / ih
 
-    if 1.5 <= aspect <= 1.9:
-        scale = max(tw / iw, th / ih)
-        nw, nh = int(iw * scale), int(ih * scale)
-        res = img.resize((nw, nh), Image.Resampling.LANCZOS)
-        left = (nw - tw) // 2
+    scale = max(tw / iw, th / ih)
+    nw, nh = int(math.ceil(iw * scale)), int(math.ceil(ih * scale))
+    res = img.resize((nw, nh), Image.Resampling.LANCZOS)
+    
+    left = (nw - tw) // 2
+    # For vertical portraits (aspect < 1.0), anchor slightly higher (top 18-22%) so the head/face is perfectly framed
+    if aspect < 1.0:
+        top = int(max(0, min(nh - th, (nh - th) * 0.20)))
+    else:
         top = (nh - th) // 2
-        return res.crop((left, top, left + tw, top + th))
-
-    # Blurred pillarbox background
-    bg_scale = max(tw / iw, th / ih)
-    bg = img.resize((int(iw * bg_scale), int(ih * bg_scale)), Image.Resampling.LANCZOS)
-    bg_left = (bg.width - tw) // 2
-    bg_top = (bg.height - th) // 2
-    bg = bg.crop((bg_left, bg_top, bg_left + tw, bg_top + th))
-    bg = bg.filter(ImageFilter.GaussianBlur(35))
-    bg = bg.point(lambda p: int(p * 0.40)) # Darken background
-
-    fg_scale = th / ih
-    fg_w, fg_h = int(iw * fg_scale), th
-    fg = img.resize((fg_w, fg_h), Image.Resampling.LANCZOS)
-
-    paste_x = (tw - fg_w) // 2
-    bg.paste(fg, (paste_x, 0))
-    return bg
+        
+    return res.crop((left, top, left + tw, top + th))
 
 def apply_cinematic_vignette(img: Image.Image) -> Image.Image:
     """Adds a smooth dark radial vignette around the edges."""
@@ -48,17 +35,34 @@ def apply_cinematic_vignette(img: Image.Image) -> Image.Image:
     vignette = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     vdraw = ImageDraw.Draw(vignette)
     max_radius = math.hypot(w / 2, h / 2)
-    for r in range(int(max_radius * 0.45), int(max_radius), 8):
-        dist = max(0.0, (r - max_radius * 0.45) / (max_radius * 0.55))
-        alpha = int((dist ** 1.8) * 180)
-        vdraw.ellipse([w/2 - r, h/2 - r, w/2 + r, h/2 + r], outline=(0, 0, 0, min(235, alpha)), width=10)
-    vignette = vignette.filter(ImageFilter.GaussianBlur(18))
+    for r in range(int(max_radius * 0.40), int(max_radius), 8):
+        dist = max(0.0, (r - max_radius * 0.40) / (max_radius * 0.60))
+        alpha = int((dist ** 1.9) * 200)
+        vdraw.ellipse([w/2 - r, h/2 - r, w/2 + r, h/2 + r], outline=(0, 0, 0, min(240, alpha)), width=10)
+    vignette = vignette.filter(ImageFilter.GaussianBlur(22))
     return Image.alpha_composite(img.convert("RGBA"), vignette).convert("RGB")
 
 def prepare_cinematic_background(base_img: Image.Image) -> Image.Image:
-    """Prepares the clean 16:9 pillarboxed/cropped image with cinematic vignette for Ken Burns."""
+    """
+    Prepares the 100% full-bleed 16:9 background with unified
+    After the Crown archival monochrome/sepia grading and film vignette.
+    """
     frame = fit_to_16_9(base_img)
-    return apply_cinematic_vignette(frame)
+    
+    # 1. Convert to rich monochrome
+    gray = frame.convert("L")
+    
+    # 2. Add subtle vintage gelatin warmth (tint: R+3%, B-5%)
+    r = gray.point(lambda p: min(255, int(p * 1.03)))
+    g = gray
+    b = gray.point(lambda p: max(0, int(p * 0.95)))
+    tinted = Image.merge("RGB", (r, g, b))
+    
+    # 3. Enhance film contrast (crush pure blacks slightly, expand midtones)
+    contrasted = ImageOps.autocontrast(tinted, cutoff=2)
+    
+    # 4. Cinematic vignette
+    return apply_cinematic_vignette(contrasted)
 
 def create_title_overlay_layer(
     label_title: Optional[str] = None,
@@ -117,29 +121,21 @@ def create_title_overlay_layer(
         "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"
     ], 32)
 
-    # 1. Top-Right Citation
-    if citation:
-        cite_text = citation if "Source" in citation else f"{citation} Source in Description"
-        bbox = odraw.textbbox((0, 0), cite_text, font=font_cite)
-        cite_w = bbox[2] - bbox[0]
-        cx = w - cite_w - 70
-        cy = 50
-        odraw.text((cx + 2, cy + 2), cite_text, fill=(0, 0, 0, 180), font=font_cite)
-        odraw.text((cx, cy), cite_text, fill=(235, 230, 220, 240), font=font_cite)
-
-    # 2. Lower-Third White Serif Label
+    # 1. Lower-Third White Serif Label (After the Crown Standard)
     if label_title:
         lx = 140
         ly = h - 210 if label_sub else h - 160
-        odraw.text((lx + 3, ly + 3), label_title, fill=(0, 0, 0, 220), font=font_title)
+        
+        # Soft dark gradient glow behind text for contrast
+        odraw.text((lx + 3, ly + 3), label_title, fill=(0, 0, 0, 240), font=font_title)
         odraw.text((lx, ly), label_title, fill=(255, 255, 255, 255), font=font_title)
         
         if label_sub:
             sub_y = ly + 62
-            odraw.text((lx + 2, sub_y + 2), label_sub, fill=(0, 0, 0, 200), font=font_sub)
-            odraw.text((lx, sub_y), label_sub, fill=(225, 220, 210, 235), font=font_sub)
+            odraw.text((lx + 2, sub_y + 2), label_sub, fill=(0, 0, 0, 220), font=font_sub)
+            odraw.text((lx, sub_y), label_sub, fill=(225, 220, 210, 240), font=font_sub)
 
-    # 3. Red Highlight Forensic Callout (Etapa 2)
+    # 2. Forensic Red Callout Banner
     if callout_red:
         banner_text = callout_red.upper()
         bbox = odraw.textbbox((0, 0), banner_text, font=font_banner)
@@ -148,24 +144,11 @@ def create_title_overlay_layer(
         bx = (w - bw) // 2
         by = h - 160
         # Dark translucent plate with red border and red left accent bar
-        odraw.rectangle([bx, by, bx + bw, by + bh], fill=(12, 12, 12, 225), outline=(190, 30, 30, 240), width=2)
+        odraw.rectangle([bx, by, bx + bw, by + bh], fill=(12, 12, 12, 235), outline=(190, 30, 30, 255), width=2)
         odraw.rectangle([bx, by, bx + 6, by + bh], fill=(220, 35, 35, 255))
         tx = bx + 30
         ty = by + (bh - (bbox[3] - bbox[1])) // 2 - 2
         odraw.text((tx, ty), banner_text, fill=(245, 240, 235, 255), font=font_banner)
-
-    # 4. Black Typewriter Box Callout (Etapa 2)
-    if callout_box:
-        box_text = callout_box.upper()
-        bbox = odraw.textbbox((0, 0), box_text, font=font_box)
-        bw = bbox[2] - bbox[0] + 50
-        bh = 60
-        bx = w - bw - 70
-        by = 105
-        odraw.rectangle([bx, by, bx + bw, by + bh], fill=(12, 12, 12, 225), outline=(75, 75, 75, 200), width=2)
-        tx = bx + 25
-        ty = by + (bh - (bbox[3] - bbox[1])) // 2 - 2
-        odraw.text((tx, ty), box_text, fill=(240, 235, 225, 250), font=font_box)
 
     return overlay
 
