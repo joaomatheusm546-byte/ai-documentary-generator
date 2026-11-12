@@ -1,5 +1,5 @@
 import React from "react";
-import { Audio, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { Audio, Easing, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { AtmosphereOverlay } from "./AtmosphereOverlay";
 import { DustParticles } from "./DustParticles";
 import { ImpactTextStamp } from "./ImpactTextStamp";
@@ -35,17 +35,31 @@ export const ParallaxSplitCollageScene: React.FC<Props> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Subtle camera drift
-  const bgScale = interpolate(frame, [0, durationInFrames], [1.02, 1.08]);
+  const easeCinematic = Easing.bezier(0.22, 0.1, 0.25, 1.0);
+
+  // Subtle camera drift with organic easing
+  const bgScale = interpolate(frame, [0, durationInFrames], [1.02, 1.08], {
+    easing: easeCinematic,
+  });
 
   // Document motion (left side)
-  const docScale = interpolate(frame, [0, durationInFrames], [0.96, 1.02]);
-  const docRotateX = interpolate(frame, [0, durationInFrames], [8, 5]);
-  const docRotateY = interpolate(frame, [0, durationInFrames], [6, 3]);
+  const docScale = interpolate(frame, [0, durationInFrames], [0.96, 1.02], {
+    easing: easeCinematic,
+  });
+  const docRotateX = interpolate(frame, [0, durationInFrames], [8, 5], {
+    easing: easeCinematic,
+  });
+  const docRotateY = interpolate(frame, [0, durationInFrames], [6, 3], {
+    easing: easeCinematic,
+  });
 
   // Subject cutout motion (right side, anchored top)
-  const subjectScale = interpolate(frame, [0, durationInFrames], [1.18, 1.25]);
-  const subjectRotateY = interpolate(frame, [0, durationInFrames], [-4, -1]);
+  const subjectScale = interpolate(frame, [0, durationInFrames], [1.18, 1.25], {
+    easing: easeCinematic,
+  });
+  const subjectRotateY = interpolate(frame, [0, durationInFrames], [-4, -1], {
+    easing: easeCinematic,
+  });
   const subjectFloatY = Math.sin(frame * 0.04) * 6;
 
   // Connecting line animation (draws from frame 15 to 35)
@@ -205,6 +219,22 @@ export const ParallaxSplitCollageScene: React.FC<Props> = ({
             width: "auto",
             objectFit: "contain",
             filter: "contrast(1.12) brightness(0.95)",
+          }}
+        />
+        {/* Micro-print archival texture overlay */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage:
+              "radial-gradient(rgba(0,0,0,0.15) 1px, transparent 0)",
+            backgroundSize: "3px 3px",
+            mixBlendMode: "multiply",
+            pointerEvents: "none",
+            opacity: 0.35,
           }}
         />
       </div>

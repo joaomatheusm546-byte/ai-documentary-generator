@@ -1,5 +1,5 @@
 import React from "react";
-import { Audio, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { Audio, Easing, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { AtmosphereOverlay } from "./AtmosphereOverlay";
 import { DustParticles } from "./DustParticles";
 import { TornTapeLabel } from "./TornTapeLabel";
@@ -11,6 +11,7 @@ interface Props {
   labelTitle?: string;
   labelSubtitle?: string;
   highlightText?: string;
+  highlightStyle?: "marker" | "red_circle" | "both";
   hasBoom?: boolean;
   citation?: string;
 }
@@ -22,17 +23,29 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
   labelTitle,
   labelSubtitle,
   highlightText,
+  highlightStyle = "both",
   hasBoom = false,
   citation,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Slow continuous camera push on the document
-  const docScale = interpolate(frame, [0, durationInFrames], [0.93, 1.01]);
-  const docRotateX = interpolate(frame, [0, durationInFrames], [9, 5]);
-  const docRotateY = interpolate(frame, [0, durationInFrames], [-6, -2]);
-  const docPanY = interpolate(frame, [0, durationInFrames], [12, -12]);
+  // Organic S-Curve / Cinematic Easing
+  const easeCinematic = Easing.bezier(0.22, 0.1, 0.25, 1.0);
+
+  // Slow continuous camera push on the document with organic easing
+  const docScale = interpolate(frame, [0, durationInFrames], [0.93, 1.01], {
+    easing: easeCinematic,
+  });
+  const docRotateX = interpolate(frame, [0, durationInFrames], [9, 5], {
+    easing: easeCinematic,
+  });
+  const docRotateY = interpolate(frame, [0, durationInFrames], [-6, -2], {
+    easing: easeCinematic,
+  });
+  const docPanY = interpolate(frame, [0, durationInFrames], [12, -12], {
+    easing: easeCinematic,
+  });
 
   // Highlight line animation (marker stroke)
   const markerSpring = spring({
@@ -140,7 +153,7 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
         />
 
         {/* Animated Forensic Highlight */}
-        {highlightText && (
+        {highlightText && (highlightStyle === "marker" || highlightStyle === "both") && (
           <div
             style={{
               position: "absolute",
@@ -173,6 +186,40 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
               {highlightText}
             </span>
           </div>
+        )}
+
+        {/* Animated Hand-Drawn Forensic Red Ink Ring */}
+        {highlightText && (highlightStyle === "red_circle" || highlightStyle === "both") && (
+          <svg
+            style={{
+              position: "absolute",
+              top: "41%",
+              left: "12%",
+              width: "76%",
+              height: 60,
+              pointerEvents: "none",
+              zIndex: 30,
+              overflow: "visible",
+            }}
+          >
+            <ellipse
+              cx="48%"
+              cy="50%"
+              rx="46%"
+              ry="42%"
+              fill="none"
+              stroke="#b91c1c"
+              strokeWidth="3.2"
+              strokeDasharray="900"
+              strokeDashoffset={900 * (1 - markerProgress)}
+              strokeLinecap="round"
+              style={{
+                filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.85))",
+                transform: "rotate(-1.5deg)",
+                transformOrigin: "center center",
+              }}
+            />
+          </svg>
         )}
       </div>
 

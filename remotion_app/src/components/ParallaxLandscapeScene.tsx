@@ -1,5 +1,5 @@
 import React from "react";
-import { Audio, Img, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { Audio, Easing, Img, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { AtmosphereOverlay } from "./AtmosphereOverlay";
 import { DustParticles } from "./DustParticles";
 import { TornTapeLabel } from "./TornTapeLabel";
@@ -23,9 +23,17 @@ export const ParallaxLandscapeScene: React.FC<Props> = ({
 }) => {
   const frame = useCurrentFrame();
 
-  const scale = interpolate(frame, [0, durationInFrames], [1.0, 1.08]);
-  const panX = interpolate(frame, [0, durationInFrames], [-16, 16]);
-  const panY = interpolate(frame, [0, durationInFrames], [8, -8]);
+  const easeCinematic = Easing.bezier(0.22, 0.1, 0.25, 1.0);
+
+  const scale = interpolate(frame, [0, durationInFrames], [1.0, 1.08], {
+    easing: easeCinematic,
+  });
+  const panX = interpolate(frame, [0, durationInFrames], [-16, 16], {
+    easing: easeCinematic,
+  });
+  const panY = interpolate(frame, [0, durationInFrames], [8, -8], {
+    easing: easeCinematic,
+  });
 
   return (
     <div

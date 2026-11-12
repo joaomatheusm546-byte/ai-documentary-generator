@@ -1,5 +1,5 @@
 import React from "react";
-import { Audio, Img, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { Audio, Easing, Img, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { AtmosphereOverlay } from "./AtmosphereOverlay";
 import { DustParticles } from "./DustParticles";
 import { TornTapeLabel } from "./TornTapeLabel";
@@ -25,16 +25,26 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
 }) => {
   const frame = useCurrentFrame();
 
-  // Background slow zoom & drift
-  const bgScale = interpolate(frame, [0, durationInFrames], [1.02, 1.1]);
-  const bgTranslateX = interpolate(frame, [0, durationInFrames], [-8, 8]);
+  // Organic S-Curve / Cinematic Easing (After the Crown standard)
+  const easeCinematic = Easing.bezier(0.22, 0.1, 0.25, 1.0);
+
+  // Background slow zoom & drift with organic acceleration
+  const bgScale = interpolate(frame, [0, durationInFrames], [1.02, 1.1], {
+    easing: easeCinematic,
+  });
+  const bgTranslateX = interpolate(frame, [0, durationInFrames], [-8, 8], {
+    easing: easeCinematic,
+  });
 
   // Subject cutout motion (Anchored at TOP to preserve head, hair & hats)
-  const subjectScale = interpolate(frame, [0, durationInFrames], [1.2, 1.28]);
+  const subjectScale = interpolate(frame, [0, durationInFrames], [1.2, 1.28], {
+    easing: easeCinematic,
+  });
   const subjectRotateY = interpolate(
     frame,
     [0, durationInFrames],
-    [-2.2, 2.2]
+    [-2.2, 2.2],
+    { easing: easeCinematic }
   );
   const subjectRotateX = interpolate(
     Math.sin(frame * 0.05),
@@ -139,6 +149,22 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
               width: "auto",
               objectFit: "contain",
               filter: "contrast(1.12) brightness(0.95)",
+            }}
+          />
+          {/* Micro-print archival texture overlay */}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundImage:
+                "radial-gradient(rgba(0,0,0,0.15) 1px, transparent 0)",
+              backgroundSize: "3px 3px",
+              mixBlendMode: "multiply",
+              pointerEvents: "none",
+              opacity: 0.35,
             }}
           />
         </div>
