@@ -46,6 +46,11 @@ jobs:
           unzip -q -o assets/hitler_family_archive.zip -d assets/hitler_family_archive/
           mkdir -p remotion_app/public/images
           cp -r assets/hitler_family_archive/*.jpg remotion_app/public/images/
+          # Overwrite with verified authentic replacements (eradicating bread & scraper hallucinations)
+          if [ -d "assets/clean_replacements" ]; then
+            cp -f assets/clean_replacements/*.jpg remotion_app/public/images/
+            echo "Staged $(ls assets/clean_replacements/*.jpg | wc -l) clean verified replacements into Remotion public"
+          fi
           echo "Staged $(ls remotion_app/public/images | wc -l) archival images into Remotion public"
 
           # Download and unpack full narration audio (160 beats) + foley SFX + music
