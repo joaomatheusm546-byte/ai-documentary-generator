@@ -1,0 +1,524 @@
+{
+  "title": "The Hitler Bloodline - Act I: The Waldviertel Web",
+  "actNumber": 1,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "musicSrc": "audio/music.mp3",
+  "beats": [
+    {
+      "id": "s1_b1",
+      "durationInFrames": 114,
+      "layoutType": "document",
+      "bgImage": "images/scene_001_beat_01.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim Parish - Beat",
+      "labelSubtitle": "Historical Archive // Folio 5",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": true,
+      "citation": "[1, 1] Sources in Description",
+      "audioSrc": "audio/voice_s001_b01.mp3"
+    },
+    {
+      "id": "s1_b2",
+      "durationInFrames": 126,
+      "layoutType": "document",
+      "bgImage": "images/scene_001_beat_02.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim Parish - Beat",
+      "labelSubtitle": "Historical Archive // Folio 6",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": false,
+      "citation": "[1, 1] Sources in Description",
+      "audioSrc": "audio/voice_s001_b02.mp3"
+    },
+    {
+      "id": "s1_b3",
+      "durationInFrames": 113,
+      "layoutType": "split_collage",
+      "bgImage": "images/scene_001_beat_03.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim Parish - Beat",
+      "labelSubtitle": "Historical Archive // Folio 7",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": false,
+      "citation": "[1, 1] Sources in Description",
+      "audioSrc": "audio/voice_s001_b03.mp3",
+      "splitData": {
+        "leftDocument": "images/scene_001_beat_02.jpg",
+        "rightSubject": "cutouts/maria_schicklgruber_cutout.png",
+        "highlightText": "CLASSIFIED FORENSIC DOSSIER"
+      }
+    },
+    {
+      "id": "s1_b4",
+      "durationInFrames": 140,
+      "layoutType": "family_tree",
+      "bgImage": "images/scene_001_beat_04.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim Parish - Beat",
+      "labelSubtitle": "Historical Archive // Folio 8",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 1] Sources in Description",
+      "audioSrc": "audio/voice_s001_b04.mp3",
+      "treeData": {
+        "title": "Origins of the Hitler Lineage",
+        "subtitle": "Lower Austria // 1837 Paternity Mystery",
+        "nodes": [
+          {
+            "id": "maria",
+            "name": "Maria Schicklgruber",
+            "role": "Mother (1795-1847)",
+            "x": 30,
+            "y": 35,
+            "image": "cutouts/maria_schicklgruber_cutout.png"
+          },
+          {
+            "id": "father",
+            "name": "Unknown Father",
+            "role": "Unrecorded in Register",
+            "x": 70,
+            "y": 35,
+            "isQuestion": true
+          },
+          {
+            "id": "alois",
+            "name": "Alois Schicklgruber",
+            "role": "Son (1837-1903)",
+            "x": 50,
+            "y": 72,
+            "image": "cutouts/alois_hitler_cutout.png"
+          }
+        ],
+        "links": [
+          {
+            "from": "maria",
+            "to": "alois",
+            "style": "solid",
+            "color": "#b91c1c"
+          },
+          {
+            "from": "father",
+            "to": "alois",
+            "style": "dashed",
+            "color": "#b45309"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2_b1",
+      "durationInFrames": 128,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_002_beat_01.jpg",
+      "subjectImage": "cutouts/maria_schicklgruber_cutout.png",
+      "labelTitle": "D\u00f6llersheim parish archiv",
+      "labelSubtitle": "Historical Archive // Folio 9",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 2] Sources in Description",
+      "audioSrc": "audio/voice_s002_b01.mp3"
+    },
+    {
+      "id": "s2_b2",
+      "durationInFrames": 137,
+      "layoutType": "document",
+      "bgImage": "images/scene_002_beat_02.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim parish archiv",
+      "labelSubtitle": "Historical Archive // Folio 10",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": false,
+      "citation": "[1, 2] Sources in Description",
+      "audioSrc": "audio/voice_s002_b02.mp3"
+    },
+    {
+      "id": "s2_b3",
+      "durationInFrames": 140,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_002_beat_03.jpg",
+      "subjectImage": "cutouts/alois_hitler_cutout.png",
+      "labelTitle": "D\u00f6llersheim parish archiv",
+      "labelSubtitle": "Historical Archive // Folio 11",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": false,
+      "citation": "[1, 2] Sources in Description",
+      "audioSrc": "audio/voice_s002_b03.mp3"
+    },
+    {
+      "id": "s2_b4",
+      "durationInFrames": 138,
+      "layoutType": "document",
+      "bgImage": "images/scene_002_beat_04.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim parish archiv",
+      "labelSubtitle": "Historical Archive // Folio 12",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": true,
+      "citation": "[1, 2] Sources in Description",
+      "audioSrc": "audio/voice_s002_b04.mp3"
+    },
+    {
+      "id": "s3_b1",
+      "durationInFrames": 152,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_003_beat_01.jpg",
+      "subjectImage": "cutouts/maria_schicklgruber_cutout.png",
+      "labelTitle": "Johann Georg Hiedler - Be",
+      "labelSubtitle": "Historical Archive // Folio 13",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 3] Sources in Description",
+      "audioSrc": "audio/voice_s003_b01.mp3"
+    },
+    {
+      "id": "s3_b2",
+      "durationInFrames": 123,
+      "layoutType": "split_collage",
+      "bgImage": "images/scene_003_beat_02.jpg",
+      "subjectImage": null,
+      "labelTitle": "Johann Georg Hiedler - Be",
+      "labelSubtitle": "Historical Archive // Folio 14",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": false,
+      "citation": "[1, 3] Sources in Description",
+      "audioSrc": "audio/voice_s003_b02.mp3",
+      "splitData": {
+        "leftDocument": "images/scene_003_beat_02.jpg",
+        "rightSubject": "cutouts/alois_hitler_cutout.png",
+        "highlightText": "CLASSIFIED FORENSIC DOSSIER"
+      }
+    },
+    {
+      "id": "s3_b3",
+      "durationInFrames": 134,
+      "layoutType": "landscape",
+      "bgImage": "images/scene_003_beat_03.jpg",
+      "subjectImage": null,
+      "labelTitle": "Waldviertel rural landsca",
+      "labelSubtitle": "Historical Archive // Folio 15",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": false,
+      "citation": "[1, 3] Sources in Description",
+      "audioSrc": "audio/voice_s003_b03.mp3"
+    },
+    {
+      "id": "s3_b4",
+      "durationInFrames": 148,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_003_beat_04.jpg",
+      "subjectImage": "cutouts/johann_georg_hiedler_cutout.png",
+      "labelTitle": "Johann Georg Hiedler - Be",
+      "labelSubtitle": "Historical Archive // Folio 16",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 3] Sources in Description",
+      "audioSrc": "audio/voice_s003_b04.mp3"
+    },
+    {
+      "id": "s4_b1",
+      "durationInFrames": 128,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_004_beat_01.jpg",
+      "subjectImage": "cutouts/alois_hitler_cutout.png",
+      "labelTitle": "Johann Nepomuk H\u00fcttler - ",
+      "labelSubtitle": "Historical Archive // Folio 17",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 4] Sources in Description",
+      "audioSrc": "audio/voice_s004_b01.mp3"
+    },
+    {
+      "id": "s4_b2",
+      "durationInFrames": 142,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_004_beat_02.jpg",
+      "subjectImage": "cutouts/alois_hitler_cutout.png",
+      "labelTitle": "Johann Nepomuk H\u00fcttler - ",
+      "labelSubtitle": "Historical Archive // Folio 18",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": false,
+      "citation": "[1, 4] Sources in Description",
+      "audioSrc": "audio/voice_s004_b02.mp3"
+    },
+    {
+      "id": "s4_b3",
+      "durationInFrames": 133,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_004_beat_03.jpg",
+      "subjectImage": "cutouts/alois_hitler_cutout.png",
+      "labelTitle": "Johann Nepomuk H\u00fcttler - ",
+      "labelSubtitle": "Historical Archive // Folio 19",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": false,
+      "citation": "[1, 4] Sources in Description",
+      "audioSrc": "audio/voice_s004_b03.mp3"
+    },
+    {
+      "id": "s4_b4",
+      "durationInFrames": 131,
+      "layoutType": "document",
+      "bgImage": "images/scene_004_beat_04.jpg",
+      "subjectImage": null,
+      "labelTitle": "Johann Nepomuk H\u00fcttler - ",
+      "labelSubtitle": "Historical Archive // Folio 20",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": true,
+      "citation": "[1, 4] Sources in Description",
+      "audioSrc": "audio/voice_s004_b04.mp3"
+    },
+    {
+      "id": "s5_b1",
+      "durationInFrames": 131,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_005_beat_01.jpg",
+      "subjectImage": "cutouts/alois_hitler_cutout.png",
+      "labelTitle": "Alois Hitler - Beat 1",
+      "labelSubtitle": "Historical Archive // Folio 21",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 5] Sources in Description",
+      "audioSrc": "audio/voice_s005_b01.mp3"
+    },
+    {
+      "id": "s5_b2",
+      "durationInFrames": 130,
+      "layoutType": "document",
+      "bgImage": "images/scene_005_beat_02.jpg",
+      "subjectImage": null,
+      "labelTitle": "Alois Hitler - Beat 2",
+      "labelSubtitle": "Historical Archive // Folio 22",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": false,
+      "citation": "[1, 5] Sources in Description",
+      "audioSrc": "audio/voice_s005_b02.mp3"
+    },
+    {
+      "id": "s5_b3",
+      "durationInFrames": 127,
+      "layoutType": "document",
+      "bgImage": "images/scene_005_beat_03.jpg",
+      "subjectImage": null,
+      "labelTitle": "Alois Hitler - Beat 3",
+      "labelSubtitle": "Historical Archive // Folio 23",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": false,
+      "citation": "[1, 5] Sources in Description",
+      "audioSrc": "audio/voice_s005_b03.mp3"
+    },
+    {
+      "id": "s5_b4",
+      "durationInFrames": 131,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_005_beat_04.jpg",
+      "subjectImage": "cutouts/alois_hitler_cutout.png",
+      "labelTitle": "Alois Hitler - Beat 4",
+      "labelSubtitle": "Historical Archive // Folio 24",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 5] Sources in Description",
+      "audioSrc": "audio/voice_s005_b04.mp3"
+    },
+    {
+      "id": "s6_b1",
+      "durationInFrames": 121,
+      "layoutType": "portrait",
+      "bgImage": "images/scene_006_beat_01.jpg",
+      "subjectImage": "cutouts/alois_hitler_cutout.png",
+      "labelTitle": "The Incestuous Web - Beat",
+      "labelSubtitle": "Historical Archive // Folio 25",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 6] Sources in Description",
+      "audioSrc": "audio/voice_s006_b01.mp3"
+    },
+    {
+      "id": "s6_b2",
+      "durationInFrames": 137,
+      "layoutType": "document",
+      "bgImage": "images/scene_006_beat_02.jpg",
+      "subjectImage": null,
+      "labelTitle": "The Incestuous Web - Beat",
+      "labelSubtitle": "Historical Archive // Folio 26",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": false,
+      "citation": "[1, 6] Sources in Description",
+      "audioSrc": "audio/voice_s006_b02.mp3"
+    },
+    {
+      "id": "s6_b3",
+      "durationInFrames": 127,
+      "layoutType": "document",
+      "bgImage": "images/scene_006_beat_03.jpg",
+      "subjectImage": null,
+      "labelTitle": "The Incestuous Web - Beat",
+      "labelSubtitle": "Historical Archive // Folio 27",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": false,
+      "citation": "[1, 6] Sources in Description",
+      "audioSrc": "audio/voice_s006_b03.mp3"
+    },
+    {
+      "id": "s6_b4",
+      "durationInFrames": 140,
+      "layoutType": "landscape",
+      "bgImage": "images/scene_006_beat_04.jpg",
+      "subjectImage": null,
+      "labelTitle": "The Incestuous Web - Beat",
+      "labelSubtitle": "Historical Archive // Folio 28",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 6] Sources in Description",
+      "audioSrc": "audio/voice_s006_b04.mp3"
+    },
+    {
+      "id": "s7_b1",
+      "durationInFrames": 121,
+      "layoutType": "document",
+      "bgImage": "images/scene_007_beat_01.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim Parish Regist",
+      "labelSubtitle": "Historical Archive // Folio 29",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": true,
+      "citation": "[1, 7] Sources in Description",
+      "audioSrc": "audio/voice_s007_b01.mp3"
+    },
+    {
+      "id": "s7_b2",
+      "durationInFrames": 147,
+      "layoutType": "landscape",
+      "bgImage": "images/scene_007_beat_02.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim Parish Regist",
+      "labelSubtitle": "Historical Archive // Folio 30",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": false,
+      "citation": "[1, 7] Sources in Description",
+      "audioSrc": "audio/voice_s007_b02.mp3"
+    },
+    {
+      "id": "s7_b3",
+      "durationInFrames": 151,
+      "layoutType": "document",
+      "bgImage": "images/scene_007_beat_03.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim Parish Regist",
+      "labelSubtitle": "Historical Archive // Folio 31",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": false,
+      "citation": "[1, 7] Sources in Description",
+      "audioSrc": "audio/voice_s007_b03.mp3"
+    },
+    {
+      "id": "s7_b4",
+      "durationInFrames": 145,
+      "layoutType": "landscape",
+      "bgImage": "images/scene_007_beat_04.jpg",
+      "subjectImage": null,
+      "labelTitle": "D\u00f6llersheim Parish Regist",
+      "labelSubtitle": "Historical Archive // Folio 32",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 7] Sources in Description",
+      "audioSrc": "audio/voice_s007_b04.mp3"
+    },
+    {
+      "id": "s8_b1",
+      "durationInFrames": 141,
+      "layoutType": "family_tree",
+      "bgImage": "images/scene_008_beat_01.jpg",
+      "subjectImage": null,
+      "labelTitle": "The Dictator's Legacy - B",
+      "labelSubtitle": "Historical Archive // Folio 33",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": true,
+      "citation": "[1, 8] Sources in Description",
+      "audioSrc": "audio/voice_s008_b01.mp3",
+      "treeData": {
+        "title": "Origins of the Hitler Lineage",
+        "subtitle": "Lower Austria // 1837 Paternity Mystery",
+        "nodes": [
+          {
+            "id": "maria",
+            "name": "Maria Schicklgruber",
+            "role": "Mother (1795-1847)",
+            "x": 30,
+            "y": 35,
+            "image": "cutouts/maria_schicklgruber_cutout.png"
+          },
+          {
+            "id": "father",
+            "name": "Unknown Father",
+            "role": "Unrecorded in Register",
+            "x": 70,
+            "y": 35,
+            "isQuestion": true
+          },
+          {
+            "id": "alois",
+            "name": "Alois Schicklgruber",
+            "role": "Son (1837-1903)",
+            "x": 50,
+            "y": 72,
+            "image": "cutouts/alois_hitler_cutout.png"
+          }
+        ],
+        "links": [
+          {
+            "from": "maria",
+            "to": "alois",
+            "style": "solid",
+            "color": "#b91c1c"
+          },
+          {
+            "from": "father",
+            "to": "alois",
+            "style": "dashed",
+            "color": "#b45309"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s8_b2",
+      "durationInFrames": 131,
+      "layoutType": "landscape",
+      "bgImage": "images/scene_008_beat_02.jpg",
+      "subjectImage": null,
+      "labelTitle": "The Dictator's Legacy - B",
+      "labelSubtitle": "Historical Archive // Folio 34",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": false,
+      "citation": "[1, 8] Sources in Description",
+      "audioSrc": "audio/voice_s008_b02.mp3"
+    },
+    {
+      "id": "s8_b3",
+      "durationInFrames": 120,
+      "layoutType": "landscape",
+      "bgImage": "images/scene_008_beat_03.jpg",
+      "subjectImage": null,
+      "labelTitle": "The Dictator's Legacy - B",
+      "labelSubtitle": "Historical Archive // Folio 35",
+      "highlightText": "ARCHIVAL RECORD",
+      "hasBoom": false,
+      "citation": "[1, 8] Sources in Description",
+      "audioSrc": "audio/voice_s008_b03.mp3"
+    },
+    {
+      "id": "s8_b4",
+      "durationInFrames": 119,
+      "layoutType": "document",
+      "bgImage": "images/scene_008_beat_04.jpg",
+      "subjectImage": null,
+      "labelTitle": "The Dictator's Legacy - B",
+      "labelSubtitle": "Historical Archive // Folio 36",
+      "highlightText": "CONFIDENTIAL ARCHIVE",
+      "hasBoom": true,
+      "citation": "[1, 8] Sources in Description",
+      "audioSrc": "audio/voice_s008_b04.mp3"
+    }
+  ]
+}

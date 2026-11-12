@@ -1,0 +1,133 @@
+name: Render Full Documentary 5-Acts (After the Crown Standard)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-acts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Ensure FFmpeg
+        run: |
+          if ! command -v ffmpeg &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y ffmpeg
+          else
+            echo "FFmpeg ready: $(ffmpeg -version | head -n 1)"
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python Dependencies for Cutouts
+        run: |
+          pip install --upgrade pip
+          pip install pillow rembg onnxruntime
+
+      - name: Download Verified Historical Archival Media & Narration Audio
+        run: |
+          mkdir -p assets/hitler_family_archive
+          curl -L -s -o assets/hitler_family_archive.zip https://github.com/joaomatheusm546-byte/ai-documentary-generator/releases/download/v1.0-archive/hitler_family_archive.zip
+          unzip -q -o assets/hitler_family_archive.zip -d assets/hitler_family_archive/
+          mkdir -p remotion_app/public/images
+          cp -r assets/hitler_family_archive/*.jpg remotion_app/public/images/
+          echo "Staged $(ls remotion_app/public/images | wc -l) archival images into Remotion public"
+
+          # Download and unpack full narration audio (160 beats) + foley SFX + music
+          mkdir -p remotion_app/public/audio
+          curl -L -s -o assets/full_narration_audio.zip https://github.com/joaomatheusm546-byte/ai-documentary-generator/releases/download/v1.0-narration/full_narration_audio.zip
+          unzip -q -o assets/full_narration_audio.zip -d remotion_app/public/audio/
+          echo "Staged $(ls remotion_app/public/audio | wc -l) audio files into Remotion public"
+
+      - name: Generate Subject Cutouts on Cloud
+        run: |
+          python scripts/prepare_cutouts.py
+          echo "Staged $(ls remotion_app/public/cutouts | wc -l) cutouts into Remotion public"
+
+      - name: Install Remotion Dependencies
+        run: |
+          cd remotion_app
+          npm install
+
+      - name: Ensure Headless Chromium for Remotion
+        run: |
+          cd remotion_app
+          npx remotion browser ensure
+
+      - name: Render Act 1 (The Waldviertel Web)
+        run: |
+          mkdir -p output/acts
+          cd remotion_app
+          npx remotion render src/index.ts Act1 ../output/acts/act_1.mp4 --concurrency=2
+
+      - name: Render Act 2 (Shadows of the Inner Circle)
+        run: |
+          cd remotion_app
+          npx remotion render src/index.ts Act2 ../output/acts/act_2.mp4 --concurrency=2
+
+      - name: Render Act 3 (The American Heresy)
+        run: |
+          cd remotion_app
+          npx remotion render src/index.ts Act3 ../output/acts/act_3.mp4 --concurrency=2
+
+      - name: Render Act 4 (The Allied Dossiers)
+        run: |
+          cd remotion_app
+          npx remotion render src/index.ts Act4 ../output/acts/act_4.mp4 --concurrency=2
+
+      - name: Render Act 5 (The Final Pact)
+        run: |
+          cd remotion_app
+          npx remotion render src/index.ts Act5 ../output/acts/act_5.mp4 --concurrency=2
+
+      - name: Concatenate 5 Acts into Master Documentary
+        run: |
+          cd output/acts
+          cat << 'EOF' > concat_acts.txt
+          file 'act_1.mp4'
+          file 'act_2.mp4'
+          file 'act_3.mp4'
+          file 'act_4.mp4'
+          file 'act_5.mp4'
+          EOF
+          ffmpeg -y -f concat -safe 0 -i concat_acts.txt -c copy ../master_hitler_bloodline_documentary.mp4
+          echo "Master documentary generated: $(ls -lh ../master_hitler_bloodline_documentary.mp4)"
+
+      - name: Upload Master Video Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-documentary-video
+          path: output/master_hitler_bloodline_documentary.mp4
+          retention-days: 14
+
+      - name: Create GitHub Release with Master Documentary
+        uses: softprops/action-gh-release@v2
+        if: github.event_name == 'workflow_dispatch'
+        with:
+          tag_name: "master-doc-${{ github.run_id }}"
+          name: "Broadcast Documentary: The Hitler Bloodline (~15 min Full Release)"
+          body: |
+            🎬 **The Hitler Bloodline: From Secret Origins to Extinction of the Lineage**
+            - **Broadcast Standard:** After the Crown 2.5D Motion Collage Aesthetic
+            - **Narration:** George (ElevenLabs Studio Voiceover)
+            - **Structure:** Complete 5 Acts (40 Scenes / 160 Beats)
+            - **Resolution:** 1080p @ 30 FPS Full HD
+            - **Runtime:** ~15 Minutes Complete Documentary
+          files: output/master_hitler_bloodline_documentary.mp4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
