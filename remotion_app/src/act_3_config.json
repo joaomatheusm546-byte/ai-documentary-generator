@@ -19,7 +19,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 17] Sources in Description",
       "audioSrc": "audio/voice_s017_b01.mp3"
     },
@@ -70,7 +70,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 17] Sources in Description",
       "audioSrc": "audio/voice_s017_b04.mp3"
     },
@@ -87,7 +87,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 18] Sources in Description",
       "audioSrc": "audio/voice_s018_b01.mp3"
     },
@@ -138,7 +138,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 18] Sources in Description",
       "audioSrc": "audio/voice_s018_b04.mp3"
     },
@@ -206,7 +206,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 19] Sources in Description",
       "audioSrc": "audio/voice_s019_b04.mp3"
     },
@@ -223,7 +223,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 20] Sources in Description",
       "audioSrc": "audio/voice_s020_b01.mp3"
     },
@@ -274,7 +274,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 20] Sources in Description",
       "audioSrc": "audio/voice_s020_b04.mp3"
     },
@@ -291,7 +291,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 21] Sources in Description",
       "audioSrc": "audio/voice_s021_b01.mp3"
     },
@@ -308,7 +308,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": false,
+      "hasBoom": true,
       "citation": "[3, 21] Sources in Description",
       "audioSrc": "audio/voice_s021_b02.mp3",
       "splitData": {
@@ -347,7 +347,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 21] Sources in Description",
       "audioSrc": "audio/voice_s021_b04.mp3"
     },
@@ -364,7 +364,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 22] Sources in Description",
       "audioSrc": "audio/voice_s022_b01.mp3"
     },
@@ -415,7 +415,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 22] Sources in Description",
       "audioSrc": "audio/voice_s022_b04.mp3"
     },
@@ -432,7 +432,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 23] Sources in Description",
       "audioSrc": "audio/voice_s023_b01.mp3"
     },
@@ -483,7 +483,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 23] Sources in Description",
       "audioSrc": "audio/voice_s023_b04.mp3"
     },
@@ -500,7 +500,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 24] Sources in Description",
       "audioSrc": "audio/voice_s024_b01.mp3"
     },
@@ -551,7 +551,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[3, 24] Sources in Description",
       "audioSrc": "audio/voice_s024_b04.mp3"
     }

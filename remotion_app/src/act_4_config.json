@@ -19,7 +19,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 25] Sources in Description",
       "audioSrc": "audio/voice_s025_b01.mp3"
     },
@@ -70,7 +70,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 25] Sources in Description",
       "audioSrc": "audio/voice_s025_b04.mp3"
     },
@@ -87,7 +87,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 26] Sources in Description",
       "audioSrc": "audio/voice_s026_b01.mp3"
     },
@@ -138,7 +138,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 26] Sources in Description",
       "audioSrc": "audio/voice_s026_b04.mp3"
     },
@@ -155,7 +155,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 27] Sources in Description",
       "audioSrc": "audio/voice_s027_b01.mp3"
     },
@@ -172,7 +172,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": false,
+      "hasBoom": true,
       "citation": "[4, 27] Sources in Description",
       "audioSrc": "audio/voice_s027_b02.mp3",
       "splitData": {
@@ -211,7 +211,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 27] Sources in Description",
       "audioSrc": "audio/voice_s027_b04.mp3"
     },
@@ -284,7 +284,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 28] Sources in Description",
       "audioSrc": "audio/voice_s028_b04.mp3"
     },
@@ -301,7 +301,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 29] Sources in Description",
       "audioSrc": "audio/voice_s029_b01.mp3"
     },
@@ -352,7 +352,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 29] Sources in Description",
       "audioSrc": "audio/voice_s029_b04.mp3"
     },
@@ -369,7 +369,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 30] Sources in Description",
       "audioSrc": "audio/voice_s030_b01.mp3"
     },
@@ -420,31 +420,26 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 30] Sources in Description",
       "audioSrc": "audio/voice_s030_b04.mp3"
     },
     {
       "id": "s31_b1",
       "durationInFrames": 160,
-      "layoutType": "split_collage",
+      "layoutType": "silhouette",
       "bgImage": "images/scene_031_beat_01.jpg",
       "subjectImage": null,
-      "labelTitle": "THE CAPTURED SISTER",
-      "labelSubtitle": "Counter-Intelligence Corps Headquarters // May 1945",
+      "labelTitle": "PAULA WOLFF (HITLER)",
+      "labelSubtitle": "Under Counter-Intelligence Interrogation",
       "highlightText": "ARCHIVAL RECORD",
       "highlightStyle": "marker",
-      "stampText": null,
-      "stampSubtext": null,
-      "silhouetteType": null,
+      "stampText": "NO CONFIRMED PHOTOGRAPH",
+      "stampSubtext": "ALLIED CIC INTERROGATION // SALZBURG 1945",
+      "silhouetteType": "classified",
       "hasBoom": true,
       "citation": "[4, 31] Sources in Description",
-      "audioSrc": "audio/voice_s031_b01.mp3",
-      "splitData": {
-        "leftDocument": "images/scene_031_beat_02.jpg",
-        "rightSubject": "cutouts/paula_hitler_postwar_cutout.png",
-        "highlightText": "US CIC INTERROGATION DOSSIER"
-      }
+      "audioSrc": "audio/voice_s031_b01.mp3"
     },
     {
       "id": "s31_b2",
@@ -466,16 +461,16 @@
     {
       "id": "s31_b3",
       "durationInFrames": 162,
-      "layoutType": "portrait",
+      "layoutType": "silhouette",
       "bgImage": "images/scene_031_beat_03.jpg",
-      "subjectImage": "cutouts/paula_hitler_postwar_cutout.png",
-      "labelTitle": "PAULA HITLER (POST-WAR)",
-      "labelSubtitle": "Under US CIC Interrogation // May 1945",
+      "subjectImage": null,
+      "labelTitle": "PAULA WOLFF (HITLER)",
+      "labelSubtitle": "Under Counter-Intelligence Interrogation",
       "highlightText": "ARCHIVAL RECORD",
       "highlightStyle": "marker",
-      "stampText": null,
-      "stampSubtext": null,
-      "silhouetteType": null,
+      "stampText": "NO CONFIRMED PHOTOGRAPH",
+      "stampSubtext": "ALLIED CIC INTERROGATION // SALZBURG 1945",
+      "silhouetteType": "classified",
       "hasBoom": false,
       "citation": "[4, 31] Sources in Description",
       "audioSrc": "audio/voice_s031_b03.mp3"
@@ -483,17 +478,17 @@
     {
       "id": "s31_b4",
       "durationInFrames": 152,
-      "layoutType": "portrait",
+      "layoutType": "silhouette",
       "bgImage": "images/scene_031_beat_04.jpg",
-      "subjectImage": "cutouts/paula_hitler_postwar_cutout.png",
-      "labelTitle": "PAULA HITLER (POST-WAR)",
-      "labelSubtitle": "Under US CIC Interrogation // May 1945",
+      "subjectImage": null,
+      "labelTitle": "PAULA WOLFF (HITLER)",
+      "labelSubtitle": "Under Counter-Intelligence Interrogation",
       "highlightText": "ARCHIVAL RECORD",
       "highlightStyle": "marker",
-      "stampText": null,
-      "stampSubtext": null,
-      "silhouetteType": null,
-      "hasBoom": true,
+      "stampText": "NO CONFIRMED PHOTOGRAPH",
+      "stampSubtext": "ALLIED CIC INTERROGATION // SALZBURG 1945",
+      "silhouetteType": "classified",
+      "hasBoom": false,
       "citation": "[4, 31] Sources in Description",
       "audioSrc": "audio/voice_s031_b04.mp3"
     },
@@ -510,7 +505,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 32] Sources in Description",
       "audioSrc": "audio/voice_s032_b01.mp3"
     },
@@ -561,7 +556,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[4, 32] Sources in Description",
       "audioSrc": "audio/voice_s032_b04.mp3"
     }

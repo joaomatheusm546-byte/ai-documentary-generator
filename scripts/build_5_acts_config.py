@@ -14,6 +14,22 @@ MASTER_SCRIPT_PATH = ROOT_DIR / "assets" / "hitler_family_master_script.json"
 AUDIO_DIR = ROOT_DIR / "assets" / "full_narration_audio"
 SRC_DIR = ROOT_DIR / "remotion_app" / "src"
 
+# Exactly 12 epic turning points for sub-booms across 11.5 minutes (averaging 1 boom per minute at peak revelations)
+EPIC_TURNING_POINTS = {
+    (2, 3),   # Act 1: Illegitimate birth / baptismal father left blank
+    (5, 2),   # Act 1: The legal mutation from Schicklgruber to Hitler
+    (8, 1),   # Act 2: Adolf enters politics concealing ancestry
+    (10, 1),  # Act 2: Angela assumes control of household following tragedy
+    (16, 1),  # Act 2: Fatal shot of Geli Raubal in Munich apartment
+    (19, 1),  # Act 3: William Patrick sends extortion letter to FDR
+    (21, 2),  # Act 3: William takes Navy oath against his dictator uncle
+    (27, 2),  # Act 4: Heinz Hitler perishes in Soviet Butyrka prison
+    (28, 1),  # Act 4: Post-war investigators reopen Geli Raubal inquest
+    (31, 1),  # Act 4: US Counter-Intelligence arrests Paula Hitler in Austria
+    (34, 1),  # Act 5: Long Island brothers establish unbroken Silence Pact
+    (40, 3),  # Act 5: Direct bloodline extinction confirmed
+}
+
 def get_audio_duration(p: Path) -> float:
     cmd = [
         FFPROBE_BIN,
@@ -73,6 +89,7 @@ def determine_archetype(s_id: int, b_id: int, narr: str, sub: str, q: str):
         }
 
     # 2. Forensic Silhouettes (Figures without confirmed photos or under silence pact)
+    # A. Johann Nepomuk Hüttler (No photo exists - born 1807, died 1888)
     if "nepomuk" in full_text:
         if b_id in [1, 3]:
             return {
@@ -92,7 +109,17 @@ def determine_archetype(s_id: int, b_id: int, narr: str, sub: str, q: str):
                 "labelTitle": "THE HIDDEN PATRIARCH",
                 "labelSubtitle": "Covert Benefactor of Alois Hitler"
             }
+        elif b_id == 2:
+            return {
+                "layoutType": "silhouette",
+                "silhouetteType": "nepomuk",
+                "stampText": "COVERT FINANCIAL SUPPORT",
+                "stampSubtext": "MANDATORY ANONYMITY // 19TH CENTURY",
+                "labelTitle": "JOHANN NEPOMUK HÜTTLER",
+                "labelSubtitle": "The Silent Benefactor"
+            }
 
+    # B. Unknown Biological Father
     if (s_id == 2 and b_id == 3) or ("paternity" in full_text and "mystery" in full_text and b_id == 2):
         return {
             "layoutType": "silhouette",
@@ -103,7 +130,40 @@ def determine_archetype(s_id: int, b_id: int, narr: str, sub: str, q: str):
             "labelSubtitle": "Blank Space in Baptismal Ledger"
         }
 
-    if (s_id == 34 and b_id in [1, 2, 4]) or (s_id == 36 and b_id == 1):
+    # C. Alois Hitler Jr. (No confirmed authentic public domain portrait)
+    if "alois jr" in full_text or "half-brother" in full_text or (s_id == 9 and b_id in [1, 2]):
+        return {
+            "layoutType": "silhouette",
+            "silhouetteType": "classified",
+            "stampText": "NO CONFIRMED PHOTOGRAPH",
+            "stampSubtext": "LIVING UNDER ALIASES // DUBLIN & BERLIN",
+            "labelTitle": "ALOIS HITLER JR.",
+            "labelSubtitle": "1882–1956 // Severed From the Family"
+        }
+
+    # D. Paula Hitler (Lived in hiding under alias 'Paula Wolff' - no public domain portrait)
+    if "paula" in full_text and s_id == 11:
+        return {
+            "layoutType": "silhouette",
+            "silhouetteType": "classified",
+            "stampText": "NO CONFIRMED PHOTOGRAPH",
+            "stampSubtext": "LIVING UNDER ALIAS 'PAULA WOLFF'",
+            "labelTitle": "PAULA HITLER",
+            "labelSubtitle": "1896–1960 // Younger Sister in Vienna"
+        }
+
+    if "paula" in full_text and s_id == 31 and b_id in [1, 3, 4]:
+        return {
+            "layoutType": "silhouette",
+            "silhouetteType": "classified",
+            "stampText": "NO CONFIRMED PHOTOGRAPH",
+            "stampSubtext": "ALLIED CIC INTERROGATION // SALZBURG 1945",
+            "labelTitle": "PAULA WOLFF (HITLER)",
+            "labelSubtitle": "Under Counter-Intelligence Interrogation"
+        }
+
+    # E. Stuart-Houston Brothers (Pact of Silence on Long Island)
+    if (s_id == 34 and b_id in [1, 2, 4]) or (s_id == 36 and b_id in [1, 3]):
         return {
             "layoutType": "silhouette",
             "silhouetteType": "brothers",
@@ -113,6 +173,7 @@ def determine_archetype(s_id: int, b_id: int, narr: str, sub: str, q: str):
             "labelSubtitle": "Alexander, Louis, Brian // Living in Absolute Secrecy"
         }
 
+    # F. Lineage Extinction
     if s_id == 40 and b_id in [1, 4]:
         return {
             "layoutType": "silhouette",
@@ -144,7 +205,7 @@ def determine_archetype(s_id: int, b_id: int, narr: str, sub: str, q: str):
                 "highlightText": "NAME MUTATION // SCHICKLGRUBER TO HITLER"
             },
             "labelTitle": "OFFICIAL LEGITIMATION",
-            "labelSubtitle": "Mistrischa Bureaucratic Decree // 1876"
+            "labelSubtitle": "Mistelbach Bureaucratic Decree // 1876"
         }
     if s_id == 9 and b_id == 3:
         return {
@@ -201,19 +262,8 @@ def determine_archetype(s_id: int, b_id: int, narr: str, sub: str, q: str):
             "labelTitle": "PRINZREGENTENPLATZ 16",
             "labelSubtitle": "Munich Police Department Inquiry"
         }
-    if s_id == 31 and b_id == 1:
-        return {
-            "layoutType": "split_collage",
-            "splitData": {
-                "leftDocument": "images/scene_031_beat_02.jpg",
-                "rightSubject": "cutouts/paula_hitler_postwar_cutout.png",
-                "highlightText": "US CIC INTERROGATION DOSSIER"
-            },
-            "labelTitle": "THE CAPTURED SISTER",
-            "labelSubtitle": "Counter-Intelligence Corps Headquarters // May 1945"
-        }
 
-    # 4. Strict Curated Document Scenes (Capped, Diverse Stamps & Styles)
+    # 4. Strict Curated Document Scenes (Capped at 21 beats, Unique Authentic Historical Stamps)
     curated_documents = {
         (2, 2): ("DÖLLERSHEIM PARISH REGISTER // UNRECORDED PATERNITY", "marker", "TAUFEINTRAG LEDGER", "Döllersheim Parish Registry // Page 7"),
         (5, 1): ("BEZIRKSHAUFTMANNSCHAFT // SURNAME ALTERATION DECREE", "red_circle", "PETITION OF SURNAME", "Administrative Bureau of Mistelbach // 1876"),
@@ -248,7 +298,7 @@ def determine_archetype(s_id: int, b_id: int, narr: str, sub: str, q: str):
             "labelSubtitle": l_sub
         }
 
-    # 5. Contextual Character Portrait Cutouts (Strict Person Matching)
+    # 5. Contextual Character Portrait Cutouts (Strict Person Matching to Verified Enhanced Portraits)
     # Maria Anna Schicklgruber
     if ("maria" in full_text or "schicklgruber" in full_text) and s_id <= 3 and b_id in [1, 4]:
         return {
@@ -285,13 +335,13 @@ def determine_archetype(s_id: int, b_id: int, narr: str, sub: str, q: str):
             "labelSubtitle": "1889–1945 // Führer of the Third Reich"
         }
 
-    # Alois Hitler Jr.
-    if ("alois jr" in full_text or "alois hitler jr" in full_text or "half-brother" in full_text) and s_id == 9:
+    # Bridget Dowling
+    if "bridget" in full_text or (s_id == 9 and b_id == 4):
         return {
             "layoutType": "portrait",
-            "subjectImage": "cutouts/alois_jr_cutout.png",
-            "labelTitle": "ALOIS HITLER JR.",
-            "labelSubtitle": "1882–1956 // Estranged Half-Brother"
+            "subjectImage": "cutouts/bridget_dowling_cutout.png",
+            "labelTitle": "BRIDGET DOWLING",
+            "labelSubtitle": "1891–1969 // Mother of William Patrick"
         }
 
     # Angela Hitler
@@ -310,24 +360,6 @@ def determine_archetype(s_id: int, b_id: int, narr: str, sub: str, q: str):
             "subjectImage": "cutouts/geli_raubal_cutout.png",
             "labelTitle": "GELI RAUBAL",
             "labelSubtitle": "1908–1931 // Adolf Hitler's Half-Niece"
-        }
-
-    # Paula Hitler (Pre-war Vienna)
-    if "paula" in full_text and s_id == 11:
-        return {
-            "layoutType": "portrait",
-            "subjectImage": "cutouts/paula_hitler_cutout.png",
-            "labelTitle": "PAULA HITLER",
-            "labelSubtitle": "1896–1960 // Younger Sister (Paula Wolff)"
-        }
-
-    # Paula Hitler (Post-war Interrogation)
-    if "paula" in full_text and s_id == 31:
-        return {
-            "layoutType": "portrait",
-            "subjectImage": "cutouts/paula_hitler_postwar_cutout.png",
-            "labelTitle": "PAULA HITLER (POST-WAR)",
-            "labelSubtitle": "Under US CIC Interrogation // May 1945"
         }
 
     # Heinz Hitler
@@ -384,6 +416,9 @@ def build_act_configs():
         (5, "Act V: The Final Pact", range(32, 40)),
     ]
     
+    total_doc_booms = 0
+    archetype_counts = {}
+
     for act_num, act_title, sc_range in act_ranges:
         act_scenes = [scenes[i] for i in sc_range if i < len(scenes)]
         act_beats = []
@@ -405,11 +440,18 @@ def build_act_configs():
                 total_frames += frames
                 
                 arch = determine_archetype(s_id, b_id, narr, sub, q)
+                l_type = arch["layoutType"]
+                archetype_counts[l_type] = archetype_counts.get(l_type, 0) + 1
                 
+                # Precise Sub-Boom check: strictly at major dramatic narrative turning points
+                has_boom = (s_id, b_id) in EPIC_TURNING_POINTS
+                if has_boom:
+                    total_doc_booms += 1
+
                 beat_entry = {
                     "id": f"s{s_id}_b{b_id}",
                     "durationInFrames": frames,
-                    "layoutType": arch["layoutType"],
+                    "layoutType": l_type,
                     "bgImage": f"images/scene_{s_id:03d}_beat_{b_id:02d}.jpg",
                     "subjectImage": arch.get("subjectImage"),
                     "labelTitle": arch.get("labelTitle") or b.get("label_title") or sub[:28] or f"Scene {s_id}",
@@ -419,7 +461,7 @@ def build_act_configs():
                     "stampText": arch.get("stampText"),
                     "stampSubtext": arch.get("stampSubtext"),
                     "silhouetteType": arch.get("silhouetteType"),
-                    "hasBoom": (b_id == 1 or b_id == 4),
+                    "hasBoom": has_boom,
                     "citation": f"[{act_num}, {s_id}] Sources in Description",
                     "audioSrc": f"audio/{audio_file}",
                 }
@@ -445,6 +487,13 @@ def build_act_configs():
         cfg_path.write_text(json.dumps(act_config, indent=2), encoding="utf-8")
         dur_sec = total_frames / 30
         print(f"Generated {cfg_path.name}: {len(act_beats)} beats | {total_frames} frames ({dur_sec:.1f}s = {dur_sec/60:.2f} min)")
+
+    print(f"\n=== SUMMARY OF REFINED CONFIGURATION ===")
+    print(f"Total Sub-Booms across documentary: {total_doc_booms} (Down from 80!)")
+    print(f"Archetype Breakdown:")
+    for arch, cnt in sorted(archetype_counts.items(), key=lambda x: -x[1]):
+        pct = (cnt / 160) * 100
+        print(f"  - {arch:16s}: {cnt:3d} beats ({pct:4.1f}%)")
 
 if __name__ == "__main__":
     build_act_configs()

@@ -19,7 +19,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 1] Sources in Description",
       "audioSrc": "audio/voice_s001_b01.mp3"
     },
@@ -70,7 +70,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 1] Sources in Description",
       "audioSrc": "audio/voice_s001_b04.mp3",
       "treeData": {
@@ -131,7 +131,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 2] Sources in Description",
       "audioSrc": "audio/voice_s002_b01.mp3"
     },
@@ -165,7 +165,7 @@
       "stampText": "PATERNITY UNRECORDED",
       "stampSubtext": "D\u00d6LLERSHEIM PARISH CENSUS // 1837",
       "silhouetteType": "unknown_father",
-      "hasBoom": false,
+      "hasBoom": true,
       "citation": "[1, 2] Sources in Description",
       "audioSrc": "audio/voice_s002_b03.mp3"
     },
@@ -182,7 +182,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 2] Sources in Description",
       "audioSrc": "audio/voice_s002_b04.mp3"
     },
@@ -199,7 +199,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 3] Sources in Description",
       "audioSrc": "audio/voice_s003_b01.mp3"
     },
@@ -255,7 +255,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 3] Sources in Description",
       "audioSrc": "audio/voice_s003_b04.mp3"
     },
@@ -272,23 +272,23 @@
       "stampText": "NO CONFIRMED PHOTOGRAPH",
       "stampSubtext": "PATRIARCH OF SPITAL // 1807-1888",
       "silhouetteType": "nepomuk",
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 4] Sources in Description",
       "audioSrc": "audio/voice_s004_b01.mp3"
     },
     {
       "id": "s4_b2",
       "durationInFrames": 142,
-      "layoutType": "landscape",
+      "layoutType": "silhouette",
       "bgImage": "images/scene_004_beat_02.jpg",
       "subjectImage": null,
-      "labelTitle": "Johann Nepomuk H\u00fcttler - Bea",
-      "labelSubtitle": "Historical Archive // Folio 18",
+      "labelTitle": "JOHANN NEPOMUK H\u00dcTTLER",
+      "labelSubtitle": "The Silent Benefactor",
       "highlightText": "ARCHIVAL RECORD",
       "highlightStyle": "marker",
-      "stampText": null,
-      "stampSubtext": null,
-      "silhouetteType": null,
+      "stampText": "COVERT FINANCIAL SUPPORT",
+      "stampSubtext": "MANDATORY ANONYMITY // 19TH CENTURY",
+      "silhouetteType": "nepomuk",
       "hasBoom": false,
       "citation": "[1, 4] Sources in Description",
       "audioSrc": "audio/voice_s004_b02.mp3"
@@ -323,7 +323,7 @@
       "stampText": "UNRECORDED BIOLOGICAL LINE",
       "stampSubtext": "PARISH RECORDS DEFICIT // SPITAL",
       "silhouetteType": "nepomuk",
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 4] Sources in Description",
       "audioSrc": "audio/voice_s004_b04.mp3"
     },
@@ -340,7 +340,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 5] Sources in Description",
       "audioSrc": "audio/voice_s005_b01.mp3"
     },
@@ -351,13 +351,13 @@
       "bgImage": "images/scene_005_beat_02.jpg",
       "subjectImage": null,
       "labelTitle": "OFFICIAL LEGITIMATION",
-      "labelSubtitle": "Mistrischa Bureaucratic Decree // 1876",
+      "labelSubtitle": "Mistelbach Bureaucratic Decree // 1876",
       "highlightText": "ARCHIVAL RECORD",
       "highlightStyle": "marker",
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": false,
+      "hasBoom": true,
       "citation": "[1, 5] Sources in Description",
       "audioSrc": "audio/voice_s005_b02.mp3",
       "splitData": {
@@ -396,7 +396,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 5] Sources in Description",
       "audioSrc": "audio/voice_s005_b04.mp3"
     },
@@ -413,7 +413,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 6] Sources in Description",
       "audioSrc": "audio/voice_s006_b01.mp3"
     },
@@ -464,7 +464,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 6] Sources in Description",
       "audioSrc": "audio/voice_s006_b04.mp3"
     },
@@ -481,7 +481,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 7] Sources in Description",
       "audioSrc": "audio/voice_s007_b01.mp3"
     },
@@ -532,7 +532,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 7] Sources in Description",
       "audioSrc": "audio/voice_s007_b04.mp3"
     },
@@ -644,7 +644,7 @@
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "hasBoom": true,
+      "hasBoom": false,
       "citation": "[1, 8] Sources in Description",
       "audioSrc": "audio/voice_s008_b04.mp3"
     }
