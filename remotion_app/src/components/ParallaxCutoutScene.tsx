@@ -57,23 +57,23 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
       {/* 1. Paper Slide Sound on Scene Cut */}
       <Audio
         src={staticFile("audio/sfx_paper_slide.wav")}
-        volume={0.42}
+        volume={0.22}
       />
 
       {/* 2. Typewriter / Stamp Sound when Torn Tape Label Enters */}
       <Sequence from={12}>
         <Audio
           src={staticFile("audio/sfx_typewriter_stamp.wav")}
-          volume={0.5}
+          volume={0.24}
         />
       </Sequence>
 
-      {/* 3. Sub-Boom for Major Historical Reveals */}
+      {/* 3. Sub-Boom for Major Historical Reveals (Subtle rumble) */}
       {hasBoom && (
         <Sequence from={0}>
           <Audio
             src={staticFile("audio/sfx_sub_boom.wav")}
-            volume={0.55}
+            volume={0.18}
           />
         </Sequence>
       )}

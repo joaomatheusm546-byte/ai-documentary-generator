@@ -34,19 +34,19 @@ export const ParallaxVideoScene: React.FC<Props> = ({
       {/* SFX: Projector start & Typewriter stamp */}
       <Audio
         src={staticFile("audio/sfx_paper_slide.wav")}
-        volume={0.35}
+        volume={0.22}
       />
       <Sequence from={12}>
         <Audio
           src={staticFile("audio/sfx_typewriter_stamp.wav")}
-          volume={0.45}
+          volume={0.24}
         />
       </Sequence>
       {hasBoom && (
         <Sequence from={0}>
           <Audio
             src={staticFile("audio/sfx_sub_boom.wav")}
-            volume={0.5}
+            volume={0.18}
           />
         </Sequence>
       )}

@@ -40,19 +40,19 @@ export const ParallaxLandscapeScene: React.FC<Props> = ({
       {/* SFX: Shutter & Typewriter */}
       <Audio
         src={staticFile("audio/sfx_camera_shutter.wav")}
-        volume={0.35}
+        volume={0.18}
       />
       <Sequence from={12}>
         <Audio
           src={staticFile("audio/sfx_typewriter_stamp.wav")}
-          volume={0.45}
+          volume={0.24}
         />
       </Sequence>
       {hasBoom && (
         <Sequence from={0}>
           <Audio
             src={staticFile("audio/sfx_sub_boom.wav")}
-            volume={0.5}
+            volume={0.18}
           />
         </Sequence>
       )}
