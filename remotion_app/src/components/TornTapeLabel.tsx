@@ -4,15 +4,15 @@ import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 interface Props {
   title?: string;
   subtitle?: string;
-  badge?: string;
   delayFrames?: number;
+  position?: "pinned-left" | "lower-left";
 }
 
 export const TornTapeLabel: React.FC<Props> = ({
   title,
   subtitle,
-  badge,
-  delayFrames = 10,
+  delayFrames = 12,
+  position = "pinned-left",
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -23,125 +23,83 @@ export const TornTapeLabel: React.FC<Props> = ({
     frame: frame - delayFrames,
     fps,
     config: {
-      damping: 14,
-      mass: 0.8,
-      stiffness: 110,
+      damping: 15,
+      mass: 0.6,
+      stiffness: 140,
     },
   });
 
   const opacity = Math.min(1, Math.max(0, entrance));
-  const translateY = (1 - entrance) * 35;
-  const rotation = (1 - entrance) * -3;
+  const translateY = (1 - entrance) * 25;
+  const scale = 0.9 + entrance * 0.1;
+  const rotation = -5.5 + (1 - entrance) * -3;
+
+  // Position: either pinned on the lower-left of the subject or bottom-left corner
+  const posStyle: React.CSSProperties =
+    position === "pinned-left"
+      ? { bottom: 180, left: 180 }
+      : { bottom: 90, left: 110 };
 
   return (
     <div
       style={{
         position: "absolute",
-        bottom: 85,
-        left: 95,
+        ...posStyle,
         zIndex: 40,
         opacity,
-        transform: `translateY(${translateY}px) rotate(${rotation}deg)`,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        maxWidth: 750,
+        transform: `translateY(${translateY}px) scale(${scale}) rotate(${rotation}deg)`,
+        transformOrigin: "center center",
       }}
     >
-      {/* Category / Badge Tab */}
-      {badge && (
-        <div
-          style={{
-            backgroundColor: "#7f1d1d",
-            color: "#fef2f2",
-            fontFamily: "'Courier New', Courier, monospace",
-            fontSize: 13,
-            fontWeight: 700,
-            letterSpacing: "2.5px",
-            textTransform: "uppercase",
-            padding: "5px 14px 4px 14px",
-            marginBottom: -2,
-            marginLeft: 8,
-            boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
-            border: "1px solid rgba(255,255,255,0.15)",
-            clipPath: "polygon(0% 0%, 100% 0%, 96% 100%, 0% 100%)",
-          }}
-        >
-          {badge}
-        </div>
-      )}
-
-      {/* Main Torn Tape Card */}
+      {/* Torn Paper Strip Container with Authentic Jagged Ends */}
       <div
         style={{
           position: "relative",
-          backgroundColor: "#f4eee3",
+          backgroundColor: "#f6f3eb",
           backgroundImage:
-            "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.04) 100%)",
-          padding: "16px 28px 18px 24px",
+            "linear-gradient(175deg, rgba(255,255,255,0.7) 0%, rgba(240,233,220,0.95) 100%)",
+          padding: "12px 34px 14px 34px",
           boxShadow:
-            "0 18px 30px rgba(0,0,0,0.65), 0 4px 8px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.8)",
-          borderLeft: "4px solid #8b1e1e",
+            "0 12px 24px rgba(0, 0, 0, 0.75), 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.9)",
           clipPath:
-            "polygon(0% 2%, 98% 0%, 100% 97%, 99% 100%, 1% 99%, 0% 95%)",
+            "polygon(0% 4%, 2% 0%, 5% 5%, 3% 15%, 6% 25%, 2% 40%, 5% 55%, 1% 70%, 4% 85%, 0% 100%, 96% 100%, 99% 88%, 96% 75%, 100% 60%, 97% 45%, 100% 30%, 96% 15%, 100% 0%, 2% 0%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minWidth: 260,
         }}
       >
-        {/* Subtle tape corner piece */}
-        <div
-          style={{
-            position: "absolute",
-            top: -10,
-            right: 25,
-            width: 55,
-            height: 22,
-            backgroundColor: "rgba(225, 215, 190, 0.65)",
-            boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
-            transform: "rotate(4deg)",
-            backdropFilter: "blur(1px)",
-            border: "1px dashed rgba(0,0,0,0.15)",
-          }}
-        />
-
-        {/* Title */}
+        {/* Title: Classical Serif in Title Case (After the Crown standard) */}
         <div
           style={{
             fontFamily: "Georgia, 'Times New Roman', serif",
-            fontSize: 32,
-            fontWeight: 800,
-            color: "#181410",
-            letterSpacing: "1.2px",
-            textTransform: "uppercase",
+            fontSize: 27,
+            fontWeight: 700,
+            color: "#181512",
+            letterSpacing: "0.5px",
             lineHeight: 1.15,
-            textShadow: "0 1px 1px rgba(255,255,255,0.8)",
+            textAlign: "center",
+            textShadow: "0 1px 1px rgba(255,255,255,0.7)",
           }}
         >
           {title}
         </div>
 
-        {/* Subtitle */}
+        {/* Subtitle: Centered Italic Serif (e.g. 'the heir', 'the unmarried mother') */}
         {subtitle && (
           <div
             style={{
-              fontFamily: "'Courier New', Courier, monospace",
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontStyle: "italic",
               fontSize: 16,
-              fontWeight: 600,
-              color: "#544638",
-              marginTop: 6,
-              letterSpacing: "0.8px",
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
+              fontWeight: 400,
+              color: "#4e4337",
+              marginTop: 4,
+              letterSpacing: "0.3px",
+              textAlign: "center",
             }}
           >
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                backgroundColor: "#8b1e1e",
-                display: "inline-block",
-                borderRadius: "50%",
-              }}
-            />
             {subtitle}
           </div>
         )}

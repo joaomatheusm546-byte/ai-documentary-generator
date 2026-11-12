@@ -1,5 +1,5 @@
 import React from "react";
-import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { Audio, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { AtmosphereOverlay } from "./AtmosphereOverlay";
 import { DustParticles } from "./DustParticles";
 import { TornTapeLabel } from "./TornTapeLabel";
@@ -10,8 +10,9 @@ interface Props {
   durationInFrames: number;
   labelTitle?: string;
   labelSubtitle?: string;
-  badgeText?: string;
   highlightText?: string;
+  hasBoom?: boolean;
+  citation?: string;
 }
 
 export const ParallaxDocumentScene: React.FC<Props> = ({
@@ -20,17 +21,18 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
   durationInFrames,
   labelTitle,
   labelSubtitle,
-  badgeText,
   highlightText,
+  hasBoom = false,
+  citation,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   // Slow continuous camera push on the document
   const docScale = interpolate(frame, [0, durationInFrames], [0.93, 1.01]);
-  const docRotateX = interpolate(frame, [0, durationInFrames], [9, 6]);
+  const docRotateX = interpolate(frame, [0, durationInFrames], [9, 5]);
   const docRotateY = interpolate(frame, [0, durationInFrames], [-6, -2]);
-  const docPanY = interpolate(frame, [0, durationInFrames], [15, -15]);
+  const docPanY = interpolate(frame, [0, durationInFrames], [12, -12]);
 
   // Highlight line animation (marker stroke)
   const markerSpring = spring({
@@ -53,7 +55,27 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
         overflow: "hidden",
       }}
     >
-      {/* 1. Archival Table / Room Background */}
+      {/* --- DIEGETIC FOLEY SOUND EFFECTS --- */}
+      <Audio
+        src={staticFile("audio/sfx_paper_slide.wav")}
+        volume={0.4}
+      />
+      <Sequence from={12}>
+        <Audio
+          src={staticFile("audio/sfx_typewriter_stamp.wav")}
+          volume={0.48}
+        />
+      </Sequence>
+      {hasBoom && (
+        <Sequence from={0}>
+          <Audio
+            src={staticFile("audio/sfx_sub_boom.wav")}
+            volume={0.52}
+          />
+        </Sequence>
+      )}
+
+      {/* 1. Archival Table Background */}
       <div
         style={{
           position: "absolute",
@@ -62,7 +84,7 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
           width: "100%",
           height: "100%",
           transform: `scale(1.05)`,
-          filter: "brightness(0.38) blur(3px) contrast(1.2)",
+          filter: "brightness(0.35) blur(3px) contrast(1.2)",
         }}
       >
         <Img
@@ -84,7 +106,7 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
           width: "100%",
           height: "100%",
           background:
-            "radial-gradient(circle at 50% 50%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%)",
+            "radial-gradient(circle at 50% 50%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.82) 100%)",
           zIndex: 10,
         }}
       />
@@ -117,22 +139,22 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
           }}
         />
 
-        {/* Animated Forensic Highlight or Red Archival Box */}
+        {/* Animated Forensic Highlight */}
         {highlightText && (
           <div
             style={{
               position: "absolute",
-              top: "45%",
-              left: "15%",
-              width: `${markerProgress * 70}%`,
+              top: "44%",
+              left: "14%",
+              width: `${markerProgress * 72}%`,
               height: 48,
-              backgroundColor: "rgba(250, 204, 21, 0.4)",
+              backgroundColor: "rgba(250, 204, 21, 0.42)",
               mixBlendMode: "multiply",
-              border: "2px solid rgba(234, 179, 8, 0.8)",
-              boxShadow: "0 0 15px rgba(250, 204, 21, 0.3)",
+              border: "2px solid rgba(234, 179, 8, 0.85)",
+              boxShadow: "0 0 16px rgba(250, 204, 21, 0.35)",
               display: "flex",
               alignItems: "center",
-              paddingLeft: 10,
+              paddingLeft: 12,
               overflow: "hidden",
             }}
           >
@@ -158,13 +180,13 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
       <TornTapeLabel
         title={labelTitle}
         subtitle={labelSubtitle}
-        badge={badgeText}
         delayFrames={10}
+        position="lower-left"
       />
 
       {/* 5. Atmosphere: Dust Particles and Film Grain */}
       <DustParticles />
-      <AtmosphereOverlay />
+      <AtmosphereOverlay citation={citation} />
     </div>
   );
 };

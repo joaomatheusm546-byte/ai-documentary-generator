@@ -19,6 +19,7 @@ except ImportError:
 ROOT_DIR = Path(__file__).resolve().parent.parent
 ARCHIVE_DIR = ROOT_DIR / "assets" / "hitler_family_archive"
 MUSIC_DIR = ROOT_DIR / "assets" / "music"
+SFX_DIR = ROOT_DIR / "assets" / "sfx"
 MASTER_SCRIPT_PATH = ROOT_DIR / "assets" / "hitler_family_master_script.json"
 
 REMOTION_DIR = ROOT_DIR / "remotion_app"
@@ -76,14 +77,26 @@ async def main():
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
     SRC_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 1. Copy Music
+    # 1. Copy Music & SFX
+    print("\n=== Step 1.1: Copying Soundtrack and Foley SFX ===")
     music_src = MUSIC_DIR / "dark_ambient_cello.mp3"
-    music_dest = AUDIO_DIR / "music.mp3"
     if music_src.exists():
-        shutil.copy(music_src, music_dest)
-        print(f"Copied soundtrack: {music_dest.name} ({music_dest.stat().st_size / 1024:.1f} KB)")
-    else:
-        print(f"Warning: Music file {music_src} not found!")
+        shutil.copy(music_src, AUDIO_DIR / "music.mp3")
+        print(f"  + Music: music.mp3")
+
+    sfx_files = {
+        "paper_slide.wav": "sfx_paper_slide.wav",
+        "typewriter_stamp.wav": "sfx_typewriter_stamp.wav",
+        "sub_boom.wav": "sfx_sub_boom.wav",
+        "camera_shutter.wav": "sfx_camera_shutter.wav",
+    }
+    for orig, dest_name in sfx_files.items():
+        src = SFX_DIR / orig
+        if src.exists():
+            shutil.copy(src, AUDIO_DIR / dest_name)
+            print(f"  + Foley: {dest_name}")
+        else:
+            print(f"  ! Warning: SFX {orig} not found")
 
     # 2. Cutouts for Key Historical Subjects
     print("\n=== Step 2: Processing 2.5D Cutouts ===")
@@ -118,7 +131,7 @@ async def main():
             shutil.copy(src, IMAGES_DIR / af)
             print(f"  Staged {af}")
 
-    # 4. Beat Definitions (12 Beats from Scenes 1-3)
+    # 4. Beat Definitions (12 Beats with After the Crown Authentic Styling)
     beats_meta = [
         # Scene 1: Döllersheim Parish (June 1837)
         {
@@ -126,9 +139,10 @@ async def main():
             "narration": "In the remote Waldviertel region, peasant roots run deep.",
             "layoutType": "landscape",
             "bgImage": "images/scene_001_beat_01.jpg",
-            "labelTitle": "WALDVIERTEL REGION",
+            "labelTitle": "Waldviertel Region",
             "labelSubtitle": "Lower Austria // 19th Century",
-            "badgeText": "HISTORICAL ARCHIVE",
+            "citation": "[1, 2] Sources in Description",
+            "hasBoom": False,
         },
         {
             "id": "s1_b2",
@@ -136,10 +150,11 @@ async def main():
             "layoutType": "document",
             "bgImage": "images/scene_001_beat_02.jpg",
             "subjectImage": "images/scene_001_beat_04.jpg",
-            "labelTitle": "PARISH BAPTISM REGISTER",
+            "labelTitle": "Parish Baptismal Register",
             "labelSubtitle": "Döllersheim Registry // Folio 42",
-            "badgeText": "CLASSIFIED RECORD",
             "highlightText": "CONFIDENTIAL BIRTH ENTRY",
+            "citation": "[1, 2] Sources in Description",
+            "hasBoom": False,
         },
         {
             "id": "s1_b3",
@@ -147,9 +162,10 @@ async def main():
             "layoutType": "portrait",
             "bgImage": "images/scene_001_beat_01.jpg",
             "subjectImage": "cutouts/maria_schicklgruber_cutout.png",
-            "labelTitle": "MARIA ANNA SCHICKLGRUBER",
-            "labelSubtitle": "Mother of Alois Hitler // Stronnes",
-            "badgeText": "SUBJECT OF INQUIRY",
+            "labelTitle": "Maria Anna Schicklgruber",
+            "labelSubtitle": "the unmarried mother",
+            "citation": "[1, 2] Sources in Description",
+            "hasBoom": True,
         },
         {
             "id": "s1_b4",
@@ -157,10 +173,11 @@ async def main():
             "layoutType": "document",
             "bgImage": "images/scene_001_beat_02.jpg",
             "subjectImage": "images/scene_001_beat_04.jpg",
-            "labelTitle": "THE BAPTISMAL ENTRY",
-            "labelSubtitle": "Father Left Unnamed // June 1837",
-            "badgeText": "HISTORICAL RECORD",
+            "labelTitle": "The Baptismal Entry",
+            "labelSubtitle": "father left unrecorded",
             "highlightText": "FATHER UNRECORDED",
+            "citation": "[1, 2] Sources in Description",
+            "hasBoom": True,
         },
 
         # Scene 2: The Question of Paternity (Lower Austria, 1837)
@@ -169,9 +186,10 @@ async def main():
             "narration": "Alois was born out of wedlock to forty-two-year-old Maria Schicklgruber.",
             "layoutType": "landscape",
             "bgImage": "images/scene_002_beat_01.jpg",
-            "labelTitle": "VILLAGE OF STRONNES",
-            "labelSubtitle": "Birthplace of Alois Schicklgruber // 1837",
-            "badgeText": "ORIGINS",
+            "labelTitle": "Village of Stronnes",
+            "labelSubtitle": "birthplace of Alois // 1837",
+            "citation": "[2, 3] Sources in Description",
+            "hasBoom": False,
         },
         {
             "id": "s2_b2",
@@ -179,10 +197,11 @@ async def main():
             "layoutType": "document",
             "bgImage": "images/scene_002_beat_01.jpg",
             "subjectImage": "images/scene_002_beat_02.jpg",
-            "labelTitle": "CANONICAL REGISTER",
-            "labelSubtitle": "Inscribed as 'Unehelich' (Illegitimate)",
-            "badgeText": "CHURCH RECORD",
+            "labelTitle": "Canonical Register",
+            "labelSubtitle": "inscribed as 'unehelich'",
             "highlightText": "UNEHELICH // ILLEGITIMATE",
+            "citation": "[2, 3] Sources in Description",
+            "hasBoom": True,
         },
         {
             "id": "s2_b3",
@@ -190,10 +209,11 @@ async def main():
             "layoutType": "document",
             "bgImage": "images/scene_002_beat_01.jpg",
             "subjectImage": "images/scene_002_beat_03.jpg",
-            "labelTitle": "PATERNITY SECTION",
-            "labelSubtitle": "Space Left Blank by Parish Priest",
-            "badgeText": "DOCUMENTARY EVIDENCE",
+            "labelTitle": "Paternity Section",
+            "labelSubtitle": "space left completely blank",
             "highlightText": "PATERNITY: UNVERIFIED",
+            "citation": "[2, 3] Sources in Description",
+            "hasBoom": True,
         },
         {
             "id": "s2_b4",
@@ -201,9 +221,10 @@ async def main():
             "layoutType": "portrait",
             "bgImage": "images/scene_001_beat_01.jpg",
             "subjectImage": "cutouts/alois_hitler_cutout.png",
-            "labelTitle": "ALOIS SCHICKLGRUBER",
-            "labelSubtitle": "Later Known as Alois Hitler // Customs Official",
-            "badgeText": "HISTORICAL FIGURE",
+            "labelTitle": "Alois Schicklgruber",
+            "labelSubtitle": "the illegitimate son",
+            "citation": "[2, 3] Sources in Description",
+            "hasBoom": True,
         },
 
         # Scene 3: Johann Georg Hiedler (Spital, Austria, 1842)
@@ -213,9 +234,10 @@ async def main():
             "layoutType": "portrait",
             "bgImage": "images/scene_002_beat_01.jpg",
             "subjectImage": "cutouts/johann_georg_hiedler_cutout.png",
-            "labelTitle": "JOHANN GEORG HIEDLER",
-            "labelSubtitle": "Itinerant Miller // Married Maria in 1842",
-            "badgeText": "LINEAGE CLAIMANT",
+            "labelTitle": "Johann Georg Hiedler",
+            "labelSubtitle": "the itinerant miller",
+            "citation": "[3, 4] Sources in Description",
+            "hasBoom": True,
         },
         {
             "id": "s3_b2",
@@ -223,19 +245,21 @@ async def main():
             "layoutType": "document",
             "bgImage": "images/scene_002_beat_01.jpg",
             "subjectImage": "images/scene_003_beat_02.jpg",
-            "labelTitle": "MARRIAGE RECORD 1842",
-            "labelSubtitle": "No Legal Adoption or Paternity Added",
-            "badgeText": "LEGAL ARCHIVE",
+            "labelTitle": "Marriage Record 1842",
+            "labelSubtitle": "no legitimation recorded",
             "highlightText": "NO LEGITIMATION RECORDED",
+            "citation": "[3, 4] Sources in Description",
+            "hasBoom": False,
         },
         {
             "id": "s3_b3",
             "narration": "Decades passed before formal claims of paternity emerged publicly.",
             "layoutType": "landscape",
             "bgImage": "images/scene_003_beat_03.jpg",
-            "labelTitle": "LOWER AUSTRIA COUNTRYSIDE",
-            "labelSubtitle": "The Mystery Persists // 1842 - 1876",
-            "badgeText": "CHRONOLOGY",
+            "labelTitle": "Lower Austria Countryside",
+            "labelSubtitle": "the mystery persists // 1842 - 1876",
+            "citation": "[3, 4] Sources in Description",
+            "hasBoom": False,
         },
         {
             "id": "s3_b4",
@@ -243,10 +267,11 @@ async def main():
             "layoutType": "document",
             "bgImage": "images/scene_001_beat_01.jpg",
             "subjectImage": "images/scene_003_beat_04.jpg",
-            "labelTitle": "HISTORICAL CONSENSUS",
-            "labelSubtitle": "Biological Paternity Unproven to Date",
-            "badgeText": "VERDICT",
-            "highlightText": "BIOLOGICAL CONTRIBUTION DISPUTED",
+            "labelTitle": "Historical Verdict",
+            "labelSubtitle": "biological paternity unproven",
+            "highlightText": "BIOLOGICAL PATERNITY DISPUTED",
+            "citation": "[3, 4] Sources in Description",
+            "hasBoom": True,
         },
     ]
 
@@ -260,7 +285,6 @@ async def main():
         
         await synthesize_voice(b["narration"], voice_out)
         duration = get_audio_duration(voice_out)
-        # Pad duration slightly (+0.4s) for solemn pause between documentary cuts
         padded_duration = duration + 0.4
         frames = int(round(padded_duration * 30))
         total_frames += frames
@@ -273,14 +297,15 @@ async def main():
             "subjectImage": b.get("subjectImage"),
             "labelTitle": b.get("labelTitle"),
             "labelSubtitle": b.get("labelSubtitle"),
-            "badgeText": b.get("badgeText"),
             "highlightText": b.get("highlightText"),
+            "hasBoom": b.get("hasBoom", False),
+            "citation": b.get("citation"),
             "audioSrc": f"audio/{voice_filename}",
         })
         print(f"  Beat {i:02d}: {b['id']} -> {duration:.2f}s (+0.4s pad) = {frames} frames ({frames/30:.2f}s)")
 
     config = {
-        "title": "The Hitler Bloodline: From the Secret Origins to the Extinction of the Lineage (Remotion Pilot)",
+        "title": "The Hitler Bloodline: From the Secret Origins to the Extinction of the Lineage (Remotion Pilot V2)",
         "fps": 30,
         "width": 1920,
         "height": 1080,

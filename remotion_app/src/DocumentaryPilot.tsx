@@ -3,6 +3,7 @@ import { Audio, Series, staticFile } from "remotion";
 import { ParallaxCutoutScene } from "./components/ParallaxCutoutScene";
 import { ParallaxDocumentScene } from "./components/ParallaxDocumentScene";
 import { ParallaxLandscapeScene } from "./components/ParallaxLandscapeScene";
+import { ParallaxVideoScene } from "./components/ParallaxVideoScene";
 import { DocumentaryConfig } from "./types";
 
 interface Props {
@@ -47,7 +48,8 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 durationInFrames={beat.durationInFrames}
                 labelTitle={beat.labelTitle}
                 labelSubtitle={beat.labelSubtitle}
-                badgeText={beat.badgeText}
+                hasBoom={beat.hasBoom}
+                citation={beat.citation}
               />
             )}
 
@@ -58,8 +60,9 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 durationInFrames={beat.durationInFrames}
                 labelTitle={beat.labelTitle}
                 labelSubtitle={beat.labelSubtitle}
-                badgeText={beat.badgeText}
                 highlightText={beat.highlightText}
+                hasBoom={beat.hasBoom}
+                citation={beat.citation}
               />
             )}
 
@@ -69,7 +72,19 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 durationInFrames={beat.durationInFrames}
                 labelTitle={beat.labelTitle}
                 labelSubtitle={beat.labelSubtitle}
-                badgeText={beat.badgeText}
+                hasBoom={beat.hasBoom}
+                citation={beat.citation}
+              />
+            )}
+
+            {beat.layoutType === "video" && beat.videoSrc && (
+              <ParallaxVideoScene
+                videoSrc={beat.videoSrc}
+                durationInFrames={beat.durationInFrames}
+                labelTitle={beat.labelTitle}
+                labelSubtitle={beat.labelSubtitle}
+                hasBoom={beat.hasBoom}
+                citation={beat.citation}
               />
             )}
           </Series.Sequence>

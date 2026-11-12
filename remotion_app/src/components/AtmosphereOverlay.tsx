@@ -1,12 +1,23 @@
 import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
 
-export const AtmosphereOverlay: React.FC = () => {
+interface Props {
+  citation?: string;
+}
+
+export const AtmosphereOverlay: React.FC<Props> = ({
+  citation = "[1, 2] Sources in Description",
+}) => {
   const frame = useCurrentFrame();
 
-  // Subtle flicker for vintage projector feel
+  // 1. Optical Camera Shutter Flash on Beat Transition (Frames 0-4)
+  const flashOpacity = interpolate(frame, [0, 2, 6], [0.35, 0.1, 0], {
+    extrapolateRight: "clamp",
+  });
+
+  // 2. Vintage projector light flicker
   const flicker = interpolate(
-    Math.sin(frame * 0.4) * Math.cos(frame * 0.25),
+    Math.sin(frame * 0.45) * Math.cos(frame * 0.2),
     [-1, 1],
     [0.96, 1.04]
   );
@@ -23,7 +34,43 @@ export const AtmosphereOverlay: React.FC = () => {
         zIndex: 50,
       }}
     >
-      {/* 1. Cinematic Radial Vignette */}
+      {/* 1. Camera Shutter / Light Leak Flash */}
+      {flashOpacity > 0 && (
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#fffbeb",
+            opacity: flashOpacity,
+            mixBlendMode: "screen",
+          }}
+        />
+      )}
+
+      {/* 2. Top-Right Citation Badge (After the Crown standard) */}
+      {citation && (
+        <div
+          style={{
+            position: "absolute",
+            top: 36,
+            right: 48,
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            fontSize: 14,
+            fontWeight: 400,
+            color: "rgba(255, 255, 255, 0.72)",
+            letterSpacing: "0.5px",
+            textShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
+            zIndex: 60,
+          }}
+        >
+          {citation}
+        </div>
+      )}
+
+      {/* 3. Deep Cinematic Radial Vignette */}
       <div
         style={{
           position: "absolute",
@@ -32,11 +79,11 @@ export const AtmosphereOverlay: React.FC = () => {
           width: "100%",
           height: "100%",
           background:
-            "radial-gradient(circle at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.85) 100%)",
+            "radial-gradient(circle at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0.88) 100%)",
         }}
       />
 
-      {/* 2. Top and Bottom Letterbox Soft Vignette */}
+      {/* 4. Top and Bottom Film Shading */}
       <div
         style={{
           position: "absolute",
@@ -45,11 +92,11 @@ export const AtmosphereOverlay: React.FC = () => {
           width: "100%",
           height: "100%",
           background:
-            "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.65) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.6) 100%)",
         }}
       />
 
-      {/* 3. Archival Warm Tint */}
+      {/* 5. Vintage Amber Multiplying Tint */}
       <div
         style={{
           position: "absolute",
@@ -57,13 +104,13 @@ export const AtmosphereOverlay: React.FC = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(35, 24, 15, 0.06)",
+          backgroundColor: "rgba(35, 24, 15, 0.05)",
           mixBlendMode: "multiply",
           opacity: flicker,
         }}
       />
 
-      {/* 4. SVG Film Grain Filter */}
+      {/* 6. Dynamic 35mm Film Grain SVG Filter */}
       <svg
         style={{
           position: "absolute",
@@ -75,7 +122,7 @@ export const AtmosphereOverlay: React.FC = () => {
           mixBlendMode: "overlay",
         }}
       >
-        <filter id="film-grain">
+        <filter id="film-grain-pilot">
           <feTurbulence
             type="fractalNoise"
             baseFrequency="0.75"
@@ -85,7 +132,7 @@ export const AtmosphereOverlay: React.FC = () => {
           />
           <feColorMatrix type="saturate" values="0" />
         </filter>
-        <rect width="100%" height="100%" filter="url(#film-grain)" />
+        <rect width="100%" height="100%" filter="url(#film-grain-pilot)" />
       </svg>
     </div>
   );

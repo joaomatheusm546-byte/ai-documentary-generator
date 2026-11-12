@@ -1,5 +1,5 @@
 import React from "react";
-import { Img, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { Audio, Img, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { AtmosphereOverlay } from "./AtmosphereOverlay";
 import { DustParticles } from "./DustParticles";
 import { TornTapeLabel } from "./TornTapeLabel";
@@ -10,7 +10,8 @@ interface Props {
   durationInFrames: number;
   labelTitle?: string;
   labelSubtitle?: string;
-  badgeText?: string;
+  hasBoom?: boolean;
+  citation?: string;
 }
 
 export const ParallaxCutoutScene: React.FC<Props> = ({
@@ -19,16 +20,17 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
   durationInFrames,
   labelTitle,
   labelSubtitle,
-  badgeText,
+  hasBoom = false,
+  citation,
 }) => {
   const frame = useCurrentFrame();
 
   // Background slow zoom & drift
   const bgScale = interpolate(frame, [0, durationInFrames], [1.02, 1.1]);
-  const bgTranslateX = interpolate(frame, [0, durationInFrames], [-10, 10]);
+  const bgTranslateX = interpolate(frame, [0, durationInFrames], [-8, 8]);
 
-  // Subject cutout parallax motion (3D floating perspective)
-  const subjectScale = interpolate(frame, [0, durationInFrames], [0.98, 1.04]);
+  // Subject cutout motion (close-up / busto framing)
+  const subjectScale = interpolate(frame, [0, durationInFrames], [1.38, 1.45]);
   const subjectRotateY = interpolate(
     frame,
     [0, durationInFrames],
@@ -37,9 +39,9 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
   const subjectRotateX = interpolate(
     Math.sin(frame * 0.05),
     [-1, 1],
-    [-0.8, 0.8]
+    [-0.6, 0.6]
   );
-  const subjectFloatY = Math.sin(frame * 0.04) * 8;
+  const subjectFloatY = Math.sin(frame * 0.04) * 6;
 
   return (
     <div
@@ -51,6 +53,31 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
         overflow: "hidden",
       }}
     >
+      {/* --- DIEGETIC FOLEY SOUND EFFECTS --- */}
+      {/* 1. Paper Slide Sound on Scene Cut */}
+      <Audio
+        src={staticFile("audio/sfx_paper_slide.wav")}
+        volume={0.42}
+      />
+
+      {/* 2. Typewriter / Stamp Sound when Torn Tape Label Enters */}
+      <Sequence from={12}>
+        <Audio
+          src={staticFile("audio/sfx_typewriter_stamp.wav")}
+          volume={0.5}
+        />
+      </Sequence>
+
+      {/* 3. Sub-Boom for Major Historical Reveals */}
+      {hasBoom && (
+        <Sequence from={0}>
+          <Audio
+            src={staticFile("audio/sfx_sub_boom.wav")}
+            volume={0.55}
+          />
+        </Sequence>
+      )}
+
       {/* 1. Background Layer */}
       <div
         style={{
@@ -60,7 +87,7 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
           width: "100%",
           height: "100%",
           transform: `scale(${bgScale}) translateX(${bgTranslateX}px)`,
-          filter: "blur(3.5px) brightness(0.62) contrast(1.15) sepia(0.25)",
+          filter: "blur(3.5px) brightness(0.58) contrast(1.15) sepia(0.25)",
         }}
       >
         <Img
@@ -73,7 +100,7 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
         />
       </div>
 
-      {/* 2. Soft Depth Separator Shadow between BG and Subject */}
+      {/* 2. Depth Shadow Separator */}
       <div
         style={{
           position: "absolute",
@@ -82,27 +109,27 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
           width: "100%",
           height: "100%",
           background:
-            "radial-gradient(circle at 50% 50%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%)",
+            "radial-gradient(circle at 50% 45%, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%)",
           zIndex: 10,
         }}
       />
 
-      {/* 3. Subject Cutout Layer (2.5D Isolated Foreground) */}
+      {/* 3. Subject Cutout (Busto / Medium Close-up Framing) */}
       {subjectImage && (
         <div
           style={{
             position: "absolute",
-            bottom: 0,
+            bottom: -50,
             left: "50%",
             zIndex: 20,
             transform: `translateX(-50%) translateY(${subjectFloatY}px) perspective(1100px) rotateY(${subjectRotateY}deg) rotateX(${subjectRotateX}deg) scale(${subjectScale})`,
             transformOrigin: "bottom center",
-            height: "92%",
+            height: "95%",
             display: "flex",
             justifyContent: "center",
             alignItems: "flex-end",
             filter:
-              "drop-shadow(0 35px 45px rgba(0, 0, 0, 0.95)) drop-shadow(0 12px 18px rgba(0, 0, 0, 0.75))",
+              "drop-shadow(0 35px 50px rgba(0, 0, 0, 0.95)) drop-shadow(0 15px 22px rgba(0, 0, 0, 0.8))",
           }}
         >
           <Img
@@ -111,23 +138,23 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
               height: "100%",
               width: "auto",
               objectFit: "contain",
-              filter: "contrast(1.1) brightness(0.95)",
+              filter: "contrast(1.12) brightness(0.95)",
             }}
           />
         </div>
       )}
 
-      {/* 4. Lower Third Torn Tape Label */}
+      {/* 4. Torn Paper Tape Label (Pinned on chest/lower-left of subject) */}
       <TornTapeLabel
         title={labelTitle}
         subtitle={labelSubtitle}
-        badge={badgeText}
         delayFrames={12}
+        position="pinned-left"
       />
 
-      {/* 5. Atmosphere: Dust Particles and Film Grain */}
+      {/* 5. Atmosphere Overlays */}
       <DustParticles />
-      <AtmosphereOverlay />
+      <AtmosphereOverlay citation={citation} />
     </div>
   );
 };

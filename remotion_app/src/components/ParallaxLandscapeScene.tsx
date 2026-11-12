@@ -1,5 +1,5 @@
 import React from "react";
-import { Img, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { Audio, Img, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { AtmosphereOverlay } from "./AtmosphereOverlay";
 import { DustParticles } from "./DustParticles";
 import { TornTapeLabel } from "./TornTapeLabel";
@@ -9,7 +9,8 @@ interface Props {
   durationInFrames: number;
   labelTitle?: string;
   labelSubtitle?: string;
-  badgeText?: string;
+  hasBoom?: boolean;
+  citation?: string;
 }
 
 export const ParallaxLandscapeScene: React.FC<Props> = ({
@@ -17,13 +18,14 @@ export const ParallaxLandscapeScene: React.FC<Props> = ({
   durationInFrames,
   labelTitle,
   labelSubtitle,
-  badgeText,
+  hasBoom = false,
+  citation,
 }) => {
   const frame = useCurrentFrame();
 
   const scale = interpolate(frame, [0, durationInFrames], [1.0, 1.08]);
-  const panX = interpolate(frame, [0, durationInFrames], [-20, 20]);
-  const panY = interpolate(frame, [0, durationInFrames], [10, -10]);
+  const panX = interpolate(frame, [0, durationInFrames], [-16, 16]);
+  const panY = interpolate(frame, [0, durationInFrames], [8, -8]);
 
   return (
     <div
@@ -35,6 +37,26 @@ export const ParallaxLandscapeScene: React.FC<Props> = ({
         overflow: "hidden",
       }}
     >
+      {/* SFX: Shutter & Typewriter */}
+      <Audio
+        src={staticFile("audio/sfx_camera_shutter.wav")}
+        volume={0.35}
+      />
+      <Sequence from={12}>
+        <Audio
+          src={staticFile("audio/sfx_typewriter_stamp.wav")}
+          volume={0.45}
+        />
+      </Sequence>
+      {hasBoom && (
+        <Sequence from={0}>
+          <Audio
+            src={staticFile("audio/sfx_sub_boom.wav")}
+            volume={0.5}
+          />
+        </Sequence>
+      )}
+
       {/* Landscape Image with Slow Cinematic Glide */}
       <div
         style={{
@@ -61,13 +83,13 @@ export const ParallaxLandscapeScene: React.FC<Props> = ({
       <TornTapeLabel
         title={labelTitle}
         subtitle={labelSubtitle}
-        badge={badgeText}
         delayFrames={10}
+        position="lower-left"
       />
 
       {/* Atmosphere Overlays */}
       <DustParticles />
-      <AtmosphereOverlay />
+      <AtmosphereOverlay citation={citation} />
     </div>
   );
 };
