@@ -60,7 +60,7 @@ export const ParallaxLandscapeScene: React.FC<Props> = ({
         <Sequence from={0}>
           <Audio
             src={staticFile("audio/sfx_sub_boom.wav")}
-            volume={0.18}
+            volume={0.12}
           />
         </Sequence>
       )}

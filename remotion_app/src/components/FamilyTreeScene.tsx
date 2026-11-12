@@ -48,7 +48,7 @@ export const FamilyTreeScene: React.FC<Props> = ({
       </Sequence>
       {hasBoom && (
         <Sequence from={0}>
-          <Audio src={staticFile("audio/sfx_sub_boom.wav")} volume={0.18} />
+          <Audio src={staticFile("audio/sfx_sub_boom.wav")} volume={0.12} />
         </Sequence>
       )}
 
