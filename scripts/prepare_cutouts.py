@@ -19,9 +19,15 @@ portraits_map = {
     "johann_georg_hiedler_cutout.png": "scene_003_beat_01.jpg",
     "klara_polzl_cutout.png": "scene_006_beat_02.jpg",
     "adolf_hitler_cutout.png": "scene_008_beat_04.jpg",
+    "alois_jr_cutout.png": "scene_009_beat_01.jpg",
+    "bridget_dowling_cutout.png": "scene_009_beat_03.jpg",
+    "angela_hitler_cutout.png": "scene_010_beat_01.jpg",
+    "paula_hitler_cutout.png": "scene_011_beat_01.jpg",
+    "william_hitler_civilian_cutout.png": "scene_013_beat_01.jpg",
     "geli_raubal_cutout.png": "scene_016_beat_01.jpg",
-    "william_hitler_cutout.png": "scene_021_beat_02.jpg",
-    "paula_hitler_cutout.png": "scene_031_beat_01.jpg",
+    "william_hitler_navy_cutout.png": "scene_021_beat_02.jpg",
+    "heinz_hitler_cutout.png": "scene_027_beat_01.jpg",
+    "paula_hitler_postwar_cutout.png": "scene_031_beat_01.jpg",
 }
 
 def main():

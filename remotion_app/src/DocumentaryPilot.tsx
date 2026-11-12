@@ -1,6 +1,7 @@
 import React from "react";
 import { Audio, interpolate, Sequence, Series, staticFile, useCurrentFrame } from "remotion";
 import { FamilyTreeScene } from "./components/FamilyTreeScene";
+import { ForensicSilhouetteScene } from "./components/ForensicSilhouetteScene";
 import { ImpactTextStamp } from "./components/ImpactTextStamp";
 import { ParallaxCutoutScene } from "./components/ParallaxCutoutScene";
 import { ParallaxDocumentScene } from "./components/ParallaxDocumentScene";
@@ -103,6 +104,22 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 labelTitle={beat.labelTitle}
                 labelSubtitle={beat.labelSubtitle}
                 highlightText={beat.highlightText}
+                highlightStyle={beat.highlightStyle}
+                hasBoom={beat.hasBoom}
+                citation={beat.citation}
+              />
+            )}
+
+            {/* B2. Forensic Silhouette Scene (Unrecorded / Secret Lineage) */}
+            {beat.layoutType === "silhouette" && (
+              <ForensicSilhouetteScene
+                bgImage={beat.bgImage}
+                durationInFrames={beat.durationInFrames}
+                silhouetteType={beat.silhouetteType}
+                stampText={beat.stampText}
+                stampSubtext={beat.stampSubtext}
+                labelTitle={beat.labelTitle}
+                labelSubtitle={beat.labelSubtitle}
                 hasBoom={beat.hasBoom}
                 citation={beat.citation}
               />

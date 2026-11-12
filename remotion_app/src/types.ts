@@ -34,7 +34,7 @@ export interface SplitCollageData {
 export interface BeatData {
   id: string;
   durationInFrames: number;
-  layoutType: "portrait" | "document" | "landscape" | "video" | "split_collage" | "family_tree";
+  layoutType: "portrait" | "document" | "landscape" | "video" | "split_collage" | "family_tree" | "silhouette";
   bgImage: string;
   subjectImage?: string;
   videoSrc?: string;
@@ -42,6 +42,10 @@ export interface BeatData {
   labelSubtitle?: string;
   badgeText?: string;
   highlightText?: string;
+  highlightStyle?: "marker" | "red_circle" | "both" | "stamp";
+  stampText?: string;
+  stampSubtext?: string;
+  silhouetteType?: "nepomuk" | "unknown_father" | "brothers" | "classified";
   impactText?: string;
   impactFrame?: number;
   hasBoom?: boolean;
