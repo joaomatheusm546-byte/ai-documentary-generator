@@ -29,17 +29,17 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
   const bgScale = interpolate(frame, [0, durationInFrames], [1.02, 1.1]);
   const bgTranslateX = interpolate(frame, [0, durationInFrames], [-8, 8]);
 
-  // Subject cutout motion (close-up / busto framing)
-  const subjectScale = interpolate(frame, [0, durationInFrames], [1.38, 1.45]);
+  // Subject cutout motion (Anchored at TOP to preserve head, hair & hats)
+  const subjectScale = interpolate(frame, [0, durationInFrames], [1.2, 1.28]);
   const subjectRotateY = interpolate(
     frame,
     [0, durationInFrames],
-    [-2.5, 2.5]
+    [-2.2, 2.2]
   );
   const subjectRotateX = interpolate(
     Math.sin(frame * 0.05),
     [-1, 1],
-    [-0.6, 0.6]
+    [-0.5, 0.5]
   );
   const subjectFloatY = Math.sin(frame * 0.04) * 6;
 
@@ -114,20 +114,20 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
         }}
       />
 
-      {/* 3. Subject Cutout (Busto / Medium Close-up Framing) */}
+      {/* 3. Subject Cutout (Top-anchored Busto Framing: guarantees head, eyes, and hat stay fully in frame) */}
       {subjectImage && (
         <div
           style={{
             position: "absolute",
-            bottom: -50,
+            top: 55,
             left: "50%",
             zIndex: 20,
             transform: `translateX(-50%) translateY(${subjectFloatY}px) perspective(1100px) rotateY(${subjectRotateY}deg) rotateX(${subjectRotateX}deg) scale(${subjectScale})`,
-            transformOrigin: "bottom center",
-            height: "95%",
+            transformOrigin: "center top",
+            height: "92%",
             display: "flex",
             justifyContent: "center",
-            alignItems: "flex-end",
+            alignItems: "flex-start",
             filter:
               "drop-shadow(0 35px 50px rgba(0, 0, 0, 0.95)) drop-shadow(0 15px 22px rgba(0, 0, 0, 0.8))",
           }}
@@ -144,7 +144,7 @@ export const ParallaxCutoutScene: React.FC<Props> = ({
         </div>
       )}
 
-      {/* 4. Torn Paper Tape Label (Pinned on chest/lower-left of subject) */}
+      {/* 4. Torn Paper Tape Label */}
       <TornTapeLabel
         title={labelTitle}
         subtitle={labelSubtitle}
