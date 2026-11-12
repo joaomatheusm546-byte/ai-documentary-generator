@@ -26,8 +26,13 @@ jobs:
         with:
           node-version: 20
 
-      - name: Set up FFmpeg
-        uses: FedericoCarboni/setup-ffmpeg@v3
+      - name: Ensure FFmpeg
+        run: |
+          if ! command -v ffmpeg &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y ffmpeg
+          else
+            echo "FFmpeg is already installed: $(ffmpeg -version | head -n 1)"
+          fi
 
       - name: Install Python Dependencies
         run: |
