@@ -1,10 +1,17 @@
 import os
+import sys
 import json
 import shutil
 import asyncio
 import subprocess
 from pathlib import Path
 from PIL import Image
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT_DIR))
+
+from src.config import USE_ELEVENLABS, ELEVENLABS_VOICE_ID, ELEVENLABS_MODEL_ID
+from src.elevenlabs_client import synthesize_with_elevenlabs
 
 try:
     import edge_tts
@@ -51,7 +58,19 @@ async def synthesize_voice(text: str, output_path: Path, voice: str = "en-US-Chr
     if output_path.exists() and output_path.stat().st_size > 1000:
         print(f"  Voice file exists: {output_path.name}")
         return
-    print(f"  Synthesizing voice: '{text[:50]}...' -> {output_path.name}")
+    if USE_ELEVENLABS:
+        try:
+            res = synthesize_with_elevenlabs(
+                text=text,
+                output_path=output_path,
+                voice_id=ELEVENLABS_VOICE_ID,
+                model_id=ELEVENLABS_MODEL_ID
+            )
+            print(f"  ElevenLabs: {output_path.name} (cost: {res.get('character_cost', 0)} credits, cached: {res.get('cached')})")
+            return
+        except Exception as e:
+            print(f"  Warning: ElevenLabs synthesis failed ({e}). Falling back to Edge-TTS.")
+    print(f"  Synthesizing voice via Edge-TTS: '{text[:50]}...' -> {output_path.name}")
     communicate = edge_tts.Communicate(text, voice, rate=rate)
     await communicate.save(str(output_path))
 

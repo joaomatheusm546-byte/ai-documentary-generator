@@ -56,3 +56,10 @@ VIDEO_WIDTH = 1920
 VIDEO_HEIGHT = 1080
 VIDEO_FPS = 30
 DEFAULT_VOICE = "en-US-ChristopherNeural"  # Authoritative, calm documentary voice
+
+# ElevenLabs Production Voice Config
+ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "")
+ELEVENLABS_VOICE_ID = os.getenv("ELEVENLABS_VOICE_ID", "JBFqnCBsd6RMkjVDRZzb")  # George (British BBC documentary narrator)
+ELEVENLABS_MODEL_ID = os.getenv("ELEVENLABS_MODEL_ID", "eleven_turbo_v2_5")     # 0.5x credit cost (cheapest high-quality)
+USE_ELEVENLABS = bool(ELEVENLABS_API_KEY)
+

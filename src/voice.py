@@ -5,8 +5,9 @@ import subprocess
 from pathlib import Path
 from typing import Dict, Any, List
 import edge_tts
-from src.config import FFMPEG_BIN, FFPROBE_BIN, DEFAULT_VOICE, TEMP_DIR
+from src.config import FFMPEG_BIN, FFPROBE_BIN, DEFAULT_VOICE, TEMP_DIR, USE_ELEVENLABS, ELEVENLABS_VOICE_ID, ELEVENLABS_MODEL_ID
 from src.lexicon import prepare_text_for_tts
+from src.elevenlabs_client import synthesize_with_elevenlabs
 
 logger = logging.getLogger(__name__)
 
@@ -23,30 +24,46 @@ async def generate_scene_voice(
     text: str,
     output_path: Path,
     voice: str = DEFAULT_VOICE,
-    rate: str = "-7%" # Calibrated slower cadence for 'After the Crown' solemn gravitas
+    rate: str = "-7%", # Calibrated slower cadence for 'After the Crown' solemn gravitas
+    prefer_elevenlabs: bool = True
 ) -> Dict[str, Any]:
     """
-    Synthesizes speech using Edge-TTS and returns metadata including exact duration.
+    Synthesizes speech using ElevenLabs (with zero-credit persistent caching)
+    or falls back to Microsoft Edge-TTS.
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    # Apply phonetic calibration for canonical documentary entities
+    word_count = len(text.split())
+
+    if prefer_elevenlabs and USE_ELEVENLABS:
+        try:
+            res = synthesize_with_elevenlabs(
+                text=text,
+                output_path=output_path,
+                voice_id=ELEVENLABS_VOICE_ID,
+                model_id=ELEVENLABS_MODEL_ID
+            )
+            res["word_count"] = word_count
+            return res
+        except Exception as e:
+            logger.warning(f"ElevenLabs synthesis failed: {e}. Falling back to Edge-TTS.")
+
+    # Apply phonetic calibration for canonical documentary entities on Edge-TTS
     calibrated_text = prepare_text_for_tts(text)
     
-    # Generate MP3
+    # Generate MP3 via Edge-TTS
     communicate = edge_tts.Communicate(calibrated_text, voice, rate=rate)
     await communicate.save(str(output_path))
     
     # Get exact duration via ffprobe
     duration = get_audio_duration(output_path)
     
-    word_count = len(text.split())
-    
     return {
         "audio_path": str(output_path),
         "duration": duration,
         "word_count": word_count,
-        "voice": voice
+        "voice": voice,
+        "character_cost": 0,
+        "cached": False
     }
 
 def get_audio_duration(audio_path: Path) -> float:
