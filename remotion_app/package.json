@@ -1,0 +1,23 @@
+{
+  "name": "documentary-remotion-engine",
+  "version": "1.0.0",
+  "description": "Motion Collage 2.5D documentary engine for After the Crown standard",
+  "private": true,
+  "scripts": {
+    "start": "remotion preview src/index.ts",
+    "build": "remotion bundle src/index.ts",
+    "render": "remotion render src/index.ts DocumentaryPilot out/pilot.mp4"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.218",
+    "@remotion/cli": "^4.0.218",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remotion": "^4.0.218"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.3.3"
+  }
+}

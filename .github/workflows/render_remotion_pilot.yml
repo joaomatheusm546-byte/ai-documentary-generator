@@ -1,0 +1,89 @@
+name: Render Remotion Documentary Pilot (After the Crown Standard)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-remotion-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Set up FFmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v3
+
+      - name: Install Python Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download Verified Historical Archival Media
+        run: |
+          mkdir -p assets/hitler_family_archive
+          curl -L -s -o assets/hitler_family_archive.zip https://github.com/joaomatheusm546-byte/ai-documentary-generator/releases/download/v1.0-archive/hitler_family_archive.zip
+          unzip -q -o assets/hitler_family_archive.zip -d assets/hitler_family_archive/
+          echo "Archival assets extracted: $(ls assets/hitler_family_archive | wc -l) files"
+
+      - name: Prepare Remotion Pilot Assets & Cutouts
+        run: |
+          python scripts/prepare_remotion_pilot.py
+
+      - name: Install Remotion Dependencies
+        run: |
+          cd remotion_app
+          npm install
+
+      - name: Ensure Headless Chromium for Remotion
+        run: |
+          cd remotion_app
+          npx remotion browser ensure
+
+      - name: Render Remotion 2.5D Pilot Video
+        run: |
+          mkdir -p output
+          cd remotion_app
+          npx remotion render src/index.ts DocumentaryPilot ../output/remotion_hitler_bloodline_pilot.mp4 --concurrency=2
+
+      - name: Upload Video Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: remotion-pilot-video
+          path: output/remotion_hitler_bloodline_pilot.mp4
+          retention-days: 14
+
+      - name: Create GitHub Release with Remotion Pilot
+        uses: softprops/action-gh-release@v2
+        if: github.event_name == 'workflow_dispatch'
+        with:
+          tag_name: "remotion-pilot-${{ github.run_id }}"
+          name: "Remotion 2.5D Pilot: The Hitler Bloodline (~58s)"
+          body: |
+            🎬 **Remotion 2.5D Motion Collage Pilot Render Complete!**
+            - **Benchmark Standard:** *After the Crown* layered aesthetic
+            - **Theme:** The Hitler Bloodline (Scenes 1-3)
+            - **Duration:** ~58 seconds (12 beats)
+            - **Features:**
+              - 2.5D Layered Cutouts with perspective depth and drop shadows
+              - Physical torn-tape badges & animated forensic document highlighters
+              - Film grain (35mm) and micro-dust particles
+              - 48kHz broadcast ChristopherNeural voiceover + cello soundtrack
+          files: output/remotion_hitler_bloodline_pilot.mp4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
