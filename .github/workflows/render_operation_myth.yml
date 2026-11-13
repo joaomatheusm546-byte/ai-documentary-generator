@@ -1,0 +1,118 @@
+name: Render Operation Myth 5-Acts (Parallel Remotion)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-act:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: true
+      matrix:
+        act: [1, 2, 3, 4, 5]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download Operation Myth Assets from Release v2.0-operation-myth
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          mkdir -p remotion_app/public/myth_images remotion_app/public/cutouts remotion_app/public/audio assets/tmp_rel
+          gh release download v2.0-operation-myth -D assets/tmp_rel -p "operation_myth_visuals.zip" -p "operation_myth_audio.zip"
+          unzip -q -o assets/tmp_rel/operation_myth_visuals.zip -d remotion_app/public/
+          unzip -q -o assets/tmp_rel/operation_myth_audio.zip -d remotion_app/public/audio/
+          echo "myth_images: $(ls remotion_app/public/myth_images | wc -l)"
+          echo "cutouts: $(ls remotion_app/public/cutouts | wc -l)"
+          echo "audio: $(ls remotion_app/public/audio | wc -l)"
+
+      - name: Install Remotion Dependencies
+        run: |
+          cd remotion_app
+          npm ci || npm install
+
+      - name: Ensure Headless Chromium for Remotion
+        run: |
+          cd remotion_app
+          npx remotion browser ensure
+
+      - name: Render Act ${{ matrix.act }}
+        run: |
+          mkdir -p output/acts
+          cd remotion_app
+          npx remotion render src/index.ts Act${{ matrix.act }} ../output/acts/act_${{ matrix.act }}.mp4 --concurrency=2
+
+      - name: Upload Act ${{ matrix.act }} Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: myth-act-${{ matrix.act }}
+          path: output/acts/act_${{ matrix.act }}.mp4
+          retention-days: 7
+
+  concat-and-release:
+    needs: render-act
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Ensure FFmpeg
+        run: |
+          if ! command -v ffmpeg &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Download Rendered Acts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: myth-act-*
+          path: output/acts
+          merge-multiple: true
+
+      - name: Concatenate 5 Acts into Master Documentary
+        run: |
+          set -e
+          mkdir -p output
+          cd output/acts
+          ls -lh act_*.mp4
+          cat << 'EOF' > concat_acts.txt
+          file 'act_1.mp4'
+          file 'act_2.mp4'
+          file 'act_3.mp4'
+          file 'act_4.mp4'
+          file 'act_5.mp4'
+          EOF
+          ffmpeg -y -f concat -safe 0 -i concat_acts.txt -c copy ../master_operation_myth_documentary.mp4
+          ls -lh ../master_operation_myth_documentary.mp4
+          ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ../master_operation_myth_documentary.mp4
+
+      - name: Upload Master Video Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: operation-myth-master-video
+          path: output/master_operation_myth_documentary.mp4
+          retention-days: 14
+
+      - name: Create GitHub Release with Master Documentary
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "operation-myth-${{ github.run_id }}"
+          name: "Aftermath Dossier: Operation Myth (1080p Master)"
+          body: |
+            Operation Myth: What Stalin Really Found in the Berlin Bunker
+            - Channel: Aftermath Dossier (@AftermathDossier)
+            - Structure: 5 Acts | 45 Scenes | 180 Beats
+            - Resolution: 1080p @ 30 FPS
+          files: output/master_operation_myth_documentary.mp4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

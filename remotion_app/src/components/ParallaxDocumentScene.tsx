@@ -11,8 +11,9 @@ interface Props {
   labelTitle?: string;
   labelSubtitle?: string;
   highlightText?: string;
-  highlightStyle?: "marker" | "red_circle" | "both";
+  highlightStyle?: "marker" | "red_circle" | "both" | "stamp";
   hasBoom?: boolean;
+  disableAutoSfx?: boolean;
   citation?: string;
 }
 
@@ -25,6 +26,7 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
   highlightText,
   highlightStyle = "both",
   hasBoom = false,
+  disableAutoSfx = false,
   citation,
 }) => {
   const frame = useCurrentFrame();
@@ -69,23 +71,27 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
       }}
     >
       {/* --- DIEGETIC FOLEY SOUND EFFECTS --- */}
-      <Audio
-        src={staticFile("audio/sfx_paper_slide.wav")}
-        volume={0.22}
-      />
-      <Sequence from={12}>
-        <Audio
-          src={staticFile("audio/sfx_typewriter_stamp.wav")}
-          volume={0.24}
-        />
-      </Sequence>
-      {hasBoom && (
-        <Sequence from={0}>
+      {!disableAutoSfx && (
+        <>
           <Audio
-            src={staticFile("audio/sfx_sub_boom.wav")}
-            volume={0.12}
+            src={staticFile("audio/sfx_paper_slide.wav")}
+            volume={0.22}
           />
-        </Sequence>
+          <Sequence from={12}>
+            <Audio
+              src={staticFile("audio/sfx_typewriter_stamp.wav")}
+              volume={0.24}
+            />
+          </Sequence>
+          {hasBoom && (
+            <Sequence from={0}>
+              <Audio
+                src={staticFile("audio/sfx_sub_boom.wav")}
+                volume={0.12}
+              />
+            </Sequence>
+          )}
+        </>
       )}
 
       {/* 1. Archival Table Background */}
@@ -144,7 +150,9 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
         <Img
           src={staticFile(documentImage)}
           style={{
-            width: "100%",
+            maxWidth: 1440,
+            maxHeight: 820,
+            width: "auto",
             height: "auto",
             display: "block",
             borderRadius: 3,

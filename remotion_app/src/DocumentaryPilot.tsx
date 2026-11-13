@@ -74,11 +74,28 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
               <Audio src={staticFile(beat.audioSrc)} volume={1.0} />
             )}
 
+            {/* Sparse / Intentional Diegetic Foley (opt-in via disableAutoSfx + sfxPreset) */}
+            {config.disableAutoSfx && beat.sfxPreset === "subtle_slide" && (
+              <Audio src={staticFile("audio/sfx_paper_slide.wav")} volume={0.10} />
+            )}
+            {config.disableAutoSfx && beat.sfxPreset === "shutter" && (
+              <Audio src={staticFile("audio/sfx_camera_shutter.wav")} volume={0.09} />
+            )}
+            {config.disableAutoSfx && beat.sfxPreset === "stamp" && (
+              <Sequence from={beat.impactFrame || 18}>
+                <Audio src={staticFile("audio/sfx_typewriter_stamp.wav")} volume={0.11} />
+              </Sequence>
+            )}
+            {config.disableAutoSfx && beat.sfxPreset === "boom" && (
+              <Audio src={staticFile("audio/sfx_sub_boom.wav")} volume={0.09} />
+            )}
+
             {/* Kinetic Impact Words Stamp (if defined for this beat) */}
             {beat.impactText && (
               <ImpactTextStamp
                 text={beat.impactText}
                 delayFrames={beat.impactFrame || 18}
+                disableAutoSfx={config.disableAutoSfx}
               />
             )}
 
@@ -91,6 +108,7 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 labelTitle={beat.labelTitle}
                 labelSubtitle={beat.labelSubtitle}
                 hasBoom={beat.hasBoom}
+                disableAutoSfx={config.disableAutoSfx}
                 citation={beat.citation}
               />
             )}
@@ -106,6 +124,7 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 highlightText={beat.highlightText}
                 highlightStyle={beat.highlightStyle}
                 hasBoom={beat.hasBoom}
+                disableAutoSfx={config.disableAutoSfx}
                 citation={beat.citation}
               />
             )}
@@ -121,6 +140,7 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 labelTitle={beat.labelTitle}
                 labelSubtitle={beat.labelSubtitle}
                 hasBoom={beat.hasBoom}
+                disableAutoSfx={config.disableAutoSfx}
                 citation={beat.citation}
               />
             )}
@@ -133,6 +153,7 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 labelTitle={beat.labelTitle}
                 labelSubtitle={beat.labelSubtitle}
                 hasBoom={beat.hasBoom}
+                disableAutoSfx={config.disableAutoSfx}
                 citation={beat.citation}
               />
             )}
@@ -145,6 +166,7 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 labelTitle={beat.labelTitle}
                 labelSubtitle={beat.labelSubtitle}
                 hasBoom={beat.hasBoom}
+                disableAutoSfx={config.disableAutoSfx}
                 citation={beat.citation}
               />
             )}
@@ -161,6 +183,7 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 highlightText={beat.splitData.highlightText}
                 impactText={beat.impactText}
                 hasBoom={beat.hasBoom}
+                disableAutoSfx={config.disableAutoSfx}
                 citation={beat.citation}
               />
             )}
@@ -172,6 +195,7 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 durationInFrames={beat.durationInFrames}
                 citation={beat.citation}
                 hasBoom={beat.hasBoom}
+                disableAutoSfx={config.disableAutoSfx}
               />
             )}
           </Series.Sequence>

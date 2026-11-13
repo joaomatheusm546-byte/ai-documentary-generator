@@ -49,6 +49,7 @@ export interface BeatData {
   impactText?: string;
   impactFrame?: number;
   hasBoom?: boolean;
+  sfxPreset?: "none" | "subtle_slide" | "shutter" | "stamp" | "boom";
   citation?: string;
   audioSrc: string;
   splitData?: SplitCollageData;
@@ -69,6 +70,7 @@ export interface DocumentaryConfig {
   width: number;
   height: number;
   musicSrc: string;
+  disableAutoSfx?: boolean;
   soundtrackActs?: SoundtrackAct[];
   beats: BeatData[];
 }

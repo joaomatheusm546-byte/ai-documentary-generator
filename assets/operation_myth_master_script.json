@@ -1,0 +1,2765 @@
+{
+  "title": "Operation Myth: What Stalin Really Found in the Berlin Bunker",
+  "topic": "Operation Myth (Soviet 1945-1949 Secret Dossier on Hitler's Remains, 1970 KGB Cremation, 2009 DNA Twist & 2018 Forensic Proof)",
+  "total_acts": 5,
+  "total_scenes": 45,
+  "total_beats": 180,
+  "total_words": 2380,
+  "estimated_duration_minutes": 18.9,
+  "sfx_summary": {
+    "boom": 9,
+    "none": 150,
+    "subtle_slide": 21
+  },
+  "scenes": [
+    {
+      "scene": 1,
+      "act": 1,
+      "title": "The Potsdam Contradiction",
+      "beats": [
+        {
+          "narration": "July 1945. At Potsdam, Joseph Stalin looked Harry Truman in the eye and claimed Hitler had escaped.",
+          "layout_type": "split_collage",
+          "visual_query": "Stalin Truman Churchill Potsdam Conference 1945",
+          "max_year": 1945,
+          "label_title": "POTSDAM CONFERENCE",
+          "label_subtitle": "Cecilienhof Palace // July 1945",
+          "highlight_text": null,
+          "sfx": "boom",
+          "impact_text": "HE ESCAPED",
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Yet Soviet intelligence already held a secret courier pouch locked away in Moscow.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Reich Chancellery ruins 1945 exterior",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Inside rested a charred human jawbone, gold dental bridges, and an official Red Army autopsy.",
+          "layout_type": "document",
+          "visual_query": "Soviet 1945 archival report Red Army document paper",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "TOP SECRET // FORENSIC AUTOPSY // MAY 1945",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "For decades, Stalin buried that proof under a covert file codenamed Operation Myth.",
+          "layout_type": "landscape",
+          "visual_query": "Kremlin Moscow exterior 1940s Soviet Union",
+          "max_year": 1950,
+          "label_title": "OPERATION MYTH",
+          "label_subtitle": "Moscow Kremlin // 1945–1970",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 2,
+      "act": 1,
+      "title": "The Chancellery Crater",
+      "beats": [
+        {
+          "narration": "The truth began on May 2, 1945, hours after Soviet troops seized central Berlin.",
+          "layout_type": "landscape",
+          "visual_query": "Red Army soldiers Berlin Reichstag May 1945",
+          "max_year": 1945,
+          "label_title": "BERLIN COLLAPSE",
+          "label_subtitle": "May 2, 1945 // Red Army Sector",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "SMERSH counterintelligence officers pushed into the ruined courtyard of the New Reich Chancellery.",
+          "layout_type": "landscape",
+          "visual_query": "New Reich Chancellery courtyard rubble Berlin 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Beside the Führerbunker’s concrete exit lay scorched fuel cans and scattered ashes.",
+          "layout_type": "landscape",
+          "visual_query": "Fuehrerbunker emergency exit garden Berlin 1945",
+          "max_year": 1945,
+          "label_title": "FÜHRERBUNKER GARDEN",
+          "label_subtitle": "Vosstrasse, Berlin // May 1945",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "On May 4, a Soviet private digging in a shallow crater uncovered boots protruding from loose dirt.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin artillery shell crater garden May 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 3,
+      "act": 1,
+      "title": "Exhumation of the Bodies",
+      "beats": [
+        {
+          "narration": "Beneath thin earth lay two heavily burned corpses beside the remains of two dogs.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin 1945 ruins bombed courtyard",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Mistaking them for ordinary casualties, soldiers initially shoveled soil back over the pit.",
+          "layout_type": "landscape",
+          "visual_query": "Soviet soldiers Berlin ruins May 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Once German prisoners described burning Hitler’s body there, Captain Ivan Klimenko ordered an immediate exhumation.",
+          "layout_type": "document",
+          "visual_query": "WW2 Soviet military map Berlin center 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "EXHUMATION ORDERED // CHANCELLERY CRATER",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Armed escorts wrapped both corpses in blankets and drove them north to a mortuary in Buch.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin street May 1945 Soviet trucks rubble",
+          "max_year": 1945,
+          "label_title": "BERLIN-BUCH MORTUARY",
+          "label_subtitle": "May 1945 // Red Army Examination",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 4,
+      "act": 1,
+      "title": "The Buch Autopsy",
+      "beats": [
+        {
+          "narration": "On May 8, Red Army chief pathologist Major General Faust Shkaravsky began the secret autopsy.",
+          "layout_type": "document",
+          "visual_query": "Red Army medical forensic dossier 1945 archival",
+          "max_year": 1945,
+          "label_title": "FORENSIC COMMISSION",
+          "label_subtitle": "May 8, 1945 // Major Gen. Faust Shkaravsky",
+          "highlight_text": "AUTOPSY COMMISSION // MAY 8, 1945",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Gasoline burns had charred the faces beyond visual recognition.",
+          "layout_type": "landscape",
+          "visual_query": "1945 ruined hospital Berlin Red Army",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Doctors noted crushed glass splinters inside the mouths and a sharp odor of cyanide.",
+          "layout_type": "document",
+          "visual_query": "Forensic autopsy medical notes 1945 typewriter",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "GLASS SPLINTERS // SUSPECTED CYANIDE AMPULE",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Yet one piece of anatomy survived the flames nearly intact: distinctive golden dental bridges.",
+          "layout_type": "landscape",
+          "visual_query": "Vintage dental laboratory 1940s X-ray equipment",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "boom",
+          "impact_text": "THE JAWBONE",
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 5,
+      "act": 1,
+      "title": "Hunting the Dentist",
+      "beats": [
+        {
+          "narration": "Dental prosthetics could prove identity beyond doubt—if SMERSH found Hitler’s dentist.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Kurfuerstendamm 1945 ruins",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Officer Vasily Gorbushin and translator Elena Rzhevskaya hunted across Berlin for Dr. Hugo Blaschke’s clinic.",
+          "layout_type": "portrait",
+          "visual_query": "Elena Rzhevskaya Soviet interpreter 1945",
+          "max_year": 1950,
+          "label_title": "ELENA RZHEVSKAYA",
+          "label_subtitle": "SMERSH Interpreter // May 1945",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Blaschke had fled south days earlier, leaving behind dusty cabinets and X-ray files.",
+          "layout_type": "landscape",
+          "visual_query": "Bombed clinic interior Berlin 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Inside those ruins, however, agents captured the two people who built Hitler’s teeth.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin 1945 street civilians rubble",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 6,
+      "act": 1,
+      "title": "Heusermann and Echtmann",
+      "beats": [
+        {
+          "narration": "Käthe Heusermann was Dr. Blaschke’s chief dental assistant at the Reich Chancellery.",
+          "layout_type": "portrait",
+          "visual_query": "Kaethe Heusermann German woman 1940s archive",
+          "max_year": 1950,
+          "label_title": "KÄTHE HEUSERMANN",
+          "label_subtitle": "Dental Assistant // May 9, 1945",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Master technician Fritz Echtmann had personally forged Hitler’s custom gold bridgework.",
+          "layout_type": "landscape",
+          "visual_query": "1940s dental workshop prosthetics Berlin",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Before showing them anything, SMERSH separated both witnesses for a blind test.",
+          "layout_type": "document",
+          "visual_query": "SMERSH interrogation protocol 1945 Russian text",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "BLIND TEST // NO REMAINS SHOWN FIRST",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Each was ordered to sketch Hitler’s exact crowns and missing teeth purely from memory.",
+          "layout_type": "document",
+          "visual_query": "1944 Adolf Hitler skull X-ray NARA dental chart",
+          "max_year": 1945,
+          "label_title": "BLIND DENTAL SKETCH",
+          "label_subtitle": "1944 Head X-Rays Matched",
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 7,
+      "act": 1,
+      "title": "The Maroon Box Test",
+      "beats": [
+        {
+          "narration": "Heusermann recovered Hitler’s 1944 skull X-rays and detailed unique window crowns and gold repairs.",
+          "layout_type": "document",
+          "visual_query": "1944 Adolf Hitler dental X-ray medical archive",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "CUSTOM GOLD BRIDGEWORK // WINDOW CROWNS",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Only then did Elena Rzhevskaya unlock the small maroon box entrusted to her care.",
+          "layout_type": "landscape",
+          "visual_query": "Elena Rzhevskaya Berlin 1945 Red Army archive",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Resting on cotton lay the blackened upper and lower jawbones from the crater.",
+          "layout_type": "landscape",
+          "visual_query": "Vintage evidence box dark wooden table 1940s",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Every bridge, missing molar, and soldered seam matched Echtmann’s workshop drawings to the millimeter.",
+          "layout_type": "document",
+          "visual_query": "Adolf Hitler dental bridge identification diagram",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "100% DENTAL MATCH CONFIRMED",
+          "sfx": "boom",
+          "impact_text": "CONFIRMED",
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 8,
+      "act": 1,
+      "title": "Silencing the Witnesses",
+      "beats": [
+        {
+          "narration": "Within eleven days of Berlin’s fall, Soviet intelligence held forensic certainty.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin May 1945 Victory Banner Reichstag",
+          "max_year": 1945,
+          "label_title": "CASE CLOSED // MAY 11",
+          "label_subtitle": "Moscow Dispatch Confirmed",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Rzhevskaya carried the jawbone box everywhere in her suitcase through Victory night.",
+          "layout_type": "landscape",
+          "visual_query": "Soviet troops celebrating Berlin May 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Meanwhile, Käthe Heusermann and Fritz Echtmann never returned to ordinary life in Berlin.",
+          "layout_type": "landscape",
+          "visual_query": "Lubyanka prison Moscow exterior Soviet Union",
+          "max_year": 1950,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Both were arrested by Soviet security and shipped to prison camps—silencing anyone who knew the truth.",
+          "layout_type": "document",
+          "visual_query": "Soviet NKVD prisoner card gulag file archival",
+          "max_year": 1950,
+          "label_title": "WITNESSES DEPORTED",
+          "label_subtitle": "1945–1955 // Soviet Captivity",
+          "highlight_text": "SILENCED IN SOVIET CAMPS",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 9,
+      "act": 1,
+      "title": "Stalin's Decision",
+      "beats": [
+        {
+          "narration": "When the forensic file reached the Kremlin, Stalin made a stunning calculation.",
+          "layout_type": "portrait",
+          "visual_query": "Joseph Stalin portrait 1945 Kremlin Marshal uniform",
+          "max_year": 1946,
+          "label_title": "JOSEPH STALIN",
+          "label_subtitle": "Moscow Kremlin // May 1945",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Instead of displaying the jawbone to prove Victory, Stalin buried the autopsy report.",
+          "layout_type": "landscape",
+          "visual_query": "Allied newspapers May 1945 Hitler Dead headlines",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Soviet commanders were ordered to tell the Western press Hitler’s body had never been identified.",
+          "layout_type": "document",
+          "visual_query": "Soviet top secret stamp folder Moscow archive",
+          "max_year": 1948,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "CLASSIFIED BY STALIN // ZERO PUBLIC RELEASE",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "A living fugitive was far more useful to Moscow than a dead dictator.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow Kremlin night 1945 shadow",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 10,
+      "act": 2,
+      "title": "Zhukov's Press Conference",
+      "beats": [
+        {
+          "narration": "On June 9, 1945, Marshal Georgy Zhukov faced Western journalists in Berlin.",
+          "layout_type": "portrait",
+          "visual_query": "Georgy Zhukov Berlin June 1945 press conference",
+          "max_year": 1946,
+          "label_title": "MARSHAL ZHUKOV",
+          "label_subtitle": "Berlin // June 9, 1945",
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Following orders from Moscow, the conqueror of Berlin delivered a calculated misdirection.",
+          "layout_type": "landscape",
+          "visual_query": "Allied press corps Berlin June 1945 journalists",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Zhukov claimed Soviet troops found no corpse of Hitler—suggesting he may have flown to Spain.",
+          "layout_type": "document",
+          "visual_query": "June 1945 newspaper Zhukov Hitler missing",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "NO BODY FOUND // POSSIBLE FLIGHT TO SPAIN",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Overnight, front pages in London and New York reignited fears of a Nazi escape.",
+          "layout_type": "landscape",
+          "visual_query": "Times Square New York 1945 newspaper stand",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 11,
+      "act": 2,
+      "title": "Cold War Mind Games at Potsdam",
+      "beats": [
+        {
+          "narration": "In July 1945, Stalin met Harry Truman and Winston Churchill at Cecilienhof Palace in Potsdam.",
+          "layout_type": "landscape",
+          "visual_query": "Potsdam Conference Big Three Churchill Truman Stalin 1945",
+          "max_year": 1945,
+          "label_title": "CECILIENHOF PALACE",
+          "label_subtitle": "Potsdam // July 1945",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Asked directly about Hitler’s fate, Stalin told American officials he was hiding in Spain or Argentina.",
+          "layout_type": "portrait",
+          "visual_query": "Stalin Potsdam Conference 1945 close up",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Truman left Potsdam uncertain whether Soviet intelligence was genuinely lost or playing diplomacy.",
+          "layout_type": "portrait",
+          "visual_query": "Harry S Truman Potsdam 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "By blaming Western zones for harboring fugitives, Stalin weaponized Hitler’s ghost for the Cold War.",
+          "layout_type": "document",
+          "visual_query": "Potsdam diplomatic cable 1945 archival map Europe",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "boom",
+          "impact_text": "COLD WAR BLUFF",
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 12,
+      "act": 2,
+      "title": "The FBI Argentina Files",
+      "beats": [
+        {
+          "narration": "Moscow’s silence triggered years of frantic chasing inside Western intelligence.",
+          "layout_type": "landscape",
+          "visual_query": "Washington DC FBI headquarters 1940s",
+          "max_year": 1946,
+          "label_title": "FBI FILE 65-53615",
+          "label_subtitle": "Washington // 1945–1947 Vault",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "FBI File 65-53615 tracks dozens of tips claiming Hitler landed in Argentina by submarine.",
+          "layout_type": "document",
+          "visual_query": "Declassified FBI Adolf Hitler file Argentina document",
+          "max_year": 1955,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "FBI VAULT 65-53615 // PATAGONIA & LA FALDA TIPS",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Agents investigated remote Patagonian ranches and German hotels like La Falda.",
+          "layout_type": "landscape",
+          "visual_query": "German U-boat surrendering 1945 Argentina Mar del Plata",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Every lead collapsed into rumor—yet Washington hunted shadows solely because Moscow hid the dental box.",
+          "layout_type": "document",
+          "visual_query": "FBI Argentina map intelligence report 1945",
+          "max_year": 1950,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 13,
+      "act": 2,
+      "title": "Stalin's Own Paranoia",
+      "beats": [
+        {
+          "narration": "Yet Stalin’s secrecy also stemmed from paranoia toward his own military generals.",
+          "layout_type": "portrait",
+          "visual_query": "Lavrentiy Beria portrait 1945 NKVD uniform",
+          "max_year": 1946,
+          "label_title": "NKVD vs. SMERSH",
+          "label_subtitle": "Moscow Intelligence Rivalry",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "In Moscow, Viktor Abakumov’s SMERSH clashed bitterly with Lavrentiy Beria’s NKVD apparatus.",
+          "layout_type": "landscape",
+          "visual_query": "Lubyanka building Moscow 1940s",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Stalin wanted airtight proof that a double hadn't been planted in that Chancellery crater.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Chancellery garden ruins 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "He ordered the NKVD to launch a rival investigation inside Berlin—codenamed Operation Myth.",
+          "layout_type": "document",
+          "visual_query": "Soviet MVD dossier Operation Myth 1946 title page",
+          "max_year": 1946,
+          "label_title": "OPERATION MYTH",
+          "label_subtitle": "NKVD Special Sweep // 1945–1946",
+          "highlight_text": "CODENAME: OPERATION MYTH (ОПЕРАЦИЯ «МИФ»)",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 14,
+      "act": 2,
+      "title": "The Rathenow Graveyard Move",
+      "beats": [
+        {
+          "narration": "Meanwhile, what happened to the skeletons inspected at Buch?",
+          "layout_type": "landscape",
+          "visual_query": "Berlin outer district 1945 forest road Soviet truck",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "As Soviet units shifted west, SMERSH secretly hauled the wooden crates into rural Brandenburg.",
+          "layout_type": "landscape",
+          "visual_query": "Brandenburg Germany 1945 rural forest road",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "By June 1945, officers buried the coffins beneath unmarked pine soil near Finow and Rathenow.",
+          "layout_type": "landscape",
+          "visual_query": "Rathenow Germany 1945 postwar town",
+          "max_year": 1945,
+          "label_title": "FINOW & RATHENOW",
+          "label_subtitle": "Brandenburg // 1945–1946",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Local residents—and even neighboring Soviet commanders—had zero knowledge of the graves.",
+          "layout_type": "document",
+          "visual_query": "East Germany Brandenburg 1945 military map",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 15,
+      "act": 2,
+      "title": "The Inner Circle Captives",
+      "beats": [
+        {
+          "narration": "To run Operation Myth, MVD chief Sergei Kruglov targeted Hitler’s closest living aides.",
+          "layout_type": "portrait",
+          "visual_query": "Sergei Kruglov MVD 1945",
+          "max_year": 1950,
+          "label_title": "SERGEI KRUGLOV",
+          "label_subtitle": "MVD Minister // Operation Director",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Soviet cells already held chief valet Heinz Linge and SS adjutant Otto Günsche.",
+          "layout_type": "portrait",
+          "visual_query": "Heinz Linge Otto Guensche 1945 portrait",
+          "max_year": 1945,
+          "label_title": "LINGE & GÜNSCHE",
+          "label_subtitle": "Key Bunker Eyewitnesses",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Both claimed they heard a gunshot, carried Hitler’s corpse upstairs, and doused it in gasoline.",
+          "layout_type": "landscape",
+          "visual_query": "Fuehrerbunker interior corridor ruined 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Soviet interrogators refused to trust words alone. They ordered a return to the bunker.",
+          "layout_type": "landscape",
+          "visual_query": "Reich Chancellery flooded bunker stairs 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 16,
+      "act": 2,
+      "title": "The Missing Skull Mystery",
+      "beats": [
+        {
+          "narration": "Reading the May 1945 autopsy notes, Operation Myth officers spotted one glaring gap.",
+          "layout_type": "document",
+          "visual_query": "1945 Shkaravsky autopsy protocol notes",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "MISSING EVIDENCE // TOP OF CRANIUM ABSENT IN 1945",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "The top of the cranium had been shattered and missing, preventing proof of a bullet exit.",
+          "layout_type": "landscape",
+          "visual_query": "Fuehrerbunker ruins exterior 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Without cranial bone, Soviet doctors couldn't confirm Linge’s gunshot testimony over cyanide.",
+          "layout_type": "document",
+          "visual_query": "Walther PPK pistol archival diagram 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "So Moscow ordered the Chancellery crater excavated a second time—a full year later.",
+          "layout_type": "landscape",
+          "visual_query": "Reich Chancellery crater garden 1945",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 17,
+      "act": 2,
+      "title": "The Dual Archive Split",
+      "beats": [
+        {
+          "narration": "By 1946, Hitler’s physical remains were scattered across three separate Soviet vaults.",
+          "layout_type": "diagram",
+          "visual_query": "Moscow Berlin Magdeburg Cold War map 1946",
+          "max_year": 1946,
+          "label_title": "CUSTODY SPLIT // 1946",
+          "label_subtitle": "Three Separate Destinations",
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": {
+            "title": "Custody Split (1945–1946)",
+            "subtitle": "How Soviet Intelligence Divided Evidence",
+            "nodes": [
+              {
+                "id": "crater",
+                "name": "Chancellery Crater",
+                "role": "1945 & 1946 Digs",
+                "x": 50,
+                "y": 20
+              },
+              {
+                "id": "jaw",
+                "name": "Jawbone & Teeth",
+                "role": "SMERSH -> KGB Vault",
+                "x": 25,
+                "y": 68
+              },
+              {
+                "id": "skull",
+                "name": "Skull Fragment (1946)",
+                "role": "MVD -> State Archive",
+                "x": 50,
+                "y": 68
+              },
+              {
+                "id": "bodies",
+                "name": "Skeletons",
+                "role": "Buried in Magdeburg",
+                "x": 75,
+                "y": 68
+              }
+            ],
+            "links": [
+              {
+                "from": "crater",
+                "to": "jaw",
+                "style": "solid",
+                "color": "#b91c1c"
+              },
+              {
+                "from": "crater",
+                "to": "skull",
+                "style": "solid",
+                "color": "#b91c1c"
+              },
+              {
+                "from": "crater",
+                "to": "bodies",
+                "style": "dashed",
+                "color": "#d97706"
+              }
+            ]
+          },
+          "split_data": null
+        },
+        {
+          "narration": "The jawbone stayed locked inside state security storage in Moscow.",
+          "layout_type": "landscape",
+          "visual_query": "Lubyanka archive Moscow 1940s",
+          "max_year": 1948,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "The main skeletons were secretly reburied inside a Soviet garrison in Magdeburg, East Germany.",
+          "layout_type": "landscape",
+          "visual_query": "Magdeburg Germany 1945 postwar ruins",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "And what agents pulled from the mud in May 1946 created a sixty-year scientific illusion.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Chancellery ruins 1946",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 18,
+      "act": 2,
+      "title": "Transition to 1946",
+      "beats": [
+        {
+          "narration": "In May 1946, an unmarked Soviet convoy rolled back into Berlin’s devastated government quarter.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin 1946 Soviet checkpoint ruins",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Inside sat Hitler’s captured aides, escorted under heavy guard to the flooded bunker stairs.",
+          "layout_type": "landscape",
+          "visual_query": "German POWs Berlin 1945",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Floodlights flickered to life for the strangest forensic reconstruction of the postwar era.",
+          "layout_type": "landscape",
+          "visual_query": "Soviet military photographers Berlin 1945",
+          "max_year": 1945,
+          "label_title": "MAY 1946 RECONSTRUCTION",
+          "label_subtitle": "Operation Myth Field Team",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Every inch of soil in the garden pit was sifted anew.",
+          "layout_type": "landscape",
+          "visual_query": "Reich Chancellery garden ruins 1946",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 19,
+      "act": 3,
+      "title": "The 1946 Re-Excavation",
+      "beats": [
+        {
+          "narration": "Sealing the courtyard, Operation Myth investigators excavated deeper through the 1945 shell crater.",
+          "layout_type": "landscape",
+          "visual_query": "Reich Chancellery crater Berlin 1945 1946",
+          "max_year": 1946,
+          "label_title": "SECOND EXCAVATION",
+          "label_subtitle": "Chancellery Garden // May 1946",
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "A year earlier, street fighting had forced SMERSH to recover bodies in haste.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Chancellery damaged exterior 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "This time, technicians uncovered bloodstained sofa fabric and a charred piece of cranial bone.",
+          "layout_type": "document",
+          "visual_query": "Bunker sofa bloodstain Soviet 1945 photo archive",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "MAY 1946 // CRANIAL FRAGMENT RECOVERED",
+          "sfx": "boom",
+          "impact_text": "THE SKULL PIECE",
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Piercing that small bone fragment sat a sharp hole matching a pistol bullet exit.",
+          "layout_type": "document",
+          "visual_query": "Hitler skull fragment archive photo bullet hole",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 20,
+      "act": 3,
+      "title": "The Fatal Assumption",
+      "beats": [
+        {
+          "narration": "To Soviet eyes, the puzzle seemed complete: 1945 teeth plus a 1946 bullet-holed skull.",
+          "layout_type": "landscape",
+          "visual_query": "Soviet military officers inspecting ruins Berlin 1945",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "With DNA testing decades in the future, nobody could genetically link loose bone fragments.",
+          "layout_type": "landscape",
+          "visual_query": "Vintage microscope forensic lab 1940s",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Yet Eva Braun and dozens of soldiers had died or been burned around that same garden.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Chancellery garden corpses rubble 1945",
+          "max_year": 1945,
+          "label_title": "FORENSIC BLIND SPOT",
+          "label_subtitle": "Mixed Remains in Bombed Soil",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Investigators never checked whether the loose cranial piece belonged to the same person as the jaw.",
+          "layout_type": "document",
+          "visual_query": "1946 NKVD forensic inventory list archival",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 21,
+      "act": 3,
+      "title": "Re-enacting the Bunker",
+      "beats": [
+        {
+          "narration": "Inside the damp ruins, guards marched Heinz Linge and Otto Günsche back to Hitler’s study.",
+          "layout_type": "landscape",
+          "visual_query": "Allied soldiers inspecting Fuehrerbunker interior 1945",
+          "max_year": 1945,
+          "label_title": "BUNKER RE-ENACTMENT",
+          "label_subtitle": "May 1946 // Linge & Günsche",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Photographers captured both aides demonstrating exactly how Hitler sat beside Eva Braun.",
+          "layout_type": "landscape",
+          "visual_query": "Hitler bunker study sofa ruined 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "They traced the staircase path upward to where gasoline cans emptied over the corpses.",
+          "layout_type": "document",
+          "visual_query": "Fuehrerbunker floor plan blueprint 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "APRIL 30 ROUTE // STUDY TO GARDEN",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Every detail matched across separate testimonies—yet Moscow’s interrogation marathon had only begun.",
+          "layout_type": "landscape",
+          "visual_query": "Fuehrerbunker concrete exit tower 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 22,
+      "act": 3,
+      "title": "Three Years in Lubyanka",
+      "beats": [
+        {
+          "narration": "Inside Moscow’s Butyrka and Lubyanka cells, MVD officers interrogated bunker survivors for three years.",
+          "layout_type": "landscape",
+          "visual_query": "Butyrka prison Moscow Soviet Union 1940s",
+          "max_year": 1950,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Pilots, guards, and secretaries—including Hans Baur and Rochus Misch—faced relentless cross-examination.",
+          "layout_type": "portrait",
+          "visual_query": "Hans Baur Hitler pilot portrait 1940s",
+          "max_year": 1945,
+          "label_title": "MOSCOW INTERROGATIONS",
+          "label_subtitle": "Lubyanka & Butyrka // 1946–1949",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Interrogators obsessed over tiny discrepancies between cyanide poisoning and the pistol shot.",
+          "layout_type": "landscape",
+          "visual_query": "Soviet interrogation room desk lamp 1940s",
+          "max_year": 1948,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Slowly, hundreds of transcripts fused into a massive 413-page secret dossier.",
+          "layout_type": "document",
+          "visual_query": "The Hitler Book 1949 NKVD typescript report cover",
+          "max_year": 1949,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "413-PAGE DOSSIER COMPILED FOR STALIN",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 23,
+      "act": 3,
+      "title": "Dossier No. 462a (1949)",
+      "beats": [
+        {
+          "narration": "In December 1949, Sergei Kruglov delivered Dossier Number 462a straight to Stalin’s desk.",
+          "layout_type": "document",
+          "visual_query": "Soviet MVD December 1949 report binder Kremlin",
+          "max_year": 1949,
+          "label_title": "DOSSIER NO. 462a",
+          "label_subtitle": "December 1949 // Top Secret",
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Decades later, historians unearthed this exact file and published it as The Hitler Book.",
+          "layout_type": "portrait",
+          "visual_query": "Joseph Stalin Kremlin 1949",
+          "max_year": 1950,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Every page inside Stalin’s private dossier confirmed Hitler committed suicide inside the bunker.",
+          "layout_type": "document",
+          "visual_query": "Typewritten dossier page 1949 historical archive",
+          "max_year": 1950,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "CONCLUSION: SUICIDE ON APRIL 30, 1945",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Stalin read the file, sealed it away, and died in 1953 without retracting his Potsdam lie.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow Kremlin locked vault cabinet 1950",
+          "max_year": 1953,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 24,
+      "act": 3,
+      "title": "After Stalin's Death",
+      "beats": [
+        {
+          "narration": "Stalin’s 1953 state funeral left Operation Myth buried deep inside Soviet party archives.",
+          "layout_type": "landscape",
+          "visual_query": "Joseph Stalin state funeral Moscow March 1953",
+          "max_year": 1953,
+          "label_title": "MARCH 1953",
+          "label_subtitle": "Stalin Dies // Vault Remains Sealed",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "In 1956, a West German court officially declared Hitler dead using survivor testimony alone.",
+          "layout_type": "landscape",
+          "visual_query": "West Germany 1950s courtroom Berchtesgaden",
+          "max_year": 1956,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Without Moscow’s physical evidence, sensational paperbacks kept fueling South America escape theories.",
+          "layout_type": "landscape",
+          "visual_query": "1950s vintage bookshop newspaper rack Europe",
+          "max_year": 1958,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Meanwhile, beneath a quiet Soviet compound in Magdeburg, East Germany, crates lay rotting underground.",
+          "layout_type": "landscape",
+          "visual_query": "Magdeburg street East Germany 1950s",
+          "max_year": 1958,
+          "label_title": "KLAUSENERSTRASSE 36",
+          "label_subtitle": "Magdeburg, East Germany",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 25,
+      "act": 3,
+      "title": "Hidden in Magdeburg",
+      "beats": [
+        {
+          "narration": "Under Klausenerstraße 36 lay the bones of Hitler, Eva Braun, and the entire Goebbels family.",
+          "layout_type": "document",
+          "visual_query": "Map of Magdeburg Klausenerstrasse 36 East Germany",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "SECRET BURIAL // KLAUSENERSTRASSE 36",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Soviet trucks parked casually over the cobblestones, concealing the unmarked grave for twenty-four years.",
+          "layout_type": "landscape",
+          "visual_query": "Soviet military base courtyard East Germany 1960s",
+          "max_year": 1968,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Neighbors walked past the brick compound every morning unaware of what rested meters below.",
+          "layout_type": "landscape",
+          "visual_query": "East Germany Magdeburg 1960s street",
+          "max_year": 1968,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Then, in 1968, Moscow authorized a partial leak that stirred even deeper confusion.",
+          "layout_type": "landscape",
+          "visual_query": "Cold War Berlin 1968 press agency",
+          "max_year": 1968,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 26,
+      "act": 3,
+      "title": "The 1968 Controlled Leak",
+      "beats": [
+        {
+          "narration": "Soviet journalist Lev Bezymensky published The Death of Adolf Hitler in West Germany in 1968.",
+          "layout_type": "portrait",
+          "visual_query": "Lev Bezymensky Soviet journalist 1960s",
+          "max_year": 1970,
+          "label_title": "1968 SOVIET LEAK",
+          "label_subtitle": "Lev Bezymensky Publication",
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "For the first time, Western readers saw Shkaravsky’s 1945 Red Army autopsy transcripts.",
+          "layout_type": "document",
+          "visual_query": "1945 Red Army autopsy document published 1968",
+          "max_year": 1968,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "FIRST RELEASE OF 1945 AUTOPSY NOTES",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Yet Bezymensky claimed Hitler died purely from poison—omitting the gunshot to paint him a coward.",
+          "layout_type": "document",
+          "visual_query": "Soviet censorship redacted manuscript 1960s",
+          "max_year": 1968,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "POLITICAL SPIN // GUNSHOT OMITTED",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Even as his book hit headlines, KGB leadership realized a ticking hazard waited in Magdeburg.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow 1968 archival press building",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 27,
+      "act": 3,
+      "title": "Andropov's Dilemma (1970)",
+      "beats": [
+        {
+          "narration": "By 1970, Moscow prepared to hand the Magdeburg base back to East German civilian control.",
+          "layout_type": "portrait",
+          "visual_query": "Yuri Andropov KGB Chairman portrait 1970",
+          "max_year": 1972,
+          "label_title": "YURI ANDROPOV",
+          "label_subtitle": "KGB Chairman // March 1970",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "KGB Chairman Yuri Andropov feared construction crews might accidentally dig up the courtyard.",
+          "layout_type": "landscape",
+          "visual_query": "Magdeburg garrison compound 1970",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "A discovered grave risked turning an East German street into a neo-Nazi pilgrimage site.",
+          "layout_type": "landscape",
+          "visual_query": "Soviet border checkpoint East Germany 1970",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Andropov sent a top-secret memo to Leonid Brezhnev proposing final destruction.",
+          "layout_type": "document",
+          "visual_query": "Andropov March 1970 letter to Brezhnev KGB archive",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "MARCH 1970 // KGB DESTRUCTION PROPOSAL",
+          "sfx": "boom",
+          "impact_text": "OPERATION ARCHIVE",
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 28,
+      "act": 4,
+      "title": "Signing Operation Archive",
+      "beats": [
+        {
+          "narration": "Andropov’s March 13, 1970 letter requested strict authorization to exhume and incinerate every bone.",
+          "layout_type": "document",
+          "visual_query": "Top secret KGB memo 1970 Russian Cyrillic typescript",
+          "max_year": 1970,
+          "label_title": "OPERATION ARCHIVE",
+          "label_subtitle": "Authorized March 1970 // Brezhnev & Andropov",
+          "highlight_text": "RISK OF NEO-FASCIST PILGRIMAGE SITE",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "General Secretary Leonid Brezhnev and top Soviet leaders signed their consent directly on the page.",
+          "layout_type": "portrait",
+          "visual_query": "Leonid Brezhnev 1970 Moscow Kremlin",
+          "max_year": 1972,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Zero public record of the order existed outside a locked Kremlin file.",
+          "layout_type": "document",
+          "visual_query": "Brezhnev handwritten signature document 1970 archive",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Days later, five KGB officers departed on a midnight assignment in East Germany.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow KGB headquarters night 1970",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 29,
+      "act": 4,
+      "title": "Night Excavation in Magdeburg",
+      "beats": [
+        {
+          "narration": "On April 4, 1970, the KGB squad sealed off the courtyard on Klausenerstraße.",
+          "layout_type": "landscape",
+          "visual_query": "Magdeburg East Germany night street 1970",
+          "max_year": 1970,
+          "label_title": "APRIL 4, 1970",
+          "label_subtitle": "Magdeburg Midnight Dig",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Erecting a tent directly above the paving stones, agents dug silently away from neighbors' windows.",
+          "layout_type": "landscape",
+          "visual_query": "Magdeburg Klausenerstrasse building 1970s",
+          "max_year": 1975,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Inside decaying ammunition boxes lay tangled skeletons preserved since 1946.",
+          "layout_type": "document",
+          "visual_query": "KGB Operation Archive field protocol April 1970",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "AMMO CRATES UNEARTHED // ZERO WITNESSES",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Officers repacked the bones into fresh boxes and drove south into rural training grounds near Schönebeck.",
+          "layout_type": "landscape",
+          "visual_query": "Schoenebeck Elbe region forest road Germany 1970",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 30,
+      "act": 4,
+      "title": "Fire and the Biederitz River",
+      "beats": [
+        {
+          "narration": "At dawn on April 5, outside Schönebeck, the KGB stacked timber and doused the remains in fuel.",
+          "layout_type": "landscape",
+          "visual_query": "German forest mist Elbe valley 1970s",
+          "max_year": 1975,
+          "label_title": "APRIL 5, 1970",
+          "label_subtitle": "Schönebeck // Final Cremation",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "As the flames died down, agents crushed brittle fragments with coal until only fine ash remained.",
+          "layout_type": "landscape",
+          "visual_query": "Elbe river mist East Germany 1970s",
+          "max_year": 1975,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "They carried the ashes to the Biederitz stream and emptied every scoop into the water.",
+          "layout_type": "landscape",
+          "visual_query": "Biederitz Ehle river bank Germany archival",
+          "max_year": 1975,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Their signed certificate declared Adolf Hitler’s body physically erased forever.",
+          "layout_type": "document",
+          "visual_query": "KGB April 5 1970 destruction certificate Russian",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "SCATTERED INTO THE BIEDERITZ STREAM",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 31,
+      "act": 4,
+      "title": "Two Boxes Survived in Moscow",
+      "beats": [
+        {
+          "narration": "Everything in Germany had turned to river ash—except for two small relics kept back in Moscow.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow Soviet state archive building 1970s",
+          "max_year": 1978,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Two separate Russian vaults still held evidence kept apart since 1946.",
+          "layout_type": "diagram",
+          "visual_query": "Moscow archives FSB and GARF split diagram",
+          "max_year": 1995,
+          "label_title": "WHAT SURVIVED 1970",
+          "label_subtitle": "Two Separate Moscow Vaults",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": {
+            "title": "Two Surviving Relics",
+            "subtitle": "Never Sent to Magdeburg",
+            "nodes": [
+              {
+                "id": "mag",
+                "name": "Magdeburg Grave",
+                "role": "Cremated April 1970",
+                "x": 50,
+                "y": 22,
+                "isDead": true
+              },
+              {
+                "id": "fsb",
+                "name": "FSB Vault",
+                "role": "1945 Jawbone & Teeth",
+                "x": 28,
+                "y": 72
+              },
+              {
+                "id": "garf",
+                "name": "GARF State Archive",
+                "role": "1946 Skull Fragment",
+                "x": 72,
+                "y": 72
+              }
+            ],
+            "links": [
+              {
+                "from": "mag",
+                "to": "fsb",
+                "style": "dashed",
+                "color": "#b91c1c"
+              },
+              {
+                "from": "mag",
+                "to": "garf",
+                "style": "dashed",
+                "color": "#d97706"
+              }
+            ]
+          },
+          "split_data": null
+        },
+        {
+          "narration": "Inside Lubyanka, the KGB—later the FSB—retained Elena Rzhevskaya’s 1945 box with the jawbone.",
+          "layout_type": "landscape",
+          "visual_query": "Lubyanka FSB building Moscow 1990s",
+          "max_year": 1998,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Inside the State Archive of the Russian Federation sat the 1946 bullet-holed skull fragment.",
+          "layout_type": "landscape",
+          "visual_query": "Russian State Archive GARF Moscow exterior",
+          "max_year": 1998,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 32,
+      "act": 4,
+      "title": "Fall of the Soviet Union (1991)",
+      "beats": [
+        {
+          "narration": "Only after the Soviet Union collapsed in 1991 did researchers glimpse those secret vaults.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow Red Square winter 1980s",
+          "max_year": 1989,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Journalists and historians uncovered the Operation Archive papers detailing the 1970 river cremation.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow 1991 collapse Soviet Union",
+          "max_year": 1992,
+          "label_title": "1991 ARCHIVE REVEAL",
+          "label_subtitle": "Moscow Vaults Opened to Historians",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "For the first time, the world learned Moscow still kept physical skull and dental pieces.",
+          "layout_type": "landscape",
+          "visual_query": "Archival researchers reading Soviet folders 1990s",
+          "max_year": 1998,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Yet no independent forensic scientist had ever touched either box.",
+          "layout_type": "landscape",
+          "visual_query": "Historical archive reading room Moscow 1990s",
+          "max_year": 1998,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 33,
+      "act": 4,
+      "title": "The 2000 Moscow Exhibition",
+      "beats": [
+        {
+          "narration": "In April 2000, Russia’s State Archive placed the 1946 skull piece behind museum glass in Moscow.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow exhibition hall 2000 archival display",
+          "max_year": 2000,
+          "label_title": "APRIL 2000 DISPLAY",
+          "label_subtitle": "Russian State Archive // Moscow",
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Reporters photographed the palm-sized cranial bone pierced clearly by an exit bullet hole.",
+          "layout_type": "document",
+          "visual_query": "Hitler skull fragment displayed in Moscow 2000",
+          "max_year": 2000,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "EXHIBITED IN 2000 AS HITLER'S SKULL",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Russian officials presented the bone as absolute proof ending decades of mystery.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow 2000 press photographers museum",
+          "max_year": 2000,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Nobody had ever run its DNA.",
+          "layout_type": "landscape",
+          "visual_query": "Forensic DNA laboratory glass slides 2000s",
+          "max_year": 2008,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "boom",
+          "impact_text": "UNTESTED DNA",
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 34,
+      "act": 4,
+      "title": "A Question of Bone Thickness",
+      "beats": [
+        {
+          "narration": "Looking closely at exhibit photos, bone specialists noticed something troubling.",
+          "layout_type": "document",
+          "visual_query": "Hitler skull fragment closeup archival photo",
+          "max_year": 2000,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "The bone wall looked unusually thin—hardly typical for a fifty-six-year-old adult male.",
+          "layout_type": "landscape",
+          "visual_query": "Forensic osteology skull anatomy diagram archival",
+          "max_year": 2005,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "In September 2009, American archaeologist Dr. Nick Bellantoni gained rare permission to examine the fragment.",
+          "layout_type": "landscape",
+          "visual_query": "University Connecticut forensic lab exterior",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "He flew straight to Moscow carrying sterile DNA swabs.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow Sheremetyevo Kremlin 2009 exterior",
+          "max_year": 2009,
+          "label_title": "NICK BELLANTONI // 2009",
+          "label_subtitle": "University of Connecticut Osteologist",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 35,
+      "act": 4,
+      "title": "One Hour Inside the Vault",
+      "beats": [
+        {
+          "narration": "Archivists gave Bellantoni strictly one hour under supervision to inspect the skull and bloodstained sofa cloth.",
+          "layout_type": "landscape",
+          "visual_query": "Russian State Archive reading room Moscow",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Wearing gloves, he gently swabbed microscopic residue along the bone’s inner fractures.",
+          "layout_type": "document",
+          "visual_query": "Forensic cotton swab DNA collection skull evidence",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "60 MINUTES // DNA SWABS COLLECTED",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Holding the fragment up to the light, Bellantoni immediately suspected the bone was too delicate.",
+          "layout_type": "landscape",
+          "visual_query": "Forensic bone measurement calipers lab",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Sealing the swabs inside protective vials, he returned to Connecticut for sequencing.",
+          "layout_type": "landscape",
+          "visual_query": "Genetics DNA sequencing laboratory Connecticut",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 36,
+      "act": 4,
+      "title": "Sequencing the Swabs",
+      "beats": [
+        {
+          "narration": "Molecular anthropologist Linda Strausbaugh extracted fragile DNA inside a sterile University of Connecticut lab.",
+          "layout_type": "landscape",
+          "visual_query": "Polymerase chain reaction DNA sequencing machine lab",
+          "max_year": 2009,
+          "label_title": "UCONN GENETICS LAB",
+          "label_subtitle": "Storrs, Connecticut // 2009",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Strict clean-room controls eliminated any chance of modern technician contamination.",
+          "layout_type": "landscape",
+          "visual_query": "Laboratory genetic sequencer screen trace",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "When the genetic markers finally finished reading, the results shocked historians worldwide.",
+          "layout_type": "document",
+          "visual_query": "DNA gender marker report genetic readout",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Operation Myth’s most famous public relic had failed its first real scientific test.",
+          "layout_type": "landscape",
+          "visual_query": "Dark archive vault hallway Moscow",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 37,
+      "act": 5,
+      "title": "The Female DNA Bombshell (2009)",
+      "beats": [
+        {
+          "narration": "In 2009, lab sequencing delivered an explosive finding: the Moscow skull fragment was NOT Hitler’s.",
+          "layout_type": "document",
+          "visual_query": "DNA test XX chromosome laboratory report graphic",
+          "max_year": 2009,
+          "label_title": "2009 DNA VERDICT",
+          "label_subtitle": "State Archive Skull Result",
+          "highlight_text": "RESULT: FEMALE // AGE UNDER 40",
+          "sfx": "boom",
+          "impact_text": "NOT HITLER",
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "DNA markers belonged conclusively to a woman between twenty and forty years old.",
+          "layout_type": "landscape",
+          "visual_query": "Forensic genetics laboratory report desk",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Curiously, swabs from the sofa fabric did show male blood—splitting the evidence.",
+          "layout_type": "document",
+          "visual_query": "Bloodstained sofa cloth forensic analysis file",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Global headlines erupted overnight: had Stalin’s entire 1945 investigation been wrong?",
+          "layout_type": "landscape",
+          "visual_query": "Newspaper headlines 2009 Hitler skull female",
+          "max_year": 2009,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 38,
+      "act": 5,
+      "title": "Why the 1946 Crater Lied",
+      "beats": [
+        {
+          "narration": "Conspiracy TV shows quickly claimed the 2009 test proved Hitler escaped to Argentina.",
+          "layout_type": "landscape",
+          "visual_query": "Buenos Aires Andes Argentina vintage landscape",
+          "max_year": 1950,
+          "label_title": "CONSPIRACY REIGNITED",
+          "label_subtitle": "2009–2016 Media Fallout",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Yet historians noticed the obvious flaw buried in Soviet records from May 1946.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Reich Chancellery crater 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "That stray skull piece had only turned up a year later in loose shell-crater mud.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Chancellery ruins 1946 rubble",
+          "max_year": 1946,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Eva Braun—who died at thirty-three—along with dozens of Berlin casualties lay in that bombed soil.",
+          "layout_type": "portrait",
+          "visual_query": "Eva Braun archival photograph 1940s",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "EVA BRAUN (AGE 33) & GARDEN CASUALTIES",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 39,
+      "act": 5,
+      "title": "The Locked Jawbone Box",
+      "beats": [
+        {
+          "narration": "Crucially, Nick Bellantoni never tested the teeth held separately by Russia’s FSB.",
+          "layout_type": "landscape",
+          "visual_query": "Lubyanka FSB headquarters Moscow exterior",
+          "max_year": 2015,
+          "label_title": "THE OTHER VAULT",
+          "label_subtitle": "FSB Archives // Lubyanka",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "For years afterward, Russian security kept the 1945 jawbone box sealed off from Western eyes.",
+          "layout_type": "landscape",
+          "visual_query": "Sealed archive box Moscow steel vault",
+          "max_year": 2016,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Until scientists inspected those actual gold bridges, lingering doubt refused to vanish.",
+          "layout_type": "document",
+          "visual_query": "Top secret archival stamp FSB Russia",
+          "max_year": 2016,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Then, in 2017, Russia’s FSB granted unprecedented access to a French forensic team.",
+          "layout_type": "landscape",
+          "visual_query": "Moscow archival reading desk 2017",
+          "max_year": 2017,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 40,
+      "act": 5,
+      "title": "Philippe Charlier Enters the FSB (2018)",
+      "beats": [
+        {
+          "narration": "French forensic pathologist Dr. Philippe Charlier examined the long-hidden FSB relics directly.",
+          "layout_type": "portrait",
+          "visual_query": "Philippe Charlier French forensic pathologist",
+          "max_year": 2018,
+          "label_title": "DR. PHILIPPE CHARLIER",
+          "label_subtitle": "2017–2018 FSB Forensic Study",
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "His specialists used non-destructive electron microscopy to inspect the fragile teeth without grinding bone.",
+          "layout_type": "landscape",
+          "visual_query": "Scanning electron microscope modern forensic lab",
+          "max_year": 2018,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Custodians placed Elena Rzhevskaya’s 1945 box upon the Moscow reading table.",
+          "layout_type": "landscape",
+          "visual_query": "Vintage archival box leather metal clasp",
+          "max_year": 2018,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Inside rested the unmistakable gold-and-porcelain jaw bridges Käthe Heusermann sketched in 1945.",
+          "layout_type": "document",
+          "visual_query": "1944 Hitler dental X-ray comparison schematic",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 41,
+      "act": 5,
+      "title": "The Electron Microscope Proof",
+      "beats": [
+        {
+          "narration": "Published in May 2018, Charlier’s peer-reviewed study settled the mystery after seventy-three years.",
+          "layout_type": "document",
+          "visual_query": "European Journal of Internal Medicine 2018 study title",
+          "max_year": 2018,
+          "label_title": "MAY 2018 VERDICT",
+          "label_subtitle": "European Journal of Internal Medicine",
+          "highlight_text": "100% MATCH TO 1944 HITLER X-RAYS",
+          "sfx": "boom",
+          "impact_text": "CASE SOLVED",
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Every dental bridge and root line matched Adolf Hitler’s official 1944 cranial X-rays.",
+          "layout_type": "document",
+          "visual_query": "1944 Adolf Hitler skull X-ray NARA medical record",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Microscopic analysis of tartar on the real teeth revealed zero meat fibers.",
+          "layout_type": "landscape",
+          "visual_query": "Electron microscopy laboratory scientific screen",
+          "max_year": 2018,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "DENTAL TARTAR // ZERO MEAT FIBERS",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "The biological signature matched Hitler’s documented strict vegetarian diet and gum disease.",
+          "layout_type": "portrait",
+          "visual_query": "Adolf Hitler portrait 1944 close up archival",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 42,
+      "act": 5,
+      "title": "Cyanide AND Gunshot Clues",
+      "beats": [
+        {
+          "narration": "Even more revealing, researchers tested mysterious bluish deposits clinging to the prosthetic teeth.",
+          "layout_type": "landscape",
+          "visual_query": "Fuehrerbunker Berlin study diagram 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Chemical spectroscopy linked those bluish traces to a reaction consistent with cyanide exposure.",
+          "layout_type": "document",
+          "visual_query": "Forensic chemical analysis graph spectrum",
+          "max_year": 2018,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "BLUISH DEPOSITS // CYANIDE EVIDENCE",
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "With zero gunpowder burns inside the teeth, scientists concluded the shot wasn't fired inside the mouth.",
+          "layout_type": "landscape",
+          "visual_query": "Fuehrerbunker exterior ruins Berlin 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Instead, Hitler likely took cyanide alongside—or moments before—firing through his temple.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Chancellery garden 1945 ruins",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 43,
+      "act": 5,
+      "title": "Anatomy of Operation Myth",
+      "beats": [
+        {
+          "narration": "Why did rumors of Hitler’s escape outlive two centuries?",
+          "layout_type": "landscape",
+          "visual_query": "Potsdam Conference Stalin Truman 1945",
+          "max_year": 1945,
+          "label_title": "THE ANATOMY OF A MYTH",
+          "label_subtitle": "1945–2018",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Not because SMERSH failed in Berlin—his teeth were verified in eleven days.",
+          "layout_type": "landscape",
+          "visual_query": "Red Army soldiers Berlin Reichstag May 1945",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "The myth survived because Stalin weaponized doubt at Potsdam, and a stray 1946 bone fooled later archives.",
+          "layout_type": "portrait",
+          "visual_query": "Joseph Stalin Potsdam 1945 portrait",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Between Stalin’s secret 462a folder and the 1970 ashes, truth waited behind steel doors.",
+          "layout_type": "landscape",
+          "visual_query": "Magdeburg Elbe river Germany quiet water",
+          "max_year": 1975,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 44,
+      "act": 5,
+      "title": "Closing the Vault",
+      "beats": [
+        {
+          "narration": "Nothing remains of the Magdeburg grave except declassified KGB destruction orders.",
+          "layout_type": "document",
+          "visual_query": "Declassified KGB 1970 Operation Archive paper",
+          "max_year": 1970,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": "ASHES IN THE BIEDERITZ // 1970",
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Inside Moscow’s FSB vault, only charred bone fragments and a pair of dental bridges remain.",
+          "layout_type": "landscape",
+          "visual_query": "Archival evidence box dark table quiet lighting",
+          "max_year": 2018,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "They stand as final proof against seventy years of political theater.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin Reichstag historical ruins quiet dusk",
+          "max_year": 1945,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Hitler never reached Argentina. He died inside the Berlin bunker on April 30, 1945.",
+          "layout_type": "landscape",
+          "visual_query": "Berlin May 1945 ruined skyline quiet dusk",
+          "max_year": 1945,
+          "label_title": "DOSSIER CLOSED",
+          "label_subtitle": "Berlin // April 30, 1945",
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    },
+    {
+      "scene": 45,
+      "act": 5,
+      "title": "Credits & Next Dossier",
+      "beats": [
+        {
+          "narration": "Operation Myth closed only when modern microscopy confirmed what two witnesses drew in 1945.",
+          "layout_type": "document",
+          "visual_query": "Declassified archival microfilm cabinet 1945",
+          "max_year": 1950,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "subtle_slide",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Primary forensic citations and archive sources are listed in the description below.",
+          "layout_type": "landscape",
+          "visual_query": "Historical research archive library rows",
+          "max_year": 1955,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Next on Aftermath Dossier, we open another sealed file from twentieth-century intelligence.",
+          "layout_type": "landscape",
+          "visual_query": "Vintage archival file drawer dark desk",
+          "max_year": 1950,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        },
+        {
+          "narration": "Subscribe to follow every dossier as the vaults open.",
+          "layout_type": "landscape",
+          "visual_query": "Dark chiaroscuro dossier desk archive",
+          "max_year": 1950,
+          "label_title": null,
+          "label_subtitle": null,
+          "highlight_text": null,
+          "sfx": "none",
+          "impact_text": null,
+          "tree_data": null,
+          "split_data": null
+        }
+      ]
+    }
+  ]
+}
