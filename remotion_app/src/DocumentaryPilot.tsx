@@ -80,25 +80,32 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
 
             {/* Sparse / Intentional Diegetic Foley (opt-in via beat.sfxPreset) */}
             {effectiveDisableAutoSfx && beat.sfxPreset === "subtle_slide" && (
-              <Audio src={staticFile("audio/sfx_paper_slide.wav")} volume={0.10} />
+              <Audio src={staticFile("audio/sfx_paper_slide.wav")} volume={0.18} />
             )}
             {effectiveDisableAutoSfx && beat.sfxPreset === "shutter" && (
-              <Audio src={staticFile("audio/sfx_camera_shutter.wav")} volume={0.09} />
+              <Audio src={staticFile("audio/sfx_camera_shutter.wav")} volume={0.16} />
             )}
             {effectiveDisableAutoSfx && beat.sfxPreset === "stamp" && (
-              <Sequence from={beat.impactFrame || 18}>
-                <Audio src={staticFile("audio/sfx_typewriter_stamp.wav")} volume={0.11} />
+              <Sequence from={beat.impactFrame || 16}>
+                <Audio src={staticFile("audio/sfx_typewriter_stamp.wav")} volume={0.22} />
               </Sequence>
             )}
             {effectiveDisableAutoSfx && beat.sfxPreset === "boom" && (
-              <Audio src={staticFile("audio/sfx_sub_boom.wav")} volume={0.09} />
+              <Audio src={staticFile("audio/sfx_sub_boom.wav")} volume={0.16} />
+            )}
+
+            {/* Stamp sound on every ImpactTextStamp unless beat already triggers stamp */}
+            {effectiveDisableAutoSfx && beat.impactText && beat.sfxPreset !== "stamp" && (
+              <Sequence from={beat.impactFrame || 16}>
+                <Audio src={staticFile("audio/sfx_typewriter_stamp.wav")} volume={0.18} />
+              </Sequence>
             )}
 
             {/* Kinetic Impact Words Stamp (if defined for this beat) */}
             {beat.impactText && (
               <ImpactTextStamp
                 text={beat.impactText}
-                delayFrames={beat.impactFrame || 18}
+                delayFrames={beat.impactFrame || 16}
                 disableAutoSfx={effectiveDisableAutoSfx}
               />
             )}
