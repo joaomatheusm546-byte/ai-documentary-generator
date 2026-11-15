@@ -9,6 +9,7 @@ interface Props {
   durationInFrames: number;
   citation?: string;
   hasBoom?: boolean;
+  disableAutoSfx?: boolean;
 }
 
 export const FamilyTreeScene: React.FC<Props> = ({
@@ -16,6 +17,7 @@ export const FamilyTreeScene: React.FC<Props> = ({
   durationInFrames,
   citation,
   hasBoom = false,
+  disableAutoSfx = false,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -42,14 +44,18 @@ export const FamilyTreeScene: React.FC<Props> = ({
       }}
     >
       {/* SFX */}
-      <Audio src={staticFile("audio/sfx_paper_slide.wav")} volume={0.22} />
-      <Sequence from={14}>
-        <Audio src={staticFile("audio/sfx_typewriter_stamp.wav")} volume={0.24} />
-      </Sequence>
-      {hasBoom && (
-        <Sequence from={0}>
-          <Audio src={staticFile("audio/sfx_sub_boom.wav")} volume={0.12} />
-        </Sequence>
+      {!disableAutoSfx && (
+        <>
+          <Audio src={staticFile("audio/sfx_paper_slide.wav")} volume={0.22} />
+          <Sequence from={14}>
+            <Audio src={staticFile("audio/sfx_typewriter_stamp.wav")} volume={0.24} />
+          </Sequence>
+          {hasBoom && (
+            <Sequence from={0}>
+              <Audio src={staticFile("audio/sfx_sub_boom.wav")} volume={0.12} />
+            </Sequence>
+          )}
+        </>
       )}
 
       {/* 1. Archival Blackboard / Desk Blueprint Background */}

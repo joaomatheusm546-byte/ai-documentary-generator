@@ -5,12 +5,14 @@ interface Props {
   text?: string;
   delayFrames?: number;
   holdFrames?: number;
+  disableAutoSfx?: boolean;
 }
 
 export const ImpactTextStamp: React.FC<Props> = ({
   text,
   delayFrames = 18,
   holdFrames = 48,
+  disableAutoSfx = false,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -60,7 +62,7 @@ export const ImpactTextStamp: React.FC<Props> = ({
       }}
     >
       {/* Sound Effect triggered on impact */}
-      {frame === delayFrames && (
+      {!disableAutoSfx && frame === delayFrames && (
         <Audio
           src={staticFile("audio/sfx_typewriter_stamp.wav")}
           volume={0.28}

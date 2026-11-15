@@ -10,6 +10,7 @@ interface Props {
   labelTitle?: string;
   labelSubtitle?: string;
   hasBoom?: boolean;
+  disableAutoSfx?: boolean;
   citation?: string;
 }
 
@@ -19,6 +20,7 @@ export const ParallaxVideoScene: React.FC<Props> = ({
   labelTitle,
   labelSubtitle,
   hasBoom = false,
+  disableAutoSfx = false,
   citation,
 }) => {
   return (
@@ -32,23 +34,27 @@ export const ParallaxVideoScene: React.FC<Props> = ({
       }}
     >
       {/* SFX: Projector start & Typewriter stamp */}
-      <Audio
-        src={staticFile("audio/sfx_paper_slide.wav")}
-        volume={0.22}
-      />
-      <Sequence from={12}>
-        <Audio
-          src={staticFile("audio/sfx_typewriter_stamp.wav")}
-          volume={0.24}
-        />
-      </Sequence>
-      {hasBoom && (
-        <Sequence from={0}>
+      {!disableAutoSfx && (
+        <>
           <Audio
-            src={staticFile("audio/sfx_sub_boom.wav")}
-            volume={0.12}
+            src={staticFile("audio/sfx_paper_slide.wav")}
+            volume={0.22}
           />
-        </Sequence>
+          <Sequence from={12}>
+            <Audio
+              src={staticFile("audio/sfx_typewriter_stamp.wav")}
+              volume={0.24}
+            />
+          </Sequence>
+          {hasBoom && (
+            <Sequence from={0}>
+              <Audio
+                src={staticFile("audio/sfx_sub_boom.wav")}
+                volume={0.12}
+              />
+            </Sequence>
+          )}
+        </>
       )}
 
       {/* Archival Historical Video Stream */}

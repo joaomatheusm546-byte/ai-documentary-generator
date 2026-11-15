@@ -16,6 +16,7 @@ interface Props {
   impactText?: string;
   connectionLabel?: string;
   hasBoom?: boolean;
+  disableAutoSfx?: boolean;
   citation?: string;
 }
 
@@ -30,6 +31,7 @@ export const ParallaxSplitCollageScene: React.FC<Props> = ({
   impactText,
   connectionLabel,
   hasBoom = false,
+  disableAutoSfx = false,
   citation,
 }) => {
   const frame = useCurrentFrame();
@@ -81,14 +83,18 @@ export const ParallaxSplitCollageScene: React.FC<Props> = ({
       }}
     >
       {/* SFX */}
-      <Audio src={staticFile("audio/sfx_paper_slide.wav")} volume={0.22} />
-      <Sequence from={12}>
-        <Audio src={staticFile("audio/sfx_typewriter_stamp.wav")} volume={0.24} />
-      </Sequence>
-      {hasBoom && (
-        <Sequence from={0}>
-          <Audio src={staticFile("audio/sfx_sub_boom.wav")} volume={0.12} />
-        </Sequence>
+      {!disableAutoSfx && (
+        <>
+          <Audio src={staticFile("audio/sfx_paper_slide.wav")} volume={0.22} />
+          <Sequence from={12}>
+            <Audio src={staticFile("audio/sfx_typewriter_stamp.wav")} volume={0.24} />
+          </Sequence>
+          {hasBoom && (
+            <Sequence from={0}>
+              <Audio src={staticFile("audio/sfx_sub_boom.wav")} volume={0.12} />
+            </Sequence>
+          )}
+        </>
       )}
 
       {/* 1. Background Archival Texture */}
@@ -248,7 +254,12 @@ export const ParallaxSplitCollageScene: React.FC<Props> = ({
       />
 
       {/* 6. Kinetic Impact Text Stamp */}
-      <ImpactTextStamp text={impactText} delayFrames={20} holdFrames={45} />
+      <ImpactTextStamp
+        text={impactText}
+        delayFrames={20}
+        holdFrames={45}
+        disableAutoSfx={disableAutoSfx}
+      />
 
       {/* 7. Atmosphere */}
       <DustParticles />

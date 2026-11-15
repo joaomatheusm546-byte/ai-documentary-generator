@@ -10,6 +10,7 @@ interface Props {
   labelTitle?: string;
   labelSubtitle?: string;
   hasBoom?: boolean;
+  disableAutoSfx?: boolean;
   citation?: string;
 }
 
@@ -19,6 +20,7 @@ export const ParallaxLandscapeScene: React.FC<Props> = ({
   labelTitle,
   labelSubtitle,
   hasBoom = false,
+  disableAutoSfx = false,
   citation,
 }) => {
   const frame = useCurrentFrame();
@@ -46,23 +48,27 @@ export const ParallaxLandscapeScene: React.FC<Props> = ({
       }}
     >
       {/* SFX: Shutter & Typewriter */}
-      <Audio
-        src={staticFile("audio/sfx_camera_shutter.wav")}
-        volume={0.18}
-      />
-      <Sequence from={12}>
-        <Audio
-          src={staticFile("audio/sfx_typewriter_stamp.wav")}
-          volume={0.24}
-        />
-      </Sequence>
-      {hasBoom && (
-        <Sequence from={0}>
+      {!disableAutoSfx && (
+        <>
           <Audio
-            src={staticFile("audio/sfx_sub_boom.wav")}
-            volume={0.12}
+            src={staticFile("audio/sfx_camera_shutter.wav")}
+            volume={0.18}
           />
-        </Sequence>
+          <Sequence from={12}>
+            <Audio
+              src={staticFile("audio/sfx_typewriter_stamp.wav")}
+              volume={0.24}
+            />
+          </Sequence>
+          {hasBoom && (
+            <Sequence from={0}>
+              <Audio
+                src={staticFile("audio/sfx_sub_boom.wav")}
+                volume={0.12}
+              />
+            </Sequence>
+          )}
+        </>
       )}
 
       {/* Landscape Image with Slow Cinematic Glide */}
