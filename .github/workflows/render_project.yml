@@ -1,0 +1,149 @@
+name: Render Generic 5-Act Documentary (Parallel Remotion)
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_slug:
+        description: "Slug do projeto (ex: operation_myth, cold_war_cipher)"
+        required: true
+        type: string
+      project_title:
+        description: "Titulo exibido na Release"
+        required: true
+        type: string
+      release_tag:
+        description: "Tag da release contendo os zips de assets"
+        required: true
+        type: string
+      visuals_zip:
+        description: "Nome do zip de visuais na release"
+        required: true
+        default: "project_visuals.zip"
+        type: string
+      audio_zip:
+        description: "Nome do zip de audio na release"
+        required: true
+        default: "project_audio.zip"
+        type: string
+      master_filename:
+        description: "Nome do MP4 final"
+        required: true
+        default: "master_documentary.mp4"
+        type: string
+      concurrency:
+        description: "Concorrencia do Chromium no runner"
+        required: false
+        default: "2"
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  render-act:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: true
+      matrix:
+        act: [1, 2, 3, 4, 5]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js (with npm cache)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: remotion_app/package-lock.json
+
+      - name: Download Assets from Release ${{ inputs.release_tag }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          mkdir -p remotion_app/public/audio assets/tmp_rel
+          gh release download "${{ inputs.release_tag }}" -D assets/tmp_rel -p "${{ inputs.visuals_zip }}" -p "${{ inputs.audio_zip }}"
+          unzip -q -o "assets/tmp_rel/${{ inputs.visuals_zip }}" -d remotion_app/public/
+          unzip -q -o "assets/tmp_rel/${{ inputs.audio_zip }}" -d remotion_app/public/audio/
+          echo "Audio files: $(ls remotion_app/public/audio | wc -l)"
+
+      - name: Install Remotion Dependencies
+        run: |
+          cd remotion_app
+          npm ci --prefer-offline || npm install
+
+      - name: Ensure Headless Chromium for Remotion
+        run: |
+          cd remotion_app
+          npx remotion browser ensure
+
+      - name: Render Act ${{ matrix.act }}
+        run: |
+          mkdir -p output/acts
+          cd remotion_app
+          npx remotion render src/index.ts "Act${{ matrix.act }}" "../output/acts/act_${{ matrix.act }}.mp4" "--concurrency=${{ inputs.concurrency }}"
+
+      - name: Upload Act ${{ matrix.act }} Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ inputs.project_slug }}-act-${{ matrix.act }}"
+          path: "output/acts/act_${{ matrix.act }}.mp4"
+          retention-days: 7
+
+  concat-and-release:
+    needs: render-act
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Ensure FFmpeg
+        run: |
+          if ! command -v ffmpeg &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Download Rendered Acts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: "${{ inputs.project_slug }}-act-*"
+          path: output/acts
+          merge-multiple: true
+
+      - name: Concatenate 5 Acts into Master Documentary
+        run: |
+          set -e
+          mkdir -p output
+          cd output/acts
+          ls -lh act_*.mp4
+          cat << 'EOF' > concat_acts.txt
+          file 'act_1.mp4'
+          file 'act_2.mp4'
+          file 'act_3.mp4'
+          file 'act_4.mp4'
+          file 'act_5.mp4'
+          EOF
+          ffmpeg -y -f concat -safe 0 -i concat_acts.txt -c copy "../${{ inputs.master_filename }}"
+          ls -lh "../${{ inputs.master_filename }}"
+          ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "../${{ inputs.master_filename }}"
+
+      - name: Upload Master Video Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ inputs.project_slug }}-master-video"
+          path: "output/${{ inputs.master_filename }}"
+          retention-days: 14
+
+      - name: Create GitHub Release with Master Documentary
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "${{ inputs.project_slug }}-${{ github.run_id }}"
+          name: "${{ inputs.project_title }} (1080p Master)"
+          body: |
+            Project: ${{ inputs.project_slug }}
+            Rendered via parallel 5-Act Remotion workflow (1080p @ 30fps).
+          files: "output/${{ inputs.master_filename }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

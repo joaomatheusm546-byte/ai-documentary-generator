@@ -48,11 +48,12 @@ function getDuration(cfg: DocumentaryConfig): number {
 }
 
 export const Root: React.FC = () => {
+  const DocComp = DocumentaryPilot as unknown as React.FC<Record<string, unknown>>;
   return (
     <>
       <Composition
         id="DocumentaryPilot"
-        component={DocumentaryPilot}
+        component={DocComp}
         durationInFrames={Math.max(30, getDuration(pilotConfig as DocumentaryConfig))}
         fps={30}
         width={1920}
@@ -61,7 +62,7 @@ export const Root: React.FC = () => {
       />
       <Composition
         id="Act1"
-        component={DocumentaryPilot}
+        component={DocComp}
         durationInFrames={Math.max(30, getDuration(act1Config))}
         fps={30}
         width={1920}
@@ -70,7 +71,7 @@ export const Root: React.FC = () => {
       />
       <Composition
         id="Act2"
-        component={DocumentaryPilot}
+        component={DocComp}
         durationInFrames={Math.max(30, getDuration(act2Config))}
         fps={30}
         width={1920}
@@ -79,7 +80,7 @@ export const Root: React.FC = () => {
       />
       <Composition
         id="Act3"
-        component={DocumentaryPilot}
+        component={DocComp}
         durationInFrames={Math.max(30, getDuration(act3Config))}
         fps={30}
         width={1920}
@@ -88,7 +89,7 @@ export const Root: React.FC = () => {
       />
       <Composition
         id="Act4"
-        component={DocumentaryPilot}
+        component={DocComp}
         durationInFrames={Math.max(30, getDuration(act4Config))}
         fps={30}
         width={1920}
@@ -97,7 +98,7 @@ export const Root: React.FC = () => {
       />
       <Composition
         id="Act5"
-        component={DocumentaryPilot}
+        component={DocComp}
         durationInFrames={Math.max(30, getDuration(act5Config))}
         fps={30}
         width={1920}

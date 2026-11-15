@@ -11,12 +11,16 @@ interface Particle {
   opacity: number;
 }
 
-export const DustParticles: React.FC = () => {
+interface DustParticlesProps {
+  count?: number;
+}
+
+export const DustParticles: React.FC<DustParticlesProps> = ({ count = 35 }) => {
   const frame = useCurrentFrame();
 
   const particles: Particle[] = useMemo(() => {
     const list: Particle[] = [];
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < count; i++) {
       const pseudoRand = (seed: number) => {
         const x = Math.sin(seed * 9999) * 10000;
         return x - Math.floor(x);
@@ -32,7 +36,7 @@ export const DustParticles: React.FC = () => {
       });
     }
     return list;
-  }, []);
+  }, [count]);
 
   return (
     <div

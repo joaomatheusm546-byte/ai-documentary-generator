@@ -1,5 +1,5 @@
 {
-  "title": "Operation Myth - Act V: The Skull Shock & 2018 Verdict",
+  "title": "The Goering Cyanide Dossier - Act V: Ostfriedhof & The Wenzbach",
   "actNumber": 5,
   "fps": 30,
   "width": 1920,
@@ -8,39 +8,39 @@
   "musicSrc": "audio/myth_act5_music.mp3",
   "soundtrackActs": [
     {
-      "actId": "myth_act_5",
-      "name": "Act V: The Skull Shock & 2018 Verdict",
+      "actId": "goring_act_5",
+      "name": "Act V: Ostfriedhof & The Wenzbach",
       "src": "audio/myth_act5_music.mp3",
       "startFrame": 0,
-      "durationInFrames": 6692
+      "durationInFrames": 7061
     }
   ],
   "beats": [
     {
       "id": "s37_b1",
-      "durationInFrames": 230,
-      "layoutType": "document",
-      "bgImage": "myth_images/dna_lab__044.jpg",
-      "subjectImage": "myth_images/doc_12_uconn_dna_2009.jpg",
-      "labelTitle": "2009 DNA VERDICT",
-      "labelSubtitle": "State Archive Skull Result",
+      "durationInFrames": 194,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/german_pow_1945__205.jpg",
+      "subjectImage": null,
+      "labelTitle": "ATO V // OPERAÇÃO LIMPEZA",
+      "labelSubtitle": "16–17 de Outubro de 1946",
       "highlightText": null,
       "highlightStyle": "marker",
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "impactText": "NOT HITLER",
+      "impactText": "NO GRAVE LEFT",
       "impactFrame": 16,
       "hasBoom": true,
       "sfxPreset": "boom",
       "citation": "[Act 5, File 37] Archival Citations in Description",
-      "audioSrc": "audio/myth_s037_b01.mp3"
+      "audioSrc": "audio/goring_cyanide_s037_b01.mp3"
     },
     {
       "id": "s37_b2",
-      "durationInFrames": 154,
+      "durationInFrames": 184,
       "layoutType": "landscape",
-      "bgImage": "myth_images/dna_lab__045.jpg",
+      "bgImage": "goring_images/w2_muenchen_1945__234.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -54,13 +54,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 37] Archival Citations in Description",
-      "audioSrc": "audio/myth_s037_b02.mp3"
+      "audioSrc": "audio/goring_cyanide_s037_b02.mp3"
     },
     {
       "id": "s37_b3",
-      "durationInFrames": 166,
+      "durationInFrames": 218,
       "layoutType": "landscape",
-      "bgImage": "myth_images/w2_bunker_ruins__053.jpg",
+      "bgImage": "goring_images/goring_surrender_1945__006.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -74,14 +74,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 37] Archival Citations in Description",
-      "audioSrc": "audio/myth_s037_b03.mp3"
+      "audioSrc": "audio/goring_cyanide_s037_b03.mp3"
     },
     {
       "id": "s37_b4",
-      "durationInFrames": 205,
-      "layoutType": "document",
-      "bgImage": "myth_images/stalin_1945__012.jpg",
-      "subjectImage": "myth_images/doc_04_zhukov_june1945_news.jpg",
+      "durationInFrames": 177,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/us_36th_infantry_1945__184.jpg",
+      "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -94,16 +94,16 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 37] Archival Citations in Description",
-      "audioSrc": "audio/myth_s037_b04.mp3"
+      "audioSrc": "audio/goring_cyanide_s037_b04.mp3"
     },
     {
       "id": "s38_b1",
-      "durationInFrames": 201,
-      "layoutType": "document",
-      "bgImage": "myth_images/u_boat_argentina__034.jpg",
-      "subjectImage": "myth_images/doc_05_fbi_file_65_53615.jpg",
-      "labelTitle": "CONSPIRACY REIGNITED",
-      "labelSubtitle": "2009–2016 Media Fallout",
+      "durationInFrames": 173,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/palace_of_justice__160.jpg",
+      "subjectImage": null,
+      "labelTitle": "ROTA SECRETA",
+      "labelSubtitle": "Nuremberg → Munique (160 km)",
       "highlightText": null,
       "highlightStyle": "marker",
       "stampText": null,
@@ -114,13 +114,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 38] Archival Citations in Description",
-      "audioSrc": "audio/myth_s038_b01.mp3"
+      "audioSrc": "audio/goring_cyanide_s038_b01.mp3"
     },
     {
       "id": "s38_b2",
-      "durationInFrames": 180,
+      "durationInFrames": 179,
       "layoutType": "landscape",
-      "bgImage": "myth_images/w5_cat_battle_berlin__119.jpg",
+      "bgImage": "goring_images/ostfriedhof_munich__209.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -134,13 +134,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 38] Archival Citations in Description",
-      "audioSrc": "audio/myth_s038_b02.mp3"
+      "audioSrc": "audio/goring_cyanide_s038_b02.mp3"
     },
     {
       "id": "s38_b3",
-      "durationInFrames": 155,
+      "durationInFrames": 201,
       "layoutType": "landscape",
-      "bgImage": "myth_images/plate_crater_1945.jpg",
+      "bgImage": "goring_images/ostfriedhof_munich__208.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -154,14 +154,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 38] Archival Citations in Description",
-      "audioSrc": "audio/myth_s038_b03.mp3"
+      "audioSrc": "audio/goring_cyanide_s038_b03.mp3"
     },
     {
       "id": "s38_b4",
-      "durationInFrames": 209,
-      "layoutType": "portrait",
-      "bgImage": "myth_images/w2_bunker_ruins__053.jpg",
-      "subjectImage": "cutouts/myth_eva_braun_cutout.png",
+      "durationInFrames": 193,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/ostfriedhof_munich__206.jpg",
+      "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -172,18 +172,18 @@
       "impactText": null,
       "impactFrame": 16,
       "hasBoom": false,
-      "sfxPreset": "subtle_slide",
+      "sfxPreset": "none",
       "citation": "[Act 5, File 38] Archival Citations in Description",
-      "audioSrc": "audio/myth_s038_b04.mp3"
+      "audioSrc": "audio/goring_cyanide_s038_b04.mp3"
     },
     {
       "id": "s39_b1",
-      "durationInFrames": 172,
+      "durationInFrames": 235,
       "layoutType": "landscape",
-      "bgImage": "myth_images/lubyanka__030.jpg",
+      "bgImage": "goring_images/stock_forest_brook__220.jpg",
       "subjectImage": null,
-      "labelTitle": "THE OTHER VAULT",
-      "labelSubtitle": "FSB Archives // Lubyanka",
+      "labelTitle": "WENZBACH // MUNIQUE",
+      "labelSubtitle": "17 de Outubro de 1946",
       "highlightText": null,
       "highlightStyle": "marker",
       "stampText": null,
@@ -194,13 +194,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 39] Archival Citations in Description",
-      "audioSrc": "audio/myth_s039_b01.mp3"
+      "audioSrc": "audio/goring_cyanide_s039_b01.mp3"
     },
     {
       "id": "s39_b2",
-      "durationInFrames": 215,
+      "durationInFrames": 198,
       "layoutType": "landscape",
-      "bgImage": "myth_images/plate_fsb_vault.jpg",
+      "bgImage": "goring_images/w2_isar_munich__243.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -214,14 +214,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 39] Archival Citations in Description",
-      "audioSrc": "audio/myth_s039_b02.mp3"
+      "audioSrc": "audio/goring_cyanide_s039_b02.mp3"
     },
     {
       "id": "s39_b3",
-      "durationInFrames": 187,
-      "layoutType": "landscape",
-      "bgImage": "myth_images/plate_maroon_box_1945.jpg",
-      "subjectImage": null,
+      "durationInFrames": 201,
+      "layoutType": "document",
+      "bgImage": "goring_images/w2_isar_munich__239.jpg",
+      "subjectImage": "goring_images/doc_19_munich_solln_wenzbach_map.jpg",
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -234,13 +234,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 39] Archival Citations in Description",
-      "audioSrc": "audio/myth_s039_b03.mp3"
+      "audioSrc": "audio/goring_cyanide_s039_b03.mp3"
     },
     {
       "id": "s39_b4",
-      "durationInFrames": 209,
+      "durationInFrames": 198,
       "layoutType": "landscape",
-      "bgImage": "myth_images/lubyanka__031.jpg",
+      "bgImage": "goring_images/stock_forest_brook__223.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -254,16 +254,16 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 39] Archival Citations in Description",
-      "audioSrc": "audio/myth_s039_b04.mp3"
+      "audioSrc": "audio/goring_cyanide_s039_b04.mp3"
     },
     {
       "id": "s40_b1",
-      "durationInFrames": 189,
+      "durationInFrames": 211,
       "layoutType": "document",
-      "bgImage": "myth_images/plate_fsb_vault.jpg",
-      "subjectImage": "myth_images/charlier__041.jpg",
-      "labelTitle": "DR. PHILIPPE CHARLIER",
-      "labelSubtitle": "2017–2018 FSB Forensic Study",
+      "bgImage": "goring_images/courtroom_600__170.jpg",
+      "subjectImage": "goring_images/doc_20_four_theories_matrix.jpg",
+      "labelTitle": "DOSSIÊ COMPARATIVO",
+      "labelSubtitle": "Quatro Versões Documentadas",
       "highlightText": null,
       "highlightStyle": "marker",
       "stampText": null,
@@ -272,16 +272,16 @@
       "impactText": null,
       "impactFrame": 16,
       "hasBoom": false,
-      "sfxPreset": "subtle_slide",
+      "sfxPreset": "none",
       "citation": "[Act 5, File 40] Archival Citations in Description",
-      "audioSrc": "audio/myth_s040_b01.mp3"
+      "audioSrc": "audio/goring_cyanide_s040_b01.mp3"
     },
     {
       "id": "s40_b2",
-      "durationInFrames": 261,
-      "layoutType": "document",
-      "bgImage": "myth_images/dna_lab__045.jpg",
-      "subjectImage": "myth_images/w3_microscope_lab__096.jpg",
+      "durationInFrames": 195,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/palace_of_justice__159.jpg",
+      "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -294,14 +294,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 40] Archival Citations in Description",
-      "audioSrc": "audio/myth_s040_b02.mp3"
+      "audioSrc": "audio/goring_cyanide_s040_b02.mp3"
     },
     {
       "id": "s40_b3",
-      "durationInFrames": 175,
-      "layoutType": "landscape",
-      "bgImage": "myth_images/plate_maroon_box_1945.jpg",
-      "subjectImage": null,
+      "durationInFrames": 264,
+      "layoutType": "portrait",
+      "bgImage": "goring_images/w3_nara_292602.jpg",
+      "subjectImage": "cutouts/cut_bach_zelelewski_1.png",
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -314,14 +314,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 40] Archival Citations in Description",
-      "audioSrc": "audio/myth_s040_b03.mp3"
+      "audioSrc": "audio/goring_cyanide_s040_b03.mp3"
     },
     {
       "id": "s40_b4",
-      "durationInFrames": 202,
-      "layoutType": "document",
-      "bgImage": "myth_images/lubyanka__030.jpg",
-      "subjectImage": "myth_images/doc_02_dental_sketch_1945.jpg",
+      "durationInFrames": 243,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/stock_prison_corridor__232.jpg",
+      "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -334,33 +334,33 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 40] Archival Citations in Description",
-      "audioSrc": "audio/myth_s040_b04.mp3"
+      "audioSrc": "audio/goring_cyanide_s040_b04.mp3"
     },
     {
       "id": "s41_b1",
-      "durationInFrames": 223,
+      "durationInFrames": 136,
       "layoutType": "document",
-      "bgImage": "myth_images/w3_dental_xray_vintage__093.png",
-      "subjectImage": "myth_images/doc_13_charlier_2018_study.jpg",
-      "labelTitle": "MAY 2018 VERDICT",
-      "labelSubtitle": "European Journal of Internal Medicine",
+      "bgImage": "goring_images/w3_andrus_with_prisoners.jpg",
+      "subjectImage": "goring_images/doc_21_nara_record_folder.jpg",
+      "labelTitle": null,
+      "labelSubtitle": null,
       "highlightText": null,
       "highlightStyle": "marker",
       "stampText": null,
       "stampSubtext": null,
       "silhouetteType": null,
-      "impactText": "CASE SOLVED",
+      "impactText": null,
       "impactFrame": 16,
-      "hasBoom": true,
-      "sfxPreset": "boom",
+      "hasBoom": false,
+      "sfxPreset": "none",
       "citation": "[Act 5, File 41] Archival Citations in Description",
-      "audioSrc": "audio/myth_s041_b01.mp3"
+      "audioSrc": "audio/goring_cyanide_s041_b01.mp3"
     },
     {
       "id": "s41_b2",
-      "durationInFrames": 182,
+      "durationInFrames": 218,
       "layoutType": "landscape",
-      "bgImage": "myth_images/w3_human_skull_xray__091.jpg",
+      "bgImage": "goring_images/douglas_c47_germany__193.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -374,13 +374,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 41] Archival Citations in Description",
-      "audioSrc": "audio/myth_s041_b02.mp3"
+      "audioSrc": "audio/goring_cyanide_s041_b02.mp3"
     },
     {
       "id": "s41_b3",
-      "durationInFrames": 168,
+      "durationInFrames": 258,
       "layoutType": "landscape",
-      "bgImage": "myth_images/w3_dental_xray_vintage__094.png",
+      "bgImage": "goring_images/w3_goring_lunch_nuremberg.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -394,14 +394,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 41] Archival Citations in Description",
-      "audioSrc": "audio/myth_s041_b03.mp3"
+      "audioSrc": "audio/goring_cyanide_s041_b03.mp3"
     },
     {
       "id": "s41_b4",
-      "durationInFrames": 179,
-      "layoutType": "portrait",
-      "bgImage": "myth_images/w2_chancellery_ruins__050.jpg",
-      "subjectImage": "cutouts/myth_hitler_cutout.png",
+      "durationInFrames": 218,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/stock_prison_corridor__233.jpg",
+      "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -414,14 +414,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 41] Archival Citations in Description",
-      "audioSrc": "audio/myth_s041_b04.mp3"
+      "audioSrc": "audio/goring_cyanide_s041_b04.mp3"
     },
     {
       "id": "s42_b1",
-      "durationInFrames": 201,
-      "layoutType": "landscape",
-      "bgImage": "myth_images/w3_dental_xray_vintage__093.png",
-      "subjectImage": null,
+      "durationInFrames": 202,
+      "layoutType": "portrait",
+      "bgImage": "goring_images/goring_mondorf_ashcan__044.jpg",
+      "subjectImage": "cutouts/cut_goring_captivity_star.png",
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -434,14 +434,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 42] Archival Citations in Description",
-      "audioSrc": "audio/myth_s042_b01.mp3"
+      "audioSrc": "audio/goring_cyanide_s042_b01.mp3"
     },
     {
       "id": "s42_b2",
-      "durationInFrames": 189,
-      "layoutType": "document",
-      "bgImage": "myth_images/dna_lab__044.jpg",
-      "subjectImage": "myth_images/doc_13_charlier_2018_study.jpg",
+      "durationInFrames": 216,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/us_army_mp_1945__192.jpg",
+      "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -452,15 +452,15 @@
       "impactText": null,
       "impactFrame": 16,
       "hasBoom": false,
-      "sfxPreset": "subtle_slide",
+      "sfxPreset": "none",
       "citation": "[Act 5, File 42] Archival Citations in Description",
-      "audioSrc": "audio/myth_s042_b02.mp3"
+      "audioSrc": "audio/goring_cyanide_s042_b02.mp3"
     },
     {
       "id": "s42_b3",
-      "durationInFrames": 200,
+      "durationInFrames": 152,
       "layoutType": "landscape",
-      "bgImage": "myth_images/w2_walther_ppk__060.jpg",
+      "bgImage": "goring_images/w2_nuernberg_1945__227.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -474,14 +474,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 42] Archival Citations in Description",
-      "audioSrc": "audio/myth_s042_b03.mp3"
+      "audioSrc": "audio/goring_cyanide_s042_b03.mp3"
     },
     {
       "id": "s42_b4",
-      "durationInFrames": 186,
-      "layoutType": "landscape",
-      "bgImage": "myth_images/plate_bunker_stairs_1945.jpg",
-      "subjectImage": null,
+      "durationInFrames": 165,
+      "layoutType": "document",
+      "bgImage": "goring_images/w3_courtroom_view_dpla.jpg",
+      "subjectImage": "goring_images/doc_22_imt_printed_volumes.jpg",
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -494,16 +494,16 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 42] Archival Citations in Description",
-      "audioSrc": "audio/myth_s042_b04.mp3"
+      "audioSrc": "audio/goring_cyanide_s042_b04.mp3"
     },
     {
       "id": "s43_b1",
-      "durationInFrames": 112,
+      "durationInFrames": 222,
       "layoutType": "landscape",
-      "bgImage": "myth_images/w5_cat_battle_berlin__118.jpg",
+      "bgImage": "goring_images/streicher_frank__130.jpg",
       "subjectImage": null,
-      "labelTitle": "THE ANATOMY OF A MYTH",
-      "labelSubtitle": "1945–2018",
+      "labelTitle": null,
+      "labelSubtitle": null,
       "highlightText": null,
       "highlightStyle": "marker",
       "stampText": null,
@@ -514,14 +514,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 43] Archival Citations in Description",
-      "audioSrc": "audio/myth_s043_b01.mp3"
+      "audioSrc": "audio/goring_cyanide_s043_b01.mp3"
     },
     {
       "id": "s43_b2",
-      "durationInFrames": 159,
-      "layoutType": "landscape",
-      "bgImage": "myth_images/w3_berlin_battle_bundesarchiv__076.jpg",
-      "subjectImage": null,
+      "durationInFrames": 202,
+      "layoutType": "document",
+      "bgImage": "goring_images/w3_jackson_nuremberg_3.jpg",
+      "subjectImage": "goring_images/w3_nara_292603.jpg",
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -534,14 +534,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 43] Archival Citations in Description",
-      "audioSrc": "audio/myth_s043_b02.mp3"
+      "audioSrc": "audio/goring_cyanide_s043_b02.mp3"
     },
     {
       "id": "s43_b3",
-      "durationInFrames": 240,
-      "layoutType": "portrait",
-      "bgImage": "myth_images/potsdam_1945__001.jpg",
-      "subjectImage": "cutouts/myth_stalin_cutout.png",
+      "durationInFrames": 163,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/courtroom_600__166.jpg",
+      "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -554,13 +554,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 43] Archival Citations in Description",
-      "audioSrc": "audio/myth_s043_b03.mp3"
+      "audioSrc": "audio/goring_cyanide_s043_b03.mp3"
     },
     {
       "id": "s43_b4",
-      "durationInFrames": 226,
+      "durationInFrames": 186,
       "layoutType": "landscape",
-      "bgImage": "myth_images/plate_biederitz_dawn_1970.jpg",
+      "bgImage": "goring_images/courtroom_600__171.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -574,14 +574,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 43] Archival Citations in Description",
-      "audioSrc": "audio/myth_s043_b04.mp3"
+      "audioSrc": "audio/goring_cyanide_s043_b04.mp3"
     },
     {
       "id": "s44_b1",
-      "durationInFrames": 170,
+      "durationInFrames": 228,
       "layoutType": "document",
-      "bgImage": "myth_images/plate_magdeburg_tent_1970.jpg",
-      "subjectImage": "myth_images/doc_11_kgb_destruction_1970.jpg",
+      "bgImage": "goring_images/w2_nuremberg_prison__213.jpg",
+      "subjectImage": "goring_images/doc_23_inquiry_contradiction_page.jpg",
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -594,13 +594,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 44] Archival Citations in Description",
-      "audioSrc": "audio/myth_s044_b01.mp3"
+      "audioSrc": "audio/goring_cyanide_s044_b01.mp3"
     },
     {
       "id": "s44_b2",
-      "durationInFrames": 187,
+      "durationInFrames": 183,
       "layoutType": "landscape",
-      "bgImage": "myth_images/plate_maroon_box_1945.jpg",
+      "bgImage": "goring_images/stock_prison_corridor__234.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -614,13 +614,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 44] Archival Citations in Description",
-      "audioSrc": "audio/myth_s044_b02.mp3"
+      "audioSrc": "audio/goring_cyanide_s044_b02.mp3"
     },
     {
       "id": "s44_b3",
-      "durationInFrames": 131,
+      "durationInFrames": 141,
       "layoutType": "landscape",
-      "bgImage": "myth_images/w3_reichstag_1945_ruins__077.jpg",
+      "bgImage": "goring_images/burton_andrus__054.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -634,16 +634,16 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 44] Archival Citations in Description",
-      "audioSrc": "audio/myth_s044_b03.mp3"
+      "audioSrc": "audio/goring_cyanide_s044_b03.mp3"
     },
     {
       "id": "s44_b4",
       "durationInFrames": 201,
-      "layoutType": "landscape",
-      "bgImage": "myth_images/fuehrerbunker_1945__006.jpg",
-      "subjectImage": null,
-      "labelTitle": "DOSSIER CLOSED",
-      "labelSubtitle": "Berlin // April 30, 1945",
+      "layoutType": "portrait",
+      "bgImage": "goring_images/goring_commons_1945_46__024.jpg",
+      "subjectImage": "cutouts/cut_goring_dock_chin.png",
+      "labelTitle": null,
+      "labelSubtitle": null,
       "highlightText": null,
       "highlightStyle": "marker",
       "stampText": null,
@@ -654,16 +654,16 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 44] Archival Citations in Description",
-      "audioSrc": "audio/myth_s044_b04.mp3"
+      "audioSrc": "audio/goring_cyanide_s044_b04.mp3"
     },
     {
       "id": "s45_b1",
-      "durationInFrames": 187,
-      "layoutType": "document",
-      "bgImage": "myth_images/plate_fsb_vault.jpg",
-      "subjectImage": "myth_images/doc_08_dossier_462a_1949.jpg",
-      "labelTitle": null,
-      "labelSubtitle": null,
+      "durationInFrames": 202,
+      "layoutType": "landscape",
+      "bgImage": "goring_images/stock_forest_brook__221.jpg",
+      "subjectImage": null,
+      "labelTitle": "FIM DO DOSSIÊ",
+      "labelSubtitle": "Arquivo Encerrado // 1946–2005",
       "highlightText": null,
       "highlightStyle": "marker",
       "stampText": null,
@@ -672,15 +672,15 @@
       "impactText": null,
       "impactFrame": 16,
       "hasBoom": false,
-      "sfxPreset": "subtle_slide",
+      "sfxPreset": "none",
       "citation": "[Act 5, File 45] Archival Citations in Description",
-      "audioSrc": "audio/myth_s045_b01.mp3"
+      "audioSrc": "audio/goring_cyanide_s045_b01.mp3"
     },
     {
       "id": "s45_b2",
-      "durationInFrames": 156,
+      "durationInFrames": 141,
       "layoutType": "landscape",
-      "bgImage": "myth_images/w3_moscow_kremlin_1940s__081.jpg",
+      "bgImage": "goring_images/stock_forest_brook__222.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -694,14 +694,14 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 45] Archival Citations in Description",
-      "audioSrc": "audio/myth_s045_b02.mp3"
+      "audioSrc": "audio/goring_cyanide_s045_b02.mp3"
     },
     {
       "id": "s45_b3",
-      "durationInFrames": 170,
-      "layoutType": "landscape",
-      "bgImage": "myth_images/lubyanka__030.jpg",
-      "subjectImage": null,
+      "durationInFrames": 155,
+      "layoutType": "document",
+      "bgImage": "goring_images/w2_isar_munich__239.jpg",
+      "subjectImage": "goring_images/doc_24_final_archive_card.jpg",
       "labelTitle": null,
       "labelSubtitle": null,
       "highlightText": null,
@@ -714,13 +714,13 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 45] Archival Citations in Description",
-      "audioSrc": "audio/myth_s045_b03.mp3"
+      "audioSrc": "audio/goring_cyanide_s045_b03.mp3"
     },
     {
       "id": "s45_b4",
-      "durationInFrames": 115,
+      "durationInFrames": 208,
       "layoutType": "landscape",
-      "bgImage": "myth_images/plate_fsb_vault.jpg",
+      "bgImage": "goring_images/palace_of_justice__162.jpg",
       "subjectImage": null,
       "labelTitle": null,
       "labelSubtitle": null,
@@ -734,7 +734,7 @@
       "hasBoom": false,
       "sfxPreset": "none",
       "citation": "[Act 5, File 45] Archival Citations in Description",
-      "audioSrc": "audio/myth_s045_b04.mp3"
+      "audioSrc": "audio/goring_cyanide_s045_b04.mp3"
     }
   ]
 }
