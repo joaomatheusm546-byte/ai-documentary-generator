@@ -12,6 +12,7 @@ interface Props {
   labelSubtitle?: string;
   highlightText?: string;
   highlightStyle?: "marker" | "red_circle" | "both" | "stamp";
+  highlightY?: number;
   hasBoom?: boolean;
   disableAutoSfx?: boolean;
   citation?: string;
@@ -25,6 +26,7 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
   labelSubtitle,
   highlightText,
   highlightStyle = "both",
+  highlightY = 44,
   hasBoom = false,
   disableAutoSfx = false,
   citation,
@@ -165,7 +167,7 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
           <div
             style={{
               position: "absolute",
-              top: "44%",
+              top: `${highlightY}%`,
               left: "14%",
               width: `${markerProgress * 72}%`,
               height: 48,
@@ -201,7 +203,7 @@ export const ParallaxDocumentScene: React.FC<Props> = ({
           <svg
             style={{
               position: "absolute",
-              top: "41%",
+              top: `${Math.max(5, highlightY - 3)}%`,
               left: "12%",
               width: "76%",
               height: 60,

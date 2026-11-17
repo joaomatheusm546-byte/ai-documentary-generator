@@ -31,10 +31,17 @@ export interface SplitCollageData {
   connectionLabel?: string;
 }
 
+export interface CtaEndCardData {
+  headline?: string;
+  bridgeText?: string;
+  nextDossierTitle?: string;
+  channelHandle?: string;
+}
+
 export interface BeatData {
   id: string;
   durationInFrames: number;
-  layoutType: "portrait" | "document" | "landscape" | "video" | "split_collage" | "family_tree" | "silhouette";
+  layoutType: "portrait" | "document" | "landscape" | "video" | "split_collage" | "family_tree" | "silhouette" | "cta_endcard" | "cta_short";
   bgImage: string;
   subjectImage?: string;
   videoSrc?: string;
@@ -43,17 +50,21 @@ export interface BeatData {
   badgeText?: string;
   highlightText?: string;
   highlightStyle?: "marker" | "red_circle" | "both" | "stamp";
+  highlightY?: number;
   stampText?: string;
   stampSubtext?: string;
   silhouetteType?: "nepomuk" | "unknown_father" | "brothers" | "classified";
   impactText?: string;
   impactFrame?: number;
+  hookBanner?: string;
   hasBoom?: boolean;
   sfxPreset?: "none" | "subtle_slide" | "shutter" | "stamp" | "boom";
+  motionVariant?: "zoom_in" | "zoom_out" | "pan_left" | "pan_right";
   citation?: string;
   audioSrc: string;
   splitData?: SplitCollageData;
   treeData?: FamilyTreeData;
+  ctaData?: CtaEndCardData;
 }
 
 export interface SoundtrackAct {

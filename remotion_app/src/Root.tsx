@@ -1,9 +1,17 @@
 import React from "react";
 import { Composition } from "remotion";
 import { DocumentaryPilot } from "./DocumentaryPilot";
+import { ShortsPilot } from "./ShortsPilot";
 import { DocumentaryConfig } from "./types";
 
 import pilotConfig from "./pilot_config.json";
+
+let shortConfig: DocumentaryConfig;
+try {
+  shortConfig = require("./short_config.json");
+} catch {
+  shortConfig = { ...(pilotConfig as DocumentaryConfig), width: 1080, height: 1920 };
+}
 
 // We require act configs dynamically or import them
 let act1Config: DocumentaryConfig;
@@ -49,8 +57,18 @@ function getDuration(cfg: DocumentaryConfig): number {
 
 export const Root: React.FC = () => {
   const DocComp = DocumentaryPilot as unknown as React.FC<Record<string, unknown>>;
+  const ShortComp = ShortsPilot as unknown as React.FC<Record<string, unknown>>;
   return (
     <>
+      <Composition
+        id="ShortIsca"
+        component={ShortComp}
+        durationInFrames={Math.max(30, getDuration(shortConfig))}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ config: shortConfig }}
+      />
       <Composition
         id="DocumentaryPilot"
         component={DocComp}

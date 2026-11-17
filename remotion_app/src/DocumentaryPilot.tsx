@@ -1,5 +1,6 @@
 import React from "react";
 import { Audio, interpolate, Sequence, Series, staticFile, useCurrentFrame } from "remotion";
+import { CtaEndCardScene } from "./components/CtaEndCardScene";
 import { FamilyTreeScene } from "./components/FamilyTreeScene";
 import { ForensicSilhouetteScene } from "./components/ForensicSilhouetteScene";
 import { ImpactTextStamp } from "./components/ImpactTextStamp";
@@ -68,7 +69,10 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
 
       {/* 2. Sequential Beats Timeline */}
       <Series>
-        {config.beats.map((beat) => (
+        {config.beats.map((beat, beatIdx) => {
+          const landscapeMotions = ["zoom_in", "pan_right", "zoom_out", "pan_left"] as const;
+          const autoMotion = beat.motionVariant || landscapeMotions[beatIdx % landscapeMotions.length];
+          return (
           <Series.Sequence
             key={beat.id}
             durationInFrames={beat.durationInFrames}
@@ -134,6 +138,7 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 labelSubtitle={beat.labelSubtitle}
                 highlightText={beat.highlightText}
                 highlightStyle={beat.highlightStyle}
+                highlightY={beat.highlightY}
                 hasBoom={beat.hasBoom}
                 disableAutoSfx={effectiveDisableAutoSfx}
                 citation={beat.citation}
@@ -166,6 +171,7 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 hasBoom={beat.hasBoom}
                 disableAutoSfx={effectiveDisableAutoSfx}
                 citation={beat.citation}
+                motionVariant={autoMotion}
               />
             )}
 
@@ -192,7 +198,6 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 labelTitle={beat.labelTitle}
                 labelSubtitle={beat.labelSubtitle}
                 highlightText={beat.splitData.highlightText}
-                impactText={beat.impactText}
                 hasBoom={beat.hasBoom}
                 disableAutoSfx={effectiveDisableAutoSfx}
                 citation={beat.citation}
@@ -209,8 +214,21 @@ export const DocumentaryPilot: React.FC<Props> = ({ config }) => {
                 disableAutoSfx={effectiveDisableAutoSfx}
               />
             )}
+
+            {/* G. High-Retention YouTube End-Screen / CTA Slate */}
+            {beat.layoutType === "cta_endcard" && (
+              <CtaEndCardScene
+                bgImage={beat.bgImage}
+                durationInFrames={beat.durationInFrames}
+                labelTitle={beat.labelTitle}
+                labelSubtitle={beat.labelSubtitle}
+                ctaData={beat.ctaData}
+                citation={beat.citation}
+              />
+            )}
           </Series.Sequence>
-        ))}
+          );
+        })}
       </Series>
     </div>
   );
